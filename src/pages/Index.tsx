@@ -40,15 +40,16 @@ const Index = () => {
       <InfinityCursor />
       <Header />
       <Hero />
+         <AnimatedSection direction="left">
+        <Services />
+      </AnimatedSection>
       <AnimatedSection direction="left">
         <Mission />
       </AnimatedSection>
       <AnimatedSection direction="right">
         <TwoPillars />
       </AnimatedSection>
-      <AnimatedSection direction="left">
-        <Services />
-      </AnimatedSection>
+   
       <AnimatedSection direction="right">
         <InvestorRelations />
       </AnimatedSection>

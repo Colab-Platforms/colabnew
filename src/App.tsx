@@ -21,6 +21,7 @@ import SportsInfrastructure from "./pages/SportsInfrastructure";
 import SportsAnalytics from "./pages/SportsAnalytics";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
+import InvestorRelations from "./pages/InvestorRelations";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -56,6 +57,9 @@ const App = () => (
           
           {/* Contact */}
           <Route path="/contact" element={<Contact />} />
+          
+          {/* Investor Relations */}
+          <Route path="/investor-relations" element={<InvestorRelations />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
