@@ -1,220 +1,199 @@
-import { Brain, Shield, Target, Cpu, Gamepad2, Plane } from "lucide-react";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
-const ventures = [
+const services = [
   {
-    icon: Brain,
-    title: "Colab Intelligence",
-    description: "Enterprise AI and machine learning solutions for defense, intelligence, and high-stakes decision-making.",
-    ecosystem: "Tech",
-    animation: "neural"
+    id: 1,
+    title: 'Elite Sports Academy',
+    category: 'Sports',
+    description: 'Building champions through world-class training',
+    image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1200&q=80',
   },
   {
-    icon: Plane,
-    title: "Aegis Drones",
-    description: "Autonomous aerial systems for surveillance, reconnaissance, and mission-critical operations.",
-    ecosystem: "Tech",
-    animation: "fly"
+    id: 2,
+    title: 'Colab Esports',
+    category: 'Sports',
+    description: 'Professional gaming infrastructure',
+    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&q=80',
   },
   {
-    icon: Shield,
-    title: "Defense Systems",
-    description: "Next-generation security and defense technologies for government and enterprise clients.",
-    ecosystem: "Tech",
-    animation: "shield"
+    id: 3,
+    title: 'Sports Tech Innovation',
+    category: 'Sports',
+    description: 'AI-powered performance analytics',
+    image: 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=1200&q=80',
   },
   {
-    icon: Target,
-    title: "Elite Sports Academy",
-    description: "World-class training facilities and coaching programs developing the next generation of champions.",
-    ecosystem: "Sports",
-    animation: "target"
+    id: 4,
+    title: 'Colab Intelligence',
+    category: 'Technology',
+    description: 'Enterprise AI solutions',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80',
   },
   {
-    icon: Gamepad2,
-    title: "Colab Esports",
-    description: "Professional esports organization, tournament platforms, and digital competition infrastructure.",
-    ecosystem: "Sports",
-    animation: "game"
+    id: 5,
+    title: 'Aegis Drones',
+    category: 'Technology',
+    description: 'Autonomous aerial systems',
+    image: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=1200&q=80',
   },
   {
-    icon: Cpu,
-    title: "Sports Tech Innovation",
-    description: "Performance analytics, wearable technology, and data-driven athlete development systems.",
-    ecosystem: "Sports",
-    animation: "data"
+    id: 6,
+    title: 'Defense Systems',
+    category: 'Technology',
+    description: 'Next-gen security solutions',
+    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&q=80',
   }
 ];
 
 const Services = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
-    <section className="relative py-32 overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-mesh opacity-30" />
-      
-      <div className="container relative z-10 px-6 lg:px-8">
-        {/* Section header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-block mb-6">
-            <span className="px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary backdrop-blur-sm">
-              Our Portfolio
+    <section className="relative py-20 md:py-32 bg-black">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4">
+            <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
+              Our Services
             </span>
-          </div>
-          <h2 className="font-serif font-bold text-4xl md:text-6xl lg:text-7xl mb-6">
-            Featured <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Ventures</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Explore our diverse portfolio of companies driving innovation across sports and technology.
+          <p className="text-lg text-gray-400">
+            Dual ecosystem excellence
           </p>
-        </div>
+        </motion.div>
 
-        {/* Ventures grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {ventures.map((venture, index) => {
-            // Get animation config for each venture
-            const getIconAnimation = () => {
-              switch(venture.animation) {
-                case "neural":
-                  return {
-                    scale: [1, 1.15, 1],
-                    filter: [
-                      "drop-shadow(0 0 0px currentColor)",
-                      "drop-shadow(0 0 8px currentColor)",
-                      "drop-shadow(0 0 0px currentColor)"
-                    ],
-                  };
-                case "fly":
-                  return {
-                    y: [0, -6, 0],
-                    x: [0, 3, 0, -3, 0],
-                    rotate: [0, 3, 0, -3, 0],
-                  };
-                case "shield":
-                  return {
-                    scale: [1, 1.1, 1],
-                    filter: [
-                      "drop-shadow(0 0 0px currentColor)",
-                      "drop-shadow(0 0 10px currentColor)",
-                      "drop-shadow(0 0 0px currentColor)"
-                    ],
-                  };
-                case "target":
-                  return {
-                    scale: [1, 1.2, 1],
-                    rotate: [0, 5, 0, -5, 0],
-                  };
-                case "game":
-                  return {
-                    rotate: [0, -2, 2, -2, 2, 0],
-                    scale: [1, 1.05, 1, 1.05, 1],
-                  };
-                case "data":
-                  return {
-                    scale: [1, 1.1, 1.05, 1.1, 1],
-                    opacity: [1, 0.8, 1, 0.8, 1],
-                  };
-                default:
-                  return {};
-              }
-            };
+        {/* Main Display - Large Featured + Thumbnails */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* Large Featured Service */}
+          <motion.div
+            key={activeIndex}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-8 relative h-[500px] md:h-[600px] rounded-3xl overflow-hidden group cursor-pointer"
+            onClick={() => window.location.href = `/${services[activeIndex].id}`}
+          >
+            {/* Image */}
+            <motion.img
+              src={services[activeIndex].image}
+              alt={services[activeIndex].title}
+              className="absolute inset-0 w-full h-full object-cover"
+              animate={{ scale: 1.05 }}
+              transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
+            />
 
-            const getAnimationDuration = () => {
-              switch(venture.animation) {
-                case "fly": return 4;
-                case "game": return 0.8;
-                default: return 2;
-              }
-            };
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
 
-            return (
-              <motion.div 
-                key={index}
-                className="group relative"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.02 }}
+            {/* Content */}
+            <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
               >
-                {/* Card glow effect */}
-                <div className={`absolute inset-0 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
-                  venture.ecosystem === "Tech" 
-                    ? "bg-gradient-to-br from-secondary/20 to-transparent" 
-                    : "bg-gradient-to-br from-primary/20 to-transparent"
-                }`} />
-                
-                {/* Card content */}
-                <div className="relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-3xl p-8 hover:border-primary/50 transition-all duration-500 h-full">
-                  {/* Ecosystem badge */}
-                  <motion.div 
-                    className="absolute top-4 right-4"
-                    whileHover={{ scale: 1.1 }}
-                  >
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                      venture.ecosystem === "Tech"
-                        ? "bg-secondary/10 text-secondary border border-secondary/20"
-                        : "bg-primary/10 text-primary border border-primary/20"
-                    }`}>
-                      {venture.ecosystem}
-                    </span>
-                  </motion.div>
-                  
-                  {/* Animated Icon Container */}
-                  <motion.div 
-                    className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 relative ${
-                      venture.ecosystem === "Tech"
-                        ? "bg-gradient-to-br from-secondary/20 to-secondary/10"
-                        : "bg-gradient-to-br from-primary/20 to-primary/10"
-                    }`}
-                    whileHover={{ 
-                      scale: 1.15,
-                      rotateY: 10,
-                    }}
-                    transition={{ duration: 0.3 }}
-                    style={{ transformStyle: "preserve-3d" }}
-                  >
-                    {/* Pulsing glow behind icon */}
-                    <motion.div
-                      className={`absolute inset-0 rounded-2xl ${
-                        venture.ecosystem === "Tech" ? "bg-secondary/20" : "bg-primary/20"
-                      }`}
-                      animate={{
-                        scale: [1, 1.3, 1],
-                        opacity: [0.3, 0, 0.3],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                      }}
-                    />
-                    
-                    {/* Animated Icon */}
-                    <motion.div
-                      animate={getIconAnimation()}
-                      transition={{
-                        duration: getAnimationDuration(),
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                    >
-                      <venture.icon className={`w-8 h-8 ${
-                        venture.ecosystem === "Tech" ? "text-secondary" : "text-primary"
-                      }`} />
-                    </motion.div>
-                  </motion.div>
-                  
-                  <h3 className="font-serif font-bold text-2xl mb-3 text-foreground group-hover:text-primary transition-colors">
-                    {venture.title}
-                  </h3>
-                  
-                  <p className="text-muted-foreground leading-relaxed">
-                    {venture.description}
-                  </p>
-                </div>
+                <span className="inline-block px-4 py-2 bg-primary/20 backdrop-blur-xl border border-primary/30 rounded-full text-sm font-bold text-primary uppercase tracking-wider mb-4">
+                  {services[activeIndex].category}
+                </span>
+                <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4">
+                  {services[activeIndex].title}
+                </h3>
+                <p className="text-xl md:text-2xl text-white/80 mb-6 max-w-2xl">
+                  {services[activeIndex].description}
+                </p>
+                <motion.div
+                  className="inline-flex items-center gap-3 text-white font-bold text-lg"
+                  whileHover={{ gap: '1rem' }}
+                >
+                  <span>Explore Service</span>
+                  <span className="text-2xl">→</span>
+                </motion.div>
               </motion.div>
-            );
-          })}
+            </div>
+
+            {/* Number Badge */}
+            <div className="absolute top-8 right-8 w-16 h-16 bg-black/60 backdrop-blur-xl rounded-2xl flex items-center justify-center border border-white/20">
+              <span className="text-3xl font-black bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent">
+                {(activeIndex + 1).toString().padStart(2, '0')}
+              </span>
+            </div>
+          </motion.div>
+
+          {/* Thumbnail List */}
+          <div className="lg:col-span-4 flex lg:flex-col gap-4 overflow-x-auto lg:overflow-visible scrollbar-hide">
+            {services.map((service, index) => (
+              <motion.button
+                key={service.id}
+                onClick={() => setActiveIndex(index)}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+                className={`relative flex-shrink-0 w-full h-32 rounded-2xl overflow-hidden transition-all duration-300 ${
+                  activeIndex === index 
+                    ? 'ring-2 ring-primary shadow-lg shadow-primary/50' 
+                    : 'opacity-60 hover:opacity-100'
+                }`}
+              >
+                {/* Thumbnail Image */}
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40" />
+                
+                {/* Content */}
+                <div className="absolute inset-0 p-4 flex flex-col justify-center">
+                  <span className="text-xs text-primary font-bold uppercase tracking-wider mb-1">
+                    {service.category}
+                  </span>
+                  <h4 className="text-base font-black text-white">
+                    {service.title}
+                  </h4>
+                </div>
+
+                {/* Active Indicator */}
+                {activeIndex === index && (
+                  <motion.div
+                    layoutId="activeService"
+                    className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary to-secondary"
+                  />
+                )}
+              </motion.button>
+            ))}
+          </div>
         </div>
+
+        {/* Bottom Navigation Dots */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="flex justify-center gap-3 mt-12"
+        >
+          {services.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setActiveIndex(index)}
+              className={`transition-all duration-300 rounded-full ${
+                activeIndex === index
+                  ? 'w-12 h-3 bg-gradient-to-r from-primary to-secondary'
+                  : 'w-3 h-3 bg-gray-700 hover:bg-gray-600'
+              }`}
+            />
+          ))}
+        </motion.div>
       </div>
     </section>
   );

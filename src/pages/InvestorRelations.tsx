@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FileText, Download, ChevronRight } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 // Import the investor data
-import investorData from '../data/investorData.json';
+import investorDataLocal from '../data/investorData.json';
+import { fetchInvestorDocuments, InvestorCategory } from '../lib/investorFirebase';
 
 interface Document {
-  id: number;
+  id?: number | string;
   head: string;
   link: string;
   quarter?: string;
@@ -23,88 +24,156 @@ interface Category {
 const InvestorRelations = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
+  const [categories, setCategories] = useState<Category[]>(investorDataLocal);
+  const [loading, setLoading] = useState(true);
 
-  const categories: Category[] = investorData;
+  // Fetch investor documents from Firebase
+  useEffect(() => {
+    const loadInvestorData = async () => {
+      try {
+        setLoading(true);
+        const firebaseData = await fetchInvestorDocuments();
+        
+        // Merge Firebase data with local data
+        if (firebaseData.length > 0) {
+          // Firebase data first, then local data
+          const allData = [...firebaseData, ...investorDataLocal];
+          setCategories(allData);
+        } else {
+          // Use local data if Firebase is empty
+          setCategories(investorDataLocal);
+        }
+      } catch (error) {
+        console.error('Error loading investor data:', error);
+        setCategories(investorDataLocal);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadInvestorData();
+  }, []);
 
   const filteredDocuments = categories[activeTab]?.text.filter((doc: Document) =>
     doc.head.toLowerCase().includes(searchTerm.toLowerCase())
   ) || [];
 
+  // Group documents by quarter (only if quarter exists)
+  const groupedByQuarter = filteredDocuments.reduce((acc: { [key: string]: Document[] }, doc) => {
+    if (doc.quarter) {
+      const quarter = doc.quarter;
+      if (!acc[quarter]) {
+        acc[quarter] = [];
+      }
+      acc[quarter].push(doc);
+    }
+    return acc;
+  }, {});
+
+  // Get documents without quarter
+  const documentsWithoutQuarter = filteredDocuments.filter(doc => !doc.quarter);
+
+  // Sort quarters (most recent first)
+  const sortedQuarters = Object.keys(groupedByQuarter).sort((a, b) => {
+    return b.localeCompare(a);
+  });
+
   return (
     <>
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white pt-20">
-      {/* Hero Section with Company Info */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20" />
+      {/* Hero Banner Section */}
+      <div className="relative h-[70vh] min-h-[600px] overflow-hidden">
+        {/* Background Image with Overlay */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]" />
+          <img
+            src="https://cdn.shopify.com/s/files/1/0653/9830/9053/files/a-photograph-of-a-futuristic-sports-stad_2wNIVFRmSSCb2q2FS3PuWg_mq95yDUrS6COdFWwJSR7Qg.jpg?v=1746784021"
+            alt="Futuristic Sports Stadium"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
         </div>
-        
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-          {/* Main Hero Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-            {/* Left: Text Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="space-y-6"
-            >
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-                Colab Platforms – A Public Company Powering India's{' '}
-                <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                  Sports-Tech Revolution
-                </span>
-              </h1>
-              
-              <div className="space-y-3">
-                <p className="text-lg md:text-xl text-gray-300">
-                  <span className="font-semibold text-white">Listed on BSE</span> | BSE Code: 539528
-                </p>
-                <p className="text-base md:text-lg text-gray-400 leading-relaxed">
-                  Building India's first end-to-end sports innovation ecosystem across tech, data, 
-                  athlete management, e-commerce, and immersive content.
-                </p>
-              </div>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <a
-                  href="#documents"
-                  className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-center hover:shadow-[0_0_40px_rgba(168,85,247,0.6)] transition-all duration-300 hover:scale-105"
-                >
-                  Investor Relations
-                </a>
-                <a
-                  href="https://www.screener.in/company/542866/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-8 py-4 rounded-xl bg-gray-800/50 backdrop-blur-xl border border-gray-700 text-white font-bold text-center hover:bg-gray-700/50 hover:border-blue-500 transition-all duration-300 hover:scale-105"
-                >
-                  Stock Details
-                </a>
-              </div>
+        {/* Animated Particles */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-20 w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
+          <div className="absolute top-40 right-32 w-3 h-3 bg-purple-400 rounded-full animate-pulse delay-100" />
+          <div className="absolute bottom-32 left-40 w-2 h-2 bg-pink-400 rounded-full animate-pulse delay-200" />
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl space-y-8"
+          >
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/30 backdrop-blur-sm"
+            >
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
+              <span className="text-sm font-semibold text-blue-400">Listed on BSE | Code: 539528</span>
             </motion.div>
 
-            {/* Right: Image */}
+            {/* Main Heading */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
+              <span className="block text-white mb-2">Colab Platforms</span>
+              <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                A Public Company Powering India's Sports-Tech Revolution
+              </span>
+            </h1>
+
+            {/* Description */}
+            <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl">
+              Building India's first end-to-end sports innovation ecosystem across tech, data, 
+              athlete management, e-commerce, and immersive content.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <a
+                href="#documents"
+                className="group relative px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-center overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(168,85,247,0.6)]"
+              >
+                <span className="relative z-10">Investor Relations</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </a>
+              <a
+                href="https://www.screener.in/company/542866/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 rounded-xl bg-white/10 backdrop-blur-xl border border-white/20 text-white font-bold text-center hover:bg-white/20 hover:border-white/40 transition-all duration-300 hover:scale-105"
+              >
+                Stock Details →
+              </a>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        >
+          <div className="flex flex-col items-center gap-2 text-white/60">
+            <span className="text-xs uppercase tracking-wider">Scroll Down</span>
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-              className="relative"
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/30 to-purple-600/30 rounded-3xl blur-3xl" />
-              <div className="relative rounded-3xl overflow-hidden border border-gray-800 shadow-2xl">
-                <img
-                  src="https://cdn.shopify.com/s/files/1/0653/9830/9053/files/a-photograph-of-a-futuristic-sports-stad_2wNIVFRmSSCb2q2FS3PuWg_mq95yDUrS6COdFWwJSR7Qg.jpg?v=1746784021"
-                  alt="Futuristic Sports Stadium"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              </div>
+              <div className="w-1 h-2 bg-white/60 rounded-full" />
             </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Main Content */}
@@ -148,17 +217,35 @@ const InvestorRelations = () => {
           </div>
         </div>
 
-        {/* Documents Grid */}
+        {/* Documents Grid - Grouped by Quarter */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="space-y-8"
           >
             {filteredDocuments.length > 0 ? (
-              filteredDocuments.map((doc) => (
+              <>
+                {/* Documents with Quarter - Grouped */}
+                {sortedQuarters.map((quarter) => (
+                <div key={quarter} className="space-y-4">
+                  {/* Quarter Header */}
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-xl">
+                      <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      <h3 className="text-lg font-bold text-white">{quarter}</h3>
+                    </div>
+                    <div className="flex-1 h-px bg-gradient-to-r from-blue-500/50 to-transparent"></div>
+                    <span className="text-sm text-gray-500">{groupedByQuarter[quarter].length} documents</span>
+                  </div>
+
+                  {/* Documents in this quarter */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {groupedByQuarter[quarter].map((doc) => (
                 <motion.a
                   key={doc.id}
                   href={doc.link}
@@ -174,21 +261,52 @@ const InvestorRelations = () => {
                       <FileText className="w-8 h-8 text-blue-400" />
                       <Download className="w-5 h-5 text-gray-500 group-hover:text-blue-400 transition-colors" />
                     </div>
-                    <h3 className="text-lg font-semibold mb-2 group-hover:text-blue-400 transition-colors">
+                    <h3 className="text-lg font-semibold mb-4 group-hover:text-blue-400 transition-colors line-clamp-2">
                       {doc.head}
                     </h3>
-                    {doc.quarter && (
-                      <span className="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 rounded-lg text-sm">
-                        {doc.quarter}
-                      </span>
-                    )}
-                    <div className="mt-4 flex items-center text-sm text-gray-500 group-hover:text-blue-400 transition-colors">
+                    <div className="flex items-center text-sm text-gray-500 group-hover:text-blue-400 transition-colors">
                       <span>View Document</span>
                       <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 </motion.a>
-              ))
+              ))}
+                  </div>
+                </div>
+              ))}
+
+                {/* Documents without Quarter - No Section Header */}
+                {documentsWithoutQuarter.length > 0 && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {documentsWithoutQuarter.map((doc) => (
+                      <motion.a
+                        key={doc.id}
+                        href={doc.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group relative"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <div className="relative bg-gray-900/50 backdrop-blur-xl border border-gray-800 rounded-2xl p-6 hover:border-blue-500/50 transition-all">
+                          <div className="flex items-start justify-between mb-4">
+                            <FileText className="w-8 h-8 text-blue-400" />
+                            <Download className="w-5 h-5 text-gray-500 group-hover:text-blue-400 transition-colors" />
+                          </div>
+                          <h3 className="text-lg font-semibold mb-4 group-hover:text-blue-400 transition-colors line-clamp-2">
+                            {doc.head}
+                          </h3>
+                          <div className="flex items-center text-sm text-gray-500 group-hover:text-blue-400 transition-colors">
+                            <span>View Document</span>
+                            <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                          </div>
+                        </div>
+                      </motion.a>
+                    ))}
+                  </div>
+                )}
+              </>
             ) : (
               <div className="col-span-full text-center py-12">
                 <FileText className="w-16 h-16 text-gray-700 mx-auto mb-4" />

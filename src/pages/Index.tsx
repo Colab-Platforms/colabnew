@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Mission from "@/components/Mission";
 import TwoPillars from "@/components/TwoPillars";
 import Services from "@/components/Services";
+import FeaturedVentures from "@/components/FeaturedVentures";
 import InvestorRelations from "@/components/InvestorRelations";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
@@ -48,6 +49,10 @@ const Index = () => {
       </AnimatedSection>
       <AnimatedSection direction="right">
         <TwoPillars />
+      </AnimatedSection>
+
+      <AnimatedSection direction="left">
+        <FeaturedVentures />
       </AnimatedSection>
    
       <AnimatedSection direction="right">

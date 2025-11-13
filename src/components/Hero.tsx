@@ -39,7 +39,7 @@ const Hero = () => {
           playsInline
           className="w-full h-full object-cover"
         >
-          <source src="https://cdn.shopify.com/videos/c/o/v/3995f055b81e4fcf8b17e21bd37f9e30.mp4" type="video/mp4" />
+          <source src="https://cdn.shopify.com/videos/c/o/v/2894eda53e114bbfb7adf86a6c5c4684.mp4" type="video/mp4" />
         </video>
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />

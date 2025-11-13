@@ -20,6 +20,7 @@ import AthleteManagement from "./pages/AthleteManagement";
 import SportsInfrastructure from "./pages/SportsInfrastructure";
 import SportsAnalytics from "./pages/SportsAnalytics";
 import Blog from "./pages/Blog";
+import BlogDetail from "./pages/BlogDetail";
 import Contact from "./pages/Contact";
 import InvestorRelations from "./pages/InvestorRelations";
 import NotFound from "./pages/NotFound";
@@ -54,6 +55,7 @@ const App = () => (
           
           {/* Blog */}
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogDetail />} />
           
           {/* Contact */}
           <Route path="/contact" element={<Contact />} />

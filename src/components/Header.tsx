@@ -57,16 +57,8 @@ const Header = () => {
                 <img
                   src="https://cdn.shopify.com/s/files/1/0653/9830/9053/files/minimal-logo-effect-for-footer-unscreen-ezgif.com-crop_1.gif?v=1744289888"
                   alt="Colab Platform"
-                  className="relative h-12 w-12 md:h-16 md:w-16 object-contain group-hover:scale-110 transition-transform duration-500"
+                  className="relative h-16 w-16 md:h-20 md:w-20 object-contain group-hover:scale-110 transition-transform duration-500"
                 />
-              </div>
-              <div className="hidden sm:block">
-                <div className="font-black text-xl md:text-2xl uppercase tracking-tight leading-tight">
-                  <span className="text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">Colab</span>
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-primary animate-gradient text-xs md:text-sm font-bold tracking-wider">
-                    PLATFORM
-                  </span>
-                </div>
               </div>
             </motion.a>
 
