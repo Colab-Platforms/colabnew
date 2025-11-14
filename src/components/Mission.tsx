@@ -1,7 +1,21 @@
-import { motion } from 'framer-motion';
-import { Target, Eye, Rocket, Users, TrendingUp, Award } from "lucide-react";
+import { motion, AnimatePresence } from 'framer-motion';
+import { Target, Eye, Users, TrendingUp, Award } from "lucide-react";
+import { useState, useEffect } from 'react';
 
 const Mission = () => {
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [flipCount, setFlipCount] = useState(0);
+
+  // Auto-switch layout every 8 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsFlipped(prev => !prev);
+      setFlipCount(prev => prev + 1);
+    }, 8000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative py-32 overflow-hidden bg-gradient-to-b from-background to-primary/5">
       {/* Background Pattern */}
@@ -24,42 +38,169 @@ const Mission = () => {
           viewport={{ once: true }}
         >
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left - Images Grid */}
-            <div className="relative h-[600px]">
-              <motion.div 
-                className="absolute top-0 left-0 w-3/5 h-3/5 rounded-3xl overflow-hidden shadow-2xl"
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=600&q=80" alt="Cricket" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-transparent" />
-              </motion.div>
+            {/* Left - Images Grid with Auto-Switching Layout */}
+            <div className="relative h-[700px] overflow-hidden">
+              <AnimatePresence mode="wait">
+                {!isFlipped ? (
+                  // Layout 1: Original (Left-Right)
+                  <motion.div
+                    key="layout1"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="absolute inset-0"
+                  >
+                    <AnimatePresence mode="wait">
+                      <motion.div 
+                        key={`layout1-top-${flipCount}`}
+                        className="absolute top-0 left-0 w-[65%] h-[65%] rounded-3xl overflow-hidden shadow-2xl"
+                        initial={{ x: -100, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        exit={{ x: 100, opacity: 0 }}
+                        transition={{ duration: 0.7, ease: "easeInOut" }}
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        <motion.div
+                          animate={{ x: [0, -10, 0] }}
+                          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                          className="w-full h-full"
+                        >
+                          <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800&q=80" alt="Cricket" className="w-full h-full object-cover" />
+                          <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-transparent" />
+                        </motion.div>
+                      </motion.div>
+                    </AnimatePresence>
 
-              <motion.div 
-                className="absolute bottom-0 right-0 w-3/5 h-3/5 rounded-3xl overflow-hidden shadow-2xl"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&q=80" alt="Esports" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-br from-secondary/30 to-transparent" />
-              </motion.div>
+                    <AnimatePresence mode="wait">
+                      <motion.div 
+                        key={`layout1-bottom-${flipCount}`}
+                        className="absolute bottom-0 right-0 w-[65%] h-[65%] rounded-3xl overflow-hidden shadow-2xl"
+                        initial={{ x: 100, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        exit={{ x: -100, opacity: 0 }}
+                        transition={{ duration: 0.7, ease: "easeInOut", delay: 0.1 }}
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        <motion.div
+                          animate={{ x: [0, 10, 0] }}
+                          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                          className="w-full h-full"
+                        >
+                          <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80" alt="Esports" className="w-full h-full object-cover" />
+                          <div className="absolute inset-0 bg-gradient-to-br from-secondary/30 to-transparent" />
+                        </motion.div>
+                      </motion.div>
+                    </AnimatePresence>
 
-              <motion.div 
-                className="absolute top-1/3 left-1/3 w-2/5 h-2/5 rounded-3xl overflow-hidden shadow-2xl z-10"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                whileHover={{ scale: 1.1, zIndex: 20 }}
-              >
-                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400&q=80" alt="AI Technology" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/40 to-secondary/40" />
-              </motion.div>
+                    <AnimatePresence mode="wait">
+                      <motion.div 
+                        key={`layout1-center-${flipCount}`}
+                        className="absolute bottom-[32%] left-[30%] w-[45%] h-[45%] rounded-3xl overflow-hidden shadow-2xl z-10"
+                        initial={{ scale: 0.8, opacity: 0, rotate: -10 }}
+                        animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                        exit={{ scale: 0.8, opacity: 0, rotate: 10 }}
+                        transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+                        whileHover={{ scale: 1.1, zIndex: 20 }}
+                      >
+                        <motion.div
+                          animate={{ scale: [1, 1.05, 1], rotate: [0, 2, 0] }}
+                          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                          className="w-full h-full"
+                        >
+                          <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80" alt="AI Technology" className="w-full h-full object-cover" />
+                          <div className="absolute inset-0 bg-gradient-to-br from-primary/40 to-secondary/40" />
+                        </motion.div>
+                      </motion.div>
+                    </AnimatePresence>
+                  </motion.div>
+                ) : (
+                  // Layout 2: Flipped (Right-Left) - Different images on second flip with smooth slide transitions
+                  <motion.div
+                    key="layout2"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="absolute inset-0"
+                  >
+                    <AnimatePresence mode="wait">
+                      <motion.div 
+                        key={`layout2-top-${flipCount}`}
+                        className="absolute top-0 right-0 w-[65%] h-[65%] rounded-3xl overflow-hidden shadow-2xl"
+                        initial={{ x: 100, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        exit={{ x: -100, opacity: 0 }}
+                        transition={{ duration: 0.7, ease: "easeInOut" }}
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        <motion.div
+                          animate={{ x: [0, 10, 0] }}
+                          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                          className="w-full h-full"
+                        >
+                          <img 
+                            src={flipCount >= 2 ? "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80" : "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800&q=80"} 
+                            alt={flipCount >= 2 ? "Fintech" : "Cricket"} 
+                            className="w-full h-full object-cover" 
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-transparent" />
+                        </motion.div>
+                      </motion.div>
+                    </AnimatePresence>
+
+                    <AnimatePresence mode="wait">
+                      <motion.div 
+                        key={`layout2-bottom-${flipCount}`}
+                        className="absolute bottom-0 left-0 w-[65%] h-[65%] rounded-3xl overflow-hidden shadow-2xl"
+                        initial={{ x: -100, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        exit={{ x: 100, opacity: 0 }}
+                        transition={{ duration: 0.7, ease: "easeInOut", delay: 0.1 }}
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        <motion.div
+                          animate={{ x: [0, -10, 0] }}
+                          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                          className="w-full h-full"
+                        >
+                          <img 
+                            src={flipCount >= 2 ? "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" : "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80"} 
+                            alt={flipCount >= 2 ? "Semiconductor Technology" : "Esports"} 
+                            className="w-full h-full object-cover" 
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-br from-secondary/30 to-transparent" />
+                        </motion.div>
+                      </motion.div>
+                    </AnimatePresence>
+
+                    <AnimatePresence mode="wait">
+                      <motion.div 
+                        key={`layout2-center-${flipCount}`}
+                        className="absolute bottom-[32%] right-[30%] w-[45%] h-[45%] rounded-3xl overflow-hidden shadow-2xl z-10"
+                        initial={{ scale: 0.8, opacity: 0, rotate: -10 }}
+                        animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                        exit={{ scale: 0.8, opacity: 0, rotate: 10 }}
+                        transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+                        whileHover={{ scale: 1.1, zIndex: 20 }}
+                      >
+                        <motion.div
+                          animate={{ scale: [1, 1.05, 1], rotate: [0, -2, 0] }}
+                          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                          className="w-full h-full"
+                        >
+                          <img 
+                            src={flipCount >= 2 ? "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=600&q=80" : "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80"} 
+                            alt={flipCount >= 2 ? "Drone Technology" : "AI Technology"} 
+                            className="w-full h-full object-cover" 
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-br from-primary/40 to-secondary/40" />
+                        </motion.div>
+                      </motion.div>
+                    </AnimatePresence>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             {/* Right - Content */}
@@ -104,87 +245,117 @@ const Mission = () => {
           </div>
         </motion.div>
 
-        {/* Vision & Mission - Side by Side */}
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12">
-          {/* Vision */}
+        {/* Vision & Mission - Timeline Style */}
+        <div className="max-w-6xl mx-auto">
+          {/* Vision Section */}
           <motion.div
-            className="relative"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            className="mb-24"
           >
-            <div className="relative h-full p-10 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 overflow-hidden">
-              {/* Background Image */}
-              <div className="absolute inset-0 opacity-10">
-                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80" alt="Vision" className="w-full h-full object-cover" />
-              </div>
+            <div className="flex flex-col md:flex-row items-start gap-6 md:gap-8">
+              {/* Icon Column */}
+              <motion.div 
+                className="flex-shrink-0"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+              >
+                <div className="w-20 h-20 md:w-24 md:h-24 rounded-3xl bg-gradient-to-br from-primary/30 to-primary/10 border-2 border-primary/30 flex items-center justify-center">
+                  <Eye className="w-10 h-10 md:w-12 md:h-12 text-primary" />
+                </div>
+              </motion.div>
 
-              <div className="relative z-10">
-                <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center mb-6">
-                  <Eye className="w-8 h-8 text-primary" />
+              {/* Content Column */}
+              <div className="flex-1">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="h-1 w-16 md:w-20 bg-gradient-to-r from-primary to-transparent rounded-full" />
+                  <h3 className="text-3xl md:text-4xl lg:text-5xl font-black text-primary">Our Vision</h3>
                 </div>
 
-                <h3 className="font-serif font-black text-4xl mb-6 text-foreground">
-                  Our <span className="text-primary">Vision</span>
-                </h3>
-
-                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                <p className="text-lg md:text-xl lg:text-2xl text-foreground leading-relaxed mb-6 md:mb-8 font-medium">
                   To architect India's leadership in sports excellence and cutting-edge technology, creating integrated ecosystems that empower a billion dreams.
                 </p>
 
-                <div className="space-y-3">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                   {[
-                    "Global sports powerhouse",
-                    "Technology innovation leader",
-                    "Integrated ecosystem builder",
+                    { title: "Global Sports", desc: "Powerhouse" },
+                    { title: "Technology", desc: "Innovation Leader" },
+                    { title: "Integrated", desc: "Ecosystem Builder" },
                   ].map((point, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-primary" />
-                      <span className="text-foreground font-medium">{point}</span>
-                    </div>
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1 }}
+                      whileHover={{ y: -5 }}
+                      className="relative group"
+                    >
+                      <div className="p-4 md:p-6 border-l-4 border-primary/50 bg-primary/5 hover:bg-primary/10 transition-colors">
+                        <div className="text-base md:text-lg font-black text-primary mb-1">{point.title}</div>
+                        <div className="text-sm text-muted-foreground">{point.desc}</div>
+                      </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Mission */}
-          <motion.div
-            className="relative"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            <div className="relative h-full p-10 rounded-3xl bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20 overflow-hidden">
-              {/* Background Image */}
-              <div className="absolute inset-0 opacity-10">
-                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80" alt="Mission" className="w-full h-full object-cover" />
-              </div>
+          {/* Divider */}
+          <div className="relative h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-24">
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-gradient-to-r from-primary to-secondary" />
+          </div>
 
-              <div className="relative z-10">
-                <div className="w-16 h-16 rounded-2xl bg-secondary/20 flex items-center justify-center mb-6">
-                  <Target className="w-8 h-8 text-secondary" />
+          {/* Mission Section */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="mb-16"
+          >
+            <div className="flex flex-col md:flex-row items-start gap-6 md:gap-8 md:flex-row-reverse">
+              {/* Icon Column */}
+              <motion.div 
+                className="flex-shrink-0"
+                whileHover={{ scale: 1.1, rotate: -5 }}
+              >
+                <div className="w-20 h-20 md:w-24 md:h-24 rounded-3xl bg-gradient-to-br from-secondary/30 to-secondary/10 border-2 border-secondary/30 flex items-center justify-center">
+                  <Target className="w-10 h-10 md:w-12 md:h-12 text-secondary" />
+                </div>
+              </motion.div>
+
+              {/* Content Column */}
+              <div className="flex-1 text-left md:text-right">
+                <div className="flex items-center gap-4 mb-6 md:justify-end">
+                  <div className="h-1 w-16 md:w-20 bg-gradient-to-r md:bg-gradient-to-l from-secondary to-transparent rounded-full md:order-2" />
+                  <h3 className="text-3xl md:text-4xl lg:text-5xl font-black text-secondary md:order-1">Our Mission</h3>
                 </div>
 
-                <h3 className="font-serif font-black text-4xl mb-6 text-foreground">
-                  Our <span className="text-secondary">Mission</span>
-                </h3>
-
-                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                <p className="text-lg md:text-xl lg:text-2xl text-foreground leading-relaxed mb-6 md:mb-8 font-medium">
                   To build world-class platforms that unlock human potential through sports excellence and technological innovation, creating lasting value for India and the world.
                 </p>
 
-                <div className="space-y-3">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                   {[
-                    "Empower athletes & innovators",
-                    "Build sustainable ecosystems",
-                    "Drive national transformation",
+                    { title: "Empower", desc: "Athletes & Innovators" },
+                    { title: "Build", desc: "Sustainable Ecosystems" },
+                    { title: "Drive", desc: "National Transformation" },
                   ].map((point, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-secondary" />
-                      <span className="text-foreground font-medium">{point}</span>
-                    </div>
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1 }}
+                      whileHover={{ y: -5 }}
+                      className="relative group"
+                    >
+                      <div className="p-4 md:p-6 border-l-4 md:border-l-0 md:border-r-4 border-secondary/50 bg-secondary/5 hover:bg-secondary/10 transition-colors text-left md:text-right">
+                        <div className="text-base md:text-lg font-black text-secondary mb-1">{point.title}</div>
+                        <div className="text-sm text-muted-foreground">{point.desc}</div>
+                      </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>

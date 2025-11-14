@@ -47,152 +47,171 @@ const services = [
 ];
 
 const Services = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
   return (
-    <section className="relative py-20 md:py-32 bg-black">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-20 md:py-32 bg-black overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'radial-gradient(circle, rgba(168, 85, 247, 0.4) 1px, transparent 1px)',
+            backgroundSize: '40px 40px'
+          }}
+        />
+      </div>
+
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4">
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
+          >
+            <span className="text-sm font-bold text-primary uppercase tracking-wider">Our Services</span>
+          </motion.div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
             <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
-              Our Services
+              Dual Ecosystem Excellence
             </span>
           </h2>
-          <p className="text-lg text-gray-400">
-            Dual ecosystem excellence
+          <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
+            From elite sports infrastructure to cutting-edge technology solutions
           </p>
         </motion.div>
 
-        {/* Main Display - Large Featured + Thumbnails */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Large Featured Service */}
+        {/* Split Layout - Sports & Technology */}
+        <div className="grid lg:grid-cols-2 gap-16 mb-16">
+          {/* Sports Ecosystem */}
           <motion.div
-            key={activeIndex}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="lg:col-span-8 relative h-[500px] md:h-[600px] rounded-3xl overflow-hidden group cursor-pointer"
-            onClick={() => window.location.href = `/${services[activeIndex].id}`}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-8"
           >
-            {/* Image */}
-            <motion.img
-              src={services[activeIndex].image}
-              alt={services[activeIndex].title}
-              className="absolute inset-0 w-full h-full object-cover"
-              animate={{ scale: 1.05 }}
-              transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
-            />
+            <div className="flex items-center gap-4 mb-10">
+              <div className="h-1 w-16 bg-gradient-to-r from-primary to-transparent rounded-full" />
+              <h3 className="text-3xl md:text-4xl font-black text-primary">Sports Ecosystem</h3>
+            </div>
 
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-
-            {/* Content */}
-            <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
+            {services.filter(s => s.category === 'Sports').map((service, index) => (
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
+                key={service.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15 }}
+                whileHover={{ x: 12, scale: 1.02 }}
+                className="group cursor-pointer relative"
               >
-                <span className="inline-block px-4 py-2 bg-primary/20 backdrop-blur-xl border border-primary/30 rounded-full text-sm font-bold text-primary uppercase tracking-wider mb-4">
-                  {services[activeIndex].category}
-                </span>
-                <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4">
-                  {services[activeIndex].title}
-                </h3>
-                <p className="text-xl md:text-2xl text-white/80 mb-6 max-w-2xl">
-                  {services[activeIndex].description}
-                </p>
-                <motion.div
-                  className="inline-flex items-center gap-3 text-white font-bold text-lg"
-                  whileHover={{ gap: '1rem' }}
-                >
-                  <span>Explore Service</span>
-                  <span className="text-2xl">→</span>
-                </motion.div>
+                <div className="flex items-start gap-6 p-6 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 transition-all duration-300">
+                  <div className="flex-shrink-0 w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/30 to-primary/10 border border-primary/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <span className="text-3xl font-black text-primary">
+                      {(index + 1).toString().padStart(2, '0')}
+                    </span>
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-2xl md:text-3xl font-black text-white mb-3 group-hover:text-primary transition-colors">
+                      {service.title}
+                    </h4>
+                    <p className="text-gray-400 text-base md:text-lg mb-4 leading-relaxed">
+                      {service.description}
+                    </p>
+                    <motion.div
+                      className="inline-flex items-center gap-2 text-primary font-bold text-sm"
+                      whileHover={{ gap: '0.75rem' }}
+                    >
+                      <span>Explore Service</span>
+                      <span className="text-xl">→</span>
+                    </motion.div>
+                  </div>
+                </div>
+                
+                {/* Glow Effect on Hover */}
+                <div className="absolute inset-0 rounded-2xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity blur-xl -z-10" />
               </motion.div>
-            </div>
-
-            {/* Number Badge */}
-            <div className="absolute top-8 right-8 w-16 h-16 bg-black/60 backdrop-blur-xl rounded-2xl flex items-center justify-center border border-white/20">
-              <span className="text-3xl font-black bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent">
-                {(activeIndex + 1).toString().padStart(2, '0')}
-              </span>
-            </div>
+            ))}
           </motion.div>
 
-          {/* Thumbnail List */}
-          <div className="lg:col-span-4 flex lg:flex-col gap-4 overflow-x-auto lg:overflow-visible scrollbar-hide">
-            {services.map((service, index) => (
-              <motion.button
-                key={service.id}
-                onClick={() => setActiveIndex(index)}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                className={`relative flex-shrink-0 w-full h-32 rounded-2xl overflow-hidden transition-all duration-300 ${
-                  activeIndex === index 
-                    ? 'ring-2 ring-primary shadow-lg shadow-primary/50' 
-                    : 'opacity-60 hover:opacity-100'
-                }`}
-              >
-                {/* Thumbnail Image */}
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40" />
-                
-                {/* Content */}
-                <div className="absolute inset-0 p-4 flex flex-col justify-center">
-                  <span className="text-xs text-primary font-bold uppercase tracking-wider mb-1">
-                    {service.category}
-                  </span>
-                  <h4 className="text-base font-black text-white">
-                    {service.title}
-                  </h4>
-                </div>
+          {/* Technology Ecosystem */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            <div className="flex items-center gap-4 mb-10">
+              <div className="h-1 w-16 bg-gradient-to-r from-secondary to-transparent rounded-full" />
+              <h3 className="text-3xl md:text-4xl font-black text-secondary">Technology Ecosystem</h3>
+            </div>
 
-                {/* Active Indicator */}
-                {activeIndex === index && (
-                  <motion.div
-                    layoutId="activeService"
-                    className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary to-secondary"
-                  />
-                )}
-              </motion.button>
+            {services.filter(s => s.category === 'Technology').map((service, index) => (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15 }}
+                whileHover={{ x: 12, scale: 1.02 }}
+                className="group cursor-pointer relative"
+              >
+                <div className="flex items-start gap-6 p-6 rounded-2xl bg-gradient-to-br from-secondary/5 to-transparent border border-secondary/10 hover:border-secondary/30 transition-all duration-300">
+                  <div className="flex-shrink-0 w-20 h-20 rounded-2xl bg-gradient-to-br from-secondary/30 to-secondary/10 border border-secondary/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <span className="text-3xl font-black text-secondary">
+                      {(index + 1).toString().padStart(2, '0')}
+                    </span>
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-2xl md:text-3xl font-black text-white mb-3 group-hover:text-secondary transition-colors">
+                      {service.title}
+                    </h4>
+                    <p className="text-gray-400 text-base md:text-lg mb-4 leading-relaxed">
+                      {service.description}
+                    </p>
+                    <motion.div
+                      className="inline-flex items-center gap-2 text-secondary font-bold text-sm"
+                      whileHover={{ gap: '0.75rem' }}
+                    >
+                      <span>Explore Service</span>
+                      <span className="text-xl">→</span>
+                    </motion.div>
+                  </div>
+                </div>
+                
+                {/* Glow Effect on Hover */}
+                <div className="absolute inset-0 rounded-2xl bg-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity blur-xl -z-10" />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
-        {/* Bottom Navigation Dots */}
+        {/* CTA Buttons */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex justify-center gap-3 mt-12"
+          className="flex flex-col sm:flex-row justify-center items-center gap-6"
         >
-          {services.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setActiveIndex(index)}
-              className={`transition-all duration-300 rounded-full ${
-                activeIndex === index
-                  ? 'w-12 h-3 bg-gradient-to-r from-primary to-secondary'
-                  : 'w-3 h-3 bg-gray-700 hover:bg-gray-600'
-              }`}
-            />
-          ))}
+          <motion.button
+            whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(168, 85, 247, 0.3)" }}
+            whileTap={{ scale: 0.95 }}
+            className="px-10 py-4 rounded-full bg-gradient-to-r from-primary/20 to-primary/10 border-2 border-primary/30 text-primary font-bold hover:bg-primary/30 transition-all backdrop-blur-xl"
+          >
+            View All Sports Services
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(251, 146, 60, 0.3)" }}
+            whileTap={{ scale: 0.95 }}
+            className="px-10 py-4 rounded-full bg-gradient-to-r from-secondary/20 to-secondary/10 border-2 border-secondary/30 text-secondary font-bold hover:bg-secondary/30 transition-all backdrop-blur-xl"
+          >
+            View All Tech Services
+          </motion.button>
         </motion.div>
       </div>
     </section>

@@ -1,78 +1,81 @@
-import { Activity, Cpu, ArrowRight, Trophy, Brain, Zap, Target } from "lucide-react";
+import { Image as ImageIcon, Video, Play, Volume2, VolumeX, Camera, Film } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const TwoPillars = () => {
-  const [activeEcosystem, setActiveEcosystem] = useState<"sports" | "tech">("sports");
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [mediaType, setMediaType] = useState<"photos" | "videos">("photos");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [mutedVideos, setMutedVideos] = useState<{ [key: number]: boolean }>({ 0: true, 1: true, 2: true });
+  const videoRefs = useRef<{ [key: number]: HTMLVideoElement | null }>({});
 
-  const sportsSlides = [
-    {
-      title: "Elite Sports Training",
-      subtitle: "World-Class Academies",
-      image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1200&q=80",
-      icon: Trophy,
-    },
-    {
-      title: "Esports Revolution",
-      subtitle: "Professional Gaming",
-      image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&q=80",
-      icon: Target,
-    },
-    {
-      title: "Sports Technology",
-      subtitle: "Performance Analytics",
-      image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200&q=80",
-      icon: Zap,
-    },
+  const photos = [
+    { id: 1, title: "Championship Victory", image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1200&q=80" },
+    { id: 2, title: "AI Innovation Lab", image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80" },
+    { id: 3, title: "Team Excellence", image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80" },
   ];
 
-  const techSlides = [
-    {
-      title: "Artificial Intelligence",
-      subtitle: "Machine Learning Solutions",
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80",
-      icon: Brain,
-    },
-    {
-      title: "Defense Systems",
-      subtitle: "Advanced Security",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80",
-      icon: Zap,
-    },
-    {
-      title: "Autonomous Drones",
-      subtitle: "Aerial Innovation",
-      image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=1200&q=80",
-      icon: Target,
-    },
+  const videos = [
+    { id: 1, title: "Sports Training", video: "https://videos.pexels.com/video-files/3044127/3044127-uhd_2560_1440_25fps.mp4" },
+    { id: 2, title: "Tech Innovation", video: "https://videos.pexels.com/video-files/3209828/3209828-uhd_2560_1440_25fps.mp4" },
+    { id: 3, title: "Team Culture", video: "https://videos.pexels.com/video-files/3044121/3044121-uhd_2560_1440_25fps.mp4" },
   ];
 
-  const currentSlides = activeEcosystem === "sports" ? sportsSlides : techSlides;
+  const upcomingPhotos = [
+    "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80",
+    "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=600&q=80",
+    "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+  ];
 
-  // Auto-rotate slides
+  const upcomingVideos = [
+    "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80",
+    "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&q=80",
+    "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=600&q=80",
+  ];
+
+  const toggleMute = (index: number) => {
+    setMutedVideos(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
+    if (videoRefs.current[index]) {
+      videoRefs.current[index]!.muted = !mutedVideos[index];
+    }
+  };
+
+  const togglePlayPause = (index: number) => {
+    const video = videoRefs.current[index];
+    if (video) {
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    }
+  };
+
+  // Auto-rotate images/videos every 5 seconds
   useEffect(() => {
+    const totalItems = mediaType === "photos" ? photos.length : videos.length;
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % currentSlides.length);
-    }, 4000);
+      setCurrentIndex((prev) => (prev + 1) % totalItems);
+    }, 5000);
     return () => clearInterval(timer);
-  }, [currentSlides.length]);
+  }, [mediaType]);
+
+  // Reset index when switching media type
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [mediaType]);
 
   return (
     <section className="relative py-32 overflow-hidden bg-gradient-to-b from-background via-primary/5 to-background">
-      {/* Modern Background Pattern */}
+      {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div 
           className="absolute inset-0"
           style={{
             backgroundImage: 'radial-gradient(circle, rgba(168, 85, 247, 0.5) 1.5px, transparent 1.5px)',
             backgroundSize: '50px 50px'
-          }}
-        />
-        <div 
-          className="absolute inset-0"
-          style={{
-            backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(6, 182, 212, 0.15) 60px, rgba(6, 182, 212, 0.15) 61px)',
           }}
         />
       </div>
@@ -86,25 +89,24 @@ const TwoPillars = () => {
           viewport={{ once: true }}
         >
           <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30 mb-8">
-            <Zap className="w-4 h-4 text-primary" />
+            <Camera className="w-4 h-4 text-primary" />
             <span className="text-sm font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent uppercase tracking-wider">
-              Our Ecosystems
+              Visual Stories
             </span>
           </div>
 
           <h2 className="font-serif font-black text-5xl md:text-6xl lg:text-7xl mb-6">
-            <span className="block text-foreground">Empowering Athletes and </span>
             <span className="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Tech Innovators
+              Media Gallery
             </span>
           </h2>
 
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          Empowering India’s future by uniting sports excellence with technological innovation.
+            Explore our journey through captivating photos and engaging videos that showcase our innovation, passion, and excellence
           </p>
         </motion.div>
 
-        {/* Ecosystem Toggle */}
+        {/* Photo/Video Toggle */}
         <motion.div 
           className="flex justify-center mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -114,219 +116,258 @@ const TwoPillars = () => {
           <div className="inline-flex p-2 rounded-2xl bg-white/5 border border-white/10">
             <button
               onClick={() => {
-                setActiveEcosystem("sports");
-                setCurrentSlide(0);
+                setMediaType("photos");
+                setCurrentIndex(0);
               }}
               className={`relative px-8 py-4 rounded-xl font-bold transition-all duration-300 ${
-                activeEcosystem === "sports" ? "text-white" : "text-muted-foreground"
+                mediaType === "photos" ? "text-white" : "text-muted-foreground"
               }`}
             >
-              {activeEcosystem === "sports" && (
+              {mediaType === "photos" && (
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-primary to-primary/80 rounded-xl"
-                  layoutId="activeTab"
+                  layoutId="mediaTab"
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}
               <span className="relative z-10 flex items-center gap-2">
-                <Activity className="w-5 h-5" />
-                Sports Ecosystem
+                <ImageIcon className="w-5 h-5" />
+                Photos
               </span>
             </button>
 
             <button
               onClick={() => {
-                setActiveEcosystem("tech");
-                setCurrentSlide(0);
+                setMediaType("videos");
+                setCurrentIndex(0);
               }}
               className={`relative px-8 py-4 rounded-xl font-bold transition-all duration-300 ${
-                activeEcosystem === "tech" ? "text-white" : "text-muted-foreground"
+                mediaType === "videos" ? "text-white" : "text-muted-foreground"
               }`}
             >
-              {activeEcosystem === "tech" && (
+              {mediaType === "videos" && (
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-secondary to-secondary/80 rounded-xl"
-                  layoutId="activeTab"
+                  layoutId="mediaTab"
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}
               <span className="relative z-10 flex items-center gap-2">
-                <Cpu className="w-5 h-5" />
-                Tech Ecosystem
+                <Video className="w-5 h-5" />
+                Videos
               </span>
             </button>
           </div>
         </motion.div>
 
-        {/* Carousel Banner */}
+        {/* Main Display */}
         <motion.div 
-          className="max-w-6xl mx-auto"
+          className="max-w-7xl mx-auto"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <div className="relative h-[500px] rounded-3xl overflow-hidden">
-            <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait">
+            {mediaType === "photos" ? (
               <motion.div
-                key={`${activeEcosystem}-${currentSlide}`}
-                className="absolute inset-0"
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -100 }}
+                key="photos-main"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.5 }}
+                className="relative h-[500px] rounded-3xl overflow-hidden group"
               >
-                {/* Background Image */}
                 <img 
-                  src={currentSlides[currentSlide].image} 
-                  alt={currentSlides[currentSlide].title}
+                  src={photos[currentIndex].image} 
+                  alt={photos[currentIndex].title}
                   className="w-full h-full object-cover"
                 />
-                {/* Dark overlay for text readability */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                
+                <div className="absolute bottom-8 left-8">
+                  <h3 className="font-serif font-black text-5xl text-white mb-2">
+                    {photos[currentIndex].title}
+                  </h3>
+                  <div className="flex items-center gap-2">
+                    <ImageIcon className="w-5 h-5 text-primary" />
+                    <span className="text-white/80">Photo {currentIndex + 1} of {photos.length}</span>
+                  </div>
+                </div>
 
-                {/* Content */}
-                <div className="absolute inset-0 flex items-center">
-                  <div className="container px-6 lg:px-8">
-                    <div className="max-w-3xl">
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                      >
-                        {/* Icon Badge */}
-                        <motion.div 
-                          className={`inline-flex w-20 h-20 rounded-3xl ${
-                            activeEcosystem === "sports" ? "bg-primary" : "bg-secondary"
-                          } shadow-2xl items-center justify-center mb-6`}
-                          whileHover={{ scale: 1.1, rotate: 5 }}
-                        >
-                          {(() => {
-                            const IconComponent = currentSlides[currentSlide].icon;
-                            return <IconComponent className="w-10 h-10 text-white" strokeWidth={2.5} />;
-                          })()}
-                        </motion.div>
-
-                        {/* Subtitle */}
-                        <div className={`inline-block px-4 py-2 rounded-full ${
-                          activeEcosystem === "sports" ? "bg-primary/20" : "bg-secondary/20"
-                        } backdrop-blur-md border ${
-                          activeEcosystem === "sports" ? "border-primary/30" : "border-secondary/30"
-                        } mb-4`}>
-                          <span className="text-sm font-bold text-white uppercase tracking-wider">
-                            {currentSlides[currentSlide].subtitle}
-                          </span>
-                        </div>
-
-                        {/* Title */}
-                        <h3 className="font-serif font-black text-6xl md:text-7xl text-white mb-8 leading-tight">
-                          {currentSlides[currentSlide].title}
-                        </h3>
-
-                        {/* CTA Button */}
+                {/* Navigation Dots */}
+                <div className="absolute bottom-8 right-8 flex gap-3">
+                  {photos.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentIndex(index)}
+                      className={`h-3 rounded-full transition-all duration-300 ${
+                        index === currentIndex 
+                          ? "w-12 bg-primary" 
+                          : "w-3 bg-white/40 hover:bg-white/60"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="videos-main"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.5 }}
+                className="relative h-[500px] rounded-3xl overflow-hidden group"
+              >
+                <video
+                  ref={(el) => { videoRefs.current[currentIndex] = el; }}
+                  src={videos[currentIndex].video}
+                  loop
+                  muted={mutedVideos[currentIndex]}
+                  playsInline
+                  className="w-full h-full object-cover"
+                />
+                
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="absolute bottom-8 left-8 right-8">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-4">
                         <motion.button
-                          className={`inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-bold text-white ${
-                            activeEcosystem === "sports" 
-                              ? "bg-primary hover:bg-primary/90" 
-                              : "bg-secondary hover:bg-secondary/90"
-                          } shadow-2xl transition-all`}
-                          whileHover={{ scale: 1.05, x: 5 }}
-                          whileTap={{ scale: 0.95 }}
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                          onClick={() => togglePlayPause(currentIndex)}
+                          className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-xl border border-white/30 flex items-center justify-center hover:bg-white/30 transition-colors"
                         >
-                          Explore More
-                          <ArrowRight className="w-5 h-5" />
+                          <Play className="w-7 h-7 text-white" fill="white" />
                         </motion.button>
-                      </motion.div>
+
+                        <motion.button
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                          onClick={() => toggleMute(currentIndex)}
+                          className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-xl border border-white/30 flex items-center justify-center hover:bg-white/30 transition-colors"
+                        >
+                          {mutedVideos[currentIndex] ? (
+                            <VolumeX className="w-7 h-7 text-white" />
+                          ) : (
+                            <Volume2 className="w-7 h-7 text-white" />
+                          )}
+                        </motion.button>
+                      </div>
+
+                      {/* Navigation Dots */}
+                      <div className="flex gap-3">
+                        {videos.map((_, index) => (
+                          <button
+                            key={index}
+                            onClick={() => setCurrentIndex(index)}
+                            className={`h-3 rounded-full transition-all duration-300 ${
+                              index === currentIndex 
+                                ? "w-12 bg-secondary" 
+                                : "w-3 bg-white/40 hover:bg-white/60"
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <h3 className="font-serif font-black text-5xl text-white mb-2">
+                      {videos[currentIndex].title}
+                    </h3>
+                    <div className="flex items-center gap-2">
+                      <Film className="w-5 h-5 text-secondary" />
+                      <span className="text-white/80">Video {currentIndex + 1} of {videos.length}</span>
                     </div>
                   </div>
                 </div>
               </motion.div>
-            </AnimatePresence>
-
-            {/* Slide Indicators */}
-            <div className="absolute bottom-8 right-8 flex gap-3">
-              {currentSlides.map((_, index) => (
-                <motion.button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`h-3 rounded-full transition-all duration-300 ${
-                    index === currentSlide 
-                      ? `w-12 ${activeEcosystem === "sports" ? "bg-primary" : "bg-secondary"}` 
-                      : "w-3 bg-white/40 hover:bg-white/60"
-                  }`}
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.9 }}
-                />
-              ))}
-            </div>
-          </div>
+            )}
+          </AnimatePresence>
         </motion.div>
 
-        {/* Key Ventures Grid */}
+        {/* Upcoming Content - 3 Cards */}
         <motion.div 
-          className="max-w-6xl mx-auto mt-16 grid md:grid-cols-3 gap-6"
+          className="max-w-7xl mx-auto mt-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          {activeEcosystem === "sports" ? (
-            <>
-              <motion.div
-                className="p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20"
-                whileHover={{ y: -5, borderColor: "rgba(168, 85, 247, 0.4)" }}
-              >
-                <Trophy className="w-8 h-8 text-primary mb-4" />
-                <h4 className="font-bold text-xl text-foreground mb-2">Elite Training</h4>
-                <p className="text-muted-foreground text-sm">World-class coaching and facilities</p>
-              </motion.div>
-
-              <motion.div
-                className="p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20"
-                whileHover={{ y: -5, borderColor: "rgba(168, 85, 247, 0.4)" }}
-              >
-                <Target className="w-8 h-8 text-primary mb-4" />
-                <h4 className="font-bold text-xl text-foreground mb-2">Athlete Management</h4>
-                <p className="text-muted-foreground text-sm">Career development and branding</p>
-              </motion.div>
-
-              <motion.div
-                className="p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20"
-                whileHover={{ y: -5, borderColor: "rgba(168, 85, 247, 0.4)" }}
-              >
-                <Zap className="w-8 h-8 text-primary mb-4" />
-                <h4 className="font-bold text-xl text-foreground mb-2">Sports Tech</h4>
-                <p className="text-muted-foreground text-sm">Performance analytics and innovation</p>
-              </motion.div>
-            </>
-          ) : (
-            <>
-              <motion.div
-                className="p-6 rounded-2xl bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20"
-                whileHover={{ y: -5, borderColor: "rgba(6, 182, 212, 0.4)" }}
-              >
-                <Brain className="w-8 h-8 text-secondary mb-4" />
-                <h4 className="font-bold text-xl text-foreground mb-2">AI Solutions</h4>
-                <p className="text-muted-foreground text-sm">Machine learning and automation</p>
-              </motion.div>
-
-              <motion.div
-                className="p-6 rounded-2xl bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20"
-                whileHover={{ y: -5, borderColor: "rgba(6, 182, 212, 0.4)" }}
-              >
-                <Zap className="w-8 h-8 text-secondary mb-4" />
-                <h4 className="font-bold text-xl text-foreground mb-2">Defense Tech</h4>
-                <p className="text-muted-foreground text-sm">Advanced security systems</p>
-              </motion.div>
-
-              <motion.div
-                className="p-6 rounded-2xl bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20"
-                whileHover={{ y: -5, borderColor: "rgba(6, 182, 212, 0.4)" }}
-              >
-                <Target className="w-8 h-8 text-secondary mb-4" />
-                <h4 className="font-bold text-xl text-foreground mb-2">Autonomous Systems</h4>
-                <p className="text-muted-foreground text-sm">Drones and robotics</p>
-              </motion.div>
-            </>
-          )}
+          <h3 className="text-2xl font-black text-foreground mb-8 text-center">
+            Coming Up Next
+          </h3>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            {mediaType === "photos" ? (
+              upcomingPhotos.map((photo, index) => {
+                const actualIndex = (currentIndex + index + 1) % photos.length;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ y: -5, scale: 1.02 }}
+                    onClick={() => setCurrentIndex(actualIndex)}
+                    className="relative h-[250px] rounded-2xl overflow-hidden cursor-pointer group"
+                  >
+                    <img 
+                      src={photos[actualIndex].image} 
+                      alt={photos[actualIndex].title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="flex items-center gap-2 text-white mb-2">
+                        <ImageIcon className="w-4 h-4 text-primary" />
+                        <span className="text-sm font-bold">Click to View</span>
+                      </div>
+                      <p className="text-white text-xs">{photos[actualIndex].title}</p>
+                    </div>
+                  </motion.div>
+                );
+              })
+            ) : (
+              upcomingVideos.map((_, index) => {
+                const actualIndex = (currentIndex + index + 1) % videos.length;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ y: -5, scale: 1.02 }}
+                    onClick={() => setCurrentIndex(actualIndex)}
+                    className="relative h-[250px] rounded-2xl overflow-hidden cursor-pointer group"
+                  >
+                    <video
+                      src={videos[actualIndex].video}
+                      muted
+                      loop
+                      playsInline
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    
+                    {/* Play Icon Overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border-2 border-white flex items-center justify-center">
+                        <Play className="w-6 h-6 text-white ml-0.5" fill="white" />
+                      </div>
+                    </div>
+                    
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="flex items-center gap-2 text-white mb-2">
+                        <Film className="w-4 h-4 text-secondary" />
+                        <span className="text-sm font-bold">Click to View</span>
+                      </div>
+                      <p className="text-white text-xs">{videos[actualIndex].title}</p>
+                    </div>
+                  </motion.div>
+                );
+              })
+            )}
+          </div>
         </motion.div>
       </div>
     </section>

@@ -122,7 +122,7 @@ const Header = () => {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 20, scale: 0.95 }}
                       transition={{ duration: 0.3, ease: "easeOut" }}
-                      className="absolute top-full left-1/2 -translate-x-1/2 mt-6 w-[600px] bg-gradient-to-br from-black/98 via-black/95 to-black/98 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.9)] overflow-hidden"
+                      className="absolute top-full left-1/2 -translate-x-1/2 mt-6 w-[600px] bg-black backdrop-blur-2xl border border-white/10 rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.9)] overflow-hidden"
                     >
                       {/* Header */}
                       <div className="px-6 py-4 border-b border-white/10 bg-gradient-to-r from-primary/10 to-secondary/10">
@@ -186,7 +186,7 @@ const Header = () => {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 20, scale: 0.95 }}
                       transition={{ duration: 0.3, ease: "easeOut" }}
-                      className="absolute top-full left-1/2 -translate-x-1/2 mt-6 w-[600px] bg-gradient-to-br from-black/98 via-black/95 to-black/98 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.9)] overflow-hidden"
+                      className="absolute top-full left-1/2 -translate-x-1/2 mt-6 w-[600px] bg-black backdrop-blur-2xl border border-white/10 rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.9)] overflow-hidden"
                     >
                       {/* Header */}
                       <div className="px-6 py-4 border-b border-white/10 bg-gradient-to-r from-primary/10 to-primary/5">
@@ -258,7 +258,7 @@ const Header = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 lg:hidden bg-black/95 backdrop-blur-xl"
+            className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm z-40 lg:hidden bg-black/95 backdrop-blur-xl border-l border-white/10 shadow-2xl"
           >
             <div className="flex flex-col h-full pt-24 px-6 overflow-y-auto">
               <nav className="flex flex-col gap-6">
