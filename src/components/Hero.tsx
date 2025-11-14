@@ -130,7 +130,7 @@ const Hero = () => {
               <span className="block text-white drop-shadow-2xl">
                 We Architect
               </span>
-              <span className="block mt-3 bg-gradient-to-r from-[#a855f7] via-[#06b6d4] to-[#a855f7] bg-clip-text text-transparent animate-gradient" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>
+              <span className="block mt-3 bg-gradient-to-r from-[#5d184e] via-[#d946a6] to-[#5d184e] bg-clip-text text-transparent animate-gradient" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>
                 Ambition.
               </span>
             </motion.h1>
@@ -139,9 +139,9 @@ const Hero = () => {
               variants={item}
               className="text-2xl md:text-3xl text-aeon-light/90 max-w-2xl leading-relaxed font-medium"
             >
-              Two Worlds. One Vision.
+              Technology That Builds Nations.
               <span className="block mt-3 text-xl text-aeon-gray">
-                Building India's Future, from the Stadium to the Stars.
+               Transforming high-potential industries with tech-driven solutions.
               </span>
             </motion.p>
             
@@ -152,6 +152,7 @@ const Hero = () => {
               <Button 
                 size="lg" 
                 className="group relative overflow-hidden bg-gradient-to-r from-aeon-primary to-aeon-primary-dark hover:shadow-aeon-glow transition-all duration-500 text-lg px-8"
+                onClick={() => window.location.href = '/about'}
               >
                 <span className="relative z-10 flex items-center">
                   Explore Our Ecosystems
@@ -164,6 +165,12 @@ const Hero = () => {
                 size="lg" 
                 variant="outline"
                 className="group relative overflow-hidden border-aeon-primary/30 hover:bg-aeon-primary/5 hover:border-aeon-primary/50 text-lg px-8"
+                onClick={() => {
+                  const videoSection = document.querySelector('section:has(video[src*="1c8e4ef7e1324b52afec67e7b6ee4c7a"])');
+                  if (videoSection) {
+                    videoSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  }
+                }}
               >
                 <span className="relative z-10 flex items-center">
                   <Play className="mr-2 h-4 w-4" /> Watch Video
@@ -181,7 +188,7 @@ const Hero = () => {
                 <div>Active Ventures</div>
               </div>
               <div className="p-4 bg-aeon-dark/50 backdrop-blur-sm rounded-xl border border-aeon-dark/30 hover:border-aeon-primary/30 transition-colors">
-                <div className="text-2xl font-bold text-aeon-light">2</div>
+                <div className="text-2xl font-bold text-aeon-light">6</div>
                 <div>Core Ecosystems</div>
               </div>
               <div className="p-4 bg-aeon-dark/50 backdrop-blur-sm rounded-xl border border-aeon-dark/30 hover:border-aeon-primary/30 transition-colors">

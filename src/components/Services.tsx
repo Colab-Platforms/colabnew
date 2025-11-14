@@ -4,37 +4,37 @@ import { useState } from "react";
 const services = [
   {
     id: 1,
-    title: 'Elite Sports Academy',
+    title: 'Intelligent Enterprise Platforms',
     category: 'Sports',
-    description: 'Building champions through world-class training',
+    description: 'AI systems that automate operations and power smarter decisions.',
     image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1200&q=80',
   },
   {
     id: 2,
-    title: 'Colab Esports',
+    title: 'Immersive Digital Experiences',
     category: 'Sports',
-    description: 'Professional gaming infrastructure',
+    description: 'Gaming and engagement platforms built for high user interaction.',
     image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&q=80',
   },
   {
     id: 3,
-    title: 'Sports Tech Innovation',
+    title: 'Smart Infra & Performance Systems',
     category: 'Sports',
-    description: 'AI-powered performance analytics',
+    description: 'Tech-enabled sports and urban solutions for better performance.',
     image: 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=1200&q=80',
   },
   {
     id: 4,
-    title: 'Colab Intelligence',
+    title: 'Autonomous & Aviation Systems',
     category: 'Technology',
-    description: 'Enterprise AI solutions',
+    description: 'Advanced drones and aerial technologies for commercial and security use.',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80',
   },
   {
     id: 5,
-    title: 'Aegis Drones',
+    title: 'Fintech & Digital Transactions',
     category: 'Technology',
-    description: 'Autonomous aerial systems',
+    description: 'Secure digital tools for seamless payments and recharges.',
     image: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=1200&q=80',
   },
   {
@@ -74,15 +74,15 @@ const Services = () => {
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
           >
-            <span className="text-sm font-bold text-primary uppercase tracking-wider">Our Services</span>
+      
           </motion.div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
             <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
-              Dual Ecosystem Excellence
+             Unified Technology Ecosystem
             </span>
           </h2>
           <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
-            From elite sports infrastructure to cutting-edge technology solutions
+           One platform powering intelligence, experiences, and innovation.
           </p>
         </motion.div>
 
@@ -95,10 +95,7 @@ const Services = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <div className="flex items-center gap-4 mb-10">
-              <div className="h-1 w-16 bg-gradient-to-r from-primary to-transparent rounded-full" />
-              <h3 className="text-3xl md:text-4xl font-black text-primary">Sports Ecosystem</h3>
-            </div>
+           
 
             {services.filter(s => s.category === 'Sports').map((service, index) => (
               <motion.div
@@ -146,10 +143,7 @@ const Services = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <div className="flex items-center gap-4 mb-10">
-              <div className="h-1 w-16 bg-gradient-to-r from-secondary to-transparent rounded-full" />
-              <h3 className="text-3xl md:text-4xl font-black text-secondary">Technology Ecosystem</h3>
-            </div>
+           
 
             {services.filter(s => s.category === 'Technology').map((service, index) => (
               <motion.div
@@ -164,7 +158,7 @@ const Services = () => {
                 <div className="flex items-start gap-6 p-6 rounded-2xl bg-gradient-to-br from-secondary/5 to-transparent border border-secondary/10 hover:border-secondary/30 transition-all duration-300">
                   <div className="flex-shrink-0 w-20 h-20 rounded-2xl bg-gradient-to-br from-secondary/30 to-secondary/10 border border-secondary/30 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <span className="text-3xl font-black text-secondary">
-                      {(index + 1).toString().padStart(2, '0')}
+                      {(index + 4).toString().padStart(2, '0')}
                     </span>
                   </div>
                   <div className="flex-1">
@@ -198,20 +192,8 @@ const Services = () => {
           viewport={{ once: true }}
           className="flex flex-col sm:flex-row justify-center items-center gap-6"
         >
-          <motion.button
-            whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(168, 85, 247, 0.3)" }}
-            whileTap={{ scale: 0.95 }}
-            className="px-10 py-4 rounded-full bg-gradient-to-r from-primary/20 to-primary/10 border-2 border-primary/30 text-primary font-bold hover:bg-primary/30 transition-all backdrop-blur-xl"
-          >
-            View All Sports Services
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(251, 146, 60, 0.3)" }}
-            whileTap={{ scale: 0.95 }}
-            className="px-10 py-4 rounded-full bg-gradient-to-r from-secondary/20 to-secondary/10 border-2 border-secondary/30 text-secondary font-bold hover:bg-secondary/30 transition-all backdrop-blur-xl"
-          >
-            View All Tech Services
-          </motion.button>
+      
+         
         </motion.div>
       </div>
     </section>

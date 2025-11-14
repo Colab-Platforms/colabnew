@@ -163,7 +163,7 @@ const BlogSection = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {displayPosts.map((post, index) => (
             <motion.button
-              key={post.id}
+              key={post.slug}
               onClick={() => setActiveIndex(index)}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

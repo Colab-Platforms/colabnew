@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Mission from "@/components/Mission";
+import VideoShowcase from "@/components/VideoShowcase";
 import TwoPillars from "@/components/TwoPillars";
 import Services from "@/components/Services";
 import BlogSection from "@/components/BlogSection";
@@ -48,6 +49,9 @@ const Index = () => {
         <Mission />
       </AnimatedSection>
       <AnimatedSection direction="right">
+        <VideoShowcase />
+      </AnimatedSection>
+      <AnimatedSection direction="left">
         <TwoPillars />
       </AnimatedSection>
 

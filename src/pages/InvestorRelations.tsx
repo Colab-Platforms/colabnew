@@ -97,7 +97,7 @@ const InvestorRelations = () => {
 
         {/* Animated Particles */}
         <div className="absolute inset-0">
-          <div className="absolute top-20 left-20 w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
+          <div className="absolute top-20 left-20 w-2 h-2 bg-[#5d184e] rounded-full animate-pulse" />
           <div className="absolute top-40 right-32 w-3 h-3 bg-purple-400 rounded-full animate-pulse delay-100" />
           <div className="absolute bottom-32 left-40 w-2 h-2 bg-pink-400 rounded-full animate-pulse delay-200" />
         </div>
@@ -115,16 +115,16 @@ const InvestorRelations = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/30 backdrop-blur-sm"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#5d184e]/10 border border-[#5d184e]/30 backdrop-blur-sm"
             >
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
-              <span className="text-sm font-semibold text-blue-400">Listed on BSE | Code: 539528</span>
+              <div className="w-2 h-2 bg-[#5d184e] rounded-full animate-pulse" />
+              <span className="text-sm font-semibold text-[#5d184e]">Listed on BSE | Code: 539528</span>
             </motion.div>
 
             {/* Main Heading */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
               <span className="block text-white mb-2">Colab Platforms</span>
-              <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-[#5d184e] via-purple-400 to-pink-400 bg-clip-text text-transparent">
                 A Public Company Powering India's Sports-Tech Revolution
               </span>
             </h1>
@@ -139,10 +139,10 @@ const InvestorRelations = () => {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <a
                 href="#documents"
-                className="group relative px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-center overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(168,85,247,0.6)]"
+                className="group relative px-8 py-4 rounded-xl bg-gradient-to-r from-[#5d184e] to-purple-600 text-white font-bold text-center overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(168,85,247,0.6)]"
               >
                 <span className="relative z-10">Investor Relations</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-[#5d184e] opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
               <a
                 href="https://www.screener.in/company/542866/"
@@ -190,7 +190,7 @@ const InvestorRelations = () => {
               placeholder="Search documents..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-6 py-4 bg-gray-900/50 backdrop-blur-xl border border-gray-800 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
+              className="w-full px-6 py-4 bg-gray-900/50 backdrop-blur-xl border border-gray-800 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:border-[#5d184e] transition-colors"
             />
             <div className="absolute right-4 top-1/2 -translate-y-1/2">
               <FileText className="w-5 h-5 text-gray-500" />
@@ -207,7 +207,7 @@ const InvestorRelations = () => {
                 onClick={() => setActiveTab(index)}
                 className={`px-6 py-3 rounded-xl font-medium transition-all whitespace-nowrap ${
                   activeTab === index
-                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/50'
+                    ? 'bg-gradient-to-r from-[#5d184e] to-purple-600 text-white shadow-lg shadow-[#5d184e]/50'
                     : 'bg-gray-900/50 text-gray-400 hover:text-white hover:bg-gray-800/50'
                 }`}
               >
@@ -233,13 +233,13 @@ const InvestorRelations = () => {
                 <div key={quarter} className="space-y-4">
                   {/* Quarter Header */}
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-xl">
-                      <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#5d184e]/20 to-purple-600/20 border border-[#5d184e]/30 rounded-xl">
+                      <svg className="w-5 h-5 text-[#5d184e]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
                       <h3 className="text-lg font-bold text-white">{quarter}</h3>
                     </div>
-                    <div className="flex-1 h-px bg-gradient-to-r from-blue-500/50 to-transparent"></div>
+                    <div className="flex-1 h-px bg-gradient-to-r from-[#5d184e]/50 to-transparent"></div>
                     <span className="text-sm text-gray-500">{groupedByQuarter[quarter].length} documents</span>
                   </div>
 
@@ -255,16 +255,16 @@ const InvestorRelations = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="relative bg-gray-900/50 backdrop-blur-xl border border-gray-800 rounded-2xl p-6 hover:border-blue-500/50 transition-all">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#5d184e]/20 to-purple-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="relative bg-gray-900/50 backdrop-blur-xl border border-gray-800 rounded-2xl p-6 hover:border-[#5d184e]/50 transition-all">
                     <div className="flex items-start justify-between mb-4">
-                      <FileText className="w-8 h-8 text-blue-400" />
-                      <Download className="w-5 h-5 text-gray-500 group-hover:text-blue-400 transition-colors" />
+                      <FileText className="w-8 h-8 text-[#5d184e]" />
+                      <Download className="w-5 h-5 text-gray-500 group-hover:text-[#5d184e] transition-colors" />
                     </div>
-                    <h3 className="text-lg font-semibold mb-4 group-hover:text-blue-400 transition-colors line-clamp-2">
+                    <h3 className="text-lg font-semibold mb-4 group-hover:text-[#5d184e] transition-colors line-clamp-2">
                       {doc.head}
                     </h3>
-                    <div className="flex items-center text-sm text-gray-500 group-hover:text-blue-400 transition-colors">
+                    <div className="flex items-center text-sm text-gray-500 group-hover:text-[#5d184e] transition-colors">
                       <span>View Document</span>
                       <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                     </div>
@@ -288,16 +288,16 @@ const InvestorRelations = () => {
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
-                        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                        <div className="relative bg-gray-900/50 backdrop-blur-xl border border-gray-800 rounded-2xl p-6 hover:border-blue-500/50 transition-all">
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#5d184e]/20 to-purple-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <div className="relative bg-gray-900/50 backdrop-blur-xl border border-gray-800 rounded-2xl p-6 hover:border-[#5d184e]/50 transition-all">
                           <div className="flex items-start justify-between mb-4">
-                            <FileText className="w-8 h-8 text-blue-400" />
-                            <Download className="w-5 h-5 text-gray-500 group-hover:text-blue-400 transition-colors" />
+                            <FileText className="w-8 h-8 text-[#5d184e]" />
+                            <Download className="w-5 h-5 text-gray-500 group-hover:text-[#5d184e] transition-colors" />
                           </div>
-                          <h3 className="text-lg font-semibold mb-4 group-hover:text-blue-400 transition-colors line-clamp-2">
+                          <h3 className="text-lg font-semibold mb-4 group-hover:text-[#5d184e] transition-colors line-clamp-2">
                             {doc.head}
                           </h3>
-                          <div className="flex items-center text-sm text-gray-500 group-hover:text-blue-400 transition-colors">
+                          <div className="flex items-center text-sm text-gray-500 group-hover:text-[#5d184e] transition-colors">
                             <span>View Document</span>
                             <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                           </div>
@@ -327,10 +327,10 @@ const InvestorRelations = () => {
         >
           {/* Section Header */}
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#5d184e] via-purple-400 to-pink-400 bg-clip-text text-transparent">
               Leadership Team
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full" />
+            <div className="w-24 h-1 bg-gradient-to-r from-[#5d184e] to-purple-500 mx-auto rounded-full" />
           </div>
 
           <div className="space-y-12">
@@ -339,7 +339,7 @@ const InvestorRelations = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-gray-900/50 backdrop-blur-xl rounded-3xl overflow-hidden border border-gray-800 hover:border-blue-500/50 transition-all"
+              className="bg-gray-900/50 backdrop-blur-xl rounded-3xl overflow-hidden border border-gray-800 hover:border-[#5d184e]/50 transition-all"
             >
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 p-8">
                 {/* Image */}
@@ -359,9 +359,9 @@ const InvestorRelations = () => {
                 <div className="lg:col-span-2 space-y-4">
                   <div>
                     <h3 className="text-3xl font-bold text-white mb-2">Puneet Singh Chadhok</h3>
-                    <p className="text-xl text-blue-400 font-semibold">Managing Director</p>
+                    <p className="text-xl text-[#5d184e] font-semibold">Managing Director</p>
                   </div>
-                  <div className="h-1 w-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" />
+                  <div className="h-1 w-24 bg-gradient-to-r from-[#5d184e] to-purple-500 rounded-full" />
                   <p className="text-gray-300 leading-relaxed text-justify">
                     Puneet Singh Chadhok is a dynamic entrepreneur with diverse business interests spanning real estate, finance, entertainment, sports, and hospitality. As the founder of Clapstem Entertainment, he has produced award-winning films including Jal, a National Award-winning movie, and over 1000 hours of TV and digital content.
                   </p>
@@ -424,10 +424,10 @@ const InvestorRelations = () => {
         >
           {/* Section Header */}
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#5d184e] via-purple-400 to-pink-400 bg-clip-text text-transparent">
               Board & Committee Details
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full" />
+            <div className="w-24 h-1 bg-gradient-to-r from-[#5d184e] to-purple-500 mx-auto rounded-full" />
           </div>
 
           {/* Board and KMPs */}
@@ -439,8 +439,8 @@ const InvestorRelations = () => {
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-gray-700">
-                    <th className="text-left py-4 px-6 text-blue-400 font-bold text-lg">Name</th>
-                    <th className="text-left py-4 px-6 text-blue-400 font-bold text-lg">Designation</th>
+                    <th className="text-left py-4 px-6 text-[#5d184e] font-bold text-lg">Name</th>
+                    <th className="text-left py-4 px-6 text-[#5d184e] font-bold text-lg">Designation</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -465,12 +465,12 @@ const InvestorRelations = () => {
           {/* Committees Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Audit Committee */}
-            <div className="bg-gray-900/50 backdrop-blur-xl rounded-3xl p-8 border border-gray-800 hover:border-blue-500/50 transition-all">
-              <h3 className="text-xl font-bold mb-6 text-blue-400">Audit Committee</h3>
+            <div className="bg-gray-900/50 backdrop-blur-xl rounded-3xl p-8 border border-gray-800 hover:border-[#5d184e]/50 transition-all">
+              <h3 className="text-xl font-bold mb-6 text-[#5d184e]">Audit Committee</h3>
               <div className="space-y-4">
                 <div className="flex justify-between items-center p-4 bg-gray-800/50 rounded-xl">
                   <span className="text-white font-medium">Rohit Singh</span>
-                  <span className="px-4 py-2 bg-blue-500/20 text-blue-400 rounded-lg text-sm font-semibold">Chairman</span>
+                  <span className="px-4 py-2 bg-[#5d184e]/20 text-[#5d184e] rounded-lg text-sm font-semibold">Chairman</span>
                 </div>
                 <div className="flex justify-between items-center p-4 bg-gray-800/50 rounded-xl">
                   <span className="text-white font-medium">Mukesh Jadhav</span>
@@ -517,10 +517,10 @@ const InvestorRelations = () => {
                   <div className="text-white font-medium mb-3">Mukesh Jadhav</div>
                   <div className="text-sm text-gray-400 mb-2">Director</div>
                   <div className="flex flex-col gap-2">
-                    <a href="tel:8828865429" className="text-blue-400 hover:text-blue-300 transition-colors">
+                    <a href="tel:8828865429" className="text-[#5d184e] hover:text-[#7d2e6e] transition-colors">
                       📞 8828865429
                     </a>
-                    <a href="mailto:cs@colabcloud.in" className="text-blue-400 hover:text-blue-300 transition-colors">
+                    <a href="mailto:cs@colabcloud.in" className="text-[#5d184e] hover:text-[#7d2e6e] transition-colors">
                       ✉️ cs@colabcloud.in
                     </a>
                   </div>
@@ -544,15 +544,15 @@ const InvestorRelations = () => {
                 <a
                   key={index}
                   href={director.link}
-                  className="group relative p-6 bg-gray-800/50 rounded-2xl border border-gray-700 hover:border-blue-500 transition-all hover:scale-105"
+                  className="group relative p-6 bg-gray-800/50 rounded-2xl border border-gray-700 hover:border-[#5d184e] transition-all hover:scale-105"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#5d184e]/10 to-purple-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="relative">
-                    <h4 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                    <h4 className="text-xl font-bold text-white mb-2 group-hover:text-[#5d184e] transition-colors">
                       {director.name}
                     </h4>
                     <p className="text-gray-400">{director.designation}</p>
-                    <div className="mt-4 flex items-center text-blue-400 text-sm font-semibold">
+                    <div className="mt-4 flex items-center text-[#5d184e] text-sm font-semibold">
                       <span>View Profile</span>
                       <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                     </div>
@@ -570,3 +570,4 @@ const InvestorRelations = () => {
 };
 
 export default InvestorRelations;
+
