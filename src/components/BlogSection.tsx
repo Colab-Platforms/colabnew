@@ -1,20 +1,61 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { blogPosts } from "@/data/blogPosts";
+import { fetchBlogPosts, BlogPost } from "@/lib/firebase";
+import { blogPosts as localBlogPosts } from "@/data/blogPosts";
 
 const BlogSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  // Get only first 6 blog posts (latest)
+  // Fetch blogs from Firebase (same as Blog.tsx)
+  useEffect(() => {
+    const loadBlogs = async () => {
+      try {
+        const firebasePosts = await fetchBlogPosts();
+        // Combine Firebase posts with local posts (same logic as Blog.tsx)
+        const allPosts = [...firebasePosts, ...localBlogPosts];
+        setBlogPosts(allPosts);
+      } catch (error) {
+        console.error("Error loading blogs:", error);
+        // Fallback to local posts if Firebase fails
+        setBlogPosts(localBlogPosts);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadBlogs();
+  }, []);
+
+  // Get only first 6 blog posts (same as Blog.tsx shows)
   const displayPosts = blogPosts.slice(0, 6);
 
   // Auto-rotate blogs every 5 seconds
   useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % displayPosts.length);
-    }, 5000);
-    return () => clearInterval(timer);
+    if (displayPosts.length > 0) {
+      const timer = setInterval(() => {
+        setActiveIndex((prev) => (prev + 1) % displayPosts.length);
+      }, 5000);
+      return () => clearInterval(timer);
+    }
   }, [displayPosts.length]);
+
+  // Show loading state
+  if (loading) {
+    return (
+      <section className="relative py-20 md:py-32 bg-gradient-to-b from-black via-primary/5 to-black">
+        <div className="container mx-auto px-4 text-center">
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+          <p className="mt-4 text-muted-foreground">Loading blogs...</p>
+        </div>
+      </section>
+    );
+  }
+
+  // Don't render if no blogs
+  if (displayPosts.length === 0) {
+    return null;
+  }
 
   return (
     <section className="relative py-20 md:py-32 bg-gradient-to-b from-black via-primary/5 to-black overflow-hidden">

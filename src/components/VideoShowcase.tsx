@@ -144,21 +144,24 @@ const VideoShowcase = () => {
                 onPause={() => setIsPlaying(false)}
               />
 
-              {/* Video Overlay Controls */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                {/* Center Play Button */}
-                {!isPlaying && (
+              {/* Center Play Button - Always Visible When Not Playing */}
+              {!isPlaying && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/30">
                   <motion.button
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.95 }}
                     onClick={togglePlay}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center shadow-2xl shadow-primary/50 border-4 border-white/20"
+                    className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center shadow-2xl shadow-primary/50 border-4 border-white/30 hover:border-white/50 transition-all"
                   >
-                    <Play className="w-10 h-10 md:w-12 md:h-12 text-white ml-1" fill="white" />
+                    <Play className="w-12 h-12 md:w-16 md:h-16 text-white ml-2" fill="white" />
                   </motion.button>
-                )}
+                </div>
+              )}
+
+              {/* Video Overlay Controls */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
 
                 {/* Bottom Controls Bar */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 flex items-center justify-between">

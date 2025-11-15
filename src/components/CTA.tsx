@@ -4,25 +4,8 @@ import { ArrowRight, Mail } from "lucide-react";
 const CTA = () => {
   return (
     <section className="relative py-32 overflow-hidden">
-      {/* Background Video */}
-      <div className="absolute inset-0 w-full h-full">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover"
-        >
-          <source src="https://cdn.shopify.com/videos/c/o/v/b0377f723848466d9662436e2eabdc99.mp4" type="video/webm" />
-          {/* Fallback for browsers that don't support video */}
-        </video>
-        {/* Dark overlay for text readability */}
-        <div className="absolute  from-background/95 via-background/90 to-background/85" />
-      </div>
-      
-      {/* Dramatic gradient overlay */}
-      <div className="absolute  from-primary/20 via-secondary/10 to-transparent" />
-      <div className="absolute  bg-gradient-mesh opacity-30" />
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
       
       {/* Glow effects */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/20 rounded-full blur-3xl animate-glow-pulse" />
@@ -52,6 +35,7 @@ const CTA = () => {
             <Button 
               size="lg" 
               className="group bg-gradient-primary hover:shadow-glow transition-all duration-300 text-lg px-8"
+              onClick={() => window.location.href = '/about'}
             >
               Explore Our Ecosystems
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -60,9 +44,10 @@ const CTA = () => {
               size="lg" 
               variant="outline"
               className="border-primary/30 hover:bg-primary/10 text-lg px-8"
+              onClick={() => window.location.href = '/contact'}
             >
               <Mail className="mr-2 h-5 w-5" />
-              Schedule a Meeting
+              Contact Us
             </Button>
           </div>
     

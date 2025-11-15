@@ -17,7 +17,7 @@ All colors MUST be HSL.
     --popover: 240 8% 12%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 270 65% 20%;
+    --primary: 270 100% 50%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 320 70% 50%;
@@ -26,7 +26,7 @@ All colors MUST be HSL.
     --muted: 240 6% 20%;
     --muted-foreground: 240 5% 65%;
 
-    --accent: 270 65% 20%;
+    --accent: 270 100% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -34,18 +34,18 @@ All colors MUST be HSL.
 
     --border: 270 40% 15%;
     --input: 270 40% 15%;
-    --ring: 270 65% 20%;
+    --ring: 270 100% 50%;
 
     --radius: 0.75rem;
 
     /* Premium gradients */
-    --gradient-primary: linear-gradient(135deg, #5d184e 0%, #d946a6 100%);
-    --gradient-secondary: linear-gradient(135deg, #d946a6 0%, #5d184e 100%);
-    --gradient-mesh: radial-gradient(at 0% 0%, rgba(93, 24, 78, 0.3) 0px, transparent 50%),
+    --gradient-primary: linear-gradient(135deg, #8500ff 0%, #d946a6 100%);
+    --gradient-secondary: linear-gradient(135deg, #d946a6 0%, #8500ff 100%);
+    --gradient-mesh: radial-gradient(at 0% 0%, rgba(133, 0, 255, 0.3) 0px, transparent 50%),
                       radial-gradient(at 100% 100%, rgba(217, 70, 166, 0.2) 0px, transparent 50%);
     
     /* Shadows */
-    --shadow-glow: 0 0 60px rgba(93, 24, 78, 0.4);
+    --shadow-glow: 0 0 60px rgba(133, 0, 255, 0.4);
     --shadow-soft: 0 20px 60px hsl(240 10% 3% / 0.5);
     
     /* Animations */

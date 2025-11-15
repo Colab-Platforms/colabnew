@@ -39,9 +39,9 @@ const services = [
   },
   {
     id: 6,
-    title: 'Defense Systems',
+    title: 'Next-Gen Tech Systems',
     category: 'Technology',
-    description: 'Next-gen security solutions',
+    description: 'Breakthrough technologies shaping the future of intelligent ecosystems.',
     image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&q=80',
   }
 ];

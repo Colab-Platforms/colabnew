@@ -39,11 +39,11 @@ const Hero = () => {
           playsInline
           className="w-full h-full object-cover"
         >
-          <source src="https://cdn.shopify.com/videos/c/o/v/2894eda53e114bbfb7adf86a6c5c4684.mp4" type="video/mp4" />
+          <source src="https://cdn.shopify.com/videos/c/o/v/6064f36abdd74e889b9d65606a5700ad.mp4" type="video/mp4" />
         </video>
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent" />
+        {/* Lighter overlay - video more visible */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent" />
       </div>
 
       {/* Modern Animated Background Pattern */}

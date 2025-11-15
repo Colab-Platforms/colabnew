@@ -9,19 +9,19 @@ const TwoPillars = () => {
   const videoRefs = useRef<{ [key: number]: HTMLVideoElement | null }>({});
 
   const photos = [
-    { id: 1, title: "Championship Victory", image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1200&q=80" },
-    { id: 2, title: "AI Innovation Lab", image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80" },
-    { id: 3, title: "Team Excellence", image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80" },
+    { id: 1, title: "Championship Victory", image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/drone-flying-in-silhouette-against-the-blue-sky-2024-11-27-13-22-09-utc.jpg?v=1763195285" },
+    { id: 2, title: "AI Innovation Lab", image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Introduction-to-semiconductors.png?v=1763195282" },
+    { id: 3, title: "Team Excellence", image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/search-engine-optimization-digital-marketing-proc-2024-12-07-03-49-59-utc.jpg?v=1763195283" },
   ];
 
   const videos = [
-    { id: 1, title: "Sports Training", video: "https://videos.pexels.com/video-files/3044127/3044127-uhd_2560_1440_25fps.mp4" },
-    { id: 2, title: "Tech Innovation", video: "https://videos.pexels.com/video-files/3209828/3209828-uhd_2560_1440_25fps.mp4" },
-    { id: 3, title: "Team Culture", video: "https://videos.pexels.com/video-files/3044121/3044121-uhd_2560_1440_25fps.mp4" },
+    { id: 1, title: "Sports Training", video: "https://cdn.shopify.com/videos/c/o/v/d1679275f40a462d9763a8070550088a.mp4" },
+    { id: 2, title: "Tech Innovation", video: "https://cdn.shopify.com/videos/c/o/v/e1fbe2c8b0d44eafa01926e3b3d74bbf.mp4" },
+    { id: 3, title: "Team Culture", video: "https://cdn.shopify.com/videos/c/o/v/fb946f9b107d4ab8abdb7673406afca9.mp4" },
   ];
 
   const upcomingPhotos = [
-    "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80",
+    "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/sport-and-lifestyle-young-sporty-woman-with-ligh-2025-10-10-21-53-34-utc.jpg?v=1763195285",
     "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=600&q=80",
     "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
   ];
@@ -66,6 +66,25 @@ const TwoPillars = () => {
   useEffect(() => {
     setCurrentIndex(0);
   }, [mediaType]);
+
+  // Auto-play current video and pause others
+  useEffect(() => {
+    if (mediaType === "videos") {
+      // Play current video
+      const currentVideo = videoRefs.current[currentIndex];
+      if (currentVideo) {
+        currentVideo.play().catch(err => console.log("Auto-play prevented:", err));
+      }
+
+      // Pause all other videos
+      Object.keys(videoRefs.current).forEach(key => {
+        const index = parseInt(key);
+        if (index !== currentIndex && videoRefs.current[index]) {
+          videoRefs.current[index]!.pause();
+        }
+      });
+    }
+  }, [currentIndex, mediaType]);
 
   return (
     <section className="relative py-32 overflow-hidden bg-gradient-to-b from-background via-primary/5 to-background">

@@ -1,4 +1,4 @@
-import { Linkedin, Twitter, Instagram, Youtube, Mail, Phone, MapPin, ArrowRight } from "lucide-react";
+import { Linkedin, Twitter, Instagram, Youtube, Facebook, Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -40,34 +40,37 @@ const Footer = () => {
                 <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                   <Mail className="w-4 h-4" />
                 </div>
-                <span className="text-sm font-medium">info@colabplatform.com</span>
+                <span className="text-sm font-medium">techcolabplatform@gmail.com</span>
               </a>
               <a href="tel:+911234567890" className="flex items-center gap-3 text-white/60 hover:text-secondary transition-colors group">
                 <div className="w-8 h-8 rounded-lg bg-secondary/10 border border-secondary/20 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
                   <Phone className="w-4 h-4" />
                 </div>
-                <span className="text-sm font-medium">+91 123 456 7890</span>
+                <span className="text-sm font-medium">+91 8976866292</span>
               </a>
               <div className="flex items-start gap-3 text-white/60">
                 <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
                   <MapPin className="w-4 h-4" />
                 </div>
-                <span className="text-sm font-medium">Mumbai, India</span>
+                <span className="text-sm font-medium">202, Takshashila Building, Samant Estate, JP Road, Behind Sai Veg Hotel Goregaon East Mumbai 400063</span>
               </div>
             </div>
 
             {/* Social Links */}
             <div className="flex gap-3">
-              <a href="#" className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary/20 hover:border-primary/40 transition-all group">
+              <a href="https://www.linkedin.com/company/colabplatformslimited/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary/20 hover:border-primary/40 transition-all group">
                 <Linkedin className="w-5 h-5 text-white/60 group-hover:text-primary transition-colors" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-secondary/20 hover:border-secondary/40 transition-all group">
+              <a href="https://x.com/ColabLtd" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-secondary/20 hover:border-secondary/40 transition-all group">
                 <Twitter className="w-5 h-5 text-white/60 group-hover:text-secondary transition-colors" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary/20 hover:border-primary/40 transition-all group">
+              <a href="https://www.instagram.com/colab_platforms/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary/20 hover:border-primary/40 transition-all group">
                 <Instagram className="w-5 h-5 text-white/60 group-hover:text-primary transition-colors" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-secondary/20 hover:border-secondary/40 transition-all group">
+              <a href="https://www.facebook.com/profile.php?id=61558652640097" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-secondary/20 hover:border-secondary/40 transition-all group">
+                <Facebook className="w-5 h-5 text-white/60 group-hover:text-secondary transition-colors" />
+              </a>
+              <a href="https://www.youtube.com/@ColabPlatformsLimited" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-secondary/20 hover:border-secondary/40 transition-all group">
                 <Youtube className="w-5 h-5 text-white/60 group-hover:text-secondary transition-colors" />
               </a>
             </div>

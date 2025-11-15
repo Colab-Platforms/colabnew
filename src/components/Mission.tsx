@@ -62,7 +62,7 @@ const Mission = () => {
                         whileHover={{ scale: 1.05 }}
                       >
                         <div className="w-full h-full">
-                          <img src="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Ai_1.jpg?v=1763126929" alt="Cricket" className="w-full h-full object-cover" />
+                          <img src="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/drone-flying-in-silhouette-against-the-blue-sky-2024-11-27-13-22-09-utc.jpg?v=1763195285" alt="Cricket" className="w-full h-full object-cover" />
                         </div>
                       </motion.div>
                     </AnimatePresence>
@@ -199,7 +199,7 @@ const Mission = () => {
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { icon: TrendingUp, label: "15+ Ventures", color: "primary" },
-                  { icon: Award, label: "2 Ecosystems", color: "secondary" },
+                  { icon: Award, label: "6 Ecosystems", color: "secondary" },
                 ].map((stat, i) => (
                   <motion.div
                     key={i}

@@ -4,19 +4,22 @@ import { Button } from "@/components/ui/button";
 const InvestorRelations = () => {
   const news = [
     {
-      date: "Nov 15, 2024",
-      title: "Q3 2024 Financial Results Exceed Expectations",
-      type: "Earnings"
+      date: "Nov 06, 2025",
+      title: "AI-Powered Search Engine Launch",
+      type: "Press Release",
+      link: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Press_Release_for_AI_powered_Search_Engine_06.11.2025.pdf?v=1762412961"
     },
     {
-      date: "Oct 28, 2024",
-      title: "Strategic Partnership with Major Defense Contractor",
-      type: "Partnership"
+      date: "Nov 12, 2025",
+      title: "Q2 Financial Performance Report",
+      type: "Press Release",
+      link: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/PR-_Q2_financial_Performance_30.09.2025_1.pdf?v=1763024349"
     },
     {
-      date: "Oct 12, 2024",
-      title: "New Sports Academy Launched in Southeast Asia",
-      type: "Expansion"
+      date: "Oct 24, 2025",
+      title: "Colab Semiconductor Private Limited",
+      type: "Press Release",
+      link: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Covering_letter_PR_24.10.2025_upload.pdf?v=1761302911"
     }
   ];
 
@@ -64,6 +67,7 @@ const InvestorRelations = () => {
                 <Button 
                   variant="outline" 
                   className="w-full justify-between border-primary/30 hover:bg-primary/10"
+                  onClick={() => window.location.href = '/investor-relations'}
                 >
                   <span className="flex items-center gap-2">
                     <FileText className="w-4 h-4" />
@@ -86,6 +90,7 @@ const InvestorRelations = () => {
                 <Button 
                   variant="outline" 
                   className="w-full justify-between border-primary/30 hover:bg-primary/10"
+                  onClick={() => window.open('https://www.screener.in/company/COLABPLAT/', '_blank')}
                 >
                   <span className="flex items-center gap-2">
                     <TrendingUp className="w-4 h-4" />
@@ -107,9 +112,12 @@ const InvestorRelations = () => {
               
               <div className="space-y-6">
                 {news.map((item, index) => (
-                  <div 
+                  <a 
                     key={index}
-                    className="group/item pb-6 border-b border-border/50 last:border-0 last:pb-0 cursor-pointer hover:border-primary/30 transition-colors"
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block group/item pb-6 border-b border-border/50 last:border-0 last:pb-0 cursor-pointer hover:border-primary/30 transition-colors"
                   >
                     <div className="flex items-start justify-between gap-4 mb-2">
                       <span className="text-sm text-muted-foreground">{item.date}</span>
@@ -117,16 +125,18 @@ const InvestorRelations = () => {
                         {item.type}
                       </span>
                     </div>
-                    <h4 className="text-foreground font-semibold group-hover/item:text-primary transition-colors">
+                    <h4 className="text-foreground font-semibold group-hover/item:text-primary transition-colors flex items-center gap-2">
                       {item.title}
+                      <ExternalLink className="w-4 h-4 opacity-0 group-hover/item:opacity-100 transition-opacity" />
                     </h4>
-                  </div>
+                  </a>
                 ))}
               </div>
 
               <Button 
                 variant="outline"
                 className="w-full mt-8 border-secondary/30 hover:bg-secondary/10"
+                onClick={() => window.location.href = '/investor-relations'}
               >
                 View All News
                 <ExternalLink className="w-4 h-4 ml-2" />

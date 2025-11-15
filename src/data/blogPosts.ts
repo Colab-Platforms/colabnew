@@ -119,7 +119,7 @@ export const blogPosts: BlogPost[] = [
     <h2>The Future of Defense</h2>
     <p>As AI technology continues to evolve, we're witnessing the emergence of next-generation defense solutions that promise to keep nations safer while reducing human risk in dangerous situations.</p>
     `,
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80"
+    image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/drone-flying-in-silhouette-against-the-blue-sky-2024-11-27-13-22-09-utc.jpg?v=1763195285"
   },
   {
     title: "Drone Technology: The Sky is Not the Limit",
@@ -140,5 +140,57 @@ export const blogPosts: BlogPost[] = [
     <p>As drone technology continues to advance with better AI, longer flight times, and enhanced capabilities, we're only beginning to scratch the surface of what's possible in autonomous aerial systems.</p>
     `,
     image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=1200&q=80"
-  }
+  },
+      {
+                  title: "Shubman Gill Likely to Miss Out on Asia Cup T20I Squad as Selectors Stick to Core Group",
+                  author: "Sports Desk",
+                  date: "22 August, 2025",
+                  slug: "shubman-gill-asia-cup-squad",
+                  content: `
+    <p>With the <strong>Asia Cup 2025 T20I tournament</strong> fast approaching, the Indian cricket team selectors are facing a key dilemma whether or not to include Test captain <strong>Shubman Gill</strong> in the squad. Despite Gill's strong recent performances in red-ball cricket and his consistency in the IPL, the selectors and team management appear inclined to maintain the existing squad composition that brought success post the 2024 T20 World Cup.</p>
+
+    <p>Sources close to the Board of Control for Cricket in India (BCCI) indicate that Gill is unlikely to be picked in the 15-member squad for the Asia Cup, set to be played from September 9 to 28 in Dubai. The final selection meeting is scheduled for August 19, but early signs point to the selectors favoring continuity over experimentation.</p>
+
+    <h2>Why Gill Is Being Overlooked</h2>
+    <p>Despite being among the top run-scorers in IPL 2025 with 650 runs, Shubman Gill seems to be outside the current T20 plans. The team management and selectors have maintained a consistent approach since the 2024 T20 World Cup, preferring players who have been part of their long-term vision for the shortest format.</p>
+
+    <p>Gill’s last T20I appearance came in July 2024 against Sri Lanka in Pallekele. Since then, India has played multiple T20I series against Bangladesh, South Africa, and England and Gill was not selected for any of them. These exclusions suggest that the team management sees his role as more suited to Tests and possibly ODIs rather than the fast-paced T20 format.</p>
+
+    <blockquote>“If Gill is included, then he will have to open the innings. But if he doesn’t get a game, there’s no point in having him in the squad. It would also be unfair on someone like Sanju Samson who has performed consistently.” Source close to BCCI</blockquote>
+
+    <h2>Current Openers in Favor</h2>
+    <p>India has been backing <strong>Abhishek Sharma</strong> and <strong>Sanju Samson</strong> as their frontline openers, and both have shown form and composure at the top. Abhishek’s aggressive left-handed approach brings balance to the lineup, while Samson has impressed with consistent performances, adapting well to different match situations.</p>
+
+    <p>The third opener in contention is <strong>Yashasvi Jaiswal</strong>, who, although didn’t get a game during the 2024 T20 World Cup, remains a key part of the future plans. The selectors are reportedly unwilling to sacrifice Jaiswal’s spot for Gill, further indicating the strength of the current top-order options.</p>
+
+    <h2>Tilak Varma’s Spot Also Safe</h2>
+    <p>One of the more debated options among selectors was whether to replace <strong>Tilak Varma</strong> with Gill. Varma has been India’s rising star in T20Is and is currently ranked No. 2 in the ICC T20I batting rankings. Dropping him at this stage would send the wrong message to a young player who has been delivering on the international stage.</p>
+
+    <blockquote>“Dropping Varma now would be unfair. He’s performed under pressure, and the team sees him as a long-term middle-order option in T20Is.”Selector</blockquote>
+
+    <h2>Gill’s T20 Credentials Still Strong</h2>
+    <p>While the selectors are leaning toward stability, Shubman Gill’s numbers speak volumes. He was the fourth-highest run-scorer in IPL 2025, behind <strong>Sai Sudharsan (759)</strong>, <strong>Suryakumar Yadav (717)</strong>, and <strong>Virat Kohli (657)</strong>. His consistency and ability to anchor innings make him a valuable asset, but the current team philosophy seems to favor explosive and flexible players who can adapt quickly in the T20 format.</p>
+
+    <p>Interestingly, his recent leadership in the Test series against England, where a young Indian side managed a 2-2 draw, had sparked conversations about making him the all-format captain. However, selectors appear to be resisting the temptation to fast-track Gill’s rise across formats.</p>
+
+    <h2>Suryakumar Yadav to Continue as T20I Captain</h2>
+    <p>Amid these selection debates, the one constant is <strong>Suryakumar Yadav’s captaincy</strong>. He has cleared his fitness tests and will continue leading the Indian T20I side. Under Surya’s leadership, India has maintained a strong record, with no series losses to date. His form and tactical acumen have impressed the selectors, and he remains a pivotal figure in India’s T20 setup.</p>
+
+    <h2>Selectors Prioritize Continuity</h2>
+    <p>The underlying message from the selection committee seems clear: back the group that brought success in the 2024 World Cup and build on that momentum. Experimenting just before a major tournament like the Asia Cup could disrupt team balance and morale.</p>
+
+    <p>There is also a reluctance to include players who may not find a spot in the playing XI. Selectors want to avoid a scenario where a high-profile player like Shubman Gill ends up warming the bench a situation that would not only be uncomfortable but also potentially disruptive to the team environment.</p>
+
+    <h2>Final Decision Looms</h2>
+    <p>All eyes will be on the <strong>August 19 selection meeting</strong>, where BCCI secretary Devajit Saikia will join the selectors and team management for the final discussions. While a surprise inclusion cannot be completely ruled out, the tone of the conversations so far suggests that Gill may have to wait longer to make his return to T20I cricket.</p>
+
+    <p>The Asia Cup will serve as a critical platform for India to test its core players before moving toward future ICC events. With the T20 World Cup 2026 also on the horizon, the focus is firmly on grooming a stable, in-form squad with proven match-winners.</p>
+
+    <h2>Conclusion</h2>
+    <p>Shubman Gill’s exclusion from the Asia Cup T20I squad, if confirmed, will undoubtedly spark debates among fans and pundits. However, the Indian team management appears to have taken a calculated decision based on form, team balance, and recent performances.</p>
+
+    <p>While Gill remains a generational talent and an integral part of India’s red-ball future, he may need to further evolve his T20 game or wait for an opportunity when the team setup allows for his inclusion. For now, the selectors are sticking with a formula that has worked and they don’t want to fix what isn’t broken.</p>
+  `,
+                  image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/subham_gill.avif?v=1755843257"
+                },
 ];
