@@ -20,7 +20,7 @@ const Testing = () => {
     {
       id: "ai",
       label: "AI",
-      title: "Artificial Intelligence1",
+      title: "Artificial Intelligence",
       description: "Sustainable and scalable ecosystem that empowers individuals, businesses, and institutions to make better, faster, and more informed decisions.",
       image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/search-engine-optimization-digital-marketing-proc-2024-12-07-03-49-59-utc.jpg?v=1763195283",
       color: "from-blue-500 to-cyan-500",
@@ -28,7 +28,7 @@ const Testing = () => {
     },
     {
       id: "fintech",
-      label: "FINTECH1",
+      label: "FINTECH",
       title: "FINTECH",
       description: "Unlocking India’s Next Billion Users Through Accessible Digital Finance.",
       image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&q=80",
@@ -38,7 +38,7 @@ const Testing = () => {
      {
       id: "esports",
       label: "ESPORTS",
-      title: "Esports ",
+      title: "ESPORTS",
       description: "A player-first ecosystem enabling athletes to compete, grow, and achieve global recognition",
       image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Screenshot_2025-11-04_170025.png?v=1762255837",
       color: "from-purple-500 to-pink-500",
