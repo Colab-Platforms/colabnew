@@ -14,13 +14,13 @@ const Testing = () => {
   const [activeSection, setActiveSection] = useState("ai");
   const [showTabs, setShowTabs] = useState(true);
   
-  const texts = ["ARTIFICIAL INTELLIGENCE1", "FINTECH1", "ESPORTS", "TECH ESPORTS", "SEMICONDUCTOR", "DRONES", "COLAB"];
+  const texts = ["ARTIFICIAL INTELLIGENCE", "FINTECH", "ESPORTS", "TECH ESPORTS", "SEMICONDUCTOR", "DRONES", "COLAB"];
   
   const sections = [
     {
       id: "ai",
       label: "AI",
-      title: "Amish Intelligence11",
+      title: "ARTIFICIAL INTELLIGENCE",
       description: "Sustainable and scalable ecosystem that empowers individuals, businesses, and institutions to make better, faster, and more informed decisions.",
       image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/search-engine-optimization-digital-marketing-proc-2024-12-07-03-49-59-utc.jpg?v=1763195283",
       color: "from-blue-500 to-cyan-500",
