@@ -301,7 +301,7 @@ const TwoPillars = () => {
           viewport={{ once: true }}
         >
           <h3 className="text-2xl font-black text-foreground mb-8 text-center">
-            Coming Up Next12
+            Coming Up Next
           </h3>
           
           <div className="grid md:grid-cols-3 gap-6">

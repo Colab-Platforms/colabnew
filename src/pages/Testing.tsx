@@ -14,7 +14,7 @@ const Testing = () => {
   const [activeSection, setActiveSection] = useState("ai");
   const [showTabs, setShowTabs] = useState(true);
   
-  const texts = ["ARTIFICIAL INTELLIGENCE", "FINTECH", "ESPORTS", "TECH ESPORTS", "SEMICONDUCTOR", "DRONES", "COLAB"];
+  const texts = ["ARTIFICIAL INTELLIGENCE1", "FINTECH1", "ESPORTS", "TECH ESPORTS", "SEMICONDUCTOR", "DRONES", "COLAB"];
   
   const sections = [
     {
