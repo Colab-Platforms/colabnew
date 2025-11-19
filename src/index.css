@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Font - Aloevera Display */
+@font-face {
+  font-family: 'Aloevera Display';
+  src: url('./assets/TTF/AloeveraDisplay-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aloevera Display';
+  src: url('./assets/TTF/AloeveraDisplay-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aloevera Display';
+  src: url('./assets/TTF/AloeveraDisplay-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aloevera Display';
+  src: url('./assets/TTF/AloeveraDisplay-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aloevera Display';
+  src: url('./assets/TTF/AloeveraDisplay-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 8% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 8% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 270 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 320 70% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 240 6% 20%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 270 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 270 40% 15%;
+    --input: 270 40% 15%;
+    --ring: 270 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Premium gradients */
+    --gradient-primary: linear-gradient(135deg, #8500ff 0%, #d946a6 100%);
+    --gradient-secondary: linear-gradient(135deg, #d946a6 0%, #8500ff 100%);
+    --gradient-mesh: radial-gradient(at 0% 0%, rgba(133, 0, 255, 0.3) 0px, transparent 50%),
+                      radial-gradient(at 100% 100%, rgba(217, 70, 166, 0.2) 0px, transparent 50%);
+    
+    /* Shadows */
+    --shadow-glow: 0 0 60px rgba(133, 0, 255, 0.4);
+    --shadow-soft: 0 20px 60px hsl(240 10% 3% / 0.5);
+    
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Aloevera Display';
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Aloevera Display';
+  }
+
+  /* Blog Content Styling */
+  .prose {
+    @apply text-foreground;
+  }
+  
+  .prose h2 {
+    @apply text-3xl font-bold mt-12 mb-6 text-foreground;
+  }
+  
+  .prose h3 {
+    @apply text-2xl font-bold mt-8 mb-4 text-foreground;
+  }
+  
+  .prose p {
+    @apply text-lg leading-relaxed mb-6 text-muted-foreground;
+  }
+  
+  .prose strong {
+    @apply text-foreground font-bold;
+  }
+  
+  .prose blockquote {
+    @apply border-l-4 border-primary pl-6 py-2 my-8 italic text-foreground/90 bg-primary/5 rounded-r-lg;
+  }
+  
+  .prose ul, .prose ol {
+    @apply my-6 ml-6 space-y-2;
+  }
+  
+  .prose li {
+    @apply text-muted-foreground leading-relaxed;
+  }
+  
+  .prose a {
+    @apply text-primary hover:text-primary/80 underline transition-colors;
+  }
+}
+
+@layer utilities {
+  @keyframes gradient {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 3s ease infinite;
+  }
+}
+
+/* Hide scrollbar for horizontal scroll */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
