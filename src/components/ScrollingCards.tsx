@@ -35,6 +35,12 @@ const ventures = [
     excerpt: "AI-powered autonomous drones with multi-sector applications in surveillance, security, and agriculture.",
     image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=1200&q=80",
   },
+  {
+    tagline: "Chip Innovation",
+    title: "Semiconductor",
+    excerpt: "Powering India's semiconductor future with long-term value creation and advanced chip design capabilities.",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80",
+  },
 ];
 
 export default function ScrollingCards() {
