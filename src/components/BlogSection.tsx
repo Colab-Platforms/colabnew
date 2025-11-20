@@ -27,8 +27,8 @@ const BlogSection = () => {
     loadBlogs();
   }, []);
 
-  // Get only first 6 blog posts (same as Blog.tsx shows)
-  const displayPosts = blogPosts.slice(0, 6);
+  // Get only first 4 blog posts
+  const displayPosts = blogPosts.slice(0, 4);
 
   // Auto-rotate blogs every 5 seconds
   useEffect(() => {
@@ -109,7 +109,7 @@ const BlogSection = () => {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="relative h-[600px] overflow-hidden group cursor-pointer shadow-2xl"
+            className="relative h-[300px] md:h-[600px] overflow-hidden group cursor-pointer shadow-2xl"
             onClick={() => window.location.href = `/blog/${displayPosts[activeIndex].slug}`}
             whileHover={{ scale: 1.02 }}
           >
@@ -200,8 +200,8 @@ const BlogSection = () => {
           </motion.div>
         </div>
 
-        {/* Thumbnail Grid Below */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        {/* Thumbnail Grid Below - Desktop Grid, Mobile Slider */}
+        <div className="hidden lg:grid lg:grid-cols-4 gap-6">
           {displayPosts.map((post, index) => (
             <motion.button
               key={post.slug}
@@ -211,7 +211,7 @@ const BlogSection = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
               whileHover={{ y: -5, scale: 1.05 }}
-              className={`relative h-64 overflow-hidden transition-all duration-300 ${
+              className={`relative h-80 overflow-hidden transition-all duration-300 ${
                 activeIndex === index 
                   ? 'ring-2 ring-primary shadow-xl shadow-primary/50' 
                   : 'opacity-70 hover:opacity-100'
@@ -223,39 +223,11 @@ const BlogSection = () => {
                 alt={post.title}
                 className="absolute inset-0 w-full h-full object-cover"
               />
-              
-              {/* Overlay */}
-              <div className={`absolute inset-0 transition-all duration-300 ${
-                activeIndex === index
-                  ? 'bg-gradient-to-t from-black/80 to-black/20'
-                  : 'bg-gradient-to-t from-black/90 to-black/40'
-              }`} />
-              
-              {/* Content */}
-              <div className="absolute inset-0 p-3 flex flex-col justify-end">
-                <span className={`text-xs font-bold uppercase tracking-wider w-fit px-2 py-1 rounded-full mb-2 ${
-                  activeIndex === index
-                    ? 'bg-primary/40 text-primary border border-primary/60'
-                    : 'bg-white/10 text-white/70'
-                }`}>
-                  {post.category || 'Blog'}
-                </span>
-                
-                <h4 className="text-xs text-white line-clamp-2 font-semibold">
-                  {post.title}
-                </h4>
-              </div>
-
-              {/* Active Indicator */}
-              {activeIndex === index && (
-                <motion.div
-                  layoutId="activeBlog"
-                  className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-primary"
-                />
-              )}
             </motion.button>
           ))}
         </div>
+
+
 
 
       </div>

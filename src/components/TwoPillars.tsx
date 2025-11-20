@@ -125,63 +125,41 @@ const TwoPillars = () => {
           </p>
         </motion.div>
 
-        {/* Photo/Video Toggle */}
+        {/* Photo/Video Toggle - Simple Side by Side */}
         <motion.div 
-          className="flex justify-center mb-12"
+          className="flex justify-center gap-8 mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <div className="inline-flex p-2 rounded-2xl bg-white/5 border border-white/10">
-            <button
-              onClick={() => {
-                setMediaType("photos");
-                setCurrentIndex(0);
-              }}
-              className={`relative px-8 py-4 rounded-xl font-bold transition-all duration-300 ${
-                mediaType === "photos" ? "text-white" : "text-muted-foreground"
-              }`}
-            >
-              {mediaType === "photos" && (
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-primary to-primary/80 rounded-xl"
-                  layoutId="mediaTab"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                />
-              )}
-              <span className="relative z-10 flex items-center gap-2">
-                <ImageIcon className="w-5 h-5" />
-                Photos
-              </span>
-            </button>
+          <button
+            onClick={() => {
+              setMediaType("photos");
+              setCurrentIndex(0);
+            }}
+            className={`text-2xl transition-all duration-300 ${
+              mediaType === "photos" ? "text-white font-bold" : "text-white/50 font-normal"
+            }`}
+          >
+            Images
+          </button>
 
-            <button
-              onClick={() => {
-                setMediaType("videos");
-                setCurrentIndex(0);
-              }}
-              className={`relative px-8 py-4 rounded-xl font-bold transition-all duration-300 ${
-                mediaType === "videos" ? "text-white" : "text-muted-foreground"
-              }`}
-            >
-              {mediaType === "videos" && (
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-secondary to-secondary/80 rounded-xl"
-                  layoutId="mediaTab"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                />
-              )}
-              <span className="relative z-10 flex items-center gap-2">
-                <Video className="w-5 h-5" />
-                Videos
-              </span>
-            </button>
-          </div>
+          <button
+            onClick={() => {
+              setMediaType("videos");
+              setCurrentIndex(0);
+            }}
+            className={`text-2xl transition-all duration-300 ${
+              mediaType === "videos" ? "text-white font-bold" : "text-white/50 font-normal"
+            }`}
+          >
+            Videos
+          </button>
         </motion.div>
 
-        {/* Main Display */}
+        {/* Main Display - Hidden on Mobile */}
         <motion.div 
-          className="w-full"
+          className="w-full hidden md:block"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

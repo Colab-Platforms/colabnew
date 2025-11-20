@@ -156,6 +156,8 @@ const About = () => {
         </div>
       </section>
 
+ 
+
       {/* Our Story - Two Column */}
       <section className="relative py-32 overflow-hidden">
         <div className="container relative z-10 px-6 lg:px-8">
@@ -216,6 +218,10 @@ const About = () => {
           </div>
         </div>
       </section>
+
+
+
+      
 
       {/* Ecosystem Tabs - Interactive */}
       <section className="relative py-32 overflow-hidden bg-gradient-to-b from-background to-primary/5">
