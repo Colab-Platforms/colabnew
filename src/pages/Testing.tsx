@@ -1,88 +1,78 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import Mission from "@/components/Mission";
+import VideoShowcase from "@/components/VideoShowcase";
+import TwoPillars from "@/components/TwoPillars";
+import Services from "@/components/Services";
+import BlogSection from "@/components/BlogSection";
+import InvestorRelations from "@/components/InvestorRelations";
+import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import InfinityCursor from "@/components/InfinityCursor";
-import ScrollingCards from "@/components/ScrollingCards";
-import TwoPillars from "@/components/TwoPillars";
-import BlogSection from "@/components/BlogSection";
-import CTA from "@/components/CTA";
-import InvestorRelations from "@/components/InvestorRelations";
+import Preloader from "@/components/Preloader";
 
-const Testing = () => {
-  const [currentText, setCurrentText] = useState(0);
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
-  const texts = ["ARTIFICIAL INTELLIGENCE", "FINTECH", "ESPORTS", "TECH ESPORTS", "SEMICONDUCTOR", "DRONES", "COLAB"];
+const AnimatedSection = ({ 
+  children, 
+  direction = "left" 
+}: { 
+  children: React.ReactNode; 
+  direction?: "left" | "right" 
+}) => {
+  const { ref, isVisible } = useScrollAnimation();
+  
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-1000 ease-out ${
+        isVisible
+          ? "opacity-100 translate-x-0"
+          : direction === "left"
+          ? "opacity-0 -translate-x-20"
+          : "opacity-0 translate-x-20"
+      }`}
+    >
+      {children}
+    </div>
+  );
+};
 
-  // Auto-rotate hero text
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentText((prev) => (prev + 1) % texts.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [texts.length]);
-
+const Index = () => {
   return (
     <>
+      <Preloader />
       <div className="min-h-screen bg-background text-foreground">
         <InfinityCursor />
         <Header />
-
-        {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0">
-            <video autoPlay loop muted playsInline className="w-full h-full object-cover">
-              <source src="https://cdn.shopify.com/videos/c/o/v/6064f36abdd74e889b9d65606a5700ad.mp4" type="video/mp4" />
-            </video>
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
-          </div>
-
-          <div className="relative z-10 text-center px-6">
-            <motion.h1
-              className="mb-8"
-              style={{ fontFamily: "'Aloevera Display', serif", letterSpacing: '2.1px', fontWeight: 700 }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <span className="block text-white mb-6 text-5xl md:text-8xl lg:text-9xl xl:text-[12rem]">We Are</span>
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={currentText}
-                  className="block bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent text-4xl md:text-6xl lg:text-7xl xl:text-8xl"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  {texts[currentText]}
-                </motion.span>
-              </AnimatePresence>
-            </motion.h1>
-          </div>
-
-          <motion.div
-            className="absolute bottom-10 left-1/2 -translate-x-1/2"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center pt-2">
-              <div className="w-1 h-3 bg-white/50 rounded-full" />
-            </div>
-          </motion.div>
-        </section>
-
-        {/* Scrolling Cards Section */}
-        <ScrollingCards />
-
+        <Hero />
+         <AnimatedSection direction="left">
+        <Services />
+      </AnimatedSection>
+      <AnimatedSection direction="left">
+        <Mission />
+      </AnimatedSection>
+      <AnimatedSection direction="right">
+        <VideoShowcase />
+      </AnimatedSection>
+      <AnimatedSection direction="left">
         <TwoPillars />
+      </AnimatedSection>
+
+      <AnimatedSection direction="left">
         <BlogSection />
+      </AnimatedSection>
+   
+      <AnimatedSection direction="right">
         <InvestorRelations />
+      </AnimatedSection>
+      <AnimatedSection direction="right">
         <CTA />
-        <Footer />
+      </AnimatedSection>
+      <Footer />
       </div>
     </>
   );
 };
 
-export default Testing;
+export default Index;
