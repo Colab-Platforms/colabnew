@@ -117,15 +117,15 @@ const InvestorRelations = () => {
                             <span className="px-2 py-1 bg-primary/20 text-primary text-xs font-semibold rounded">
                               {doc.category}
                             </span>
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-xs text-white/60">
                               {formatDisplayDate(doc.date)}
                             </span>
                           </div>
-                          <h4 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2 mb-2">
+                          <h4 className="text-sm font-semibold text-white group-hover:text-primary transition-colors line-clamp-2 mb-2">
                             {doc.subject}
                           </h4>
                           {doc.description && (
-                            <p className="text-xs text-muted-foreground line-clamp-1">
+                            <p className="text-xs text-white/70 line-clamp-1">
                               {doc.description}
                             </p>
                           )}
