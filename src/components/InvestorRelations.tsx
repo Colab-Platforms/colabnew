@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { FileText, TrendingUp, TrendingDown, Activity, Clock, ChevronRight, Download, ExternalLink } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FileText, TrendingUp, TrendingDown, ChevronRight, Download, ChevronDown } from 'lucide-react';
 import { fetchBSEStockData, formatCurrency, formatIndianNumber, StockData } from '../services/bseService';
 import { fetchBSECompliance, formatDisplayDate, ComplianceDocument } from '../services/bseComplianceService';
-import BSEStockWidget from './BSEStockWidget';
 
 const InvestorRelations = () => {
   const [stockData, setStockData] = useState<StockData | null>(null);
   const [complianceDocs, setComplianceDocs] = useState<ComplianceDocument[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showMoreDetails, setShowMoreDetails] = useState(false);
 
   useEffect(() => {
     const loadData = async () => {
@@ -199,47 +199,94 @@ const InvestorRelations = () => {
                     </div>
                   </div>
 
-                  {/* All Stock Details */}
-                  <div className="space-y-3">
-                    {/* Previous Close */}
-                    <div className="flex items-center justify-between py-3 border-b border-white/10">
-                      <span className="text-sm text-muted-foreground">Previous Close</span>
-                      <span className="text-lg font-bold text-foreground">
-                        {stockData.previousClose ? formatCurrency(stockData.previousClose) : '-'}
-                      </span>
-                    </div>
+                  {/* All Stock Details - Collapsible */}
+                  <div>
+                    <button
+                      onClick={() => setShowMoreDetails(!showMoreDetails)}
+                      className="w-full flex items-center justify-between py-3 border-b border-white/10 hover:bg-white/5 transition-colors rounded-lg px-2"
+                    >
+                      <span className="text-sm text-muted-foreground">Stock Details</span>
+                      <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform ${showMoreDetails ? 'rotate-180' : ''}`} />
+                    </button>
+                    
+                    {/* Expandable Stock Details */}
+                    <AnimatePresence>
+                      {showMoreDetails && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="space-y-3 pt-3">
+                            {/* Previous Close */}
+                            <div className="flex items-center justify-between py-3 border-b border-white/10">
+                              <span className="text-sm text-muted-foreground">Previous Close</span>
+                              <span className="text-lg font-bold text-foreground">
+                                {stockData.previousClose ? formatCurrency(stockData.previousClose) : '-'}
+                              </span>
+                            </div>
 
-                    {/* Open */}
-                    <div className="flex items-center justify-between py-3 border-b border-white/10">
-                      <span className="text-sm text-muted-foreground">Open</span>
-                      <span className="text-lg font-bold text-foreground">
-                        {stockData.open ? formatCurrency(stockData.open) : '-'}
-                      </span>
-                    </div>
+                            {/* Open */}
+                            <div className="flex items-center justify-between py-3 border-b border-white/10">
+                              <span className="text-sm text-muted-foreground">Open</span>
+                              <span className="text-lg font-bold text-foreground">
+                                {stockData.open ? formatCurrency(stockData.open) : '-'}
+                              </span>
+                            </div>
 
-                    {/* High */}
-                    <div className="flex items-center justify-between py-3 border-b border-white/10">
-                      <span className="text-sm text-muted-foreground">High</span>
-                      <span className="text-lg font-bold text-green-400">
-                        {stockData.high ? formatCurrency(stockData.high) : '-'}
-                      </span>
-                    </div>
+                            {/* High */}
+                            <div className="flex items-center justify-between py-3 border-b border-white/10">
+                              <span className="text-sm text-muted-foreground">High</span>
+                              <span className="text-lg font-bold text-green-400">
+                                {stockData.high ? formatCurrency(stockData.high) : '-'}
+                              </span>
+                            </div>
 
-                    {/* Low */}
-                    <div className="flex items-center justify-between py-3 border-b border-white/10">
-                      <span className="text-sm text-muted-foreground">Low</span>
-                      <span className="text-lg font-bold text-red-400">
-                        {stockData.low ? formatCurrency(stockData.low) : '-'}
-                      </span>
-                    </div>
+                            {/* Low */}
+                            <div className="flex items-center justify-between py-3 border-b border-white/10">
+                              <span className="text-sm text-muted-foreground">Low</span>
+                              <span className="text-lg font-bold text-red-400">
+                                {stockData.low ? formatCurrency(stockData.low) : '-'}
+                              </span>
+                            </div>
 
-                    {/* Volume */}
-                    <div className="flex items-center justify-between py-3">
-                      <span className="text-sm text-muted-foreground">Volume</span>
-                      <span className="text-lg font-bold text-foreground">
-                        {formatIndianNumber(stockData.volume)}
-                      </span>
-                    </div>
+                            {/* Volume */}
+                            <div className="flex items-center justify-between py-3 border-b border-white/10">
+                              <span className="text-sm text-muted-foreground">Volume</span>
+                              <span className="text-lg font-bold text-foreground">
+                                {formatIndianNumber(stockData.volume)}
+                              </span>
+                            </div>
+
+                            {/* Additional Details */}
+                            <div className="pt-3 space-y-2 border-t border-white/10">
+                              <div className="flex justify-between items-center py-2 bg-white/5 rounded-lg px-3">
+                                <span className="text-xs text-muted-foreground">52 Week High</span>
+                                <span className="text-sm font-semibold text-green-400">₹250.00</span>
+                              </div>
+                              <div className="flex justify-between items-center py-2 bg-white/5 rounded-lg px-3">
+                                <span className="text-xs text-muted-foreground">52 Week Low</span>
+                                <span className="text-sm font-semibold text-red-400">₹180.00</span>
+                              </div>
+                              <div className="flex justify-between items-center py-2 bg-white/5 rounded-lg px-3">
+                                <span className="text-xs text-muted-foreground">Market Cap</span>
+                                <span className="text-sm font-semibold text-foreground">₹500 Cr</span>
+                              </div>
+                              <div className="flex justify-between items-center py-2 bg-white/5 rounded-lg px-3">
+                                <span className="text-xs text-muted-foreground">P/E Ratio</span>
+                                <span className="text-sm font-semibold text-foreground">15.5</span>
+                              </div>
+                              <div className="flex justify-between items-center py-2 bg-white/5 rounded-lg px-3">
+                                <span className="text-xs text-muted-foreground">Dividend Yield</span>
+                                <span className="text-sm font-semibold text-foreground">2.5%</span>
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
 
                   <div className="mt-4 pt-4 border-t border-white/10">
