@@ -106,7 +106,7 @@ const InvestorRelations = () => {
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
-                      className="bg-[#222222] hover:bg-[#2a2a2a] transition-all duration-300 p-6 rounded-xl border border-white/5 hover:border-primary/30 group"
+                      className="bg-black hover:bg-black/80 transition-all duration-300 p-6 rounded-xl border border-white/10 hover:border-primary/30 group"
                     >
                       <div className="flex items-start gap-4">
                         <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -169,11 +169,11 @@ const InvestorRelations = () => {
             >
               {/* Stock Price Card */}
               {stockData && stockData.currentPrice > 0 && (
-                <div className="bg-gradient-to-br from-[#222222] to-[#1a1a1a] p-6 rounded-2xl border border-white/10">
+                <div className="bg-black p-6 rounded-2xl border border-white/10">
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <h3 className="text-xl font-bold text-foreground">{stockData.symbol}</h3>
-                      <p className="text-xs text-muted-foreground">Colab Platforms Ltd</p>
+                      <h3 className="text-xl font-bold text-white">{stockData.symbol}</h3>
+                      <p className="text-xs text-white/60">Colab Platforms Ltd</p>
                     </div>
                     <div className={`px-2 py-1 rounded-full text-xs font-semibold ${
                       stockData.status === 'open' 
@@ -185,7 +185,7 @@ const InvestorRelations = () => {
                   </div>
 
                   <div className="mb-4">
-                    <div className="text-3xl font-black text-foreground">
+                    <div className="text-3xl font-black text-white">
                       {formatCurrency(stockData.currentPrice)}
                     </div>
                     <div className={`flex items-center gap-1 text-sm font-semibold ${
@@ -205,8 +205,8 @@ const InvestorRelations = () => {
                       onClick={() => setShowMoreDetails(!showMoreDetails)}
                       className="w-full flex items-center justify-between py-3 border-b border-white/10 hover:bg-white/5 transition-colors rounded-lg px-2"
                     >
-                      <span className="text-sm text-muted-foreground">Stock Details</span>
-                      <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform ${showMoreDetails ? 'rotate-180' : ''}`} />
+                      <span className="text-sm text-white">Stock Details</span>
+                      <ChevronDown className={`w-5 h-5 text-white transition-transform ${showMoreDetails ? 'rotate-180' : ''}`} />
                     </button>
                     
                     {/* Expandable Stock Details */}
@@ -222,40 +222,40 @@ const InvestorRelations = () => {
                           <div className="space-y-3 pt-3">
                             {/* Previous Close */}
                             <div className="flex items-center justify-between py-3 border-b border-white/10">
-                              <span className="text-sm text-muted-foreground">Previous Close</span>
-                              <span className="text-lg font-bold text-foreground">
+                              <span className="text-sm text-white/70">Previous Close</span>
+                              <span className="text-lg font-bold text-white">
                                 {stockData.previousClose ? formatCurrency(stockData.previousClose) : '-'}
                               </span>
                             </div>
 
                             {/* Open */}
                             <div className="flex items-center justify-between py-3 border-b border-white/10">
-                              <span className="text-sm text-muted-foreground">Open</span>
-                              <span className="text-lg font-bold text-foreground">
+                              <span className="text-sm text-white/70">Open</span>
+                              <span className="text-lg font-bold text-white">
                                 {stockData.open ? formatCurrency(stockData.open) : '-'}
                               </span>
                             </div>
 
                             {/* High */}
                             <div className="flex items-center justify-between py-3 border-b border-white/10">
-                              <span className="text-sm text-muted-foreground">High</span>
-                              <span className="text-lg font-bold text-green-400">
+                              <span className="text-sm text-white/70">High</span>
+                              <span className="text-lg font-bold text-white">
                                 {stockData.high ? formatCurrency(stockData.high) : '-'}
                               </span>
                             </div>
 
                             {/* Low */}
                             <div className="flex items-center justify-between py-3 border-b border-white/10">
-                              <span className="text-sm text-muted-foreground">Low</span>
-                              <span className="text-lg font-bold text-red-400">
+                              <span className="text-sm text-white/70">Low</span>
+                              <span className="text-lg font-bold text-white">
                                 {stockData.low ? formatCurrency(stockData.low) : '-'}
                               </span>
                             </div>
 
                             {/* Volume */}
                             <div className="flex items-center justify-between py-3 border-b border-white/10">
-                              <span className="text-sm text-muted-foreground">Volume</span>
-                              <span className="text-lg font-bold text-foreground">
+                              <span className="text-sm text-white/70">Volume</span>
+                              <span className="text-lg font-bold text-white">
                                 {formatIndianNumber(stockData.volume)}
                               </span>
                             </div>
@@ -263,24 +263,24 @@ const InvestorRelations = () => {
                             {/* Additional Details */}
                             <div className="pt-3 space-y-2 border-t border-white/10">
                               <div className="flex justify-between items-center py-2 bg-white/5 rounded-lg px-3">
-                                <span className="text-xs text-muted-foreground">52 Week High</span>
-                                <span className="text-sm font-semibold text-green-400">₹250.00</span>
+                                <span className="text-xs text-white/70">52 Week High</span>
+                                <span className="text-sm font-semibold text-white">₹250.00</span>
                               </div>
                               <div className="flex justify-between items-center py-2 bg-white/5 rounded-lg px-3">
-                                <span className="text-xs text-muted-foreground">52 Week Low</span>
-                                <span className="text-sm font-semibold text-red-400">₹180.00</span>
+                                <span className="text-xs text-white/70">52 Week Low</span>
+                                <span className="text-sm font-semibold text-white">₹180.00</span>
                               </div>
                               <div className="flex justify-between items-center py-2 bg-white/5 rounded-lg px-3">
-                                <span className="text-xs text-muted-foreground">Market Cap</span>
-                                <span className="text-sm font-semibold text-foreground">₹500 Cr</span>
+                                <span className="text-xs text-white/70">Market Cap</span>
+                                <span className="text-sm font-semibold text-white">₹500 Cr</span>
                               </div>
                               <div className="flex justify-between items-center py-2 bg-white/5 rounded-lg px-3">
-                                <span className="text-xs text-muted-foreground">P/E Ratio</span>
-                                <span className="text-sm font-semibold text-foreground">15.5</span>
+                                <span className="text-xs text-white/70">P/E Ratio</span>
+                                <span className="text-sm font-semibold text-white">15.5</span>
                               </div>
                               <div className="flex justify-between items-center py-2 bg-white/5 rounded-lg px-3">
-                                <span className="text-xs text-muted-foreground">Dividend Yield</span>
-                                <span className="text-sm font-semibold text-foreground">2.5%</span>
+                                <span className="text-xs text-white/70">Dividend Yield</span>
+                                <span className="text-sm font-semibold text-white">2.5%</span>
                               </div>
                             </div>
                           </div>
@@ -290,12 +290,12 @@ const InvestorRelations = () => {
                   </div>
 
                   <div className="mt-4 pt-4 border-t border-white/10">
-                    <p className="text-xs text-muted-foreground text-center">
+                    <p className="text-xs text-white/50 text-center">
                       {stockData.currentPrice > 0 && stockData.volume > 0 
                         ? '✅ Live data from TwelveData API • Updates every 5 min'
                         : '⚠️ Using fallback data - API unavailable'}
                     </p>
-                    <p className="text-xs text-muted-foreground text-center mt-1">
+                    <p className="text-xs text-white/50 text-center mt-1">
                       Last updated: {new Date(stockData.lastUpdated).toLocaleTimeString('en-IN')}
                     </p>
                   </div>
