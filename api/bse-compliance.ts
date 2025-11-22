@@ -20,7 +20,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const params = new URLSearchParams({
       strCat: '-1',
       strPrevDate: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-      strScrip: '539528', // Colab Platforms BSE code
+      strScrip: '542866', // Colab Platforms BSE code
       strSearch: 'P',
       strToDate: new Date().toISOString().split('T')[0],
       strType: 'C'
@@ -52,12 +52,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(200).json({
       Table: [
         {
-          SCRIP_CD: '539528',
+          SCRIP_CD: '542866',
           COMPANY_NAME: 'Colab Platforms Ltd',
           NEWS_SUBJECT: 'Financial Results',
           NEWSSUB: 'Quarterly Results - Q2 FY2024',
           NEWS_DT: new Date().toISOString(),
-          ATTACHMENT: 'https://www.bseindia.com/stock-share-price/colab-platforms-ltd/colab/539528/'
+          ATTACHMENT: 'https://www.bseindia.com/stock-share-price/colab-platforms-ltd/colab/542866/'
         }
       ],
       error: error.message

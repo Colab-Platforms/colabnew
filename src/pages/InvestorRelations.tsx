@@ -134,7 +134,7 @@ const InvestorRelations = () => {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#5d184e]/10 border border-[#5d184e]/30 backdrop-blur-sm"
             >
               <div className="w-2 h-2 bg-[#5d184e] rounded-full animate-pulse" />
-              <span className="text-sm font-semibold text-[#5d184e]">Listed on BSE | Code: 539528</span>
+              <span className="text-sm font-semibold text-[#5d184e]">Listed on BSE | Code: 542866</span>
             </motion.div>
 
             {/* Main Heading */}
@@ -409,7 +409,7 @@ const InvestorRelations = () => {
                 {/* Header */}
                 <div className="flex items-center justify-between mb-6">
                   <div>
-                    <h3 className="text-2xl font-bold text-white">BSE: 539528</h3>
+                    <h3 className="text-2xl font-bold text-white">BSE: 542866</h3>
                     <p className="text-sm text-gray-400 mt-1">Colab Platforms Ltd</p>
                   </div>
                   <div className={`px-3 py-1 rounded-full text-xs font-semibold ${
@@ -527,7 +527,7 @@ const InvestorRelations = () => {
                 <h4 className="text-lg font-bold text-white mb-4">Quick Links</h4>
                 <div className="space-y-3">
                   <a
-                    href="https://www.bseindia.com/stock-share-price/colab-platforms-ltd/colabplat/539528/"
+                    href="https://www.bseindia.com/stock-share-price/colab-platforms-ltd/colabplat/542866/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg hover:bg-gray-800 transition-colors group"

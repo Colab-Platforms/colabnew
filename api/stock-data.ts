@@ -70,7 +70,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       ((hour === 9 && minute >= 15) || (hour > 9 && hour < 15) || (hour === 15 && minute <= 30));
     
     const stockData = {
-      symbol: 'BSE: 539528',
+      symbol: 'BSE: 542866',
       companyName: 'Colab Platforms Ltd',
       currentPrice: parseFloat(currentPrice.toFixed(2)),
       change: parseFloat(change.toFixed(2)),
@@ -93,7 +93,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     
     // Fallback data return karo
     return res.status(200).json({
-      symbol: 'BSE: 539528',
+      symbol: 'BSE: 542866',
       companyName: 'Colab Platforms Ltd',
       currentPrice: 200.60,
       change: -2.00,

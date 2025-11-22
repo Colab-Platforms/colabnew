@@ -20,7 +20,7 @@ export interface StockData {
 // TwelveData API Configuration
 const TWELVEDATA_API_KEY = '4049c8eebfd744959155f76559bb50a4';
 const NSE_CODE = '542866';
-const BSE_CODE = '539528';
+const BSE_CODE = '542866';
 
 // Cache to optimize API usage (800 calls/day limit)
 let cachedData: StockData | null = null;
@@ -88,7 +88,7 @@ const getFallbackStockData = async (): Promise<StockData> => {
   
   // Final fallback with BSE real data (update manually)
   return {
-    symbol: `NSE: ${NSE_CODE}`,
+    symbol: `BSE: ${BSE_CODE}`,
     companyName: 'Colab Platforms Ltd',
     currentPrice: 200.60,
     change: -2.00,

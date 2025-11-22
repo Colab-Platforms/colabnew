@@ -20,7 +20,7 @@ export interface ComplianceFilters {
 }
 
 // BSE API Configuration
-const BSE_COMPANY_CODE = '539528';
+const BSE_COMPANY_CODE = '542866';
 const BSE_API_BASE = 'https://api.bseindia.com/BseIndiaAPI/api';
 
 // Cache for compliance data
@@ -61,7 +61,7 @@ export const fetchBSECompliance = async (
         category: item.NEWSSUB || 'General Updates',
         subject: item.NEWS_SUBJECT || item.COMPANY_NAME || 'BSE Announcement',
         description: item.NEWSSUB,
-        pdfUrl: item.ATTACHMENT || `https://www.bseindia.com/stock-share-price/colab-platforms-ltd/colab/539528/`,
+        pdfUrl: item.ATTACHMENT || `https://www.bseindia.com/stock-share-price/colab-platforms-ltd/colab/542866/`,
         exchange: 'BSE' as const
       }));
       
@@ -140,7 +140,7 @@ const getCurrentDate = (): string => {
   return `${year}${month}${day}`;
 };
 
-// Fallback data when API fails (Colab Platforms Ltd - BSE: 539528, NSE: 542866)
+// Fallback data when API fails (Colab Platforms Ltd - BSE: 542866)
 const getFallbackComplianceData = (): ComplianceDocument[] => {
   const today = new Date();
   return [
@@ -149,7 +149,7 @@ const getFallbackComplianceData = (): ComplianceDocument[] => {
       date: new Date(today.getTime() - 2 * 24 * 60 * 60 * 1000).toISOString(),
       category: 'Financial Results',
       subject: 'Colab Platforms Ltd - Unaudited Financial Results Q3 FY 2024-25',
-      description: 'Financial Results for Colab Platforms Ltd (BSE: 539528, NSE: 542866) for the quarter ended December 31, 2024',
+      description: 'Financial Results for Colab Platforms Ltd (BSE: 542866) for the quarter ended December 31, 2024',
       pdfUrl: 'https://www.bseindia.com/stock-share-price/colab-platforms-ltd/colabplat/542866/',
       exchange: 'BSE'
     },

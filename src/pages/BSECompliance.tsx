@@ -92,7 +92,7 @@ const BSECompliance = () => {
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#5d184e]/10 border border-[#5d184e]/30 backdrop-blur-sm">
                 <FileText className="w-4 h-4 text-[#5d184e]" />
-                <span className="text-sm font-semibold text-[#5d184e]">BSE Code: 539528</span>
+                <span className="text-sm font-semibold text-[#5d184e]">BSE Code: 542866</span>
               </div>
 
               {/* Title */}
@@ -248,7 +248,7 @@ const BSECompliance = () => {
                           </button>
                         )}
                         <a
-                          href={`https://www.bseindia.com/corporates/ann.html?scrip=539528`}
+                          href={`https://www.bseindia.com/corporates/ann.html?scrip=542866`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="p-2 bg-gray-800/50 rounded-lg hover:bg-gray-800 transition-colors"
@@ -277,7 +277,7 @@ const BSECompliance = () => {
             className="mt-12 text-center"
           >
             <a
-              href="https://www.bseindia.com/corporates/ann.html?scrip=539528"
+              href="https://www.bseindia.com/corporates/ann.html?scrip=542866"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#5d184e] to-purple-600 text-white font-semibold rounded-xl hover:scale-105 transition-transform"

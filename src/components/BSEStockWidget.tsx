@@ -77,9 +77,7 @@ const BSEStockWidget = () => {
       <div className="bg-black/30 rounded-xl p-4 text-center">
         <p className="text-xs text-muted-foreground mb-2">Colab Platforms Ltd</p>
         <div className="flex items-center justify-center gap-4 text-xs">
-          <span className="text-foreground">NSE: <span className="font-bold text-primary">542866</span></span>
-          <span className="text-muted-foreground">|</span>
-          <span className="text-foreground">BSE: <span className="font-bold text-secondary">539528</span></span>
+          <span className="text-foreground">BSE: <span className="font-bold text-primary">542866</span></span>
         </div>
         <p className="text-xs text-muted-foreground mt-2">ISIN: INE317W01030</p>
       </div>
