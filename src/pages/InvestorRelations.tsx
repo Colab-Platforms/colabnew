@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FileText, Download, ChevronRight, TrendingUp, TrendingDown, Activity, Clock } from 'lucide-react';
+import { FileText, Download, ChevronRight, TrendingUp, TrendingDown, Activity, Clock, ChevronDown } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 // Import the investor data
@@ -28,6 +28,7 @@ const InvestorRelations = () => {
   const [categories, setCategories] = useState<Category[]>(investorDataLocal);
   const [loading, setLoading] = useState(true);
   const [stockData, setStockData] = useState<StockData | null>(null);
+  const [showMoreDetails, setShowMoreDetails] = useState(false);
   const [notices, setNotices] = useState<Notice[]>(noticesData);
 
   // Fetch investor documents from Firebase

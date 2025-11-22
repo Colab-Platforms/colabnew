@@ -57,7 +57,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           NEWS_SUBJECT: 'Financial Results',
           NEWSSUB: 'Quarterly Results - Q2 FY2024',
           NEWS_DT: new Date().toISOString(),
-          ATTACHMENT: 'https://www.bseindia.com/stock-share-price/colab-platforms-ltd/colab/542866/'
+          ATTACHMENT: 'https://www.bseindia.com/stock-share-price/colab-platforms-ltd/colab/539528/'
         }
       ],
       error: error.message

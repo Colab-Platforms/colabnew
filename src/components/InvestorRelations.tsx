@@ -255,54 +255,9 @@ const InvestorRelations = () => {
                 </div>
               )}
 
-              {/* Live BSE Widget */}
-              <div className="bg-[#222222] p-6 rounded-xl border border-white/10">
-                <div className="flex items-center justify-between mb-4">
-                  <h4 className="text-lg font-bold text-foreground">Live BSE Data</h4>
-                  <a
-                    href="https://www.bseindia.com/stock-share-price/colab-platforms-ltd/colabplat/542866/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:text-secondary text-xs flex items-center gap-1"
-                  >
-                    <ExternalLink className="w-3 h-3" />
-                    View on BSE
-                  </a>
-                </div>
-                <BSEStockWidget />
-              </div>
+    
 
-              {/* Quick Links */}
-              <div className="bg-[#222222] p-6 rounded-xl border border-white/10">
-                <h4 className="text-lg font-bold text-foreground mb-4">Quick Links</h4>
-                <div className="space-y-3">
-                  <a
-                    href="/investor-relations"
-                    className="flex items-center justify-between p-3 bg-black/30 rounded-lg hover:bg-primary/10 transition-colors group"
-                  >
-                    <span className="text-sm text-foreground">Investor Relations</span>
-                    <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
-                  </a>
-                  <a
-                    href="https://www.nseindia.com/get-quotes/equity?symbol=COLAB"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 bg-black/30 rounded-lg hover:bg-primary/10 transition-colors group"
-                  >
-                    <span className="text-sm text-foreground">NSE India</span>
-                    <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
-                  </a>
-                  <a
-                    href="https://www.screener.in/company/542866/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 bg-black/30 rounded-lg hover:bg-primary/10 transition-colors group"
-                  >
-                    <span className="text-sm text-foreground">Screener</span>
-                    <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
-                  </a>
-                </div>
-              </div>
+            
             </motion.div>
 
           </div>
