@@ -108,7 +108,7 @@ const BlogSection = () => {
             className="flex flex-col justify-center space-y-6"
           >
             <div>
-              <h3 className="text-4xl md:text-5xl lg:text-6xl text-foreground mb-4 leading-tight font-semibold" style={{ letterSpacing: '2.1px' }}>
+              <h3 className="text-4xl md:text-5xl lg:text-5xl text-foreground mb-4 leading-tight font-semibold" style={{ letterSpacing: '2.1px' }}>
                 {activePost.title}
               </h3>
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
