@@ -253,35 +253,11 @@ const InvestorRelations = () => {
                             </div>
 
                             {/* Volume */}
-                            <div className="flex items-center justify-between py-3 border-b border-white/10">
+                            <div className="flex items-center justify-between py-3">
                               <span className="text-sm text-white/70">Volume</span>
                               <span className="text-lg font-bold text-white">
                                 {formatIndianNumber(stockData.volume)}
                               </span>
-                            </div>
-
-                            {/* Additional Details */}
-                            <div className="pt-3 space-y-2 border-t border-white/10">
-                              <div className="flex justify-between items-center py-2 bg-white/5 rounded-lg px-3">
-                                <span className="text-xs text-white/70">52 Week High</span>
-                                <span className="text-sm font-semibold text-white">₹250.00</span>
-                              </div>
-                              <div className="flex justify-between items-center py-2 bg-white/5 rounded-lg px-3">
-                                <span className="text-xs text-white/70">52 Week Low</span>
-                                <span className="text-sm font-semibold text-white">₹180.00</span>
-                              </div>
-                              <div className="flex justify-between items-center py-2 bg-white/5 rounded-lg px-3">
-                                <span className="text-xs text-white/70">Market Cap</span>
-                                <span className="text-sm font-semibold text-white">₹500 Cr</span>
-                              </div>
-                              <div className="flex justify-between items-center py-2 bg-white/5 rounded-lg px-3">
-                                <span className="text-xs text-white/70">P/E Ratio</span>
-                                <span className="text-sm font-semibold text-white">15.5</span>
-                              </div>
-                              <div className="flex justify-between items-center py-2 bg-white/5 rounded-lg px-3">
-                                <span className="text-xs text-white/70">Dividend Yield</span>
-                                <span className="text-sm font-semibold text-white">2.5%</span>
-                              </div>
                             </div>
                           </div>
                         </motion.div>
@@ -292,7 +268,7 @@ const InvestorRelations = () => {
                   <div className="mt-4 pt-4 border-t border-white/10">
                     <p className="text-xs text-white/50 text-center">
                       {stockData.currentPrice > 0 && stockData.volume > 0 
-                        ? '✅ Live data from TwelveData API • Updates every 5 min'
+                        ? ' Updates every 5 min'
                         : '⚠️ Using fallback data - API unavailable'}
                     </p>
                     <p className="text-xs text-white/50 text-center mt-1">
