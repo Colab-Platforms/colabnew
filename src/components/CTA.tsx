@@ -3,13 +3,7 @@ import { ArrowRight, Mail } from "lucide-react";
 
 const CTA = () => {
   return (
-    <section className="relative py-32 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
-      
-      {/* Glow effects */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/20 rounded-full blur-3xl animate-glow-pulse" />
-      
+    <section className="relative py-32 overflow-hidden bg-white">
       <div className="container relative z-10 px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           {/* Badge */}
