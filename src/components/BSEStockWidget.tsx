@@ -6,13 +6,6 @@ import { ExternalLink, TrendingUp, BarChart3 } from 'lucide-react';
 const BSEStockWidget = () => {
   return (
     <div className="w-full space-y-4">
-      {/* Info Message */}
-      <div className="bg-primary/10 border border-primary/30 rounded-xl p-4">
-        <p className="text-sm text-foreground text-center">
-          For real-time stock prices and live data, visit official exchanges:
-        </p>
-      </div>
-
       {/* Quick Access Buttons */}
       <div className="space-y-3">
         {/* BSE India */}
