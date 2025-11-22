@@ -71,15 +71,15 @@ const InvestorRelations = () => {
         </div>
 
         {/* Two Column Layout */}
-        <div className="container mx-auto px-6 md:px-[80px]">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="container mx-auto px-6 md:px-[30px]">
+          <div className="flex flex-col lg:flex-row gap-6 items-start">
             
             {/* Left: BSE Compliance Documents */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="space-y-6"
+              className="flex-1 space-y-6"
             >
               {/* Header */}
               <div className="flex items-center justify-between mb-6">
@@ -165,7 +165,7 @@ const InvestorRelations = () => {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="space-y-6"
+              className="lg:w-[400px] space-y-6 flex-shrink-0"
             >
               {/* Stock Price Card */}
               {stockData && stockData.currentPrice > 0 && (

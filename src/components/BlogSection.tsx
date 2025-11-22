@@ -74,7 +74,7 @@ const BlogSection = () => {
       <div className="relative z-10 w-full" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
         {/* Announcements Heading */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-7xl font-bold text-black tracking-wide">Announcements</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-black tracking-wide">Announcements</h2>
         </div>
 
         {/* Split Layout */}
@@ -108,7 +108,7 @@ const BlogSection = () => {
             className="flex flex-col justify-center space-y-6"
           >
             <div>
-              <h3 className="text-4xl md:text-5xl lg:text-5xl text-foreground mb-4 leading-tight font-semibold" style={{ letterSpacing: '2.1px' }}>
+              <h3 className="text-4xl md:text-5xl lg:text-6xl text-foreground mb-4 leading-tight font-semibold" style={{ letterSpacing: '2.1px' }}>
                 {activePost.title}
               </h3>
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
