@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FileText, Download, ChevronRight, TrendingUp, TrendingDown, Activity, Clock, ChevronDown } from 'lucide-react';
+import { FileText, Download, ChevronRight } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 // Import the investor data
 import investorDataLocal from '../data/investorData.json';
 import { fetchInvestorDocuments, InvestorCategory } from '../lib/investorFirebase';
-import { fetchBSEStockData, formatCurrency, formatIndianNumber, StockData } from '../services/bseService';
-import { noticesData, Notice } from '../data/noticesData';
 
 interface Document {
   id?: number | string;
@@ -27,9 +25,6 @@ const InvestorRelations = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [categories, setCategories] = useState<Category[]>(investorDataLocal);
   const [loading, setLoading] = useState(true);
-  const [stockData, setStockData] = useState<StockData | null>(null);
-  const [showMoreDetails, setShowMoreDetails] = useState(false);
-  const [notices, setNotices] = useState<Notice[]>(noticesData);
 
   // Fetch investor documents from Firebase
   useEffect(() => {
@@ -56,20 +51,6 @@ const InvestorRelations = () => {
     };
 
     loadInvestorData();
-  }, []);
-
-  // Fetch BSE stock data
-  useEffect(() => {
-    const loadStockData = async () => {
-      const data = await fetchBSEStockData();
-      setStockData(data);
-    };
-
-    loadStockData();
-    
-    // Refresh stock data every 60 seconds
-    const interval = setInterval(loadStockData, 60000);
-    return () => clearInterval(interval);
   }, []);
 
   const filteredDocuments = categories[activeTab]?.text.filter((doc: Document) =>
@@ -135,7 +116,7 @@ const InvestorRelations = () => {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#5d184e]/10 border border-[#5d184e]/30 backdrop-blur-sm"
             >
               <div className="w-2 h-2 bg-[#5d184e] rounded-full animate-pulse" />
-              <span className="text-sm font-semibold text-[#5d184e]">Listed on BSE | Code: 542866</span>
+              <span className="text-sm font-semibold text-[#5d184e]">Listed on BSE | Code: 539528</span>
             </motion.div>
 
             {/* Main Heading */}
@@ -193,120 +174,56 @@ const InvestorRelations = () => {
         </motion.div>
       </div>
 
-      {/* Main Content - Two Column Layout */}
+      {/* Main Content */}
       <div id="documents" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left Column - Notices & Documents (2/3 width) */}
-          <div className="lg:col-span-2 space-y-8">
-            {/* Notices Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="space-y-6"
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <h2 className="text-3xl font-bold bg-gradient-to-r from-[#5d184e] to-purple-400 bg-clip-text text-transparent">
-                  Notices & Announcements
-                </h2>
-                <div className="flex-1 h-px bg-gradient-to-r from-[#5d184e]/50 to-transparent"></div>
-              </div>
-
-              {/* Notices List */}
-              <div className="space-y-4">
-                {notices.map((notice) => (
-                  <motion.div
-                    key={notice.id}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    className="bg-gray-900/50 backdrop-blur-xl border border-gray-800 rounded-2xl p-6 hover:border-[#5d184e]/50 transition-all"
-                  >
-                    <div className="flex items-start justify-between mb-3">
-                      <h3 className="text-lg font-semibold text-white flex-1">{notice.title}</h3>
-                      <span className="text-sm text-gray-400 whitespace-nowrap ml-4">
-                        {new Date(notice.date).toLocaleDateString('en-IN', { 
-                          day: '2-digit', 
-                          month: 'short', 
-                          year: 'numeric' 
-                        })}
-                      </span>
-                    </div>
-                    
-                    {notice.description && (
-                      <p className="text-gray-400 text-sm mb-4">{notice.description}</p>
-                    )}
-
-                    {/* Files */}
-                    <div className="flex flex-wrap gap-3">
-                      {notice.files.map((file, idx) => (
-                        <a
-                          key={idx}
-                          href={file.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="group flex items-center gap-2 px-4 py-2 bg-[#5d184e]/10 border border-[#5d184e]/30 rounded-lg hover:bg-[#5d184e]/20 hover:border-[#5d184e]/50 transition-all"
-                        >
-                          <FileText className="w-4 h-4 text-[#5d184e]" />
-                          <span className="text-sm text-white">{file.name}</span>
-                          {file.size && (
-                            <span className="text-xs text-gray-500">({file.size})</span>
-                          )}
-                          <Download className="w-3 h-3 text-[#5d184e] opacity-0 group-hover:opacity-100 transition-opacity" />
-                        </a>
-                      ))}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Search Bar */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mt-12"
-            >
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search documents..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full px-6 py-4 bg-gray-900/50 backdrop-blur-xl border border-gray-800 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:border-[#5d184e] transition-colors"
-                />
-                <div className="absolute right-4 top-1/2 -translate-y-1/2">
-                  <FileText className="w-5 h-5 text-gray-500" />
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Tabs */}
-            <div className="mb-8 overflow-x-auto">
-              <div className="flex gap-2 min-w-max pb-4">
-                {categories.map((category, index) => (
-                  <button
-                    key={category.id}
-                    onClick={() => setActiveTab(index)}
-                    className={`px-6 py-3 rounded-xl font-medium transition-all whitespace-nowrap ${
-                      activeTab === index
-                        ? 'bg-gradient-to-r from-[#5d184e] to-purple-600 text-white shadow-lg shadow-[#5d184e]/50'
-                        : 'bg-gray-900/50 text-gray-400 hover:text-white hover:bg-gray-800/50'
-                    }`}
-                  >
-                    {category.header}
-                  </button>
-                ))}
-              </div>
+        {/* Search Bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-12"
+        >
+          <div className="relative max-w-2xl mx-auto">
+            <input
+              type="text"
+              placeholder="Search documents..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full px-6 py-4 bg-gray-900/50 backdrop-blur-xl border border-gray-800 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:border-[#5d184e] transition-colors"
+            />
+            <div className="absolute right-4 top-1/2 -translate-y-1/2">
+              <FileText className="w-5 h-5 text-gray-500" />
             </div>
+          </div>
+        </motion.div>
 
-            {/* Documents Grid - Grouped by Quarter */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                className="space-y-8"
+        {/* Tabs */}
+        <div className="mb-8 overflow-x-auto">
+          <div className="flex gap-2 min-w-max pb-4">
+            {categories.map((category, index) => (
+              <button
+                key={category.id}
+                onClick={() => setActiveTab(index)}
+                className={`px-6 py-3 rounded-xl font-medium transition-all whitespace-nowrap ${
+                  activeTab === index
+                    ? 'bg-gradient-to-r from-[#5d184e] to-purple-600 text-white shadow-lg shadow-[#5d184e]/50'
+                    : 'bg-gray-900/50 text-gray-400 hover:text-white hover:bg-gray-800/50'
+                }`}
               >
+                {category.header}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Documents Grid - Grouped by Quarter */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="space-y-8"
+          >
             {filteredDocuments.length > 0 ? (
               <>
                 {/* Documents with Quarter - Grouped */}
@@ -396,160 +313,6 @@ const InvestorRelations = () => {
             )}
           </motion.div>
         </AnimatePresence>
-      </div>
-
-          {/* Right Column - Stock Card (1/3 width) */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-24 space-y-6">
-              {/* Stock Price Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-xl border border-gray-700 rounded-3xl p-6 shadow-2xl"
-              >
-                {/* Header */}
-                <div className="flex items-center justify-between mb-6">
-                  <div>
-                    <h3 className="text-2xl font-bold text-white">BSE: 542866</h3>
-                    <p className="text-sm text-gray-400 mt-1">Colab Platforms Ltd</p>
-                  </div>
-                  <div className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                    stockData?.status === 'open' 
-                      ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
-                      : 'bg-gray-500/20 text-gray-400 border border-gray-500/30'
-                  }`}>
-                    {stockData?.status === 'open' ? (
-                      <span className="flex items-center gap-1">
-                        <Activity className="w-3 h-3 animate-pulse" />
-                        LIVE
-                      </span>
-                    ) : (
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-3 h-3" />
-                        CLOSED
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Price Display */}
-                {stockData && stockData.currentPrice > 0 ? (
-                  <>
-                    <div className="mb-6">
-                      <div className="text-4xl font-black text-white mb-2">
-                        {formatCurrency(stockData.currentPrice)}
-                      </div>
-                      <div className={`flex items-center gap-2 text-lg font-semibold ${
-                        stockData.change >= 0 ? 'text-green-400' : 'text-red-400'
-                      }`}>
-                        {stockData.change >= 0 ? (
-                          <TrendingUp className="w-5 h-5" />
-                        ) : (
-                          <TrendingDown className="w-5 h-5" />
-                        )}
-                        <span>
-                          {stockData.change >= 0 ? '+' : ''}{stockData.change.toFixed(2)} 
-                          ({stockData.changePercent >= 0 ? '+' : ''}{stockData.changePercent.toFixed(2)}%)
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Stats Grid */}
-                    <div className="grid grid-cols-2 gap-4 mb-6">
-                      <div className="bg-gray-800/50 rounded-xl p-4">
-                        <p className="text-xs text-gray-400 mb-1">Open</p>
-                        <p className="text-lg font-bold text-white">
-                          {stockData.open ? formatCurrency(stockData.open) : '-'}
-                        </p>
-                      </div>
-                      <div className="bg-gray-800/50 rounded-xl p-4">
-                        <p className="text-xs text-gray-400 mb-1">High</p>
-                        <p className="text-lg font-bold text-green-400">
-                          {stockData.high ? formatCurrency(stockData.high) : '-'}
-                        </p>
-                      </div>
-                      <div className="bg-gray-800/50 rounded-xl p-4">
-                        <p className="text-xs text-gray-400 mb-1">Low</p>
-                        <p className="text-lg font-bold text-red-400">
-                          {stockData.low ? formatCurrency(stockData.low) : '-'}
-                        </p>
-                      </div>
-                      <div className="bg-gray-800/50 rounded-xl p-4">
-                        <p className="text-xs text-gray-400 mb-1">Volume</p>
-                        <p className="text-lg font-bold text-white">
-                          {formatIndianNumber(stockData.volume)}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Last Updated */}
-                    <div className="text-xs text-gray-500 text-center pb-2">
-                      Last updated: {new Date(stockData.lastUpdated).toLocaleString('en-IN', {
-                        day: '2-digit',
-                        month: 'short',
-                        hour: '2-digit',
-                        minute: '2-digit'
-                      })}
-                    </div>
-                  </>
-                ) : (
-                  <div className="text-center py-8">
-                    <Activity className="w-12 h-12 text-gray-600 mx-auto mb-3 animate-pulse" />
-                    <p className="text-gray-500">Loading stock data...</p>
-                  </div>
-                )}
-
-                {/* Disclaimer */}
-                <div className="mt-4 pt-4 border-t border-gray-700">
-                  <p className="text-xs text-gray-500 text-center">
-                    * Data delayed by ~15-20 minutes
-                  </p>
-                </div>
-
-                {/* View More Button */}
-                <a
-                  href="https://www.screener.in/company/542866/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-[#5d184e] to-purple-600 text-white font-semibold rounded-xl hover:scale-105 transition-transform"
-                >
-                  <span>View Detailed Analysis</span>
-                  <ChevronRight className="w-4 h-4" />
-                </a>
-              </motion.div>
-
-              {/* Quick Links */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="bg-gray-900/50 backdrop-blur-xl border border-gray-800 rounded-2xl p-6"
-              >
-                <h4 className="text-lg font-bold text-white mb-4">Quick Links</h4>
-                <div className="space-y-3">
-                  <a
-                    href="https://www.bseindia.com/stock-share-price/colab-platforms-ltd/colabplat/542866/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg hover:bg-gray-800 transition-colors group"
-                  >
-                    <span className="text-sm text-gray-300">BSE India</span>
-                    <ChevronRight className="w-4 h-4 text-gray-500 group-hover:text-[#5d184e] group-hover:translate-x-1 transition-all" />
-                  </a>
-                  <a
-                    href="https://www.screener.in/company/542866/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg hover:bg-gray-800 transition-colors group"
-                  >
-                    <span className="text-sm text-gray-300">Screener</span>
-                    <ChevronRight className="w-4 h-4 text-gray-500 group-hover:text-[#5d184e] group-hover:translate-x-1 transition-all" />
-                  </a>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Detailed Director Profiles with Images */}
