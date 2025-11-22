@@ -87,78 +87,46 @@ const TwoPillars = () => {
   }, [currentIndex, mediaType]);
 
   return (
-    <section className="relative py-32 overflow-hidden bg-gradient-to-b from-background via-primary/5 to-background">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div 
-          className="absolute inset-0"
-          style={{
-            backgroundImage: 'radial-gradient(circle, rgba(168, 85, 247, 0.5) 1.5px, transparent 1.5px)',
-            backgroundSize: '50px 50px'
-          }}
-        />
-      </div>
+    <section className="relative py-32 overflow-hidden bg-white">
+      {/* Background Pattern - Removed */}
 
       <div className="relative z-10 w-full" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
-        {/* Header */}
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30 mb-8">
-            <Camera className="w-4 h-4 text-primary" />
-            <span className="text-sm font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent uppercase tracking-wider">
-              Visual Stories
-            </span>
+        {/* Header & Toggle */}
+        <div className="relative flex flex-col md:flex-row items-center justify-center md:justify-end mb-16 min-h-[80px]">
+          {/* Centered Heading */}
+          <div className="md:absolute md:left-1/2 md:-translate-x-1/2 text-center mb-8 md:mb-0 z-0">
+            <h2 className="text-5xl md:text-7xl font-semibold text-black">
+              Gallery
+            </h2>
           </div>
 
-          <h2 className="text-5xl md:text-6xl lg:text-7xl mb-6" style={{ fontFamily: "'Aloevera Display', serif", letterSpacing: '2.1px', fontWeight: 600 }}>
-            <span className="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Media Gallery
-            </span>
-          </h2>
-
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Explore our journey through captivating photos and engaging videos that showcase our innovation, passion, and excellence
-          </p>
-        </motion.div>
-
-        {/* Photo/Video Toggle - Simple Side by Side */}
-        <motion.div 
-          className="flex justify-center gap-8 mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <button
-            onClick={() => {
-              setMediaType("photos");
-              setCurrentIndex(0);
-            }}
-            className={`text-2xl transition-all duration-300 ${
-              mediaType === "photos" ? "text-white font-bold" : "text-white/50 font-normal"
-            }`}
-          >
-            Images
-          </button>
-
-          <button
-            onClick={() => {
-              setMediaType("videos");
-              setCurrentIndex(0);
-            }}
-            className={`text-2xl transition-all duration-300 ${
-              mediaType === "videos" ? "text-white font-bold" : "text-white/50 font-normal"
-            }`}
-          >
-            Videos
-          </button>
-        </motion.div>
+          {/* Right Side Toggle */}
+          <div className="flex items-center gap-8 z-10 relative">
+            <button
+              onClick={() => {
+                setMediaType("photos");
+                setCurrentIndex(0);
+              }}
+              className={`text-4xl md:text-4xl transition-all duration-300 ${mediaType === "photos" ? "text-black font-bold" : "text-black/40 font-medium hover:text-black"
+                }`}
+            >
+              Images
+            </button>
+            <button
+              onClick={() => {
+                setMediaType("videos");
+                setCurrentIndex(0);
+              }}
+              className={`text-4xl md:text-4xl transition-all duration-300 ${mediaType === "videos" ? "text-black font-bold" : "text-black/40 font-medium hover:text-black"
+                }`}
+            >
+              Videos
+            </button>
+          </div>
+        </div>
 
         {/* Main Display - Hidden on Mobile */}
-        <motion.div 
+        <motion.div
           className="w-full hidden md:block"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -174,11 +142,12 @@ const TwoPillars = () => {
                 transition={{ duration: 0.5 }}
                 className="relative h-[700px] overflow-hidden group"
               >
-                <img 
-                  src={photos[currentIndex].image} 
+                <img
+                  src={photos[currentIndex].image}
                   alt={photos[currentIndex].title}
                   className="w-full h-full object-cover"
                 />
+
 
 
                 {/* Navigation Dots */}
@@ -187,11 +156,10 @@ const TwoPillars = () => {
                     <button
                       key={index}
                       onClick={() => setCurrentIndex(index)}
-                      className={`h-3 rounded-full transition-all duration-300 ${
-                        index === currentIndex 
-                          ? "w-12 bg-primary" 
-                          : "w-3 bg-white/40 hover:bg-white/60"
-                      }`}
+                      className={`h-3 rounded-full transition-all duration-300 ${index === currentIndex
+                        ? "w-12 bg-primary"
+                        : "w-3 bg-white/40 hover:bg-white/60"
+                        }`}
                     />
                   ))}
                 </div>
@@ -213,7 +181,7 @@ const TwoPillars = () => {
                   playsInline
                   className="w-full h-full object-cover"
                 />
-                
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                   <div className="absolute bottom-8 left-8 right-8">
                     <div className="flex items-center justify-between mb-4">
@@ -247,17 +215,16 @@ const TwoPillars = () => {
                           <button
                             key={index}
                             onClick={() => setCurrentIndex(index)}
-                            className={`h-3 rounded-full transition-all duration-300 ${
-                              index === currentIndex 
-                                ? "w-12 bg-secondary" 
-                                : "w-3 bg-white/40 hover:bg-white/60"
-                            }`}
+                            className={`h-3 rounded-full transition-all duration-300 ${index === currentIndex
+                              ? "w-12 bg-secondary"
+                              : "w-3 bg-white/40 hover:bg-white/60"
+                              }`}
                           />
                         ))}
                       </div>
                     </div>
-                    
-                    <h3 className="font-black text-5xl text-white mb-2" style={{ fontFamily: "'Aloevera Display', serif", letterSpacing: '2.1px' }}>
+
+                    <h3 className="font-black text-5xl text-white mb-2" style={{ letterSpacing: '2.1px' }}>
                       {videos[currentIndex].title}
                     </h3>
                     <div className="flex items-center gap-2">
@@ -272,16 +239,14 @@ const TwoPillars = () => {
         </motion.div>
 
         {/* Upcoming Content - 3 Cards */}
-        <motion.div 
+        <motion.div
           className="w-full mt-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-black text-foreground mb-8 text-center">
-            Coming Up Next
-          </h3>
-          
+
+
           <div className="grid md:grid-cols-3 gap-6">
             {mediaType === "photos" ? (
               upcomingPhotos.map((photo, index) => {
@@ -297,8 +262,8 @@ const TwoPillars = () => {
                     onClick={() => setCurrentIndex(actualIndex)}
                     className="relative h-[400px] overflow-hidden cursor-pointer group"
                   >
-                    <img 
-                      src={photos[actualIndex].image} 
+                    <img
+                      src={photos[actualIndex].image}
                       alt={photos[actualIndex].title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
@@ -306,9 +271,9 @@ const TwoPillars = () => {
                     <div className="absolute bottom-4 left-4 right-4">
                       <div className="flex items-center gap-2 text-white mb-2">
                         <ImageIcon className="w-4 h-4 text-primary" />
-                        <span className="text-sm font-bold">Click to View</span>
+
                       </div>
-                      <p className="text-white text-xs">{photos[actualIndex].title}</p>
+
                     </div>
                   </motion.div>
                 );
@@ -335,14 +300,14 @@ const TwoPillars = () => {
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    
+
                     {/* Play Icon Overlay */}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border-2 border-white flex items-center justify-center">
                         <Play className="w-6 h-6 text-white ml-0.5" fill="white" />
                       </div>
                     </div>
-                    
+
                     <div className="absolute bottom-4 left-4 right-4">
                       <div className="flex items-center gap-2 text-white mb-2">
                         <Film className="w-4 h-4 text-secondary" />

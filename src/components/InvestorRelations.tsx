@@ -1,147 +1,310 @@
-import { TrendingUp, FileText, Calendar, ExternalLink } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { FileText, TrendingUp, TrendingDown, Activity, Clock, ChevronRight, Download, ExternalLink } from 'lucide-react';
+import { fetchBSEStockData, formatCurrency, formatIndianNumber, StockData } from '../services/bseService';
+import { fetchBSECompliance, formatDisplayDate, ComplianceDocument } from '../services/bseComplianceService';
+import BSEStockWidget from './BSEStockWidget';
 
 const InvestorRelations = () => {
-  const news = [
-    {
-      date: "Nov 06, 2025",
-      title: "AI-Powered Search Engine Launch",
-      type: "Press Release",
-      link: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Press_Release_for_AI_powered_Search_Engine_06.11.2025.pdf?v=1762412961"
-    },
-    {
-      date: "Nov 12, 2025",
-      title: "Q2 Financial Performance Report",
-      type: "Press Release",
-      link: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/PR-_Q2_financial_Performance_30.09.2025_1.pdf?v=1763024349"
-    },
-    {
-      date: "Oct 24, 2025",
-      title: "Colab Semiconductor Private Limited",
-      type: "Press Release",
-      link: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Covering_letter_PR_24.10.2025_upload.pdf?v=1761302911"
-    }
-  ];
+  const [stockData, setStockData] = useState<StockData | null>(null);
+  const [complianceDocs, setComplianceDocs] = useState<ComplianceDocument[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        setLoading(true);
+        
+        // Fetch stock data from TwelveData API
+        console.log('🔄 Fetching stock data from TwelveData API...');
+        const stock = await fetchBSEStockData();
+        console.log('📊 Stock data received:', stock);
+        setStockData(stock);
+        
+        // Fetch compliance documents
+        console.log('🔄 Fetching compliance documents...');
+        const docs = await fetchBSECompliance();
+        console.log('📄 Compliance docs loaded:', docs.length);
+        setComplianceDocs(docs.slice(0, 5));
+      } catch (error) {
+        console.error('❌ Error loading investor data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+    
+    // Refresh every 5 minutes (to match cache duration)
+    const interval = setInterval(loadData, 300000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <section className="relative py-32 overflow-hidden bg-gradient-to-b from-background to-primary/5">
-      <div className="container relative z-10 px-6 lg:px-8">
+    <section className="relative py-32 overflow-hidden bg-background">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'radial-gradient(circle, rgba(168, 85, 247, 0.5) 1.5px, transparent 1.5px)',
+            backgroundSize: '50px 50px'
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 w-full">
         {/* Section header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-block mb-6">
-            <span className="px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary backdrop-blur-sm">
-              For Investors
-            </span>
-          </div>
-          <h2 className="font-serif font-bold text-4xl md:text-6xl lg:text-7xl mb-6">
-            Conglomerate
-            <span className="block mt-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+        <div className="container mx-auto px-6 text-center max-w-4xl mb-20">
+          <p className="text-primary font-medium text-lg mb-4 tracking-wide uppercase">
+            For Investors
+          </p>
+          <h2 className="font-bold text-5xl md:text-7xl lg:text-8xl mb-6">
+            <span className="block text-foreground">Conglomerate</span>
+            <span className="block mt-2 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
               Intelligence
             </span>
           </h2>
           <p className="text-xl text-muted-foreground">
-            Transparent reporting, consistent growth, and long-term value creation.
+            Transparent Reporting, Consistent Growth, And Long-Term Value Creation.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {/* Investor Relations */}
-          <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-3xl blur-xl" />
-            <div className="relative bg-card/50 backdrop-blur-sm border border-primary/20 rounded-3xl p-10">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
-                  <TrendingUp className="w-7 h-7 text-primary" />
+        {/* Two Column Layout */}
+        <div className="container mx-auto px-6 md:px-[80px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            {/* Left: BSE Compliance Documents */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-3xl font-bold text-foreground">BSE Compliance</h3>
+                <a
+                  href="/bse-compliance"
+                  className="text-primary hover:text-secondary transition-colors text-sm font-semibold flex items-center gap-1"
+                >
+                  View All
+                  <ChevronRight className="w-4 h-4" />
+                </a>
+              </div>
+
+              {/* Documents List */}
+              {loading ? (
+                <div className="flex items-center justify-center py-12">
+                  <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
                 </div>
-                <h3 className="font-serif font-bold text-3xl text-foreground">
-                  Investor Relations
-                </h3>
-              </div>
-              
-              <p className="text-muted-foreground mb-8 leading-relaxed">
-                Access comprehensive financial reports, quarterly earnings, and strategic insights 
-                into our diversified portfolio.
-              </p>
+              ) : complianceDocs.length > 0 ? (
+                <div className="space-y-4">
+                  {complianceDocs.map((doc) => (
+                    <motion.div
+                      key={doc.id}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      className="bg-[#222222] hover:bg-[#2a2a2a] transition-all duration-300 p-6 rounded-xl border border-white/5 hover:border-primary/30 group"
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <FileText className="w-5 h-5 text-primary" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-2">
+                            <span className="px-2 py-1 bg-primary/20 text-primary text-xs font-semibold rounded">
+                              {doc.category}
+                            </span>
+                            <span className="text-xs text-muted-foreground">
+                              {formatDisplayDate(doc.date)}
+                            </span>
+                          </div>
+                          <h4 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2 mb-2">
+                            {doc.subject}
+                          </h4>
+                          {doc.description && (
+                            <p className="text-xs text-muted-foreground line-clamp-1">
+                              {doc.description}
+                            </p>
+                          )}
+                        </div>
+                        {doc.pdfUrl && (
+                          <a
+                            href={doc.pdfUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-2 bg-primary/10 rounded-lg hover:bg-primary/20 transition-colors"
+                          >
+                            <Download className="w-4 h-4 text-primary" />
+                          </a>
+                        )}
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-12">
+                  <FileText className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
+                  <p className="text-muted-foreground">No compliance documents available</p>
+                </div>
+              )}
 
-              <div className="space-y-4">
-                <Button 
-                  variant="outline" 
-                  className="w-full justify-between border-primary/30 hover:bg-primary/10"
-                  onClick={() => window.location.href = '/investor-relations'}
-                >
-                  <span className="flex items-center gap-2">
-                    <FileText className="w-4 h-4" />
-                    Annual Reports
-                  </span>
-                  <ExternalLink className="w-4 h-4" />
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="w-full justify-between border-primary/30 hover:bg-primary/10"
-                >
-                  <span className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4" />
-                    Earnings Calendar
-                  </span>
-                  <ExternalLink className="w-4 h-4" />
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="w-full justify-between border-primary/30 hover:bg-primary/10"
-                  onClick={() => window.open('https://www.screener.in/company/COLABPLAT/', '_blank')}
-                >
-                  <span className="flex items-center gap-2">
-                    <TrendingUp className="w-4 h-4" />
-                    Stock Information
-                  </span>
-                  <ExternalLink className="w-4 h-4" />
-                </Button>
-              </div>
-            </div>
-          </div>
+              {/* View All Button */}
+              <a
+                href="/bse-compliance"
+                className="block w-full py-4 bg-primary hover:bg-secondary text-white font-bold text-center rounded-xl transition-all duration-300 hover:scale-105"
+              >
+                View All Compliance Documents
+              </a>
+            </motion.div>
 
-          {/* Latest News */}
-          <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 to-transparent rounded-3xl blur-xl" />
-            <div className="relative bg-card/50 backdrop-blur-sm border border-secondary/20 rounded-3xl p-10">
-              <h3 className="font-serif font-bold text-3xl text-foreground mb-8">
-                Latest Press Release
-              </h3>
-              
-              <div className="space-y-6">
-                {news.map((item, index) => (
-                  <a 
-                    key={index}
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block group/item pb-6 border-b border-border/50 last:border-0 last:pb-0 cursor-pointer hover:border-primary/30 transition-colors"
-                  >
-                    <div className="flex items-start justify-between gap-4 mb-2">
-                      <span className="text-sm text-muted-foreground">{item.date}</span>
-                      <span className="px-2 py-1 rounded text-xs font-medium bg-secondary/10 text-secondary border border-secondary/20">
-                        {item.type}
+            {/* Right: Stock Data & Quick Links */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              {/* Stock Price Card */}
+              {stockData && stockData.currentPrice > 0 && (
+                <div className="bg-gradient-to-br from-[#222222] to-[#1a1a1a] p-6 rounded-2xl border border-white/10">
+                  <div className="flex items-center justify-between mb-4">
+                    <div>
+                      <h3 className="text-xl font-bold text-foreground">{stockData.symbol}</h3>
+                      <p className="text-xs text-muted-foreground">Colab Platforms Ltd</p>
+                    </div>
+                    <div className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                      stockData.status === 'open' 
+                        ? 'bg-green-500/20 text-green-400' 
+                        : 'bg-gray-500/20 text-gray-400'
+                    }`}>
+                      {stockData.status === 'open' ? 'LIVE' : 'CLOSED'}
+                    </div>
+                  </div>
+
+                  <div className="mb-4">
+                    <div className="text-3xl font-black text-foreground">
+                      {formatCurrency(stockData.currentPrice)}
+                    </div>
+                    <div className={`flex items-center gap-1 text-sm font-semibold ${
+                      stockData.change >= 0 ? 'text-green-400' : 'text-red-400'
+                    }`}>
+                      {stockData.change >= 0 ? <TrendingUp className="w-4 h-4" /> : <TrendingDown className="w-4 h-4" />}
+                      <span>
+                        {stockData.change >= 0 ? '+' : ''}{stockData.change.toFixed(2)} 
+                        ({stockData.changePercent >= 0 ? '+' : ''}{stockData.changePercent.toFixed(2)}%)
                       </span>
                     </div>
-                    <h4 className="text-foreground font-semibold group-hover/item:text-primary transition-colors flex items-center gap-2">
-                      {item.title}
-                      <ExternalLink className="w-4 h-4 opacity-0 group-hover/item:opacity-100 transition-opacity" />
-                    </h4>
+                  </div>
+
+                  {/* All Stock Details */}
+                  <div className="space-y-3">
+                    {/* Previous Close */}
+                    <div className="flex items-center justify-between py-3 border-b border-white/10">
+                      <span className="text-sm text-muted-foreground">Previous Close</span>
+                      <span className="text-lg font-bold text-foreground">
+                        {stockData.previousClose ? formatCurrency(stockData.previousClose) : '-'}
+                      </span>
+                    </div>
+
+                    {/* Open */}
+                    <div className="flex items-center justify-between py-3 border-b border-white/10">
+                      <span className="text-sm text-muted-foreground">Open</span>
+                      <span className="text-lg font-bold text-foreground">
+                        {stockData.open ? formatCurrency(stockData.open) : '-'}
+                      </span>
+                    </div>
+
+                    {/* High */}
+                    <div className="flex items-center justify-between py-3 border-b border-white/10">
+                      <span className="text-sm text-muted-foreground">High</span>
+                      <span className="text-lg font-bold text-green-400">
+                        {stockData.high ? formatCurrency(stockData.high) : '-'}
+                      </span>
+                    </div>
+
+                    {/* Low */}
+                    <div className="flex items-center justify-between py-3 border-b border-white/10">
+                      <span className="text-sm text-muted-foreground">Low</span>
+                      <span className="text-lg font-bold text-red-400">
+                        {stockData.low ? formatCurrency(stockData.low) : '-'}
+                      </span>
+                    </div>
+
+                    {/* Volume */}
+                    <div className="flex items-center justify-between py-3">
+                      <span className="text-sm text-muted-foreground">Volume</span>
+                      <span className="text-lg font-bold text-foreground">
+                        {formatIndianNumber(stockData.volume)}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 pt-4 border-t border-white/10">
+                    <p className="text-xs text-muted-foreground text-center">
+                      {stockData.currentPrice > 0 && stockData.volume > 0 
+                        ? '✅ Live data from TwelveData API • Updates every 5 min'
+                        : '⚠️ Using fallback data - API unavailable'}
+                    </p>
+                    <p className="text-xs text-muted-foreground text-center mt-1">
+                      Last updated: {new Date(stockData.lastUpdated).toLocaleTimeString('en-IN')}
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* Live BSE Widget */}
+              <div className="bg-[#222222] p-6 rounded-xl border border-white/10">
+                <div className="flex items-center justify-between mb-4">
+                  <h4 className="text-lg font-bold text-foreground">Live BSE Data</h4>
+                  <a
+                    href="https://www.bseindia.com/stock-share-price/colab-platforms-ltd/colabplat/542866/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:text-secondary text-xs flex items-center gap-1"
+                  >
+                    <ExternalLink className="w-3 h-3" />
+                    View on BSE
                   </a>
-                ))}
+                </div>
+                <BSEStockWidget />
               </div>
 
-              <Button 
-                variant="outline"
-                className="w-full mt-8 border-secondary/30 hover:bg-secondary/10"
-                onClick={() => window.location.href = '/investor-relations'}
-              >
-                View All News
-                <ExternalLink className="w-4 h-4 ml-2" />
-              </Button>
-            </div>
+              {/* Quick Links */}
+              <div className="bg-[#222222] p-6 rounded-xl border border-white/10">
+                <h4 className="text-lg font-bold text-foreground mb-4">Quick Links</h4>
+                <div className="space-y-3">
+                  <a
+                    href="/investor-relations"
+                    className="flex items-center justify-between p-3 bg-black/30 rounded-lg hover:bg-primary/10 transition-colors group"
+                  >
+                    <span className="text-sm text-foreground">Investor Relations</span>
+                    <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                  </a>
+                  <a
+                    href="https://www.nseindia.com/get-quotes/equity?symbol=COLAB"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-3 bg-black/30 rounded-lg hover:bg-primary/10 transition-colors group"
+                  >
+                    <span className="text-sm text-foreground">NSE India</span>
+                    <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                  </a>
+                  <a
+                    href="https://www.screener.in/company/542866/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-3 bg-black/30 rounded-lg hover:bg-primary/10 transition-colors group"
+                  >
+                    <span className="text-sm text-foreground">Screener</span>
+                    <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+
           </div>
         </div>
       </div>

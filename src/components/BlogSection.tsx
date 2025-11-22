@@ -1,160 +1,105 @@
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
-import { fetchBlogPosts, BlogPost } from "@/lib/firebase";
-import { blogPosts as localBlogPosts } from "@/data/blogPosts";
+import { useEffect, useState } from "react";
+
+// Static blog posts for Colab Platforms announcements
+const posts = [
+  {
+    title: "Colab Platforms plans to expand into the Trillion-dollar Tech Intelligence landscape",
+    category: "Announcement",
+    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+    excerpt: "Colab Platforms is set to broaden its horizons into the trillion-dollar tech intelligence market, aiming to lead innovation and insights.",
+    date: "2025-11-21",
+    author: "Colab Team",
+    slug: "colab-tech-intelligence",
+    link: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Press_Release__01.10.2025.pdf?v=1759476023",
+  },
+  {
+    title: "Colab Platforms Limited to incorporate ‘Colab Semiconductor Pvt. Ltd.’ a Wholly owned Subsidiary to tap into India’s US $52 billion Semiconductor Market",
+    category: "Announcement",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+    excerpt: "Launching a new subsidiary to capture the booming Indian semiconductor market valued at $52B.",
+    date: "2025-11-21",
+    author: "Colab Team",
+    slug: "colab-semiconductor",
+    link: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Covering_letter_PR_24.10.2025_upload.pdf?v=1761302911",
+  },
+  {
+    title: "Colab Platforms to Launch Revolutionary ‘AI-Powered Search Engine’, A Smarter, Superior Alternative to Traditional Search",
+    category: "Announcement",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
+    excerpt: "Introducing a next-gen AI search engine that outperforms traditional search with smarter results.",
+    date: "2025-11-21",
+    author: "Colab Team",
+    slug: "colab-ai-search",
+    link: "/press/colab-ai-search",
+  },
+  {
+    title: "Colab Platforms Limited and RRP Drones Innovation Private Limited (a ‘RRP Group Company’)",
+    category: "Announcement",
+    image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/drone-flying-in-silhouette-against-the-blue-sky-2024-11-27-13-22-09-utc.jpg?v=1763195285",
+    excerpt: "Strategic partnership with RRP Drones to innovate drone technology and services.",
+    date: "2025-11-21",
+    author: "Colab Team",
+    slug: "colab-rrp-partnership",
+    link: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Press_Release_for_AI_powered_Search_Engine_06.11.2025.pdf?v=1762412961",
+  },
+];
 
 const BlogSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
 
-  // Fetch blogs from Firebase (same as Blog.tsx)
+  // Auto-rotate posts every 5 seconds
   useEffect(() => {
-    const loadBlogs = async () => {
-      try {
-        const firebasePosts = await fetchBlogPosts();
-        // Combine Firebase posts with local posts (same logic as Blog.tsx)
-        const allPosts = [...firebasePosts, ...localBlogPosts];
-        setBlogPosts(allPosts);
-      } catch (error) {
-        console.error("Error loading blogs:", error);
-        // Fallback to local posts if Firebase fails
-        setBlogPosts(localBlogPosts);
-      } finally {
-        setLoading(false);
-      }
-    };
-    loadBlogs();
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % posts.length);
+    }, 5000);
+    return () => clearInterval(timer);
   }, []);
 
-  // Get only first 4 blog posts
-  const displayPosts = blogPosts.slice(0, 4);
-
-  // Auto-rotate blogs every 5 seconds
-  useEffect(() => {
-    if (displayPosts.length > 0) {
-      const timer = setInterval(() => {
-        setActiveIndex((prev) => (prev + 1) % displayPosts.length);
-      }, 5000);
-      return () => clearInterval(timer);
-    }
-  }, [displayPosts.length]);
-
-  // Show loading state
-  if (loading) {
-    return (
-      <section className="relative py-20 md:py-32 bg-gradient-to-b from-black via-primary/5 to-black">
-        <div className="container mx-auto px-4 text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-          <p className="mt-4 text-muted-foreground">Loading blogs...</p>
-        </div>
-      </section>
-    );
-  }
-
-  // Don't render if no blogs
-  if (displayPosts.length === 0) {
-    return null;
-  }
+  const activePost = posts[activeIndex];
 
   return (
-    <section className="relative py-20 md:py-32 bg-gradient-to-b from-black via-primary/5 to-black overflow-hidden">
+    <section className="relative py-20 md:py-32 bg-white overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div 
+        <div
           className="absolute inset-0"
           style={{
             backgroundImage: 'radial-gradient(circle, rgba(168, 85, 247, 0.4) 1px, transparent 1px)',
-            backgroundSize: '40px 40px'
+            backgroundSize: '40px 40px',
           }}
         />
       </div>
 
       <div className="relative z-10 w-full" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-20"
-        >
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30 mb-8"
-          >
-            <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-            </svg>
-            <span className="text-sm font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent uppercase tracking-wider">Latest Articles</span>
-          </motion.div>
-          
-          <h2 className="font-black text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight" style={{ fontFamily: "'Aloevera Display', serif", letterSpacing: '2.1px' }}>
-            <span className="block text-foreground">Insights &</span>
-            <span className="block bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
-              Updates
-            </span>
-          </h2>
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Stay informed with the latest news, stories, and innovations from the world of sports and technology
-          </p>
-        </motion.div>
+        {/* Announcements Heading */}
+        <div className="text-center mb-16">
+          <h2 className="text-5xl md:text-7xl font-bold text-black tracking-wide">Announcements</h2>
+        </div>
 
-        {/* Split Layout - Image Left, Content Right */}
+        {/* Split Layout */}
         <div className="grid lg:grid-cols-2 gap-8 mb-12">
-          {/* Left - Featured Image */}
+          {/* Left Image */}
           <motion.div
             key={`image-${activeIndex}`}
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             className="relative h-[300px] md:h-[600px] overflow-hidden group cursor-pointer shadow-2xl"
-            onClick={() => window.location.href = `/blog/${displayPosts[activeIndex].slug}`}
+            onClick={() => window.location.href = activePost.link}
             whileHover={{ scale: 1.02 }}
           >
             <motion.img
-              src={displayPosts[activeIndex].image}
-              alt={blogPosts[activeIndex].title}
+              src={activePost.image}
+              alt={activePost.title}
               className="absolute inset-0 w-full h-full object-cover"
               animate={{ scale: 1.05 }}
               transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
             />
-            
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-            
-            {/* Category Badge */}
-            <div className="absolute top-6 left-6">
-              <motion.span 
-                className="inline-block px-4 py-2 bg-gradient-to-r from-primary/40 to-secondary/40 backdrop-blur-xl border border-primary/50 rounded-full text-sm font-bold text-white uppercase tracking-wider"
-                whileHover={{ scale: 1.05 }}
-              >
-                {displayPosts[activeIndex].category || 'Blog'}
-              </motion.span>
-            </div>
-
-            {/* Number Badge */}
-            <div className="absolute top-6 right-6">
-              <motion.div 
-                className="w-14 h-14 bg-black/60 backdrop-blur-xl rounded-xl flex items-center justify-center border-2 border-primary/30"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-              >
-                <span className="text-2xl font-black bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent">
-                  {(activeIndex + 1).toString().padStart(2, '0')}
-                </span>
-              </motion.div>
-            </div>
-
-            {/* Hover Glow */}
-            <motion.div
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-              style={{
-                background: 'radial-gradient(circle at center, rgba(168, 85, 247, 0.2) 0%, transparent 70%)',
-              }}
-            />
           </motion.div>
 
-          {/* Right - Content */}
+          {/* Right Content */}
           <motion.div
             key={`content-${activeIndex}`}
             initial={{ opacity: 0, x: 50 }}
@@ -163,36 +108,33 @@ const BlogSection = () => {
             className="flex flex-col justify-center space-y-6"
           >
             <div>
-              <h3 className="blog-heading-weight text-4xl md:text-5xl lg:text-6xl text-foreground mb-4 leading-tight" style={{ fontFamily: "'Aloevera Display', serif", letterSpacing: '2.1px' }}>
-                {displayPosts[activeIndex].title}
+              <h3 className="text-4xl md:text-5xl lg:text-6xl text-foreground mb-4 leading-tight font-semibold" style={{ letterSpacing: '2.1px' }}>
+                {activePost.title}
               </h3>
-              
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
-                {displayPosts[activeIndex].excerpt || displayPosts[activeIndex].title}
+                {activePost.excerpt}
               </p>
             </div>
-
             <div className="flex items-center gap-6 text-muted-foreground">
               <div className="flex items-center gap-2">
                 <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                <span className="font-medium">{displayPosts[activeIndex].date}</span>
+                <span className="font-medium">{activePost.date}</span>
               </div>
               <span>•</span>
               <div className="flex items-center gap-2">
                 <svg className="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
-                <span className="font-medium">{displayPosts[activeIndex].author}</span>
+                <span className="font-medium">{activePost.author}</span>
               </div>
             </div>
-            
             <motion.button
               className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-bold text-lg rounded-2xl w-fit shadow-lg"
               whileHover={{ gap: '1rem', scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => window.location.href = `/blog/${displayPosts[activeIndex].slug}`}
+              onClick={() => window.location.href = activePost.link}
             >
               <span>Read Full Article</span>
               <span className="text-2xl">→</span>
@@ -200,9 +142,9 @@ const BlogSection = () => {
           </motion.div>
         </div>
 
-        {/* Thumbnail Grid Below - Desktop Grid, Mobile Slider */}
+        {/* Thumbnail Grid */}
         <div className="hidden lg:grid lg:grid-cols-4 gap-6">
-          {displayPosts.map((post, index) => (
+          {posts.map((post, index) => (
             <motion.button
               key={post.slug}
               onClick={() => setActiveIndex(index)}
@@ -211,25 +153,13 @@ const BlogSection = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
               whileHover={{ y: -5, scale: 1.05 }}
-              className={`relative h-80 overflow-hidden transition-all duration-300 ${
-                activeIndex === index 
-                  ? 'ring-2 ring-primary shadow-xl shadow-primary/50' 
-                  : 'opacity-70 hover:opacity-100'
-              }`}
+              className={`relative h-80 overflow-hidden transition-all duration-300 ${activeIndex === index ? 'ring-2 ring-primary shadow-xl shadow-primary/50' : 'opacity-70 hover:opacity-100'}`}
             >
-              {/* Thumbnail Image */}
-              <img
-                src={post.image}
-                alt={post.title}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
+              <img src={post.image} alt={post.title} className="absolute inset-0 w-full h-full object-cover" />
+
             </motion.button>
           ))}
         </div>
-
-
-
-
       </div>
     </section>
   );

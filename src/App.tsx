@@ -23,6 +23,7 @@ import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
 import Contact from "./pages/Contact";
 import InvestorRelations from "./pages/InvestorRelations";
+import BSECompliance from "./pages/BSECompliance";
 import Testing from "./pages/Testing";
 import NotFound from "./pages/NotFound";
 
@@ -63,6 +64,7 @@ const App = () => (
           
           {/* Investor Relations */}
           <Route path="/investor-relations" element={<InvestorRelations />} />
+          <Route path="/bse-compliance" element={<BSECompliance />} />
           
           {/* Testing Page */}
           <Route path="/testing" element={<Testing />} />

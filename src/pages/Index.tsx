@@ -3,11 +3,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import InfinityCursor from "@/components/InfinityCursor";
-import ScrollingCards from "@/components/ScrollingCards";
+
 import TwoPillars from "@/components/TwoPillars";
 import BlogSection from "@/components/BlogSection";
 import CTA from "@/components/CTA";
 import InvestorRelations from "@/components/InvestorRelations";
+import BusinessVerticals from "@/components/BusinessVerticals";
+import AboutFuture from "@/components/AboutFuture";
+import Accelerator from "@/components/Accelerator";
 
 const Testing = () => {
   const [currentText, setCurrentText] = useState(0);
@@ -49,7 +52,7 @@ const Testing = () => {
               <AnimatePresence mode="wait">
                 <motion.span
                   key={currentText}
-                  className="block bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent text-4xl md:text-6xl lg:text-7xl xl:text-8xl"
+                  className="block text-white text-4xl md:text-6xl lg:text-7xl xl:text-8xl"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
@@ -72,12 +75,18 @@ const Testing = () => {
           </motion.div>
         </section>
 
-        {/* Scrolling Cards Section */}
-        <ScrollingCards />
+        {/* About Future Section */}
+        <AboutFuture />
 
+        {/* Business Verticals Section */}
+        <BusinessVerticals />
+
+ <BlogSection />
+ <InvestorRelations />
+ <Accelerator/>
         <TwoPillars />
-        <BlogSection />
-        <InvestorRelations />
+       
+       
         <CTA />
         <Footer />
       </div>

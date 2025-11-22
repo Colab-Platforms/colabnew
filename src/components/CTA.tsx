@@ -19,7 +19,7 @@ const CTA = () => {
             </span>
           </div>
           
-          <h2 className="font-serif font-bold text-4xl md:text-6xl lg:text-7xl leading-tight">
+          <h2 className="font-bold text-4xl md:text-6xl lg:text-7xl leading-tight">
             Ready to Build
             <span className="block mt-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               Your Future?

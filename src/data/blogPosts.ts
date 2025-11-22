@@ -141,12 +141,12 @@ export const blogPosts: BlogPost[] = [
     `,
     image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=1200&q=80"
   },
-      {
-                  title: "Shubman Gill Likely to Miss Out on Asia Cup T20I Squad as Selectors Stick to Core Group",
-                  author: "Sports Desk",
-                  date: "22 August, 2025",
-                  slug: "shubman-gill-asia-cup-squad",
-                  content: `
+  {
+    title: "Shubman Gill Likely to Miss Out on Asia Cup T20I Squad as Selectors Stick to Core Group",
+    author: "Sports Desk",
+    date: "22 August, 2025",
+    slug: "shubman-gill-asia-cup-squad",
+    content: `
     <p>With the <strong>Asia Cup 2025 T20I tournament</strong> fast approaching, the Indian cricket team selectors are facing a key dilemma whether or not to include Test captain <strong>Shubman Gill</strong> in the squad. Despite Gill's strong recent performances in red-ball cricket and his consistency in the IPL, the selectors and team management appear inclined to maintain the existing squad composition that brought success post the 2024 T20 World Cup.</p>
 
     <p>Sources close to the Board of Control for Cricket in India (BCCI) indicate that Gill is unlikely to be picked in the 15-member squad for the Asia Cup, set to be played from September 9 to 28 in Dubai. The final selection meeting is scheduled for August 19, but early signs point to the selectors favoring continuity over experimentation.</p>
@@ -191,6 +191,38 @@ export const blogPosts: BlogPost[] = [
 
     <p>While Gill remains a generational talent and an integral part of India’s red-ball future, he may need to further evolve his T20 game or wait for an opportunity when the team setup allows for his inclusion. For now, the selectors are sticking with a formula that has worked and they don’t want to fix what isn’t broken.</p>
   `,
-                  image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/subham_gill.avif?v=1755843257"
-                },
+    image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/subham_gill.avif?v=1755843257"
+  },
+  {
+    title: "Aeon Design Lab Announces Strategic Partnership with Global Tech Giants",
+    author: "Press Team",
+    date: "10 September, 2025",
+    slug: "aeon-strategic-partnership-announcement",
+    category: "Press Release",
+    excerpt: "We are thrilled to announce a landmark partnership that will accelerate our mission to revolutionize digital experiences worldwide.",
+    tags: ["Partnership", "Business", "Press Release"],
+    readTime: "3 min read",
+    content: `
+    <p>Aeon Design Lab is proud to announce a strategic partnership with leading global technology firms. This collaboration marks a significant milestone in our journey to deliver cutting-edge digital solutions.</p>
+    <h2>Strategic Alignment</h2>
+    <p>This partnership aligns with our long-term vision of integrating advanced AI and machine learning capabilities into our core design frameworks.</p>
+    `,
+    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&q=80"
+  },
+  {
+    title: "New Office Opening in Silicon Valley",
+    author: "Community Team",
+    date: "15 September, 2025",
+    slug: "new-office-silicon-valley",
+    category: "Announcement",
+    excerpt: "We are expanding our global footprint with a new state-of-the-art office in the heart of Silicon Valley.",
+    tags: ["Expansion", "Office", "Announcement"],
+    readTime: "2 min read",
+    content: `
+    <p>We are excited to open our doors in Silicon Valley! This new space will serve as a hub for innovation and collaboration, bringing us closer to our partners and clients in the tech capital of the world.</p>
+    <h2>A Space for Innovation</h2>
+    <p>The new office features collaborative workspaces, an innovation lab, and a dedicated area for community events.</p>
+    `,
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80"
+  }
 ];

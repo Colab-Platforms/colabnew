@@ -20,7 +20,7 @@ const Mission = () => {
     <section className="relative bg-background">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div 
+        <div
           className="absolute inset-0"
           style={{
             backgroundImage: 'radial-gradient(circle, rgba(168, 85, 247, 0.4) 1px, transparent 1px)',
@@ -52,7 +52,7 @@ const Mission = () => {
                     className="absolute inset-0"
                   >
                     <AnimatePresence mode="wait">
-                      <motion.div 
+                      <motion.div
                         key={`layout1-top-${flipCount}`}
                         className="absolute top-0 left-0 w-[65%] h-[65%] rounded-3xl overflow-hidden shadow-2xl"
                         initial={{ x: -100, opacity: 0 }}
@@ -68,7 +68,7 @@ const Mission = () => {
                     </AnimatePresence>
 
                     <AnimatePresence mode="wait">
-                      <motion.div 
+                      <motion.div
                         key={`layout1-bottom-${flipCount}`}
                         className="absolute bottom-0 right-0 w-[65%] h-[65%] rounded-3xl overflow-hidden shadow-2xl"
                         initial={{ x: 100, opacity: 0 }}
@@ -84,7 +84,7 @@ const Mission = () => {
                     </AnimatePresence>
 
                     <AnimatePresence mode="wait">
-                      <motion.div 
+                      <motion.div
                         key={`layout1-center-${flipCount}`}
                         className="absolute bottom-[32%] left-[30%] w-[45%] h-[45%] rounded-3xl overflow-hidden shadow-2xl z-10"
                         initial={{ scale: 0.8, opacity: 0, rotate: -10 }}
@@ -110,7 +110,7 @@ const Mission = () => {
                     className="absolute inset-0"
                   >
                     <AnimatePresence mode="wait">
-                      <motion.div 
+                      <motion.div
                         key={`layout2-top-${flipCount}`}
                         className="absolute top-0 right-0 w-[65%] h-[65%] rounded-3xl overflow-hidden shadow-2xl"
                         initial={{ x: 100, opacity: 0 }}
@@ -120,17 +120,17 @@ const Mission = () => {
                         whileHover={{ scale: 1.05 }}
                       >
                         <div className="w-full h-full">
-                          <img 
-                            src={flipCount >= 2 ? "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Fintech.jpg?v=1763126929" : "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800&q=80"} 
-                            alt={flipCount >= 2 ? "Fintech" : "Cricket"} 
-                            className="w-full h-full object-cover" 
+                          <img
+                            src={flipCount >= 2 ? "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Fintech.jpg?v=1763126929" : "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800&q=80"}
+                            alt={flipCount >= 2 ? "Fintech" : "Cricket"}
+                            className="w-full h-full object-cover"
                           />
                         </div>
                       </motion.div>
                     </AnimatePresence>
 
                     <AnimatePresence mode="wait">
-                      <motion.div 
+                      <motion.div
                         key={`layout2-bottom-${flipCount}`}
                         className="absolute bottom-0 left-0 w-[65%] h-[65%] rounded-3xl overflow-hidden shadow-2xl"
                         initial={{ x: -100, opacity: 0 }}
@@ -140,17 +140,17 @@ const Mission = () => {
                         whileHover={{ scale: 1.05 }}
                       >
                         <div className="w-full h-full">
-                          <img 
-                            src={flipCount >= 2 ? "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Fintech_copy.jpg?v=1763126929" : "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80"} 
-                            alt={flipCount >= 2 ? "Semiconductor Technology" : "Esports"} 
-                            className="w-full h-full object-cover" 
+                          <img
+                            src={flipCount >= 2 ? "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Fintech_copy.jpg?v=1763126929" : "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80"}
+                            alt={flipCount >= 2 ? "Semiconductor Technology" : "Esports"}
+                            className="w-full h-full object-cover"
                           />
                         </div>
                       </motion.div>
                     </AnimatePresence>
 
                     <AnimatePresence mode="wait">
-                      <motion.div 
+                      <motion.div
                         key={`layout2-center-${flipCount}`}
                         className="absolute bottom-[32%] right-[30%] w-[45%] h-[45%] rounded-3xl overflow-hidden shadow-2xl z-10"
                         initial={{ scale: 0.8, opacity: 0, rotate: -10 }}
@@ -160,10 +160,10 @@ const Mission = () => {
                         whileHover={{ scale: 1.1, zIndex: 20 }}
                       >
                         <div className="w-full h-full">
-                          <img 
-                            src={flipCount >= 2 ? "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=600&q=80" : "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80"} 
-                            alt={flipCount >= 2 ? "Drone Technology" : "AI Technology"} 
-                            className="w-full h-full object-cover" 
+                          <img
+                            src={flipCount >= 2 ? "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=600&q=80" : "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80"}
+                            alt={flipCount >= 2 ? "Drone Technology" : "AI Technology"}
+                            className="w-full h-full object-cover"
                           />
                         </div>
                       </motion.div>
@@ -226,7 +226,7 @@ const Mission = () => {
           >
             <div className="flex flex-col md:flex-row items-start gap-6 md:gap-8">
               {/* Icon Column */}
-              <motion.div 
+              <motion.div
                 className="flex-shrink-0"
                 whileHover={{ scale: 1.1, rotate: -5 }}
               >
@@ -243,7 +243,7 @@ const Mission = () => {
                 </div>
 
                 <p className="text-lg md:text-xl lg:text-2xl text-foreground leading-relaxed mb-6 md:mb-8 font-medium">
-                To develop scalable platforms powered by AI, intelligent infrastructure, and next-gen technologies that strengthen India’s competitive edge across industries
+                  To develop scalable platforms powered by AI, intelligent infrastructure, and next-gen technologies that strengthen India’s competitive edge across industries
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
@@ -286,7 +286,7 @@ const Mission = () => {
           >
             <div className="flex flex-col md:flex-row items-start gap-6 md:gap-8 md:flex-row-reverse">
               {/* Icon Column */}
-              <motion.div 
+              <motion.div
                 className="flex-shrink-0"
                 whileHover={{ scale: 1.1, rotate: 5 }}
               >

@@ -118,7 +118,7 @@ const Hero = () => {
             animate="show"
           >
             <motion.div variants={item} className="inline-block">
-              <span className="px-4 py-2 rounded-full bg-aeon-primary/10 border border-aeon-primary/20 text-sm font-medium text-aeon-primary backdrop-blur-sm">
+              <span className="px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-white backdrop-blur-sm">
                 Technology Conglomerate
               </span>
             </motion.div>
@@ -130,17 +130,17 @@ const Hero = () => {
               <span className="block text-white drop-shadow-2xl">
                 We Architect
               </span>
-              <span className="block mt-3 bg-gradient-to-r from-[#5d184e] via-[#d946a6] to-[#5d184e] bg-clip-text text-transparent animate-gradient" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>
+              <span className="block mt-3 text-white drop-shadow-2xl">
                 Ambition.
               </span>
             </motion.h1>
             
             <motion.p 
               variants={item}
-              className="text-2xl md:text-3xl text-aeon-light/90 max-w-2xl leading-relaxed font-medium"
+              className="text-2xl md:text-3xl text-white/90 max-w-2xl leading-relaxed font-medium"
             >
               Technology That Builds Nations.
-              <span className="block mt-3 text-xl text-aeon-gray">
+              <span className="block mt-3 text-xl text-white/70">
                Transforming high-potential industries with tech-driven solutions.
               </span>
             </motion.p>
@@ -164,7 +164,7 @@ const Hero = () => {
               <Button 
                 size="lg" 
                 variant="outline"
-                className="group relative overflow-hidden border-aeon-primary/30 hover:bg-aeon-primary/5 hover:border-aeon-primary/50 text-lg px-8"
+                className="group relative overflow-hidden border-white/30 hover:bg-white/5 hover:border-white/50 text-lg px-8 text-white"
                 onClick={() => {
                   const videoSection = document.querySelector('section:has(video[src*="1c8e4ef7e1324b52afec67e7b6ee4c7a"])');
                   if (videoSection) {
@@ -181,18 +181,18 @@ const Hero = () => {
             {/* Trust indicators */}
             <motion.div 
               variants={item}
-              className="grid grid-cols-3 gap-4 pt-8 text-sm text-aeon-gray"
+              className="grid grid-cols-3 gap-4 pt-8 text-sm text-white/60"
             >
-              <div className="p-4 bg-aeon-dark/50 backdrop-blur-sm rounded-xl border border-aeon-dark/30 hover:border-aeon-primary/30 transition-colors">
-                <div className="text-2xl font-bold text-aeon-light">15+</div>
+              <div className="p-4 bg-black/30 backdrop-blur-sm rounded-xl border border-white/10 hover:border-primary/30 transition-colors">
+                <div className="text-2xl font-bold text-white">15+</div>
                 <div>Active Ventures</div>
               </div>
-              <div className="p-4 bg-aeon-dark/50 backdrop-blur-sm rounded-xl border border-aeon-dark/30 hover:border-aeon-primary/30 transition-colors">
-                <div className="text-2xl font-bold text-aeon-light">6</div>
+              <div className="p-4 bg-black/30 backdrop-blur-sm rounded-xl border border-white/10 hover:border-primary/30 transition-colors">
+                <div className="text-2xl font-bold text-white">6</div>
                 <div>Core Ecosystems</div>
               </div>
-              <div className="p-4 bg-aeon-dark/50 backdrop-blur-sm rounded-xl border border-aeon-dark/30 hover:border-aeon-primary/30 transition-colors">
-                <div className="text-2xl font-bold text-aeon-light">Global</div>
+              <div className="p-4 bg-black/30 backdrop-blur-sm rounded-xl border border-white/10 hover:border-primary/30 transition-colors">
+                <div className="text-2xl font-bold text-white">Global</div>
                 <div>Presence</div>
               </div>
             </motion.div>
