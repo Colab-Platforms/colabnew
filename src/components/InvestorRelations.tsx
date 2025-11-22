@@ -153,7 +153,7 @@ const InvestorRelations = () => {
 
               {/* View All Button */}
               <a
-                href="/bse-compliance"
+                href="/investor-relations"
                 className="block w-full py-4 bg-primary hover:bg-secondary text-white font-bold text-center rounded-xl transition-all duration-300 hover:scale-105"
               >
                 View All Compliance Documents
