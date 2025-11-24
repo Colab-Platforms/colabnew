@@ -36,11 +36,10 @@ const Header = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-          isScrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${isScrolled
             ? 'bg-gradient-to-r from-black/95 via-black/90 to-black/95 backdrop-blur-2xl border-b border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.8)]'
             : 'bg-gradient-to-b from-black/40 to-transparent backdrop-blur-sm'
-        }`}
+          }`}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20 md:h-24">
@@ -129,7 +128,7 @@ const Header = () => {
                         <h3 className="text-sm font-black uppercase tracking-wider text-white">Business Verticals</h3>
                         <p className="text-xs text-white/60 mt-1">Explore our diverse portfolio</p>
                       </div>
-                      
+
                       {/* Grid */}
                       <div className="p-4 grid grid-cols-2 gap-3">
                         {businessVerticals.map((item, index) => {
@@ -138,19 +137,16 @@ const Header = () => {
                             <a
                               key={index}
                               href={item.link}
-                              className={`group relative p-4 rounded-2xl border transition-all duration-300 hover:scale-105 ${
-                                item.color === 'primary' 
-                                  ? 'border-primary/20 hover:border-primary/50 hover:bg-primary/5' 
+                              className={`group relative p-4 rounded-2xl border transition-all duration-300 hover:scale-105 ${item.color === 'primary'
+                                  ? 'border-primary/20 hover:border-primary/50 hover:bg-primary/5'
                                   : 'border-secondary/20 hover:border-secondary/50 hover:bg-secondary/5'
-                              }`}
+                                }`}
                             >
                               <div className="flex items-start gap-3">
-                                <div className={`p-2 rounded-xl ${
-                                  item.color === 'primary' ? 'bg-primary/10' : 'bg-secondary/10'
-                                }`}>
-                                  <IconComponent className={`w-5 h-5 ${
-                                    item.color === 'primary' ? 'text-primary' : 'text-secondary'
-                                  }`} />
+                                <div className={`p-2 rounded-xl ${item.color === 'primary' ? 'bg-primary/10' : 'bg-secondary/10'
+                                  }`}>
+                                  <IconComponent className={`w-5 h-5 ${item.color === 'primary' ? 'text-primary' : 'text-secondary'
+                                    }`} />
                                 </div>
                                 <div className="flex-1">
                                   <h4 className="text-sm font-bold text-white group-hover:text-primary transition-colors">

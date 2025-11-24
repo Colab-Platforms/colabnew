@@ -87,10 +87,10 @@ const TwoPillars = () => {
   }, [currentIndex, mediaType]);
 
   return (
-    <section className="relative py-32 overflow-hidden bg-white">
+    <section className="relative pt-12 md:pb-32 overflow-hidden bg-white">
       {/* Background Pattern - Removed */}
 
-      <div className="relative z-10 w-full" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
+      <div className="relative z-10 w-full px-4 md:px-[30px]">
         {/* Header & Toggle */}
         <div className="relative flex flex-col md:flex-row items-center justify-center md:justify-end mb-16 min-h-[80px]">
           {/* Centered Heading */}

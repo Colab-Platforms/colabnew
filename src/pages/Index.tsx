@@ -15,7 +15,7 @@ import Accelerator from "@/components/Accelerator";
 const Testing = () => {
   const [currentText, setCurrentText] = useState(0);
 
-  const texts = ["ARTIFICIAL INTELLIGENCE", "FINTECH", "ESPORTS", "TECH ESPORTS", "SEMICONDUCTOR", "DRONES", "COLAB"];
+  const texts = ["ARTIFICIAL INTELLIGENCE", "FINTECH", "ESPORTS", "TECH ESPORTS", "SEMICONDUCTOR", "DRONES"];
 
   // Auto-rotate hero text
   useEffect(() => {
@@ -32,45 +32,132 @@ const Testing = () => {
         <Header />
 
         {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
+          {/* Background Video with Enhanced Overlay */}
           <div className="absolute inset-0">
-            <video autoPlay loop muted playsInline className="w-full h-full object-cover">
-              <source src="https://cdn.shopify.com/videos/c/o/v/6064f36abdd74e889b9d65606a5700ad.mp4" type="video/mp4" />
-            </video>
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
+            <AnimatePresence mode="wait">
+              <motion.video
+                key={currentText}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover opacity-40"
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ opacity: 0.4, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.05 }}
+                transition={{ duration: 1.5 }}
+              >
+                <source src={[
+                  "https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_25fps.mp4", // AI - Neural Network
+                  "https://videos.pexels.com/video-files/6774266/6774266-uhd_2560_1440_25fps.mp4", // FinTech - Digital Finance
+                  "https://videos.pexels.com/video-files/7991309/7991309-uhd_2560_1440_25fps.mp4", // Esports - Gaming
+                  "https://videos.pexels.com/video-files/7991309/7991309-uhd_2560_1440_25fps.mp4", // Tech Esports
+                  "https://videos.pexels.com/video-files/3129957/3129957-uhd_2560_1440_25fps.mp4", // Semiconductor - Circuit
+                  "https://videos.pexels.com/video-files/2519832/2519832-uhd_2560_1440_24fps.mp4"  // Drones - Flying
+                ][currentText]} type="video/mp4" />
+              </motion.video>
+            </AnimatePresence>
+
+            {/* Gradient Overlays */}
+            <div className="absolute inset-0 bg-gradient-to-br from-black via-black/95 to-black/90" />
+            <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent" />
+
+            {/* Animated Grid Pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute inset-0" style={{
+                backgroundImage: 'linear-gradient(rgba(168, 85, 247, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(168, 85, 247, 0.3) 1px, transparent 1px)',
+                backgroundSize: '50px 50px'
+              }} />
+            </div>
           </div>
 
-          <div className="relative z-10 text-center px-6">
-            <motion.h1
-              className="mb-8"
-              style={{ fontFamily: "'Aloevera Display', serif", letterSpacing: '2.1px', fontWeight: 700 }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <span className="block text-white mb-6 text-5xl md:text-8xl lg:text-9xl xl:text-[12rem]">We Are</span>
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={currentText}
-                  className="block text-white text-4xl md:text-6xl lg:text-7xl xl:text-8xl"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5 }}
+          {/* Main Content */}
+          <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16 py-20">
+            <div className="max-w-4xl mx-auto">
+
+              {/* Main Heading - Our Expertise */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="mb-8"
+              >
+                <h1 className="text-white text-6xl md:text-8xl lg:text-9xl font-semibold leading-[1.1]  text-center">
+                  Our Expertise
+                </h1>
+              </motion.div>
+
+              {/* Rotating Industry Text */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="flex items-center justify-center gap-4 mb-12"
+              >
+                <div className="h-1 w-16 bg-gradient-to-r from-primary to-secondary rounded-full" />
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={currentText}
+                    className="text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {texts[currentText]}
+                  </motion.span>
+                </AnimatePresence>
+                <div className="h-1 w-16 bg-gradient-to-l from-primary to-secondary rounded-full" />
+              </motion.div>
+
+              {/* Description */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="text-white/70 text-lg md:text-xl lg:text-2xl leading-relaxed text-center mb-12"
+              >
+          Unified Technology Ecosystem 
+One platform powering intelligence, experiences, and innovation.
+              </motion.p>
+
+              {/* CTA Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1 }}
+                className="flex flex-wrap gap-4 justify-center"
+              >
+                <a
+                  href="#ventures"
+                  className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-bold text-lg overflow-hidden transition-all duration-300 hover:scale-105"
                 >
-                  {texts[currentText]}
-                </motion.span>
-              </AnimatePresence>
-            </motion.h1>
+                  <span className="relative z-10">Explore Ecosystem</span>
+                  <svg className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                </a>
+
+                <a
+                  href="/investor-relations"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-white/5 backdrop-blur-xl border-2 border-white/20 text-white font-bold text-lg transition-all duration-300 hover:bg-white/10 hover:border-white/40"
+                >
+                  <span>Investor Relations</span>
+                </a>
+              </motion.div>
+            </div>
           </div>
 
+          {/* Scroll Indicator */}
           <motion.div
             className="absolute bottom-10 left-1/2 -translate-x-1/2"
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center pt-2">
-              <div className="w-1 h-3 bg-white/50 rounded-full" />
+            <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
+              <div className="w-1 h-3 bg-white/30 rounded-full" />
             </div>
           </motion.div>
         </section>
@@ -81,12 +168,12 @@ const Testing = () => {
         {/* Business Verticals Section */}
         <BusinessVerticals />
 
- <BlogSection />
- <InvestorRelations />
- <Accelerator/>
+        <BlogSection />
+        <InvestorRelations />
+        <Accelerator />
         <TwoPillars />
-       
-       
+
+
         <CTA />
         <Footer />
       </div>
