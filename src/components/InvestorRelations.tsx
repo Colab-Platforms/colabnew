@@ -14,13 +14,13 @@ const InvestorRelations = () => {
     const loadData = async () => {
       try {
         setLoading(true);
-        
+
         // Fetch stock data from TwelveData API
         console.log('🔄 Fetching stock data from TwelveData API...');
         const stock = await fetchBSEStockData();
         console.log('📊 Stock data received:', stock);
         setStockData(stock);
-        
+
         // Fetch compliance documents
         console.log('🔄 Fetching compliance documents...');
         const docs = await fetchBSECompliance();
@@ -34,7 +34,7 @@ const InvestorRelations = () => {
     };
 
     loadData();
-    
+
     // Refresh every 5 minutes (to match cache duration)
     const interval = setInterval(loadData, 300000);
     return () => clearInterval(interval);
@@ -73,13 +73,13 @@ const InvestorRelations = () => {
         {/* Two Column Layout */}
         <div className="container mx-auto px-6 md:px-[30px]">
           <div className="flex flex-col lg:flex-row gap-6 items-stretch">
-            
+
             {/* Left: BSE Compliance Documents */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="flex-1 flex flex-col space-y-6"
+              className="flex-1 flex flex-col space-y-6 gap-2" 
             >
               {/* Header */}
               <div className="flex items-center justify-between mb-6">
@@ -100,32 +100,32 @@ const InvestorRelations = () => {
                 </div>
               ) : complianceDocs.length > 0 ? (
                 <div className="space-y-4">
-                  {complianceDocs.map((doc) => (
+                  {complianceDocs.slice(0, 1).map((doc) => (
                     <motion.div
                       key={doc.id}
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
-                      className="bg-black hover:bg-black/80 transition-all duration-300 p-6 rounded-xl border border-white/10 hover:border-primary/30 group"
+                      className="bg-black hover:bg-black/80 transition-all duration-300 p-10 rounded-xl border border-white/10 hover:border-primary/30 group max-w-[90%] min-h-[50px] flex flex-col justify-center"
                     >
-                      <div className="flex items-start gap-4">
-                        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <FileText className="w-5 h-5 text-primary" />
+                      <div className="flex items-start gap-6">
+                        <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <FileText className="w-7 h-7 text-primary" />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2 mb-2">
-                            <span className="px-2 py-1 bg-primary/20 text-primary text-xs font-semibold rounded">
+                          <div className="flex items-center gap-2 mb-3">
+                            <span className="px-3 py-1 bg-primary/20 text-primary text-xs font-semibold rounded">
                               {doc.category}
                             </span>
-                            <span className="text-xs text-white/60">
+                            <span className="text-sm text-white/60">
                               {formatDisplayDate(doc.date)}
                             </span>
                           </div>
-                          <h4 className="text-sm font-semibold text-white group-hover:text-primary transition-colors line-clamp-2 mb-2">
+                          <h4 className="text-lg font-semibold text-white group-hover:text-primary transition-colors line-clamp-3 mb-3">
                             {doc.subject}
                           </h4>
                           {doc.description && (
-                            <p className="text-xs text-white/70 line-clamp-1">
+                            <p className="text-sm text-white/70 line-clamp-2">
                               {doc.description}
                             </p>
                           )}
@@ -135,9 +135,9 @@ const InvestorRelations = () => {
                             href={doc.pdfUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-2 bg-primary/10 rounded-lg hover:bg-primary/20 transition-colors"
+                            className="p-3 bg-primary/10 rounded-xl hover:bg-primary/20 transition-colors mt-2"
                           >
-                            <Download className="w-4 h-4 text-primary" />
+                            <Download className="w-5 h-5 text-primary" />
                           </a>
                         )}
                       </div>
@@ -152,7 +152,7 @@ const InvestorRelations = () => {
               )}
 
               {/* View All Button */}
-              <div className="mt-auto">
+              <div className="mt-8 max-w-[90%]">
                 <a
                   href="/bse-compliance"
                   className="block w-full py-4 bg-primary hover:bg-secondary text-white font-bold text-center rounded-xl transition-all duration-300 hover:scale-105"
@@ -167,21 +167,20 @@ const InvestorRelations = () => {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="w-full lg:w-[450px] flex flex-col space-y-6 flex-shrink-0"
+              className="w-full lg:w-[450px]  flex flex-col space-y-6 flex-shrink-0"
             >
               {/* Stock Price Card */}
               {stockData && stockData.currentPrice > 0 && (
-                <div className="bg-black p-6 rounded-2xl border border-white/10">
+                <div className="bg-black p-10 rounded-2xl border border-white/10 mt-16 min-h-[90px] flex flex-col justify-center">
                   <div className="flex items-center justify-between mb-4">
                     <div>
                       <h3 className="text-xl font-bold text-white">{stockData.symbol}</h3>
                       <p className="text-xs text-white/60">Colab Platforms Ltd</p>
                     </div>
-                    <div className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                      stockData.status === 'open' 
-                        ? 'bg-green-500/20 text-green-400' 
-                        : 'bg-gray-500/20 text-gray-400'
-                    }`}>
+                    <div className={`px-2 py-1 rounded-full text-xs font-semibold ${stockData.status === 'open'
+                      ? 'bg-green-500/20 text-green-400'
+                      : 'bg-gray-500/20 text-gray-400'
+                      }`}>
                       {stockData.status === 'open' ? 'LIVE' : 'CLOSED'}
                     </div>
                   </div>
@@ -190,12 +189,11 @@ const InvestorRelations = () => {
                     <div className="text-3xl font-black text-white">
                       {formatCurrency(stockData.currentPrice)}
                     </div>
-                    <div className={`flex items-center gap-1 text-sm font-semibold ${
-                      stockData.change >= 0 ? 'text-green-400' : 'text-red-400'
-                    }`}>
+                    <div className={`flex items-center gap-1 text-sm font-semibold ${stockData.change >= 0 ? 'text-green-400' : 'text-red-400'
+                      }`}>
                       {stockData.change >= 0 ? <TrendingUp className="w-4 h-4" /> : <TrendingDown className="w-4 h-4" />}
                       <span>
-                        {stockData.change >= 0 ? '+' : ''}{stockData.change.toFixed(2)} 
+                        {stockData.change >= 0 ? '+' : ''}{stockData.change.toFixed(2)}
                         ({stockData.changePercent >= 0 ? '+' : ''}{stockData.changePercent.toFixed(2)}%)
                       </span>
                     </div>
@@ -210,7 +208,7 @@ const InvestorRelations = () => {
                       <span className="text-sm text-white">Stock Details</span>
                       <ChevronDown className={`w-5 h-5 text-white transition-transform ${showMoreDetails ? 'rotate-180' : ''}`} />
                     </button>
-                    
+
                     {/* Expandable Stock Details */}
                     <AnimatePresence>
                       {showMoreDetails && (
@@ -269,7 +267,7 @@ const InvestorRelations = () => {
 
                   <div className="mt-4 pt-4 border-t border-white/10">
                     <p className="text-xs text-white/50 text-center">
-                      {stockData.currentPrice > 0 && stockData.volume > 0 
+                      {stockData.currentPrice > 0 && stockData.volume > 0
                         ? 'Updates every 5 min'
                         : '⚠️ Using fallback data - API unavailable'}
                     </p>
@@ -280,9 +278,9 @@ const InvestorRelations = () => {
                 </div>
               )}
 
-    
 
-            
+
+
             </motion.div>
 
           </div>

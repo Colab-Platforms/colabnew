@@ -10,7 +10,7 @@ const BSEStockWidget = () => {
       <div className="space-y-3">
         {/* BSE India */}
         <a
-          href="https://www.bseindia.com/stock-share-price/colab-platforms-ltd/colabplat/542866/"
+          href="https://www.bseindia.com/stock-share-price/colab-platforms-ltd/colab/542866/"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-between p-4 bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30 rounded-xl hover:from-primary/30 hover:to-secondary/30 transition-all group"
