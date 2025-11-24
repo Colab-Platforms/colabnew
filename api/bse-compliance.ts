@@ -16,7 +16,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     // BSE API endpoint (public data)
     const bseUrl = 'https://api.bseindia.com/BseIndiaAPI/api/AnnGetData/w';
-    
+
     const params = new URLSearchParams({
       strCat: '-1',
       strPrevDate: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
@@ -27,7 +27,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     });
 
     console.log('📋 Fetching BSE compliance data...');
-    
+
     const response = await fetch(`${bseUrl}?${params}`, {
       headers: {
         'Accept': 'application/json',
@@ -40,14 +40,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     const data = await response.json();
-    
+
     console.log('✅ BSE compliance data received');
-    
+
     return res.status(200).json(data);
-    
+
   } catch (error: any) {
     console.error('❌ BSE API Error:', error.message);
-    
+
+    // Fallback mock data
     // Fallback mock data
     return res.status(200).json({
       Table: [
@@ -55,9 +56,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           SCRIP_CD: '542866',
           COMPANY_NAME: 'Colab Platforms Ltd',
           NEWS_SUBJECT: 'Financial Results',
-          NEWSSUB: 'Quarterly Results - Q2 FY2024',
+          NEWSSUB: 'Quarterly Results - Q3 FY2024-25',
           NEWS_DT: new Date().toISOString(),
-          ATTACHMENT: 'https://www.bseindia.com/stock-share-price/colab-platforms-ltd/colab/539528/'
+          ATTACHMENT: 'https://www.bseindia.com/stock-share-price/colab-platforms-ltd/colab/542866/'
         }
       ],
       error: error.message

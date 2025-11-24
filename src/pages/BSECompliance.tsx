@@ -72,7 +72,7 @@ const BSECompliance = () => {
     <>
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white pt-20">
-        
+
         {/* Hero Section */}
         <div className="relative py-20 overflow-hidden">
           {/* Background Pattern */}
@@ -108,7 +108,7 @@ const BSECompliance = () => {
                 Access all regulatory filings, corporate announcements, and compliance documents
                 submitted to BSE India
               </p>
-              
+
               {/* Note */}
               <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-yellow-500/10 border border-yellow-500/30">
                 <span className="text-sm text-yellow-400">
@@ -121,7 +121,7 @@ const BSECompliance = () => {
 
         {/* Main Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          
+
           {/* Search and Filter Bar */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -154,11 +154,10 @@ const BSECompliance = () => {
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-2 rounded-xl font-medium transition-all whitespace-nowrap ${
-                    selectedCategory === category
-                      ? 'bg-gradient-to-r from-[#5d184e] to-purple-600 text-white shadow-lg shadow-[#5d184e]/50'
-                      : 'bg-gray-900/50 text-gray-400 hover:text-white hover:bg-gray-800/50 border border-gray-800'
-                  }`}
+                  className={`px-4 py-2 rounded-xl font-medium transition-all whitespace-nowrap ${selectedCategory === category
+                    ? 'bg-gradient-to-r from-[#5d184e] to-purple-600 text-white shadow-lg shadow-[#5d184e]/50'
+                    : 'bg-gray-900/50 text-gray-400 hover:text-white hover:bg-gray-800/50 border border-gray-800'
+                    }`}
                 >
                   {category}
                 </button>
@@ -248,7 +247,7 @@ const BSECompliance = () => {
                           </button>
                         )}
                         <a
-                          href={`https://www.bseindia.com/corporates/ann.html?scrip=542866`}
+                          href={`https://www.bseindia.com/stock-share-price/colab-platforms-ltd/colab/542866/`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="p-2 bg-gray-800/50 rounded-lg hover:bg-gray-800 transition-colors"
@@ -277,7 +276,7 @@ const BSECompliance = () => {
             className="mt-12 text-center"
           >
             <a
-              href="https://www.bseindia.com/corporates/ann.html?scrip=542866"
+              href="https://www.bseindia.com/stock-share-price/colab-platforms-ltd/colab/542866/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#5d184e] to-purple-600 text-white font-semibold rounded-xl hover:scale-105 transition-transform"
