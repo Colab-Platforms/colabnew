@@ -72,14 +72,14 @@ const InvestorRelations = () => {
 
         {/* Two Column Layout */}
         <div className="container mx-auto px-6 md:px-[30px]">
-          <div className="flex flex-col lg:flex-row gap-6 items-start">
+          <div className="flex flex-col lg:flex-row gap-6 items-stretch">
             
             {/* Left: BSE Compliance Documents */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="flex-1 space-y-6"
+              className="flex-1 flex flex-col space-y-6"
             >
               {/* Header */}
               <div className="flex items-center justify-between mb-6">
@@ -152,12 +152,14 @@ const InvestorRelations = () => {
               )}
 
               {/* View All Button */}
-              <a
-                href="/investor-relations"
-                className="block w-full py-4 bg-primary hover:bg-secondary text-white font-bold text-center rounded-xl transition-all duration-300 hover:scale-105"
-              >
-                View All Compliance Documents
-              </a>
+              <div className="mt-auto">
+                <a
+                  href="/bse-compliance"
+                  className="block w-full py-4 bg-primary hover:bg-secondary text-white font-bold text-center rounded-xl transition-all duration-300 hover:scale-105"
+                >
+                  View All Compliance Documents
+                </a>
+              </div>
             </motion.div>
 
             {/* Right: Stock Data & Quick Links */}
@@ -165,7 +167,7 @@ const InvestorRelations = () => {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="lg:w-[400px] space-y-6 flex-shrink-0"
+              className="w-full lg:w-[450px] flex flex-col space-y-6 flex-shrink-0"
             >
               {/* Stock Price Card */}
               {stockData && stockData.currentPrice > 0 && (
