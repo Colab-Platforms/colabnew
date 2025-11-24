@@ -26,54 +26,57 @@ import InvestorRelations from "./pages/InvestorRelations";
 import BSECompliance from "./pages/BSECompliance";
 import Testing from "./pages/Testing";
 import NotFound from "./pages/NotFound";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/ai-intelligence" element={<AIIntelligence />} />
-          <Route path="/sports" element={<Sports />} />
-          <Route path="/semiconductor" element={<Semiconductor />} />
-          <Route path="/fintech" element={<FinTech />} />
-          <Route path="/esports" element={<Esports />} />
-          <Route path="/drones" element={<Drones />} />
-          
-          {/* Sports Services Pages */}
-          <Route path="/sports-marketplace" element={<SportsMarketplace />} />
-          <Route path="/sports-content" element={<SportsContent />} />
-          <Route path="/sports-ip" element={<SportsIP />} />
-          <Route path="/athlete-management" element={<AthleteManagement />} />
-          <Route path="/sports-infrastructure" element={<SportsInfrastructure />} />
-          <Route path="/sports-analytics" element={<SportsAnalytics />} />
-          
-          {/* Blog */}
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogDetail />} />
-          
-          {/* Contact */}
-          <Route path="/contact" element={<Contact />} />
-          
-          {/* Investor Relations */}
-          <Route path="/investor-relations" element={<InvestorRelations />} />
-          <Route path="/bse-compliance" element={<BSECompliance />} />
-          
-          {/* Testing Page */}
-          <Route path="/testing" element={<Testing />} />
-          
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <ThemeProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/ai-intelligence" element={<AIIntelligence />} />
+            <Route path="/sports" element={<Sports />} />
+            <Route path="/semiconductor" element={<Semiconductor />} />
+            <Route path="/fintech" element={<FinTech />} />
+            <Route path="/esports" element={<Esports />} />
+            <Route path="/drones" element={<Drones />} />
+
+            {/* Sports Services Pages */}
+            <Route path="/sports-marketplace" element={<SportsMarketplace />} />
+            <Route path="/sports-content" element={<SportsContent />} />
+            <Route path="/sports-ip" element={<SportsIP />} />
+            <Route path="/athlete-management" element={<AthleteManagement />} />
+            <Route path="/sports-infrastructure" element={<SportsInfrastructure />} />
+            <Route path="/sports-analytics" element={<SportsAnalytics />} />
+
+            {/* Blog */}
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogDetail />} />
+
+            {/* Contact */}
+            <Route path="/contact" element={<Contact />} />
+
+            {/* Investor Relations */}
+            <Route path="/investor-relations" element={<InvestorRelations />} />
+            <Route path="/bse-compliance" element={<BSECompliance />} />
+
+            {/* Testing Page */}
+            <Route path="/testing" element={<Testing />} />
+
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 

@@ -20,7 +20,7 @@ const AboutFuture = () => {
           </p>
           <a
             href="/about"
-            className="inline-block bg-gradient-to-r from-[#7f01ff] to-[#2b33da] text-white px-8 py-4 md:px-10 md:py-5 text-base md:text-lg font-medium transition-all duration-300 shadow-[0_0_20px_rgba(127,1,255,0.3)] hover:shadow-[0_0_30px_rgba(127,1,255,0.5)]"
+            className="inline-block bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 md:px-10 md:py-5 text-base md:text-lg font-medium transition-all duration-300 shadow-[0_0_20px_rgba(127,1,255,0.3)] dark:shadow-[0_0_20px_rgba(255,69,0,0.3)] hover:shadow-[0_0_30px_rgba(127,1,255,0.5)] dark:hover:shadow-[0_0_30px_rgba(255,69,0,0.5)]"
           >
             Explore Our Ecosystem
           </a>

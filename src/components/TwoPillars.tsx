@@ -87,7 +87,7 @@ const TwoPillars = () => {
   }, [currentIndex, mediaType]);
 
   return (
-    <section className="relative pt-12 md:pb-32 overflow-hidden bg-white">
+    <section className="relative pt-12 md:pb-32 overflow-hidden bg-white dark:bg-background transition-colors duration-300">
       {/* Background Pattern - Removed */}
 
       <div className="relative z-10 w-full px-4 md:px-[30px]">
@@ -95,7 +95,7 @@ const TwoPillars = () => {
         <div className="relative flex flex-col md:flex-row items-center justify-center md:justify-end mb-16 min-h-[80px]">
           {/* Centered Heading */}
           <div className="md:absolute md:left-1/2 md:-translate-x-1/2 text-center mb-8 md:mb-0 z-0">
-            <h2 className="text-5xl md:text-7xl font-semibold text-black">
+            <h2 className="text-5xl md:text-7xl font-semibold text-black dark:text-white transition-colors duration-300">
               Gallery
             </h2>
           </div>
@@ -107,7 +107,7 @@ const TwoPillars = () => {
                 setMediaType("photos");
                 setCurrentIndex(0);
               }}
-              className={`text-4xl md:text-4xl transition-all duration-300 ${mediaType === "photos" ? "text-black font-bold" : "text-black/40 font-medium hover:text-black"
+              className={`text-4xl md:text-4xl transition-all duration-300 ${mediaType === "photos" ? "text-black dark:text-white font-bold" : "text-black/40 dark:text-white/40 font-medium hover:text-black dark:hover:text-white"
                 }`}
             >
               Images
@@ -117,7 +117,7 @@ const TwoPillars = () => {
                 setMediaType("videos");
                 setCurrentIndex(0);
               }}
-              className={`text-4xl md:text-4xl transition-all duration-300 ${mediaType === "videos" ? "text-black font-bold" : "text-black/40 font-medium hover:text-black"
+              className={`text-4xl md:text-4xl transition-all duration-300 ${mediaType === "videos" ? "text-black dark:text-white font-bold" : "text-black/40 dark:text-white/40 font-medium hover:text-black dark:hover:text-white"
                 }`}
             >
               Videos

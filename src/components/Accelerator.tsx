@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 
 const Accelerator = () => {
     return (
-        <section className="bg-white py-16 md:py-32 overflow-hidden">
+        <section className="bg-white dark:bg-background py-16 md:py-32 overflow-hidden transition-colors duration-300">
             <div className="w-full px-4 md:px-[80px]">
                 <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
                     {/* Left Content */}
@@ -13,7 +13,7 @@ const Accelerator = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-black mb-6 md:mb-8 leading-tight tracking-wide">
+                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-black dark:text-white mb-6 md:mb-8 leading-tight tracking-wide transition-colors duration-300">
                             Accelerator:
                             <br />
                             Powering India’s Next
@@ -21,11 +21,11 @@ const Accelerator = () => {
                             Wave of Tech Innovation.
                         </h2>
 
-                        <p className="text-lg md:text-2xl text-gray-700 mb-8 md:mb-10 leading-relaxed max-w-xl">
+                        <p className="text-lg md:text-2xl text-gray-700 dark:text-gray-300 mb-8 md:mb-10 leading-relaxed max-w-xl transition-colors duration-300">
                             At Colab, we’re not just supporting startups; we’re building the future with them. Through our accelerator program, we collaborate with bold, early-stage technology ventures across India, helping them turn powerful ideas into scalable, real-world solutions.
                         </p>
 
-                        <button className="bg-[#8B5CF6] hover:bg-[#7C3AED] text-white px-8 py-3 md:px-10 md:py-4 font-bold text-base md:text-lg transition-all duration-300 flex items-center gap-2 group">
+                        <button className="bg-primary hover:bg-primary/90 text-white px-8 py-3 md:px-10 md:py-4 font-bold text-base md:text-lg transition-all duration-300 flex items-center gap-2 group">
                             Get in touch
                             <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                         </button>

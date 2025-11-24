@@ -27,7 +27,7 @@ const Testing = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-background text-foreground">
+      <div className="min-h-screen bg-background text-foreground dark:bg-gray-900 dark:text-white transition-colors duration-300">
         <InfinityCursor />
         <Header />
 
@@ -49,12 +49,12 @@ const Testing = () => {
                 transition={{ duration: 1.5 }}
               >
                 <source src={[
-                  "https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_25fps.mp4", // AI - Neural Network
+                  "https://cdn.shopify.com/videos/c/o/v/cc2faf9b69b24dc9a15bc8920fbe5524.mp4", // AI - Neural Network
                   "https://videos.pexels.com/video-files/6774266/6774266-uhd_2560_1440_25fps.mp4", // FinTech - Digital Finance
                   "https://videos.pexels.com/video-files/7991309/7991309-uhd_2560_1440_25fps.mp4", // Esports - Gaming
                   "https://videos.pexels.com/video-files/7991309/7991309-uhd_2560_1440_25fps.mp4", // Tech Esports
                   "https://videos.pexels.com/video-files/3129957/3129957-uhd_2560_1440_25fps.mp4", // Semiconductor - Circuit
-                  "https://videos.pexels.com/video-files/2519832/2519832-uhd_2560_1440_24fps.mp4"  // Drones - Flying
+                  "https://cdn.shopify.com/videos/c/o/v/a4e715aa7db741c699cb7dbb578c5ba7.mp4"  // Drones - Flying
                 ][currentText]} type="video/mp4" />
               </motion.video>
             </AnimatePresence>
@@ -118,8 +118,8 @@ const Testing = () => {
                 transition={{ duration: 0.8, delay: 0.8 }}
                 className="text-white/70 text-lg md:text-xl lg:text-2xl leading-relaxed text-center mb-12"
               >
-          Unified Technology Ecosystem 
-One platform powering intelligence, experiences, and innovation.
+                Unified Technology Ecosystem
+                One platform powering intelligence, experiences, and innovation.
               </motion.p>
 
               {/* CTA Buttons */}

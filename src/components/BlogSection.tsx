@@ -59,7 +59,7 @@ const BlogSection = () => {
   const activePost = posts[activeIndex];
 
   return (
-    <section className="relative py-16 md:py-32 bg-white overflow-hidden">
+    <section className="relative py-16 md:py-32 bg-white dark:bg-background overflow-hidden transition-colors duration-300">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div
@@ -74,7 +74,7 @@ const BlogSection = () => {
       <div className="relative z-10 w-full px-4 md:px-[50px]">
         {/* Announcements Heading */}
         <div className="text-center mb-10 md:mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-black tracking-wide">Announcements</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white tracking-wide transition-colors duration-300">Announcements</h2>
         </div>
 
         {/* Split Layout */}

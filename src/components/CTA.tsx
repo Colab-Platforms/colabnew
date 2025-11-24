@@ -3,7 +3,7 @@ import { ArrowRight, Mail } from "lucide-react";
 
 const CTA = () => {
   return (
-    <section className="relative py-32 overflow-hidden bg-white">
+    <section className="relative py-32 overflow-hidden bg-white dark:bg-background transition-colors duration-300">
       <div className="container relative z-10 px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           {/* Badge */}
@@ -12,30 +12,30 @@ const CTA = () => {
               Ready to Transform?
             </span>
           </div>
-          
-          <h2 className="font-bold text-4xl md:text-6xl lg:text-7xl leading-tight">
+
+          <h2 className="font-bold text-4xl md:text-6xl lg:text-7xl leading-tight text-black dark:text-white transition-colors duration-300">
             Ready to Build
             <span className="block mt-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               Your Future?
             </span>
           </h2>
-          
+
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Partner with a conglomerate that operates at the intersection of excellence and innovation.
           </p>
-          
+
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="group bg-gradient-primary hover:shadow-glow transition-all duration-300 text-lg px-8"
               onClick={() => window.location.href = '/about'}
             >
               Explore Our Ecosystems
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               variant="outline"
               className="border-primary/30 hover:bg-primary/10 text-lg px-8"
               onClick={() => window.location.href = '/contact'}
@@ -44,7 +44,7 @@ const CTA = () => {
               Contact Us
             </Button>
           </div>
-    
+
         </div>
       </div>
     </section>

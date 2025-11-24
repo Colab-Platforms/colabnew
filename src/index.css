@@ -92,6 +92,50 @@ All colors MUST be HSL.
     /* Animations */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
+
+  /* Dark Mode - Red/Orange Theme */
+  .dark {
+    --background: 0 0% 7%;
+    /* #121212 */
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 14 100% 57%;
+    /* Red-Orange */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 33 100% 50%;
+    /* Orange */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 14 100% 57%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 14 100% 57%;
+
+    /* Dark Mode Gradients - Red/Orange */
+    --gradient-primary: linear-gradient(135deg, #ff4500 0%, #ff8c00 100%);
+    --gradient-secondary: linear-gradient(135deg, #ff8c00 0%, #ff4500 100%);
+    --gradient-mesh: radial-gradient(at 0% 0%, rgba(255, 69, 0, 0.3) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(255, 140, 0, 0.2) 0px, transparent 50%);
+
+    /* Dark Mode Shadows */
+    --shadow-glow: 0 0 60px rgba(255, 69, 0, 0.4);
+    --shadow-soft: 0 20px 60px hsl(0 0% 0% / 0.5);
+  }
 }
 
 @layer base {

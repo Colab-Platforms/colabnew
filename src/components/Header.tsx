@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown, Trophy, Gamepad2, Brain, Plane, Target, BarChart3, Settings, Lightbulb, Building2, Code2, Cpu, Smartphone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,8 +38,8 @@ const Header = () => {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${isScrolled
-            ? 'bg-gradient-to-r from-black/95 via-black/90 to-black/95 backdrop-blur-2xl border-b border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.8)]'
-            : 'bg-gradient-to-b from-black/40 to-transparent backdrop-blur-sm'
+          ? 'bg-gradient-to-r from-black/95 via-black/90 to-black/95 backdrop-blur-2xl border-b border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.8)]'
+          : 'bg-gradient-to-b from-black/40 to-transparent backdrop-blur-sm'
           }`}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -138,8 +139,8 @@ const Header = () => {
                               key={index}
                               href={item.link}
                               className={`group relative p-4 rounded-2xl border transition-all duration-300 hover:scale-105 ${item.color === 'primary'
-                                  ? 'border-primary/20 hover:border-primary/50 hover:bg-primary/5'
-                                  : 'border-secondary/20 hover:border-secondary/50 hover:bg-secondary/5'
+                                ? 'border-primary/20 hover:border-primary/50 hover:bg-primary/5'
+                                : 'border-secondary/20 hover:border-secondary/50 hover:bg-secondary/5'
                                 }`}
                             >
                               <div className="flex items-start gap-3">
@@ -164,7 +165,6 @@ const Header = () => {
                 </AnimatePresence>
               </div>
 
-              {/* Services Link */}
               <a
                 href="/services"
                 className="px-4 py-2 text-white/70 hover:text-white font-bold text-sm uppercase tracking-wider transition-all duration-300 relative group rounded-lg hover:bg-white/5"
@@ -188,13 +188,21 @@ const Header = () => {
               </svg>
             </motion.a>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-white hover:text-primary transition-colors"
-            >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            {/* Theme Toggle - Desktop */}
+            <div className="hidden lg:block ml-4">
+              <ThemeToggle />
+            </div>
+
+            {/* Mobile Actions */}
+            <div className="flex items-center gap-2 lg:hidden">
+              <ThemeToggle />
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="p-2 text-white hover:text-primary transition-colors"
+              >
+                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
         </div>
       </header>
