@@ -26,6 +26,18 @@ const InvestorRelations = () => {
   const [categories, setCategories] = useState<Category[]>(investorDataLocal);
   const [loading, setLoading] = useState(true);
 
+  // Function to handle tab click and scroll
+  const handleTabClick = (index: number) => {
+    setActiveTab(index);
+    // Scroll to documents section smoothly
+    setTimeout(() => {
+      const documentsSection = document.getElementById('documents-display');
+      if (documentsSection) {
+        documentsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+  };
+
   // Fetch investor documents from Firebase
   useEffect(() => {
     const loadInvestorData = async () => {
@@ -34,14 +46,16 @@ const InvestorRelations = () => {
         const firebaseData = await fetchInvestorDocuments();
 
         // Merge Firebase data with local data
+        let allData;
         if (firebaseData.length > 0) {
           // Firebase data first, then local data
-          const allData = [...firebaseData, ...investorDataLocal];
-          setCategories(allData);
+          allData = [...firebaseData, ...investorDataLocal];
         } else {
           // Use local data if Firebase is empty
-          setCategories(investorDataLocal);
+          allData = investorDataLocal;
         }
+        
+        setCategories(allData);
       } catch (error) {
         console.error('Error loading investor data:', error);
         setCategories(investorDataLocal);
@@ -79,150 +93,176 @@ const InvestorRelations = () => {
 
   return (
     <>      <Header />
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white pt-20">
+      <div className="min-h-screen bg-white dark:bg-[#0a0a0a] ">
         {/* Hero Banner Section */}
-        <div className="relative h-[70vh] min-h-[600px] overflow-hidden">
-          {/* Background Image with Overlay */}
+        <div className="relative h-[600px] md:h-[700px] overflow-hidden">
+          {/* Background Image */}
           <div className="absolute inset-0">
             <img
-              src="https://cdn.shopify.com/s/files/1/0653/9830/9053/files/a-photograph-of-a-futuristic-sports-stad_2wNIVFRmSSCb2q2FS3PuWg_mq95yDUrS6COdFWwJSR7Qg.jpg?v=1746784021"
-              alt="Futuristic Sports Stadium"
+              src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=2070"
+              alt="Business Background"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+            {/* Gradient Overlay - Homepage theme colors */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#7f01ff]/90 via-[#2b33da]/70 to-black/80 dark:from-[#ff4500]/60 dark:via-[#ff8c00]/40 dark:to-black/70" />
           </div>
 
-          {/* Animated Particles */}
-          <div className="absolute inset-0">
-            <div className="absolute top-20 left-20 w-2 h-2 bg-[#5d184e] rounded-full animate-pulse" />
-            <div className="absolute top-40 right-32 w-3 h-3 bg-purple-400 rounded-full animate-pulse delay-100" />
-            <div className="absolute bottom-32 left-40 w-2 h-2 bg-pink-400 rounded-full animate-pulse delay-200" />
-          </div>
-
-          {/* Hero Content */}
-          <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="max-w-3xl space-y-8"
-            >
-              {/* Badge */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#5d184e]/10 border border-[#5d184e]/30 backdrop-blur-sm"
-              >
-                <div className="w-2 h-2 bg-[#5d184e] rounded-full animate-pulse" />
-                <span className="text-sm font-semibold text-[#5d184e]">Listed on BSE | Code: 539528</span>
-              </motion.div>
-
-              {/* Main Heading */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
-                <span className="block text-white mb-2">Colab Platforms</span>
-                <span className="block bg-gradient-to-r from-[#5d184e] via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                  A Public Company Powering India's Sports-Tech Revolution
-                </span>
-              </h1>
-
-              {/* Description */}
-              <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl">
-                Building India's first end-to-end sports innovation ecosystem across tech, data,
-                athlete management, e-commerce, and immersive content.
-              </p>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <a
-                  href="#documents"
-                  className="group relative px-8 py-4 rounded-xl bg-gradient-to-r from-[#5d184e] to-purple-600 text-white font-bold text-center overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(168,85,247,0.6)]"
-                >
-                  <span className="relative z-10">Investor Relations</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-[#5d184e] opacity-0 group-hover:opacity-100 transition-opacity" />
-                </a>
-                <a
-                  href="https://www.screener.in/company/542866/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-8 py-4 rounded-xl bg-white/10 backdrop-blur-xl border border-white/20 text-white font-bold text-center hover:bg-white/20 hover:border-white/40 transition-all duration-300 hover:scale-105"
-                >
-                  Stock Details →
-                </a>
+          {/* Content Container */}
+          <div className="relative z-10 container mx-auto px-6 md:px-[30px] h-full flex items-center mt-12 md:mt-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
+              
+              {/* Left: Heading */}
+              <div>
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">
+                  Investor Relations
+                </h1>
               </div>
-            </motion.div>
-          </div>
 
-          {/* Scroll Indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          >
-            <div className="flex flex-col items-center gap-2 text-white/60">
-              <span className="text-xs uppercase tracking-wider">Scroll Down</span>
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-                className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2"
-              >
-                <div className="w-1 h-2 bg-white/60 rounded-full" />
-              </motion.div>
+              {/* Right: Brief Description */}
+              <div className="text-white/90 text-base md:text-lg leading-relaxed">
+                <p>
+                  Invested in the world's leading streaming entertainment service with 193 million paid memberships in over 190 countries enjoying TV series, documentaries and feature films across a wide variety of genres and languages.
+                </p>
+              </div>
+
             </div>
-          </motion.div>
+          </div>
         </div>
 
+        {/* Content + Image Section */}
+        <section className="py-20 bg-white dark:bg-[#0a0a0a]">
+          <div className="container mx-auto px-6 md:px-[30px]">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              
+              {/* Left: Content */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="space-y-6"
+              >
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
+                  Building India's Future Through Innovation
+                </h2>
+                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                  Colab Platforms is committed to creating long-term value for our shareholders through strategic investments in cutting-edge technology, sports innovation, and digital transformation. Our diversified portfolio spans AI, FinTech, Esports, and Drone Technology.
+                </p>
+                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                  As a publicly listed company on BSE (Code: 542866), we maintain the highest standards of corporate governance and transparency, ensuring our investors have access to timely and accurate information.
+                </p>
+                <div className="flex gap-4 pt-4">
+                  <a
+                    href="#documents"
+                    className="px-6 py-3 bg-gradient-to-r from-[#7f01ff] to-[#2b33da] dark:from-[#ff4500] dark:to-[#ff8c00] hover:opacity-90 text-white font-semibold transition-all"
+                  >
+                    View Documents
+                  </a>
+                  <a
+                    href="https://www.bseindia.com/stock-share-price/colab-platforms-ltd/colab/542866/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-3 border-2 border-[#7f01ff] dark:border-[#ff4500] text-[#7f01ff] dark:text-[#ff4500] hover:bg-[#7f01ff] dark:hover:bg-[#ff4500] hover:text-white font-semibold transition-all"
+                  >
+                    BSE Profile
+                  </a>
+                </div>
+              </motion.div>
+
+              {/* Right: Image */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="relative h-[400px] lg:h-[500px] overflow-hidden shadow-2xl"
+              >
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Gemini_Generated_Image_z9pyo2z9pyo2z9py.png?v=1764057256"
+                  alt="Business Analytics"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#7f01ff]/20 dark:from-[#ff4500]/20 to-transparent" />
+              </motion.div>
+
+            </div>
+          </div>
+        </section>
+
         {/* Main Content */}
-        <div id="documents" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div id="documents" className="mx-auto px-4 sm:px-6 lg:px-8 py-16">
           {/* Search Bar */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="mb-12"
           >
-            <div className="relative max-w-2xl mx-auto">
+            <div className="relative mx-auto">
               <input
                 type="text"
                 placeholder="Search documents..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-6 py-4 bg-gray-900/50 backdrop-blur-xl border border-gray-800 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:border-[#5d184e] transition-colors"
+                className="w-full px-6 py-4 bg-black border border-white/10 text-white placeholder-white/50 focus:outline-none focus:border-primary transition-colors"
               />
               <div className="absolute right-4 top-1/2 -translate-y-1/2">
-                <FileText className="w-5 h-5 text-gray-500" />
+                <FileText className="w-5 h-5 text-white/60" />
               </div>
             </div>
           </motion.div>
 
-          {/* Tabs */}
-          <div className="mb-8 overflow-x-auto">
-            <div className="flex gap-2 min-w-max pb-4">
-              {categories.map((category, index) => (
-                <button
-                  key={category.id}
-                  onClick={() => setActiveTab(index)}
-                  className={`px-6 py-3 rounded-xl font-medium transition-all whitespace-nowrap ${activeTab === index
-                    ? 'bg-gradient-to-r from-[#5d184e] to-purple-600 text-white shadow-lg shadow-[#5d184e]/50'
-                    : 'bg-gray-900/50 text-gray-400 hover:text-white hover:bg-gray-800/50'
+          {/* Investor Kits Grid */}
+          <div className="relative mb-16 py-20 overflow-hidden">
+            {/* Background Image with Gradient Overlay */}
+            <div className="absolute inset-0">
+              <img
+                src="https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=2000"
+                alt="Background"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/90 to-black/95" />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#7f01ff]/10 dark:via-[#ff4500]/10 to-transparent" />
+            </div>
+
+            {/* Content */}
+            <div className="relative z-10 px-8 md:px-12 lg:px-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-white dark:text-white">
+                Investor Kits
+              </h2>
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3">
+                {categories.map((category, index) => (
+                  <button
+                    key={category.id}
+                    onClick={() => handleTabClick(index)}
+                    className={`group relative px-4 py-3 font-semibold text-sm transition-all overflow-hidden w-full ${
+                      activeTab === index
+                        ? 'bg-gradient-to-r from-[#7f01ff] to-[#2b33da] dark:from-[#ff4500] dark:to-[#ff8c00] text-white shadow-2xl shadow-[#7f01ff]/50 dark:shadow-[#ff4500]/50 scale-105'
+                        : 'bg-white dark:bg-gray-800/50 text-black dark:text-white/70 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800/80 hover:scale-105'
                     }`}
-                >
-                  {category.header}
-                </button>
-              ))}
+                  >
+                    <span className="relative z-10">{category.header}</span>
+                    {activeTab === index && (
+                      <motion.div
+                        layoutId="activeTab"
+                        className="absolute inset-0 bg-gradient-to-r from-[#7f01ff] to-[#2b33da] dark:from-[#ff4500] dark:to-[#ff8c00]"
+                        initial={false}
+                        transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                      />
+                    )}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
           {/* Documents Grid - Grouped by Quarter */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="space-y-8"
-            >
+          <div id="documents-display" className="scroll-mt-8">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                className="space-y-8"
+              >
               {filteredDocuments.length > 0 ? (
                 <>
                   {/* Documents with Quarter - Grouped */}
@@ -230,14 +270,14 @@ const InvestorRelations = () => {
                     <div key={quarter} className="space-y-4">
                       {/* Quarter Header */}
                       <div className="flex items-center gap-3 mb-4">
-                        <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#5d184e]/20 to-purple-600/20 border border-[#5d184e]/30 rounded-xl">
-                          <svg className="w-5 h-5 text-[#5d184e]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#7f01ff]/20 to-[#2b33da]/20 dark:from-[#ff4500]/20 dark:to-[#ff8c00]/20 border border-[#7f01ff]/30 dark:border-[#ff4500]/30">
+                          <svg className="w-5 h-5 text-[#7f01ff] dark:text-[#ff4500]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                           </svg>
                           <h3 className="text-lg font-bold text-white">{quarter}</h3>
                         </div>
-                        <div className="flex-1 h-px bg-gradient-to-r from-[#5d184e]/50 to-transparent"></div>
-                        <span className="text-sm text-gray-500">{groupedByQuarter[quarter].length} documents</span>
+                        <div className="flex-1 h-px bg-gradient-to-r from-primary/50 to-transparent"></div>
+                        <span className="text-sm text-white/60">{groupedByQuarter[quarter].length} documents</span>
                       </div>
 
                       {/* Documents in this quarter */}
@@ -252,16 +292,16 @@ const InvestorRelations = () => {
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                           >
-                            <div className="absolute inset-0 bg-gradient-to-r from-[#5d184e]/20 to-purple-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                            <div className="relative bg-gray-900/50 backdrop-blur-xl border border-gray-800 rounded-2xl p-6 hover:border-[#5d184e]/50 transition-all">
+                            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-[#2b33da]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                            <div className="relative bg-black border border-white/10 p-6 hover:border-[#7f01ff]/50 dark:hover:border-[#ff4500]/50 transition-all">
                               <div className="flex items-start justify-between mb-4">
-                                <FileText className="w-8 h-8 text-[#5d184e]" />
-                                <Download className="w-5 h-5 text-gray-500 group-hover:text-[#5d184e] transition-colors" />
+                                <FileText className="w-8 h-8 text-[#7f01ff] dark:text-[#ff4500]" />
+                                <Download className="w-5 h-5 text-white/60 group-hover:text-[#7f01ff] dark:group-hover:text-[#ff4500] transition-colors" />
                               </div>
-                              <h3 className="text-lg font-semibold mb-4 group-hover:text-[#5d184e] transition-colors line-clamp-2">
+                              <h3 className="text-lg font-semibold text-white mb-4 group-hover:text-[#7f01ff] dark:group-hover:text-[#ff4500] transition-colors line-clamp-2">
                                 {doc.head}
                               </h3>
-                              <div className="flex items-center text-sm text-gray-500 group-hover:text-[#5d184e] transition-colors">
+                              <div className="flex items-center text-sm text-white/70 group-hover:text-[#7f01ff] dark:group-hover:text-[#ff4500] transition-colors">
                                 <span>View Document</span>
                                 <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                               </div>
@@ -285,16 +325,16 @@ const InvestorRelations = () => {
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
                         >
-                          <div className="absolute inset-0 bg-gradient-to-r from-[#5d184e]/20 to-purple-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                          <div className="relative bg-gray-900/50 backdrop-blur-xl border border-gray-800 rounded-2xl p-6 hover:border-[#5d184e]/50 transition-all">
+                          <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-[#2b33da]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                          <div className="relative bg-black border border-white/10 p-6 hover:border-[#7f01ff]/50 dark:hover:border-[#ff4500]/50 transition-all">
                             <div className="flex items-start justify-between mb-4">
-                              <FileText className="w-8 h-8 text-[#5d184e]" />
-                              <Download className="w-5 h-5 text-gray-500 group-hover:text-[#5d184e] transition-colors" />
+                              <FileText className="w-8 h-8 text-[#7f01ff] dark:text-[#ff4500]" />
+                              <Download className="w-5 h-5 text-white/70 group-hover:text-[#7f01ff] dark:group-hover:text-[#ff4500] transition-colors" />
                             </div>
-                            <h3 className="text-lg font-semibold mb-4 group-hover:text-[#5d184e] transition-colors line-clamp-2">
+                            <h3 className="text-lg font-semibold text-white mb-4 group-hover:text-[#7f01ff] dark:group-hover:text-[#ff4500] transition-colors line-clamp-2">
                               {doc.head}
                             </h3>
-                            <div className="flex items-center text-sm text-gray-500 group-hover:text-[#5d184e] transition-colors">
+                            <div className="flex items-center text-sm text-white/70 group-hover:text-[#7f01ff] dark:group-hover:text-[#ff4500] transition-colors">
                               <span>View Document</span>
                               <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                             </div>
@@ -307,62 +347,61 @@ const InvestorRelations = () => {
               ) : (
                 <div className="col-span-full text-center py-12">
                   <FileText className="w-16 h-16 text-gray-700 mx-auto mb-4" />
-                  <p className="text-gray-500 text-lg">No documents found</p>
+                  <p className="text-white/60 text-lg">No documents found</p>
                 </div>
               )}
-            </motion.div>
-          </AnimatePresence>
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
 
         {/* Detailed Director Profiles with Images */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-12"
+            className="space-y-8"
           >
             {/* Section Header */}
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#5d184e] via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold mb-3 text-gray-900 dark:text-white">
                 Leadership Team
               </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-[#5d184e] to-purple-500 mx-auto rounded-full" />
+       
             </div>
 
-            <div className="space-y-12">
+            <div className="space-y-8">
               {/* Puneet Singh Chadhok */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="bg-gray-900/50 backdrop-blur-xl rounded-3xl overflow-hidden border border-gray-800 hover:border-[#5d184e]/50 transition-all"
+                className="bg-black overflow-hidden border border-white/10 hover:border-[#7f01ff]/50 dark:hover:border-[#ff4500]/50 transition-all max-w-7xl mx-auto"
               >
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 p-8">
-                  {/* Image */}
-                  <div className="lg:col-span-1">
-                    <div className="relative aspect-square rounded-2xl overflow-hidden">
-                      <img
-                        src="https://cdn.shopify.com/s/files/1/0653/9830/9053/files/WhatsApp_Image_2025-05-24_at_1.30.23_PM.jpg?v=1748237778"
-                        alt="Puneet Singh Chadhok"
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    </div>
+                <div className="grid grid-cols-1 lg:grid-cols-2">
+                  {/* Image - Full Height */}
+                  <div className="relative h-64 lg:h-auto">
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0653/9830/9053/files/WhatsApp_Image_2025-05-24_at_1.30.23_PM.jpg?v=1748237778"
+                      alt="Puneet Singh Chadhok"
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   </div>
 
                   {/* Content */}
-                  <div className="lg:col-span-2 space-y-4">
+                  <div className="p-8 lg:p-12 flex flex-col justify-center space-y-4">
                     <div>
-                      <h3 className="text-3xl font-bold text-white mb-2">Puneet Singh Chadhok</h3>
-                      <p className="text-xl text-[#5d184e] font-semibold">Managing Director</p>
+                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">Puneet Singh Chadhok</h3>
+                      <p className="text-lg md:text-xl lg:text-2xl text-[#7f01ff] dark:text-[#ff4500] font-semibold">Managing Director</p>
                     </div>
-                    <div className="h-1 w-24 bg-gradient-to-r from-[#5d184e] to-purple-500 rounded-full" />
-                    <p className="text-gray-300 leading-relaxed text-justify">
+                    <div className="h-1 w-32 bg-gradient-to-r from-[#7f01ff] to-[#2b33da] dark:from-[#ff4500] dark:to-[#ff8c00]" />
+                    <p className="text-white/80 leading-relaxed text-justify text-sm md:text-base lg:text-lg">
                       Puneet Singh Chadhok is a dynamic entrepreneur with diverse business interests spanning real estate, finance, entertainment, sports, and hospitality. As the founder of Clapstem Entertainment, he has produced award-winning films including Jal, a National Award-winning movie, and over 1000 hours of TV and digital content.
                     </p>
-                    <p className="text-gray-300 leading-relaxed text-justify">
+                    <p className="text-white/80 leading-relaxed text-justify text-sm md:text-base lg:text-lg">
                       A passionate sports visionary, Puneet owns the Punjab De Sher team in Celebrity Cricket League and the Australia Champions franchise in the World Championship of Legends (WCL), featuring global cricket icons. With a proven track record of turning innovative ideas into thriving enterprises, Puneet brings strategic foresight, cross-industry expertise, and a collaborative mindset to drive Colab's mission of transforming the sports ecosystem through technology.
                     </p>
                   </div>
@@ -375,35 +414,33 @@ const InvestorRelations = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="bg-gray-900/50 backdrop-blur-xl rounded-3xl overflow-hidden border border-gray-800 hover:border-purple-500/50 transition-all"
+                className="bg-black backdrop-blur-xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all max-w-7xl mx-auto"
               >
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 p-8">
-                  {/* Image */}
-                  <div className="lg:col-span-1">
-                    <div className="relative aspect-square rounded-2xl overflow-hidden">
-                      <img
-                        src="https://cdn.shopify.com/s/files/1/0653/9830/9053/files/WhatsApp_Image_2025-05-14_at_12.03.43_PM.jpg?v=1747205268"
-                        alt="Amardeep S Reen"
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="lg:col-span-2 space-y-4">
+                <div className="grid grid-cols-1 lg:grid-cols-2">
+                  {/* Content - First for alternating layout */}
+                  <div className="p-8 lg:p-12 flex flex-col justify-center space-y-4 order-2 lg:order-1">
                     <div>
-                      <h3 className="text-3xl font-bold text-white mb-2">Amardeep S Reen</h3>
-                      <p className="text-xl text-purple-400 font-semibold">Executive Director</p>
+                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">Amardeep S Reen</h3>
+                      <p className="text-lg md:text-xl lg:text-2xl text-[#7f01ff] dark:text-[#ff4500] font-semibold">Executive Director</p>
                     </div>
-                    <div className="h-1 w-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full" />
-                    <p className="text-gray-300 leading-relaxed text-justify">
+                    <div className="h-1 w-32 bg-gradient-to-r from-[#7f01ff] to-[#2b33da] dark:from-[#ff4500] dark:to-[#ff8c00]" />
+                    <p className="text-white/80 leading-relaxed text-justify text-sm md:text-base lg:text-lg">
                       Amardeep S Reen is a seasoned entrepreneur and philanthropist with over two decades of experience across technology, sports, entertainment, and humanitarian work. A technocrat by training, he has held leadership roles in global tech and consulting firms before transitioning into sports management and film production. He has managed elite sports talent and collaborated with legends across cricket, wrestling, and cinema.
                     </p>
-                    <p className="text-gray-300 leading-relaxed text-justify">
+                    <p className="text-white/80 leading-relaxed text-justify text-sm md:text-base lg:text-lg">
                       As CEO of Punjab De Sher (CCL) and Australia Champions (WCL), and co-producer of acclaimed films like Torbaaz, Amardeep continues to bridge the worlds of sport and entertainment. Through his philanthropic initiatives during the COVID-19 pandemic and as founder of ASR Foundation, he has demonstrated a deep commitment to social impact and nation-building.
                     </p>
+                  </div>
+
+                  {/* Image - Full Height on right */}
+                  <div className="relative h-64 lg:h-auto order-1 lg:order-2">
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0653/9830/9053/files/WhatsApp_Image_2025-05-14_at_12.03.43_PM.jpg?v=1747205268"
+                      alt="Amardeep S Reen"
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   </div>
                 </div>
               </motion.div>
@@ -412,7 +449,7 @@ const InvestorRelations = () => {
         </div>
 
         {/* Board and Committee Details Section */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -421,23 +458,23 @@ const InvestorRelations = () => {
           >
             {/* Section Header */}
             <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#5d184e] via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
                 Board & Committee Details
               </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-[#5d184e] to-purple-500 mx-auto rounded-full" />
+                
             </div>
 
             {/* Board and KMPs */}
-            <div className="bg-gray-900/50 backdrop-blur-xl rounded-3xl p-8 border border-gray-800">
-              <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center text-white">
+            <div className="bg-black backdrop-blur-xl p-8 border border-white/10">
+              <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center text-white dark:text-white">
                 Composition of Board and KMPs
               </h3>
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b border-gray-700">
-                      <th className="text-left py-4 px-6 text-[#5d184e] font-bold text-lg">Name</th>
-                      <th className="text-left py-4 px-6 text-[#5d184e] font-bold text-lg">Designation</th>
+                    <tr className="border-b border-white/10">
+                      <th className="text-left py-4 px-6 text-[#7f01ff] dark:text-[#ff4500] font-bold text-lg">Name</th>
+                      <th className="text-left py-4 px-6 text-[#7f01ff] dark:text-[#ff4500] font-bold text-lg">Designation</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -449,9 +486,9 @@ const InvestorRelations = () => {
                       { name: 'Chetan Shah', designation: 'Chief Financial Officer' },
                       { name: 'Ms. Ritu Jhamb', designation: 'Company Secretary & Compliance Officer' },
                     ].map((member, index) => (
-                      <tr key={index} className="border-b border-gray-800 hover:bg-gray-800/50 transition-colors">
+                      <tr key={index} className="border-b border-white/10 hover:bg-black/80 transition-colors">
                         <td className="py-4 px-6 text-white font-medium">{member.name}</td>
-                        <td className="py-4 px-6 text-gray-300">{member.designation}</td>
+                        <td className="py-4 px-6 text-white/80">{member.designation}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -462,62 +499,62 @@ const InvestorRelations = () => {
             {/* Committees Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Audit Committee */}
-              <div className="bg-gray-900/50 backdrop-blur-xl rounded-3xl p-8 border border-gray-800 hover:border-[#5d184e]/50 transition-all">
-                <h3 className="text-xl font-bold mb-6 text-[#5d184e]">Audit Committee</h3>
+              <div className="bg-black p-8 border border-white/10 hover:border-[#7f01ff]/50 dark:hover:border-[#ff4500]/50 transition-all">
+                <h3 className="text-xl font-bold mb-6 text-white dark:text-white">Audit Committee</h3>
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center p-4 bg-gray-800/50 rounded-xl">
+                  <div className="flex justify-between items-center p-4 bg-black/80">
                     <span className="text-white font-medium">Rohit Singh</span>
-                    <span className="px-4 py-2 bg-[#5d184e]/20 text-[#5d184e] rounded-lg text-sm font-semibold">Chairman</span>
+                    <span className="px-4 py-2 bg-[#7f01ff]/20 dark:bg-[#ff4500]/20 text-[#7f01ff] dark:text-[#ff4500] text-sm font-semibold">Chairman</span>
                   </div>
-                  <div className="flex justify-between items-center p-4 bg-gray-800/50 rounded-xl">
+                  <div className="flex justify-between items-center p-4 bg-black/80">
                     <span className="text-white font-medium">Mukesh Jadhav</span>
-                    <span className="px-4 py-2 bg-gray-500/20 text-gray-400 rounded-lg text-sm font-semibold">Member</span>
+                    <span className="px-4 py-2 bg-gray-500/20 text-white/70 text-sm font-semibold">Member</span>
                   </div>
                 </div>
               </div>
 
               {/* Nomination and Remuneration Committee */}
-              <div className="bg-gray-900/50 backdrop-blur-xl rounded-3xl p-8 border border-gray-800 hover:border-purple-500/50 transition-all">
-                <h3 className="text-xl font-bold mb-6 text-purple-400">Nomination and Remuneration Committee</h3>
+              <div className="bg-black backdrop-blur-xl p-8 border border-white/10 hover:border-[#7f01ff]/50 dark:hover:border-[#ff4500]/50 transition-all">
+                <h3 className="text-xl font-bold mb-6 text-white dark:text-white">Nomination and Remuneration Committee</h3>
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center p-4 bg-gray-800/50 rounded-xl">
+                  <div className="flex justify-between items-center p-4 bg-black/80">
                     <span className="text-white font-medium">Rohit Singh</span>
-                    <span className="px-4 py-2 bg-purple-500/20 text-purple-400 rounded-lg text-sm font-semibold">Chairman</span>
+                    <span className="px-4 py-2 bg-[#7f01ff]/20 dark:bg-[#ff4500]/20 text-[#7f01ff] dark:text-[#ff4500] text-sm font-semibold">Chairman</span>
                   </div>
-                  <div className="flex justify-between items-center p-4 bg-gray-800/50 rounded-xl">
+                  <div className="flex justify-between items-center p-4 bg-black/80">
                     <span className="text-white font-medium">Mukesh Jadhav</span>
-                    <span className="px-4 py-2 bg-gray-500/20 text-gray-400 rounded-lg text-sm font-semibold">Member</span>
+                    <span className="px-4 py-2 bg-gray-500/20 text-white/70 text-sm font-semibold">Member</span>
                   </div>
                 </div>
               </div>
 
               {/* Stakeholders Relationship Committee */}
-              <div className="bg-gray-900/50 backdrop-blur-xl rounded-3xl p-8 border border-gray-800 hover:border-pink-500/50 transition-all">
-                <h3 className="text-xl font-bold mb-6 text-pink-400">Stakeholders Relationship Committee</h3>
+              <div className="bg-black backdrop-blur-xl p-8 border border-white/10 hover:border-[#7f01ff]/50 dark:hover:border-[#ff4500]/50 transition-all">
+                <h3 className="text-xl font-bold mb-6 text-white dark:text-white">Stakeholders Relationship Committee</h3>
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center p-4 bg-gray-800/50 rounded-xl">
+                  <div className="flex justify-between items-center p-4 bg-black/80">
                     <span className="text-white font-medium">Mukesh Jadhav</span>
-                    <span className="px-4 py-2 bg-pink-500/20 text-pink-400 rounded-lg text-sm font-semibold">Chairman</span>
+                    <span className="px-4 py-2 bg-[#7f01ff]/20 dark:bg-[#ff4500]/20 text-[#7f01ff] dark:text-[#ff4500] text-sm font-semibold">Chairman</span>
                   </div>
-                  <div className="flex justify-between items-center p-4 bg-gray-800/50 rounded-xl">
+                  <div className="flex justify-between items-center p-4 bg-black/80">
                     <span className="text-white font-medium">Rohit Singh</span>
-                    <span className="px-4 py-2 bg-gray-500/20 text-gray-400 rounded-lg text-sm font-semibold">Member</span>
+                    <span className="px-4 py-2 bg-gray-500/20 text-white/70 text-sm font-semibold">Member</span>
                   </div>
                 </div>
               </div>
 
               {/* Grievance Redressal */}
-              <div className="bg-gray-900/50 backdrop-blur-xl rounded-3xl p-8 border border-gray-800 hover:border-green-500/50 transition-all">
-                <h3 className="text-xl font-bold mb-6 text-green-400">Grievance Redressal Officer</h3>
+              <div className="bg-black backdrop-blur-xl p-8 border border-white/10 hover:border-[#7f01ff]/50 dark:hover:border-[#ff4500]/50 transition-all">
+                <h3 className="text-xl font-bold mb-6 text-white dark:text-white">Grievance Redressal Officer</h3>
                 <div className="space-y-4">
-                  <div className="p-4 bg-gray-800/50 rounded-xl">
+                  <div className="p-4 bg-black/80">
                     <div className="text-white font-medium mb-3">Mukesh Jadhav</div>
-                    <div className="text-sm text-gray-400 mb-2">Director</div>
+                    <div className="text-sm text-white/70 mb-2">Director</div>
                     <div className="flex flex-col gap-2">
-                      <a href="tel:8828865429" className="text-[#5d184e] hover:text-[#7d2e6e] transition-colors">
+                      <a href="tel:8828865429" className="text-[#7f01ff] dark:text-[#ff4500] hover:text-[#2b33da] dark:hover:text-[#ff6347] transition-colors">
                         📞 8828865429
                       </a>
-                      <a href="mailto:cs@colabcloud.in" className="text-[#5d184e] hover:text-[#7d2e6e] transition-colors">
+                      <a href="mailto:cs@colabcloud.in" className="text-[#7f01ff] dark:text-[#ff4500] hover:text-[#2b33da] dark:hover:text-[#ff6347] transition-colors">
                         ✉️ cs@colabcloud.in
                       </a>
                     </div>
@@ -527,8 +564,8 @@ const InvestorRelations = () => {
             </div>
 
             {/* Director Profiles */}
-            <div className="bg-gray-900/50 backdrop-blur-xl rounded-3xl p-8 border border-gray-800">
-              <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center text-white">
+            <div className="bg-black backdrop-blur-xl p-8 border border-white/10">
+              <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center text-white dark:text-white">
                 Director Profiles
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -541,15 +578,15 @@ const InvestorRelations = () => {
                   <a
                     key={index}
                     href={director.link}
-                    className="group relative p-6 bg-gray-800/50 rounded-2xl border border-gray-700 hover:border-[#5d184e] transition-all hover:scale-105"
+                    className="group relative p-6 bg-black/80 border border-white/10 hover:border-[#7f01ff] dark:hover:border-[#ff4500] transition-all hover:scale-105"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#5d184e]/10 to-purple-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#7f01ff]/10 to-[#2b33da]/10 dark:from-[#ff4500]/10 dark:to-[#ff8c00]/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                     <div className="relative">
-                      <h4 className="text-xl font-bold text-white mb-2 group-hover:text-[#5d184e] transition-colors">
+                      <h4 className="text-xl font-bold text-white mb-2 group-hover:text-[#7f01ff] dark:group-hover:text-[#ff4500] transition-colors">
                         {director.name}
                       </h4>
-                      <p className="text-gray-400">{director.designation}</p>
-                      <div className="mt-4 flex items-center text-[#5d184e] text-sm font-semibold">
+                      <p className="text-white/70">{director.designation}</p>
+                      <div className="mt-4 flex items-center text-[#7f01ff] dark:text-[#ff4500] group-hover:text-[#2b33da] dark:group-hover:text-[#ff8c00] text-sm font-semibold transition-colors">
                         <span>View Profile</span>
                         <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                       </div>

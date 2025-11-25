@@ -15,6 +15,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 
 const Testing = () => {
   const [currentText, setCurrentText] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   const texts = ["ARTIFICIAL INTELLIGENCE", "FINTECH", "ESPORTS", "TECH ESPORTS", "SEMICONDUCTOR", "DRONES"];
 
@@ -26,6 +27,19 @@ const Testing = () => {
     return () => clearInterval(interval);
   }, [texts.length]);
 
+  // Scroll animation for clip-path
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const progress = Math.min(scrollY / (windowHeight * 0.5), 1);
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
       <div className="min-h-screen bg-background text-foreground dark:bg-gray-900 dark:text-white transition-colors duration-300">
@@ -33,7 +47,12 @@ const Testing = () => {
         <Header />
 
         {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
+        <section 
+          className="relative min-h-screen flex items-center overflow-visible bg-black transition-all duration-300" 
+          style={{ 
+            clipPath: `polygon(0 0, 100% 0, 100% ${Math.min(92 + (scrollProgress * 8), 100)}%, 50% ${Math.max(100 - (scrollProgress * 8), 100)}%, 0 ${Math.min(92 + (scrollProgress * 8), 100)}%)` 
+          }}
+        >
           {/* Background Video with Enhanced Overlay */}
           <div className="absolute inset-0">
             <AnimatePresence mode="wait">
@@ -59,10 +78,6 @@ const Testing = () => {
                 ][currentText]} type="video/mp4" />
               </motion.video>
             </AnimatePresence>
-
-            {/* Gradient Overlays */}
-            <div className="absolute inset-0 bg-gradient-to-br from-black via-black/95 to-black/90" />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent" />
 
             {/* Animated Grid Pattern */}
             <div className="absolute inset-0 opacity-10">

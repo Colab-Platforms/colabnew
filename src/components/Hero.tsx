@@ -40,91 +40,29 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Full Background Video */}
-      <div className="absolute inset-0 w-full h-full">
+    <section
+      className="relative min-h-screen flex items-center overflow-hidden bg-black"
+      style={{ backgroundImage: 'none' }}
+    >
+      {/* Full Background Video - ONLY */}
+      <div className="absolute inset-0 w-full h-full z-0">
         <video
           key={currentVideoIndex}
+          src={videos[currentVideoIndex]}
           autoPlay
           muted
           playsInline
           preload="auto"
-          crossOrigin="anonymous"
           className="w-full h-full object-cover"
           onEnded={handleVideoEnd}
-          onError={(e) => console.error('Video failed to load:', e)}
-        >
-          <source src={videos[currentVideoIndex]} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        {/* Lighter overlay - video more visible */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent" />
-      </div>
-
-      {/* Modern Animated Background Pattern */}
-      <div className="absolute inset-0 opacity-20">
-        {/* Dot Grid Pattern */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: 'radial-gradient(circle, rgba(168, 85, 247, 0.4) 1px, transparent 1px)',
-            backgroundSize: '40px 40px'
-          }}
-        />
-
-        {/* Diagonal Lines */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(6, 182, 212, 0.1) 35px, rgba(6, 182, 212, 0.1) 36px)',
+          onError={(e) => {
+            console.error('Video failed to load:', e);
+            console.log('Trying to load:', videos[currentVideoIndex]);
           }}
         />
       </div>
 
-
-      <motion.div
-        className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl"
-        style={{
-          background: 'radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%)'
-        }}
-        animate={{
-          scale: [1, 1.3, 1],
-          opacity: [0.3, 0.5, 0.3],
-          x: [0, -50, 0],
-          y: [0, -30, 0],
-        }}
-        transition={{
-          duration: 10,
-          delay: 1,
-          repeat: Infinity,
-          repeatType: "reverse",
-          ease: "easeInOut"
-        }}
-      />
-
-      {/* Floating Particles */}
-      {[...Array(15)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-1 h-1 rounded-full bg-primary/40"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-          }}
-          animate={{
-            y: [0, -100, 0],
-            opacity: [0, 1, 0],
-          }}
-          transition={{
-            duration: 3 + Math.random() * 2,
-            repeat: Infinity,
-            delay: Math.random() * 5,
-          }}
-        />
-      ))}
-
-      <div className="container relative z-10 px-6 lg:px-8 py-20">
+      <div className="container relative z-20 px-6 lg:px-8 py-20" style={{ background: 'transparent' }}>
         <div className="max-w-7xl">
           {/* Left-aligned content */}
           <motion.div
