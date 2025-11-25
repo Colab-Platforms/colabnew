@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
@@ -55,29 +55,111 @@ const verticals = [
 
 const BusinessVerticals = () => {
     const [activeIndex, setActiveIndex] = useState(0);
+    const [isScrolling, setIsScrolling] = useState(false);
+    const sectionRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        const handleWheel = (e: WheelEvent) => {
+            // Only on desktop (screen width > 1024px)
+            if (window.innerWidth <= 1024) return;
+
+            // Check if section is fully visible
+            if (!sectionRef.current) return;
+
+            const rect = sectionRef.current.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+
+            // Only activate if ENTIRE section is fully visible in viewport
+            const isFullyVisible = rect.top >= 0 && rect.bottom <= viewportHeight;
+
+            if (!isFullyVisible) return;
+
+            // Prevent default scroll while in section
+            if (activeIndex > 0 || (activeIndex === 0 && e.deltaY > 0)) {
+                if (activeIndex < verticals.length - 1 || e.deltaY < 0) {
+                    e.preventDefault();
+                }
+            }
+
+            // Debounce scroll
+            if (isScrolling) return;
+
+            setIsScrolling(true);
+
+            if (e.deltaY > 0) {
+                // Scroll down - next item
+                if (activeIndex < verticals.length - 1) {
+                    setActiveIndex(prev => prev + 1);
+                }
+            } else {
+                // Scroll up - previous item
+                if (activeIndex > 0) {
+                    setActiveIndex(prev => prev - 1);
+                }
+            }
+
+            setTimeout(() => setIsScrolling(false), 800);
+        };
+
+        window.addEventListener('wheel', handleWheel, { passive: false });
+
+        return () => {
+            window.removeEventListener('wheel', handleWheel);
+        };
+    }, [activeIndex, isScrolling]);
 
     return (
-        <>
-            {/* Mobile Filters - Above everything */}
-            <div className="lg:hidden relative z-30 pt-4 px-4 bg-black">
-                <div className="w-full overflow-x-auto pb-3 scrollbar-hide">
-                    <div className="flex gap-2 pb-1">
+        <section ref={sectionRef} className="relative min-h-[85vh] lg:min-h-[90vh] w-full overflow-hidden bg-white text-white">
+            {/* Background with Parallax Effect */}
+            <div className="absolute inset-0 z-0">
+                <AnimatePresence>
+                    <motion.div
+                        key={verticals[activeIndex].id}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute inset-0"
+                    >
+                        <img
+                            src={verticals[activeIndex].image}
+                            alt={verticals[activeIndex].title}
+                            className="w-full h-full object-cover"
+                        />
+                        {/* Dark Gradient Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+                    </motion.div>
+                </AnimatePresence>
+            </div>
+
+            {/* Filters - Horizontal Slider for Mobile, Fixed for Desktop */}
+            <div className="absolute top-0 left-0 right-0 z-40 flex justify-center px-4">
+                <div className="w-full lg:w-auto overflow-x-auto scrollbar-hide">
+                    <div className="inline-flex gap-3 lg:gap-4 bg-white/20 backdrop-blur-xl px-4 lg:px-6 py-2 lg:py-3 border border-white/30 shadow-lg mb-20 min-w-max lg:min-w-0">
                         {verticals.map((item, index) => (
                             <motion.button
                                 key={item.id}
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: index * 0.05 }}
+                                initial={{ opacity: 0, y: -20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: index * 0.08 }}
                                 onClick={() => setActiveIndex(index)}
-                                className={`text-left py-2 px-4 rounded-full transition-all duration-300 group relative overflow-hidden whitespace-nowrap flex-shrink-0 ${index === activeIndex
-                                    ? 'bg-white/20 backdrop-blur-xl border border-white/30'
-                                    : 'bg-black/20 hover:bg-white/10'
+                                className={`relative px-3 lg:px-5 py-1.5 lg:py-2 transition-all duration-300 ${index === activeIndex ? 'scale-110' : 'hover:scale-105'
                                     }`}
                             >
-                                <div className="flex items-center gap-2 relative z-10">
-                                    <span className={`text-base font-bold transition-all duration-300 ${index === activeIndex ? 'text-white' : 'text-white/80'}`}>
+                                <div className="flex flex-col items-center gap-1">
+                                    <span className={`text-sm lg:text-[1.2rem] font-semibold text-white uppercase tracking-wider whitespace-nowrap ${index === activeIndex ? 'drop-shadow-lg' : 'opacity-80'
+                                        }`}>
                                         {item.shortTitle}
                                     </span>
+
+                                    {/* Active indicator dot */}
+                                    {index === activeIndex && (
+                                        <motion.div
+                                            initial={{ scale: 0 }}
+                                            animate={{ scale: 1 }}
+                                            className="w-1 lg:w-1.5 h-1 lg:h-1.5 rounded-full bg-white shadow-lg"
+                                        />
+                                    )}
                                 </div>
                             </motion.button>
                         ))}
@@ -85,129 +167,54 @@ const BusinessVerticals = () => {
                 </div>
             </div>
 
-            <section className="relative min-h-[70vh] lg:min-h-screen w-full overflow-hidden bg-white text-white">
-                {/* Background with Parallax Effect */}
-                <div className="absolute inset-0 z-0">
-                    <AnimatePresence>
+            {/* Main Content - Right Aligned */}
+            <div className="relative z-20 mx-auto px-4 md:px-12 lg:px-32 h-full flex items-center justify-center lg:justify-end max-w-[1800px]" style={{ marginTop: '200px' }}>
+                <div className="w-full max-w-2xl">
+                    <AnimatePresence mode="wait">
                         <motion.div
                             key={verticals[activeIndex].id}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.15 }}
-                            className="absolute inset-0"
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -30 }}
+                            transition={{ duration: 0.3 }}
+                            className="space-y-4 md:space-y-6 lg:space-y-10 text-center lg:text-right"
                         >
-                            <img
-                                src={verticals[activeIndex].image}
-                                alt={verticals[activeIndex].title}
-                                className="w-full h-full object-cover"
-                            />
-                            {/* Dark Gradient Overlay - Left to Right */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/30 lg:to-transparent" />
-                            {/* Additional Dark Overlay for Better Readability */}
-                            <div className="absolute inset-0 bg-black/20" />
+                            {/* Section Label */}
+                            <div className="flex items-center justify-center lg:justify-end gap-3">
+                                <span className="text-xs md:text-sm font-bold text-white uppercase tracking-[0.2em] lg:tracking-[0.3em]">
+                                    Our Ventures
+                                </span>
+                                <div className="h-px w-8 md:w-12 bg-gradient-to-r from-white to-transparent" />
+                            </div>
+
+                            {/* Title */}
+                            <h2 className="text-4xl md:text-5xl lg:text-7xl font-black leading-none tracking-wide text-white">
+                                {verticals[activeIndex].title}
+                            </h2>
+
+                            {/* Description */}
+                            <p className="text-base md:text-lg lg:text-2xl text-white/90 leading-relaxed">
+                                {verticals[activeIndex].description}
+                            </p>
+
+                            {/* CTA */}
+                            <motion.a
+                                href={verticals[activeIndex].link}
+                                whileHover={{ scale: 1.05 }}
+                                className="inline-flex items-center gap-4 text-white font-bold text-lg md:text-lg group"
+                            >
+                                <span className="text-white">
+                                    Explore {verticals[activeIndex].shortTitle}
+                                </span>
+                                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 border-2 border-white flex items-center justify-center group-hover:bg-white/30 transition-all">
+                                    <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-white" />
+                                </div>
+                            </motion.a>
                         </motion.div>
                     </AnimatePresence>
                 </div>
-
-                {/* Main Content */}
-                <div className="relative z-20 mx-auto px-4 md:px-12 lg:px-32 h-full flex items-center py-8 lg:py-20 max-w-[1800px]">
-                    <div className="w-full">
-                        <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-32 xl:gap-48 items-start lg:items-center">
-
-                            {/* Content */}
-                            <div className="space-y-8 md:space-y-12 order-1 lg:order-1">
-                                <AnimatePresence mode="wait">
-                                    <motion.div
-                                        key={verticals[activeIndex].id}
-                                        initial={{ opacity: 0, x: -30 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        exit={{ opacity: 0, x: 30 }}
-                                        transition={{ duration: 0.2 }}
-                                        className="space-y-6 md:space-y-10"
-                                    >
-                                        {/* Section Label */}
-                                        <div className="flex items-center gap-3">
-                                            <div className="h-px w-8 md:w-12 bg-gradient-to-r from-white to-transparent" />
-                                            <span className="text-sm md:text-sm font-bold text-white uppercase tracking-[0.3em]">
-                                                Our Ventures
-                                            </span>
-                                        </div>
-
-                                        {/* Title */}
-                                        <h2 className="text-5xl md:text-6xl lg:text-7xl font-black leading-none tracking-wide text-white">
-                                            {verticals[activeIndex].title}
-                                        </h2>
-
-                                        {/* Description */}
-                                        <p className="text-xl md:text-xl lg:text-2xl text-white/90 leading-relaxed max-w-xl">
-                                            {verticals[activeIndex].description}
-                                        </p>
-
-                                        {/* CTA */}
-                                        <motion.a
-                                            href={verticals[activeIndex].link}
-                                            whileHover={{ x: 10 }}
-                                            className="inline-flex items-center gap-4 text-white font-bold text-lg md:text-lg group"
-                                        >
-                                            <span className="text-white">
-                                                Explore {verticals[activeIndex].shortTitle}
-                                            </span>
-                                            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 border-2 border-white flex items-center justify-center group-hover:bg-white/30 transition-all">
-                                                <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-white" />
-                                            </div>
-                                        </motion.a>
-                                    </motion.div>
-                                </AnimatePresence>
-                            </div>
-
-                            {/* Desktop Navigation List */}
-                            <div className="hidden lg:block relative order-2 w-full">
-                                {/* Decorative Line */}
-                                <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent" />
-
-                                <div className="pl-12 space-y-3">
-                                    {verticals.map((item, index) => (
-                                        <motion.button
-                                            key={item.id}
-                                            initial={{ opacity: 0, x: 20 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: index * 0.05 }}
-                                            onClick={() => setActiveIndex(index)}
-                                            onMouseEnter={() => setActiveIndex(index)}
-                                            className={`w-full text-left py-6 px-8 rounded-2xl transition-all duration-300 group relative overflow-hidden ${index === activeIndex
-                                                ? 'bg-white/10 backdrop-blur-xl'
-                                                : 'hover:bg-white/5'
-                                                }`}
-                                        >
-                                            {/* Active Indicator */}
-                                            {index === activeIndex && (
-                                                <motion.div
-                                                    layoutId="activeBar"
-                                                    className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-12 bg-white rounded-full"
-                                                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                                                />
-                                            )}
-
-                                            <div className="flex items-center justify-between relative z-10">
-                                                <span className="text-2xl font-bold transition-all duration-300 text-white">
-                                                    {item.shortTitle}
-                                                </span>
-                                                <ArrowRight className={`w-5 h-5 transition-all duration-300 ${index === activeIndex
-                                                    ? 'text-white translate-x-2'
-                                                    : 'text-white/20 group-hover:text-white/40 group-hover:translate-x-1'
-                                                    }`} />
-                                            </div>
-                                        </motion.button>
-                                    ))}
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </>
+            </div>
+        </section>
     );
 };
 

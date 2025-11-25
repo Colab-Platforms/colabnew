@@ -11,6 +11,7 @@ import InvestorRelations from "@/components/InvestorRelations";
 import BusinessVerticals from "@/components/BusinessVerticals";
 import AboutFuture from "@/components/AboutFuture";
 import Accelerator from "@/components/Accelerator";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const Testing = () => {
   const [currentText, setCurrentText] = useState(0);
@@ -50,10 +51,10 @@ const Testing = () => {
               >
                 <source src={[
                   "https://cdn.shopify.com/videos/c/o/v/cc2faf9b69b24dc9a15bc8920fbe5524.mp4", // AI - Neural Network
-                  "https://videos.pexels.com/video-files/6774266/6774266-uhd_2560_1440_25fps.mp4", // FinTech - Digital Finance
-                  "https://videos.pexels.com/video-files/7991309/7991309-uhd_2560_1440_25fps.mp4", // Esports - Gaming
-                  "https://videos.pexels.com/video-files/7991309/7991309-uhd_2560_1440_25fps.mp4", // Tech Esports
-                  "https://videos.pexels.com/video-files/3129957/3129957-uhd_2560_1440_25fps.mp4", // Semiconductor - Circuit
+                  "https://cdn.shopify.com/videos/c/o/v/cc2faf9b69b24dc9a15bc8920fbe5524.mp4", // FinTech - Digital Finance
+                  "https://cdn.shopify.com/videos/c/o/v/a4e715aa7db741c699cb7dbb578c5ba7.mp4", // Esports - Gaming
+                  "https://cdn.shopify.com/videos/c/o/v/a4e715aa7db741c699cb7dbb578c5ba7.mp4", // Tech Esports
+                  "https://cdn.shopify.com/videos/c/o/v/cc2faf9b69b24dc9a15bc8920fbe5524.mp4", // Semiconductor - Circuit
                   "https://cdn.shopify.com/videos/c/o/v/a4e715aa7db741c699cb7dbb578c5ba7.mp4"  // Drones - Flying
                 ][currentText]} type="video/mp4" />
               </motion.video>

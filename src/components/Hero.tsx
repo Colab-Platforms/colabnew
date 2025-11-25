@@ -1,8 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import { motion, Variants } from 'framer-motion';
+import { useState } from 'react';
 
 const Hero = () => {
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+
+  const videos = [
+    "https://cdn.shopify.com/videos/c/o/v/cc2faf9b69b24dc9a15bc8920fbe5524.mp4",
+    "https://cdn.shopify.com/videos/c/o/v/a4e715aa7db741c699cb7dbb578c5ba7.mp4"
+  ];
+
+  const handleVideoEnd = () => {
+    setCurrentVideoIndex((prev) => (prev + 1) % videos.length);
+  };
 
   // Animation variants
   const container: Variants = {
@@ -18,13 +29,13 @@ const Hero = () => {
 
   const item: Variants = {
     hidden: { opacity: 0, y: 20 },
-    show: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { 
-        duration: 0.6, 
-        ease: "easeOut" 
-      } 
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
     }
   };
 
@@ -33,13 +44,18 @@ const Hero = () => {
       {/* Full Background Video */}
       <div className="absolute inset-0 w-full h-full">
         <video
+          key={currentVideoIndex}
           autoPlay
-          loop
           muted
           playsInline
+          preload="auto"
+          crossOrigin="anonymous"
           className="w-full h-full object-cover"
+          onEnded={handleVideoEnd}
+          onError={(e) => console.error('Video failed to load:', e)}
         >
-          <source src="https://cdn.shopify.com/videos/c/o/v/6064f36abdd74e889b9d65606a5700ad.mp4" type="video/mp4" />
+          <source src={videos[currentVideoIndex]} type="video/mp4" />
+          Your browser does not support the video tag.
         </video>
         {/* Lighter overlay - video more visible */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/20" />
@@ -49,16 +65,16 @@ const Hero = () => {
       {/* Modern Animated Background Pattern */}
       <div className="absolute inset-0 opacity-20">
         {/* Dot Grid Pattern */}
-        <div 
+        <div
           className="absolute inset-0"
           style={{
             backgroundImage: 'radial-gradient(circle, rgba(168, 85, 247, 0.4) 1px, transparent 1px)',
             backgroundSize: '40px 40px'
           }}
         />
-        
+
         {/* Diagonal Lines */}
-        <div 
+        <div
           className="absolute inset-0"
           style={{
             backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(6, 182, 212, 0.1) 35px, rgba(6, 182, 212, 0.1) 36px)',
@@ -66,8 +82,8 @@ const Hero = () => {
         />
       </div>
 
-    
-      <motion.div 
+
+      <motion.div
         className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl"
         style={{
           background: 'radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%)'
@@ -107,11 +123,11 @@ const Hero = () => {
           }}
         />
       ))}
-      
+
       <div className="container relative z-10 px-6 lg:px-8 py-20">
         <div className="max-w-7xl">
           {/* Left-aligned content */}
-          <motion.div 
+          <motion.div
             className="space-y-8 max-w-3xl"
             variants={container}
             initial="hidden"
@@ -122,8 +138,8 @@ const Hero = () => {
                 Technology Conglomerate
               </span>
             </motion.div>
-            
-            <motion.h1 
+
+            <motion.h1
               variants={item}
               className="font-serif font-black text-6xl md:text-8xl lg:text-9xl leading-[0.95] tracking-tighter"
             >
@@ -134,23 +150,23 @@ const Hero = () => {
                 Ambition.
               </span>
             </motion.h1>
-            
-            <motion.p 
+
+            <motion.p
               variants={item}
               className="text-2xl md:text-3xl text-white/90 max-w-2xl leading-relaxed font-medium"
             >
               Technology That Builds Nations.
               <span className="block mt-3 text-xl text-white/70">
-               Transforming high-potential industries with tech-driven solutions.
+                Transforming high-potential industries with tech-driven solutions.
               </span>
             </motion.p>
-            
-            <motion.div 
+
+            <motion.div
               variants={item}
               className="flex flex-col sm:flex-row gap-4 pt-4"
             >
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="group relative overflow-hidden bg-gradient-to-r from-aeon-primary to-aeon-primary-dark hover:shadow-aeon-glow transition-all duration-500 text-lg px-8"
                 onClick={() => window.location.href = '/about'}
               >
@@ -160,9 +176,9 @@ const Hero = () => {
                 </span>
                 <span className="absolute inset-0 bg-gradient-to-r from-aeon-secondary/20 to-aeon-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </Button>
-              
-              <Button 
-                size="lg" 
+
+              <Button
+                size="lg"
                 variant="outline"
                 className="group relative overflow-hidden border-white/30 hover:bg-white/5 hover:border-white/50 text-lg px-8 text-white"
                 onClick={() => {
@@ -177,9 +193,9 @@ const Hero = () => {
                 </span>
               </Button>
             </motion.div>
-            
+
             {/* Trust indicators */}
-            <motion.div 
+            <motion.div
               variants={item}
               className="grid grid-cols-3 gap-4 pt-8 text-sm text-white/60"
             >
@@ -197,7 +213,7 @@ const Hero = () => {
               </div>
             </motion.div>
           </motion.div>
-          
+
 
         </div>
       </div>
