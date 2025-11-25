@@ -266,11 +266,11 @@ const InvestorRelations = () => {
                   </div>
 
                   <div className="mt-4 pt-4 border-t border-white/10">
-                    <p className="text-[10px] md:text-xs text-white/50 text-center">
-                      {stockData.currentPrice > 0 && stockData.volume > 0
-                        ? 'Updates every 5 min'
-                        : '⚠️ Using fallback data - API unavailable'}
-                    </p>
+                    {stockData.currentPrice === 0 || stockData.volume === 0 ? (
+                      <p className="text-[10px] md:text-xs text-white/50 text-center">
+                        ⚠️ Using fallback data - API unavailable
+                      </p>
+                    ) : null}
                     <p className="text-[10px] md:text-xs text-white/50 text-center mt-1">
                       Last updated: {new Date(stockData.lastUpdated).toLocaleTimeString('en-IN')}
                     </p>
