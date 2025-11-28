@@ -31,14 +31,14 @@ const Drones = () => {
                 Cutting-edge aerial systems for surveillance, reconnaissance, and mission-critical operations.
               </p>
 
-              <motion.button className="px-8 py-4 rounded-2xl bg-secondary text-white font-bold flex items-center gap-2" whileHover={{ scale: 1.05 }}>
+              <motion.button className="px-8 py-4 bg-secondary text-white font-bold flex items-center gap-2" whileHover={{ scale: 1.05 }}>
                 Explore Systems
                 <ArrowRight className="w-5 h-5" />
               </motion.button>
             </motion.div>
 
             <motion.div initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} className="relative">
-              <div className="aspect-square rounded-3xl overflow-hidden">
+              <div className="aspect-square overflow-hidden">
                 <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&q=80" alt="Drones" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/40 to-transparent" />
               </div>
@@ -88,10 +88,10 @@ const Drones = () => {
                 viewport={{ once: true, margin: "-100px" }}
               >
                 <div className={i % 2 === 1 ? 'lg:col-start-2' : ''}>
-                  <div className="relative aspect-[4/3] rounded-3xl overflow-hidden group">
+                  <div className="relative aspect-[4/3] overflow-hidden group">
                     <img src={capability.image} alt={capability.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-br from-secondary/40 to-transparent" />
-                    <motion.div className="absolute top-8 right-8 w-20 h-20 rounded-2xl bg-secondary/90 flex items-center justify-center" whileHover={{ rotate: 360 }}>
+                    <motion.div className="absolute top-8 right-8 w-20 h-20 bg-secondary/90 flex items-center justify-center" whileHover={{ rotate: 360 }}>
                       <capability.icon className="w-10 h-10 text-white" />
                     </motion.div>
                   </div>
@@ -102,7 +102,7 @@ const Drones = () => {
                   <p className="text-xl text-muted-foreground mb-8 leading-relaxed">{capability.desc}</p>
                   <div className="flex flex-wrap gap-3">
                     {capability.stats.map((stat, j) => (
-                      <div key={j} className="px-6 py-3 rounded-full bg-secondary/10 border border-secondary/20">
+                      <div key={j} className="px-6 py-3 bg-secondary/10 border border-secondary/20">
                         <span className="text-sm font-bold text-secondary">{stat}</span>
                       </div>
                     ))}
@@ -157,7 +157,7 @@ const Drones = () => {
                   {section.specs.map((spec, j) => (
                     <motion.div
                       key={j}
-                      className="flex items-center justify-between p-6 rounded-2xl bg-gradient-to-r from-secondary/10 to-secondary/5 border border-secondary/20 hover:border-secondary/40 transition-all duration-300"
+                      className="flex items-center justify-between p-6 bg-gradient-to-r from-secondary/10 to-secondary/5 border border-secondary/20 hover:border-secondary/40 transition-all duration-300"
                       whileHover={{ x: 10 }}
                     >
                       <span className="text-lg text-muted-foreground">{spec.label}</span>
@@ -189,7 +189,7 @@ const Drones = () => {
             ].map((app, i) => (
               <motion.div
                 key={i}
-                className="group relative h-96 rounded-3xl overflow-hidden"
+                className="group relative h-96 overflow-hidden"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -236,7 +236,7 @@ const Drones = () => {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
                 >
-                  <motion.div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-secondary/20 flex items-center justify-center" whileHover={{ rotate: 360 }}>
+                  <motion.div className="flex-shrink-0 w-16 h-16 bg-secondary/20 flex items-center justify-center" whileHover={{ rotate: 360 }}>
                     <item.icon className="w-8 h-8 text-secondary" />
                   </motion.div>
                   <div>
@@ -273,7 +273,7 @@ const Drones = () => {
                   ].map((phase, i) => (
                     <motion.div
                       key={i}
-                      className="flex items-start gap-4 p-6 rounded-2xl bg-gradient-to-r from-secondary/10 to-secondary/5 border border-secondary/20"
+                      className="flex items-start gap-4 p-6 bg-gradient-to-r from-secondary/10 to-secondary/5 border border-secondary/20"
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -295,7 +295,7 @@ const Drones = () => {
               </motion.div>
 
               <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-                <div className="relative aspect-[3/4] rounded-3xl overflow-hidden">
+                <div className="relative aspect-[3/4] overflow-hidden">
                   <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=600&q=80" alt="Training" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-8 left-8 right-8">
@@ -336,7 +336,7 @@ const Drones = () => {
               ].map((feature, i) => (
                 <motion.div
                   key={i}
-                  className="text-center p-8 rounded-3xl bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20"
+                  className="text-center p-8 bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -352,7 +352,7 @@ const Drones = () => {
 
             <div className="text-center">
               <motion.button
-                className="px-10 py-5 rounded-2xl bg-secondary text-white font-bold text-lg flex items-center gap-3 mx-auto"
+                className="px-10 py-5 bg-secondary text-white font-bold text-lg flex items-center gap-3 mx-auto"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
