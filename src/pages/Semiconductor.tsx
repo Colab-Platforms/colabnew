@@ -12,8 +12,16 @@ const Semiconductor = () => {
 
       {/* Hero - Minimal Clean */}
       <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 via-background to-primary/10" />
-        
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=80"
+            alt="Semiconductor"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+        </div>
+
         {/* Circuit Pattern */}
         <div className="absolute inset-0 opacity-5" style={{
           backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%2306b6d4\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")'
@@ -27,8 +35,8 @@ const Semiconductor = () => {
                 <span className="text-sm font-bold text-secondary uppercase">Semiconductor Technology</span>
               </motion.div>
 
-              <h1 className="font-serif font-black text-6xl md:text-7xl lg:text-9xl leading-[0.9] mb-8">
-                <span className="block text-foreground">Powering</span>
+              <h1 className="font-black text-6xl md:text-7xl lg:text-9xl leading-[0.9] mb-8" style={{ fontWeight: 600 }}>
+                <span className="block text-white">Powering</span>
                 <span className="block text-secondary">Tomorrow</span>
               </h1>
 
@@ -57,7 +65,7 @@ const Semiconductor = () => {
       <section className="relative py-32 overflow-hidden bg-gradient-to-b from-background to-secondary/5">
         <div className="container relative z-10 px-6 lg:px-8">
           <motion.div className="text-center mb-20" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-            <h2 className="font-serif font-black text-5xl md:text-6xl mb-6">
+            <h2 className="font-black text-5xl md:text-6xl mb-6" style={{ fontWeight: 600 }}>
               Manufacturing <span className="text-secondary">Process</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -67,30 +75,30 @@ const Semiconductor = () => {
 
           <div className="max-w-6xl mx-auto">
             {[
-              { 
-                step: "01", 
-                title: "Wafer Preparation", 
+              {
+                step: "01",
+                title: "Wafer Preparation",
                 desc: "Ultra-pure silicon wafers prepared in cleanroom environment with atomic-level precision",
                 icon: Layers,
                 image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80"
               },
-              { 
-                step: "02", 
-                title: "Photolithography", 
+              {
+                step: "02",
+                title: "Photolithography",
                 desc: "Advanced UV light patterns circuit designs onto wafer surface with nanometer accuracy",
                 icon: Eye,
                 image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&q=80"
               },
-              { 
-                step: "03", 
-                title: "Etching & Doping", 
+              {
+                step: "03",
+                title: "Etching & Doping",
                 desc: "Chemical processes create transistor structures and modify electrical properties",
                 icon: Zap,
                 image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=600&q=80"
               },
-              { 
-                step: "04", 
-                title: "Testing & Packaging", 
+              {
+                step: "04",
+                title: "Testing & Packaging",
                 desc: "Rigorous quality control and protective packaging for final chip delivery",
                 icon: Shield,
                 image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&q=80"
@@ -106,7 +114,7 @@ const Semiconductor = () => {
               >
                 {/* Image */}
                 <div className={i % 2 === 1 ? 'lg:col-start-2' : ''}>
-                  <div className="relative aspect-[4/3] rounded-3xl overflow-hidden group">
+                  <div className="relative aspect-[4/3] overflow-hidden group">
                     <img src={process.image} alt={process.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-br from-secondary/40 to-transparent" />
                     <motion.div className="absolute top-8 right-8 w-20 h-20 rounded-2xl bg-secondary/90 flex items-center justify-center" whileHover={{ rotate: 360 }}>
@@ -121,7 +129,7 @@ const Semiconductor = () => {
                 {/* Content */}
                 <div className={i % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}>
                   <div className="text-6xl font-black text-secondary/20 mb-4">{process.step}</div>
-                  <h3 className="font-serif font-black text-4xl mb-6">{process.title}</h3>
+                  <h3 className="font-black text-4xl mb-6" style={{ fontWeight: 600 }}>{process.title}</h3>
                   <p className="text-xl text-muted-foreground leading-relaxed">{process.desc}</p>
                 </div>
               </motion.div>
@@ -134,7 +142,7 @@ const Semiconductor = () => {
       <section className="relative py-32 overflow-hidden">
         <div className="container relative z-10 px-6 lg:px-8">
           <motion.div className="text-center mb-20" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-            <h2 className="font-serif font-black text-5xl md:text-6xl mb-6">
+            <h2 className="font-black text-5xl md:text-6xl mb-6" style={{ fontWeight: 600 }}>
               Chip <span className="text-secondary">Specifications</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -153,7 +161,7 @@ const Semiconductor = () => {
             ].map((spec, i) => (
               <motion.div
                 key={i}
-                className="p-8 rounded-3xl bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20 hover:border-secondary/40 transition-all duration-500"
+                className="p-8 bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20 hover:border-secondary/40 transition-all duration-500"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -175,7 +183,7 @@ const Semiconductor = () => {
       <section className="relative py-32 overflow-hidden bg-gradient-to-b from-background to-secondary/5">
         <div className="container relative z-10 px-6 lg:px-8">
           <motion.div className="text-center mb-20" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-            <h2 className="font-serif font-black text-5xl md:text-6xl mb-6">
+            <h2 className="font-black text-5xl md:text-6xl mb-6" style={{ fontWeight: 600 }}>
               Quality <span className="text-secondary">Assurance</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -192,7 +200,7 @@ const Semiconductor = () => {
             ].map((qa, i) => (
               <motion.div
                 key={i}
-                className="p-8 rounded-3xl bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20 hover:border-secondary/40 transition-all duration-500"
+                className="p-8 bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20 hover:border-secondary/40 transition-all duration-500"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -202,7 +210,7 @@ const Semiconductor = () => {
                 <motion.div className="w-16 h-16 rounded-2xl bg-secondary/20 flex items-center justify-center mb-6" whileHover={{ rotate: 360, scale: 1.1 }}>
                   <qa.icon className="w-8 h-8 text-secondary" />
                 </motion.div>
-                <h3 className="font-serif font-bold text-2xl mb-3">{qa.title}</h3>
+                <h3 className="font-bold text-2xl mb-3" style={{ fontWeight: 600 }}>{qa.title}</h3>
                 <p className="text-muted-foreground mb-4">{qa.desc}</p>
                 <div className="px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 inline-block">
                   <span className="text-sm font-bold text-secondary">{qa.tests}</span>
@@ -217,7 +225,7 @@ const Semiconductor = () => {
       <section className="relative py-32 overflow-hidden">
         <div className="container relative z-10 px-6 lg:px-8">
           <motion.div className="text-center mb-20" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-            <h2 className="font-serif font-black text-5xl md:text-6xl mb-6">
+            <h2 className="font-black text-5xl md:text-6xl mb-6" style={{ fontWeight: 600 }}>
               Chip <span className="text-secondary">Applications</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -227,38 +235,38 @@ const Semiconductor = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {[
-              { 
-                title: "AI & Machine Learning", 
+              {
+                title: "AI & Machine Learning",
                 desc: "High-performance computing for neural networks",
                 image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80",
                 icon: Cpu
               },
-              { 
-                title: "Mobile Devices", 
+              {
+                title: "Mobile Devices",
                 desc: "Power-efficient processors for smartphones",
                 image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&q=80",
                 icon: Zap
               },
-              { 
-                title: "Automotive", 
+              {
+                title: "Automotive",
                 desc: "Advanced chips for autonomous vehicles",
                 image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600&q=80",
                 icon: Rocket
               },
-              { 
-                title: "Data Centers", 
+              {
+                title: "Data Centers",
                 desc: "Server-grade processors for cloud computing",
                 image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80",
                 icon: Layers
               },
-              { 
-                title: "IoT Devices", 
+              {
+                title: "IoT Devices",
                 desc: "Low-power chips for connected devices",
                 image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=600&q=80",
                 icon: Settings
               },
-              { 
-                title: "Defense Systems", 
+              {
+                title: "Defense Systems",
                 desc: "Military-grade secure processors",
                 image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80",
                 icon: Shield
@@ -273,15 +281,15 @@ const Semiconductor = () => {
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -10 }}
               >
-                <div className="relative h-80 rounded-3xl overflow-hidden">
+                <div className="relative h-80 overflow-hidden">
                   <img src={app.image} alt={app.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
-                  
+
                   <div className="absolute inset-0 p-8 flex flex-col justify-end">
                     <motion.div className="w-14 h-14 rounded-2xl bg-secondary/90 flex items-center justify-center mb-4" whileHover={{ rotate: 360 }}>
                       <app.icon className="w-7 h-7 text-white" />
                     </motion.div>
-                    <h3 className="font-serif font-bold text-3xl text-white mb-2">{app.title}</h3>
+                    <h3 className="font-bold text-3xl text-white mb-2" style={{ fontWeight: 600 }}>{app.title}</h3>
                     <p className="text-white/80">{app.desc}</p>
                   </div>
                 </div>
@@ -291,106 +299,8 @@ const Semiconductor = () => {
         </div>
       </section>
 
-      {/* Innovation Lab - R&D Showcase */}
-      <section className="relative py-32 overflow-hidden bg-gradient-to-b from-background to-secondary/5">
-        <div className="container relative z-10 px-6 lg:px-8">
-          <motion.div className="text-center mb-20" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-            <h2 className="font-serif font-black text-5xl md:text-6xl mb-6">
-              Innovation <span className="text-secondary">Lab</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Pushing the boundaries of semiconductor technology
-            </p>
-          </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-16 max-w-7xl mx-auto items-center">
-            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <div className="relative aspect-[4/3] rounded-3xl overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&q=80" alt="Innovation Lab" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-br from-secondary/40 to-transparent" />
-              </div>
-            </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <h3 className="font-serif font-black text-4xl mb-6">Research & Development</h3>
-              <p className="text-xl text-muted-foreground mb-8">
-                Our state-of-the-art R&D facility is where tomorrow's chip technology is born today.
-              </p>
-              
-              <div className="space-y-4">
-                {[
-                  { label: "Next-Gen Process Nodes", value: "3nm & beyond" },
-                  { label: "Research Scientists", value: "200+" },
-                  { label: "Patents Filed", value: "500+" },
-                  { label: "Annual R&D Investment", value: "$100M+" },
-                ].map((stat, i) => (
-                  <motion.div
-                    key={i}
-                    className="flex items-center justify-between p-4 rounded-2xl bg-gradient-to-r from-secondary/10 to-secondary/5 border border-secondary/20"
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                  >
-                    <span className="text-muted-foreground">{stat.label}</span>
-                    <span className="text-2xl font-black text-secondary">{stat.value}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Partnership - Collaboration Opportunities */}
-      <section className="relative py-32 overflow-hidden">
-        <div className="container relative z-10 px-6 lg:px-8">
-          <motion.div
-            className="max-w-4xl mx-auto text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <Users className="w-20 h-20 text-secondary mx-auto mb-8" />
-            <h2 className="font-serif font-black text-5xl md:text-6xl mb-6">
-              Partnership <span className="text-secondary">Opportunities</span>
-            </h2>
-            <p className="text-xl text-muted-foreground mb-12">
-              Join us in building India's semiconductor ecosystem. We're looking for strategic partners, investors, and innovators.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-6 mb-12">
-              {[
-                { title: "Technology Partners", desc: "Collaborate on R&D" },
-                { title: "Manufacturing Partners", desc: "Scale production" },
-                { title: "Investment Partners", desc: "Fund innovation" },
-              ].map((partner, i) => (
-                <motion.div
-                  key={i}
-                  className="p-8 rounded-3xl bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <h4 className="font-bold text-xl mb-2">{partner.title}</h4>
-                  <p className="text-muted-foreground">{partner.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.button
-              className="px-10 py-5 rounded-2xl bg-secondary text-white font-bold text-lg flex items-center gap-3 mx-auto"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Explore Partnership
-              <ArrowRight className="w-6 h-6" />
-            </motion.button>
-          </motion.div>
-        </div>
-      </section>
 
       <Footer />
     </div>

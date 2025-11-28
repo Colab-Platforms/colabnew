@@ -31,16 +31,16 @@ const Blog = () => {
       try {
         setLoading(true);
         const firebasePosts = await fetchBlogPosts();
-        
+
         // Local blog posts array (always available as fallback)
         const localPosts: BlogPost[] = [
-   
-                {
-                  title: "Asia Cup 2025: Indian Women’s Hockey Team Faces Challenge Without Deepika and Savita",
-                  author: "Sports Desk",
-                  date: "05 September, 2025",
-                  slug: "asia-cup-2025-indian-womens-hockey-without-savita-deepika",
-                  content: `
+
+          {
+            title: "Asia Cup 2025: Indian Women’s Hockey Team Faces Challenge Without Deepika and Savita",
+            author: "Sports Desk",
+            date: "05 September, 2025",
+            slug: "asia-cup-2025-indian-womens-hockey-without-savita-deepika",
+            content: `
     <p>As the Indian women’s hockey team embarks on its <strong>Asia Cup 2025</strong> campaign in Hangzhou, the squad faces a daunting challenge competing without two of its most crucial players: stalwart goalkeeper <strong>Savita Punia</strong> and rising forward–drag-flick specialist <strong>Deepika</strong>. With <strong>World Cup qualification</strong> on the line, this setback comes at a critical time, testing the resilience and depth of the side under head coach <strong>Harendra Singh</strong>.</p>
 
     <h2>Key Absences: A Double Blow</h2>
@@ -72,15 +72,15 @@ const Blog = () => {
     <h2>Conclusion</h2>
     <p>India enters Hangzhou carrying both setbacks and high expectations. With leaders like <strong>Udita</strong>, <strong>Nikki Pradhan</strong>, and <strong>Navneet Kaur</strong> steering the team, and youngsters like <strong>Sangita Kumari</strong> eager to shine, this Asia Cup 2025 could be the defining moment where India proves that pressure truly is a privilege.</p>
   `,
-                  image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/INDIAN-WOMENs-HOCKEY-TEAM-1024x576-1.webp?v=1757152037"
-                },
+            image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/INDIAN-WOMENs-HOCKEY-TEAM-1024x576-1.webp?v=1757152037"
+          },
 
-                {
-                  title: "BCCI Breaks Silence on Shreyas Iyer’s ODI Captaincy Speculation: What’s Really Happening?",
-                  author: "Sports Desk",
-                  date: "22 August, 2025",
-                  slug: "bcci-shreyas-iyer-odi-captaincy",
-                  content: `
+          {
+            title: "BCCI Breaks Silence on Shreyas Iyer’s ODI Captaincy Speculation: What’s Really Happening?",
+            author: "Sports Desk",
+            date: "22 August, 2025",
+            slug: "bcci-shreyas-iyer-odi-captaincy",
+            content: `
     <p>Indian cricket is no stranger to rumours and high-voltage speculation, especially when it comes to leadership transitions in key formats. Over the past few days, the cricketing fraternity has been buzzing with reports suggesting that <strong>Shreyas Iyer</strong> might be the frontrunner to succeed <strong>Rohit Sharma</strong> as India’s next ODI captain. These rumours gained momentum following his exclusion from the <strong>Asia Cup 2025</strong> squad, which left many fans and experts questioning the selectors' decision-making process.</p>
 
     <p>However, the <strong>Board of Control for Cricket in India (BCCI)</strong> has now stepped in to address these claims and the reality may not be what many expected.</p>
@@ -151,16 +151,16 @@ const Blog = () => {
 
     <p>As the Asia Cup unfolds and preparations for future ICC tournaments pick up pace, the leadership debate will likely continue. But one thing remains certain: Shreyas Iyer is not out of the equation he might just be waiting for the perfect moment.</p>
   `,
-                  image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/00kskc38_shreyas-iyer-afp_625x300_21_August_25.webp?v=1755843388"
-                },
+            image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/00kskc38_shreyas-iyer-afp_625x300_21_August_25.webp?v=1755843388"
+          },
 
 
-                {
-                  title: "Shubman Gill Likely to Miss Out on Asia Cup T20I Squad as Selectors Stick to Core Group",
-                  author: "Sports Desk",
-                  date: "22 August, 2025",
-                  slug: "shubman-gill-asia-cup-squad",
-                  content: `
+          {
+            title: "Shubman Gill Likely to Miss Out on Asia Cup T20I Squad as Selectors Stick to Core Group",
+            author: "Sports Desk",
+            date: "22 August, 2025",
+            slug: "shubman-gill-asia-cup-squad",
+            content: `
     <p>With the <strong>Asia Cup 2025 T20I tournament</strong> fast approaching, the Indian cricket team selectors are facing a key dilemma whether or not to include Test captain <strong>Shubman Gill</strong> in the squad. Despite Gill's strong recent performances in red-ball cricket and his consistency in the IPL, the selectors and team management appear inclined to maintain the existing squad composition that brought success post the 2024 T20 World Cup.</p>
 
     <p>Sources close to the Board of Control for Cricket in India (BCCI) indicate that Gill is unlikely to be picked in the 15-member squad for the Asia Cup, set to be played from September 9 to 28 in Dubai. The final selection meeting is scheduled for August 19, but early signs point to the selectors favoring continuity over experimentation.</p>
@@ -205,16 +205,16 @@ const Blog = () => {
 
     <p>While Gill remains a generational talent and an integral part of India’s red-ball future, he may need to further evolve his T20 game or wait for an opportunity when the team setup allows for his inclusion. For now, the selectors are sticking with a formula that has worked and they don’t want to fix what isn’t broken.</p>
   `,
-                  image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/subham_gill.avif?v=1755843257"
-                },
+            image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/subham_gill.avif?v=1755843257"
+          },
 
 
-                {
-                  title: "FC Goa Show Grit and Grace to Secure ACL2 Spot: A Historic Moment for Indian Football",
-                  author: "Sports Desk",
-                  date: "22 August, 2025",
-                  slug: "fc-goa-secure-acl2-spot",
-                  content: `
+          {
+            title: "FC Goa Show Grit and Grace to Secure ACL2 Spot: A Historic Moment for Indian Football",
+            author: "Sports Desk",
+            date: "22 August, 2025",
+            slug: "fc-goa-secure-acl2-spot",
+            content: `
     <p><strong>In a defining moment for Indian football,</strong> FC Goa defeated Oman’s Al-Seeb 2-1 to qualify for the main round of the Asian Champions League Two (ACL2), joining Mohun Bagan Super Giant in the tournament. This marks the first time two Indian clubs will feature in Asia’s newly formed second-tier continental competition a significant milestone for Indian football on the international stage.</p>
 
     <h2>Rising from the Shadows: A New Dawn for Indian Football</h2>
@@ -268,16 +268,16 @@ const Blog = () => {
     <h2>Final Word</h2>
     <p>In a footballing landscape where success stories are often few and far between, FC Goa’s gritty 2-1 win offers more than just hope it offers proof that Indian clubs belong on the continental stage. As we await the ACL2 group stages, one thing is clear: Indian football is no longer on the sidelines. It's ready for center stage.</p>
   `,
-                  image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/FC_Goal.jpg?v=1755843149"
-                },
+            image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/FC_Goal.jpg?v=1755843149"
+          },
 
 
-                {
-                  title: "Rising Javelin Star Shivam Lohakare Shines on Senior International Debut",
-                  author: "Colab Platform",
-                  date: "11 August, 2025",
-                  slug: "shivam-lohakare-senior-international-debut",
-                  content: `
+          {
+            title: "Rising Javelin Star Shivam Lohakare Shines on Senior International Debut",
+            author: "Colab Platform",
+            date: "11 August, 2025",
+            slug: "shivam-lohakare-senior-international-debut",
+            content: `
     <p><strong>India’s javelin scene is witnessing the rise of a new star.</strong> Shivam Lohakare, a 20-year-old from Maharashtra, made a remarkable impression on his senior international debut by clinching a silver medal at the 2025 Indian Open, a World Athletics Continental Tour Bronze-level meet held in Bhubaneswar. With a best throw of 80.73 meters, Shivam has not only confirmed his entry into elite javelin territory but also marked himself as a serious contender in India’s growing field of throwing talent.</p>
 
     <h2>Making a Mark at Bhubaneswar</h2>
@@ -325,16 +325,16 @@ const Blog = () => {
 
     <p>As Shivam sets his sights on 90 meters and beyond, the athletics community and the country will be watching closely. With the right push and continued mentorship, he could very well be India’s next big name in track and field.</p>
   `,
-                  image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/neeraj.webp?v=1755843012"
-                },
+            image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/neeraj.webp?v=1755843012"
+          },
 
 
-                {
-                  title: "Mohammed Siraj Achieves Career-Best ICC Test Ranking After Heroics at The Oval",
-                  author: "Colab Platforms",
-                  date: "8 August, 2025",
-                  slug: "mohammed-siraj-icc-test-ranking-oval-heroics",
-                  content: `
+          {
+            title: "Mohammed Siraj Achieves Career-Best ICC Test Ranking After Heroics at The Oval",
+            author: "Colab Platforms",
+            date: "8 August, 2025",
+            slug: "mohammed-siraj-icc-test-ranking-oval-heroics",
+            content: `
     <p><strong>In a thrilling climax to the Anderson-Tendulkar Trophy series</strong>, Indian pacer Mohammed Siraj delivered a spellbinding performance at The Oval, London, helping Team India pull off a narrow yet historic six-run victory over England. His nine-wicket haul across both innings not only sealed the match for India, drawing the series 2-2, but also earned him a career-high position of 15th in the latest ICC Test bowling rankings.</p>
 
     <p>This remarkable leap of 12 spots in the ICC Test rankings signifies a key milestone in Siraj's journey, underlining his emergence as one of the most effective fast bowlers in international cricket today.</p>
@@ -390,14 +390,14 @@ const Blog = () => {
 
     <p>As the dust settles on this gripping Test series, fans and analysts alike will remember Siraj’s fiery spell at The Oval as one of the defining moments in modern Indian cricket. His journey continues to inspire a new generation of cricketers, proving that with grit and determination, anything is possible on the world stage.</p>
   `,
-                  image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/siraj.jpg?v=1755842819"
-                },
-                {
-                  title: "D Gukesh Hails Divya Deshmukh’s World Cup Triumph as ‘Inspiring’ in a Golden Year for Indian Chess",
-                  author: "Colab Platforms",
-                  date: "5 August, 2025",
-                  slug: "divya-deshmukh-world-cup-win-gukesh-reaction",
-                  content: `
+            image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/siraj.jpg?v=1755842819"
+          },
+          {
+            title: "D Gukesh Hails Divya Deshmukh’s World Cup Triumph as ‘Inspiring’ in a Golden Year for Indian Chess",
+            author: "Colab Platforms",
+            date: "5 August, 2025",
+            slug: "divya-deshmukh-world-cup-win-gukesh-reaction",
+            content: `
     <p><strong>In a historic year for Indian chess</strong>, Divya Deshmukh’s remarkable victory at the FIDE Women’s Chess World Cup has added yet another feather to the nation’s growing crown in the sport. Her triumph came just months after D Gukesh was crowned the World Chess Champion, and Koneru Humpy clinched the Women’s World Rapid Chess Championship, making 2024–25 a landmark period for Indian chess.</p>
 
     <p>The 18-year-old Divya scripted history in July by not only winning the prestigious World Cup but also defeating seasoned compatriot Koneru Humpy in an all-Indian final a match that highlighted the rising depth of talent in the country’s chess ecosystem. Divya’s win also made her India’s 88th Grandmaster, and by reaching the final, she secured a coveted spot in the 2026 Candidates Tournament.</p>
@@ -444,15 +444,15 @@ const Blog = () => {
 
     <p>As Gukesh aptly put it Divya’s victory is truly inspiring. But more importantly, it is a glimpse into what the future holds for Indian chess a future that looks brighter than ever.</p>
   `,
-                  image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/1000070587_1754292316006_1754292333052.avif?v=1754399629"
-                },
+            image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/1000070587_1754292316006_1754292333052.avif?v=1754399629"
+          },
 
-                {
-                  title: "India Script Historic Win at The Oval to Level Series 2-2 Against England",
-                  author: "Colab Platforms",
-                  date: "5 August, 2025",
-                  slug: "india-wins-the-oval-2025-test-series",
-                  content: `
+          {
+            title: "India Script Historic Win at The Oval to Level Series 2-2 Against England",
+            author: "Colab Platforms",
+            date: "5 August, 2025",
+            slug: "india-wins-the-oval-2025-test-series",
+            content: `
     <p><strong>London, The Oval</strong> In a match that will be etched in the annals of Test cricket history, Team India pulled off a thrilling six-run victory over England in the fifth and final Test at The Oval, leveling the fiercely contested Anderson-Tendulkar Trophy series at 2-2. The result not only silenced the raucous home crowd but also highlighted India's unyielding spirit and remarkable comeback on English soil.</p>
 
     <h2>A Test for the Ages</h2>
@@ -507,15 +507,15 @@ const Blog = () => {
 
     <p>It wasn't just a game of bat and ball  it was a story of grit, heart, and undying belief. In a sport often dominated by flashy formats and quick thrills, the final Test at The Oval reminded us why five day cricket remains the ultimate test of skill and character.</p>
   `,
-                  image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/123099217.jpg?v=1754399116"
-                },
+            image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/123099217.jpg?v=1754399116"
+          },
 
-                {
-                  title: "India Champions Withdraw From WCL Semifinal Against Pakistan: National Sentiment Over Sporting Ties",
-                  author: "Colab Platforms",
-                  date: "5 August, 2025",
-                  slug: "india-withdraws-from-wcl-2025-semifinal",
-                  content: `
+          {
+            title: "India Champions Withdraw From WCL Semifinal Against Pakistan: National Sentiment Over Sporting Ties",
+            author: "Colab Platforms",
+            date: "5 August, 2025",
+            slug: "india-withdraws-from-wcl-2025-semifinal",
+            content: `
     <p><strong>Edgbaston, Birmingham</strong> In a significant and emotionally charged moment in cricket, the India Champions team made headlines by withdrawing from the World Championship of Legends (WCL) 2025 semifinal against Pakistan. The decision, announced just hours before the anticipated clash at Edgbaston Cricket Ground, was made as a mark of protest against the recent Pahalgam terror attack in Jammu & Kashmir.</p>
 
     <p>While this move sparked debate in the global sporting community, it also resonated deeply with millions of Indians who saw the withdrawal as a symbol of national solidarity and a reaffirmation of India's longstanding position on sports diplomacy with Pakistan.</p>
@@ -571,15 +571,15 @@ const Blog = () => {
 
     <p>For now, the scoreboard may show Pakistan in the WCL final but for many Indians, the India Champions have already won something far greater: the hearts of their people.</p>
   `,
-                  image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/wcl_cancelled_1752983392939_1752983397396_1753894692031.webp?v=1754398917"
-                },
+            image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/wcl_cancelled_1752983392939_1752983397396_1753894692031.webp?v=1754398917"
+          },
 
-                {
-                  title: "Divya Deshmukh Makes History: Hero’s Welcome in Nagpur After FIDE Women’s Chess World Cup 2025 Victory",
-                  author: "Colab Platforms",
-                  date: "5 August, 2025",
-                  slug: "divya-deshmukh-wins-chess-world-cup-2025",
-                  content: `
+          {
+            title: "Divya Deshmukh Makes History: Hero’s Welcome in Nagpur After FIDE Women’s Chess World Cup 2025 Victory",
+            author: "Colab Platforms",
+            date: "5 August, 2025",
+            slug: "divya-deshmukh-wins-chess-world-cup-2025",
+            content: `
     <p><strong>Nagpur, India</strong> In a moment that will be remembered in Indian sports history, 19 year old chess prodigy Divya Deshmukh received a hero’s welcome in her hometown of Nagpur after winning the FIDE Women’s Chess World Cup 2025. Not only did she become the first Indian woman to achieve this milestone, but she also solidified her position among the brightest rising stars in global chess.</p>
 
     <h2>A Triumphant Return to Nagpur</h2>
@@ -624,15 +624,15 @@ const Blog = () => {
     <p>Divya Deshmukh’s win at the FIDE Women’s Chess World Cup 2025 is not just a personal triumph but a pivotal moment for Indian sports. Her resilience, humility, and brilliance on the 64 squares have inspired a nation and especially a new generation of female chess players.</p>
     <p>As she prepares for future tournaments, one thing is certain: Divya is no longer an underdog she is a champion, a trailblazer, and a name to remember.</p>
   `,
-                  image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/1802214-gg-1.avif?v=1754398868"
-                },
+            image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/1802214-gg-1.avif?v=1754398868"
+          },
 
-                {
-                  title: "England Edges Spain in Penalty Shootout to Defend Women’s Euro Title in Dramatic 2025 Final",
-                  author: "Colab Platforms",
-                  date: "30 July, 2025",
-                  slug: "england-defends-euro-2025-title",
-                  content: `
+          {
+            title: "England Edges Spain in Penalty Shootout to Defend Women’s Euro Title in Dramatic 2025 Final",
+            author: "Colab Platforms",
+            date: "30 July, 2025",
+            slug: "england-defends-euro-2025-title",
+            content: `
     <p><strong>St. Jakob-Park, Basel (Switzerland)</strong> — In a nerve-shredding final that matched the gravity of the occasion, England defeated Spain 3-1 in a penalty shootout after a 1-1 draw in regulation and extra time to successfully defend their UEFA Women’s Euro crown. The defending champions showed once again why they thrive under pressure, sealing their second consecutive European title in a dramatic showdown at Euro 2025.</p>
 
     <h2>Chloe Kelly: England’s Inevitable Hero Again</h2>
@@ -696,15 +696,15 @@ const Blog = () => {
 
     <p>As the women’s game continues its meteoric rise, this final served as a powerful reminder of how compelling, competitive, and unmissable women’s football has become. Euro 2025 will be remembered not just for the drama and skill on the field, but for showcasing two elite teams pushing each other to greatness with England, once again, standing tall.</p>
   `,
-                  image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/England-Beat-Spain-on-Penalties-to-Defend-Euro-Title-in-Historic-Win.jpg?v=1753854482"
-                },
+            image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/England-Beat-Spain-on-Penalties-to-Defend-Euro-Title-in-Historic-Win.jpg?v=1753854482"
+          },
 
-                {
-                  title: "All-Indian Clash Heads to Tiebreaks: Humpy vs Divya for Women’s World Cup 2025 Glory",
-                  author: "Colab Platforms",
-                  date: "30 July, 2025",
-                  slug: "humpy-vs-divya-womens-world-cup-2025",
-                  content: `
+          {
+            title: "All-Indian Clash Heads to Tiebreaks: Humpy vs Divya for Women’s World Cup 2025 Glory",
+            author: "Colab Platforms",
+            date: "30 July, 2025",
+            slug: "humpy-vs-divya-womens-world-cup-2025",
+            content: `
     <p><strong>Batumi, Georgia –</strong> After two intense classical games between India’s Koneru Humpy and Divya Deshmukh ended in hard-fought draws, the FIDE Women’s World Cup 2025 final is now set for a decisive tiebreak showdown. The tournament, already a marathon of endurance and skill, stretches into an extra day as the two Indian stars battle for the title and a guaranteed spot in the 2026 Candidates Tournament.</p>
 
     <p>Despite fatigue from a month of top-tier chess, fans and pundits expect Monday’s tiebreak to be nothing short of electric.</p>
@@ -765,18 +765,18 @@ const Blog = () => {
 
     <p>No matter the winner, India’s chess renaissance is unmistakably here and it’s led by its women.</p>
   `,
-                  image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/chess.webp?v=1753854546"
-                },
+            image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/chess.webp?v=1753854546"
+          },
 
 
 
 
-                {
-                  title: "Praggnanandhaa vs Magnus Carlsen: How India’s Rising Chess Star Eclipsed World No.1 Twice in a Week at Las Vegas Freestyle Event",
-                  author: "Colab Platforms",
-                  date: "30 July, 2025",
-                  slug: "praggnanandhaa-carlsen-freestyle-chess-2025",
-                  content: `
+          {
+            title: "Praggnanandhaa vs Magnus Carlsen: How India’s Rising Chess Star Eclipsed World No.1 Twice in a Week at Las Vegas Freestyle Event",
+            author: "Colab Platforms",
+            date: "30 July, 2025",
+            slug: "praggnanandhaa-carlsen-freestyle-chess-2025",
+            content: `
     <p>In the world of elite chess, few names carry the weight and dominance of Magnus Carlsen World No.1 and a five-time World Champion. Yet, in a remarkable turn of events at the Las Vegas leg of the Freestyle Chess Grand Slam Tour 2025, India's teenage chess sensation, R Praggnanandhaa, defeated the Norwegian maestro twice in just four days, sending ripples through the global chess community.</p>
 
     <p>The 18-year-old from Chennai, already recognized as one of the brightest young stars in world chess, not only outplayed Carlsen but also made a powerful statement: the future of chess might already be here, and it speaks with an Indian accent.</p>
@@ -831,16 +831,16 @@ const Blog = () => {
 
     <p>As Indian chess continues to rise, propelled by intuitive and fearless talents like Praggnanandhaa, the question is no longer if someone from this generation will dethrone Carlsen for good but when.</p>
   `,
-                  image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/122793172.avif?v=1753854801"
-                },
+            image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/122793172.avif?v=1753854801"
+          },
 
 
-                {
-                  title: "Pakistan to Remain in WCL 2025 Despite India Match Cancellation: Semi-Final Clash to Be Avoided",
-                  author: "Colab Platforms",
-                  date: "30 July, 2025",
-                  slug: "pakistan-wcl-2025-india-match-cancelled",
-                  content: `
+          {
+            title: "Pakistan to Remain in WCL 2025 Despite India Match Cancellation: Semi-Final Clash to Be Avoided",
+            author: "Colab Platforms",
+            date: "30 July, 2025",
+            slug: "pakistan-wcl-2025-india-match-cancelled",
+            content: `
     <p>The World Championship of Legends (WCL) 2025 has taken a dramatic and politically sensitive turn. One of the most eagerly anticipated matches India Champions vs Pakistan Champions scheduled for July 20 at Edgbaston, Birmingham, was officially cancelled. The decision comes in the wake of public outrage following the Pahalgam terror attack, which triggered emotional and political backlash across India.</p>
 
     <p>Despite the cancellation, Pakistan Champions will remain part of the tournament. Their team owner, Kamil Khan, has confirmed that the squad is fully committed, and the tournament schedule will move ahead as planned. This development has relieved fans and stakeholders, ensuring WCL 2025 retains its competitive balance.</p>
@@ -882,17 +882,17 @@ const Blog = () => {
 
     <p>As WCL 2025 progresses, the cricket will go on but with boundaries drawn not just on the field, but in public discourse and diplomacy as well. Fans will now wait to see whether destiny brings India and Pakistan face-to-face in the final and what that would mean for cricket and beyond.</p>
   `,
-                  image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/1800907-low-2.webp?v=1753854903"
+            image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/1800907-low-2.webp?v=1753854903"
 
-                },
+          },
 
 
-                {
-                  title: "Andre Russell to Retire After First Two T20Is Against Australia",
-                  author: "Colab Platforms",
-                  date: "18 July, 2025",
-                  slug: "andre-russell-west-indies-retirement",
-                  content: `
+          {
+            title: "Andre Russell to Retire After First Two T20Is Against Australia",
+            author: "Colab Platforms",
+            date: "18 July, 2025",
+            slug: "andre-russell-west-indies-retirement",
+            content: `
     <p>In a bittersweet announcement that has stirred emotions across the cricketing world, West Indies' power-hitting all-rounder Andre Russell has confirmed his retirement from international cricket. The iconic cricketer will bow out after the first two T20 Internationals of the upcoming five-match series against Australia, both of which will be played at Sabina Park in Kingston, Jamaica Russell’s hometown.</p>
 
     <p>Russell, 37, made the emotional decision to conclude his international journey on home soil, marking the end of a remarkable chapter in West Indies cricket. His retirement signals not only the departure of a fan-favourite but also the end of an era that saw Russell evolve into one of the most fearsome and influential T20 players of his generation.</p>
@@ -937,15 +937,15 @@ const Blog = () => {
     <h2>Conclusion</h2>
     <p>Andre Russell’s retirement from international cricket is a poignant moment for fans and players alike. His unmatched energy, commitment, and charisma helped shape a golden era of T20 cricket for West Indies. As he takes his final bow at Sabina Park, he leaves behind not just records, but a legacy of inspiration, resilience, and unmatched passion for the maroon jersey.</p>
   `,
-                  image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Andre_Russel.webp?v=1752834311"
-                },
+            image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Andre_Russel.webp?v=1752834311"
+          },
 
-                {
-                  title: "Sunil Chhetri Speaks Out on Indian Football Crisis Amid ISL Uncertainty",
-                  author: "Colab Platforms",
-                  date: "18 July, 2025",
-                  slug: "sunil-chhetri-indian-football-isl-crisis",
-                  content: `
+          {
+            title: "Sunil Chhetri Speaks Out on Indian Football Crisis Amid ISL Uncertainty",
+            author: "Colab Platforms",
+            date: "18 July, 2025",
+            slug: "sunil-chhetri-indian-football-isl-crisis",
+            content: `
     <p>Indian football finds itself at a crucial crossroads. With the 2025–26 Indian Super League (ISL) season indefinitely postponed, the entire ecosystem of Indian football from players and coaches to medical staff and broadcasters is grappling with a wave of anxiety and uncertainty. At the center of this unfolding crisis stands Indian football legend Sunil Chhetri, who has now broken his silence, voicing deep concern and offering words of solidarity in a message that has resonated across the footballing community.</p>
 
     <h2>ISL 2025–26 on Indefinite Hold</h2>
@@ -987,16 +987,16 @@ const Blog = () => {
     <p>Yet, amid all this, Chhetri’s leadership on and off the field provides a much needed sense of steadiness. His voice reflects not just the concerns of an aging player at the twilight of his career, but the collective anxiety of an entire sport and its community.</p>
     <p>As fans, players, and stakeholders await clarity, the hope remains that Indian football will emerge from this crisis stronger, more unified, and with a renewed focus on sustainable growth.</p>
   `,
-                  image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Sunil_chetri.jpg?v=1752834315"
-                },
+            image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Sunil_chetri.jpg?v=1752834315"
+          },
 
 
-                {
-                  title: "Chelsea Outclass PSG in Club World Cup Final Using Their Own Tactics",
-                  author: "Colab Platforms",
-                  date: "15 July, 2025",
-                  slug: "chelsea-vs-psg-club-world-cup-final",
-                  content: `
+          {
+            title: "Chelsea Outclass PSG in Club World Cup Final Using Their Own Tactics",
+            author: "Colab Platforms",
+            date: "15 July, 2025",
+            slug: "chelsea-vs-psg-club-world-cup-final",
+            content: `
     <p>Palmer Shines as the Blues Deliver a Tactical Masterclass to Claim Historic Club World Cup Title</p>
     <p>The Club World Cup final between Chelsea and Paris Saint-Germain (PSG) was billed as a mismatch on paper, with the Champions League-winning French side coming in as clear favourites. However, what unfolded in front of a packed international audience was nothing short of a tactical reversal of fortunes. Chelsea stunned PSG with a comprehensive 3-0 victory, turning the Parisians’ own pressing playbook against them and adding their own long-ball twist.</p>
     <p>From underdogs to champions, Chelsea’s performance will go down as one of the most strategic victories in Club World Cup history.</p>
@@ -1037,15 +1037,15 @@ const Blog = () => {
     <p>With Cole Palmer rising into a genuine star, João Pedro clicking instantly, and Maresca pulling all the right strings, this Club World Cup triumph feels like more than just silverware it feels like a warning to Europe.</p>
     <p>The Chelsea project is real, and it’s coming together at the perfect time.</p>
   `,
-                  image: "https://cdn.shopify.com/s/files/1/0674/9614/9171/files/Chelsea.webp?v=1752579071"
-                },
+            image: "https://cdn.shopify.com/s/files/1/0674/9614/9171/files/Chelsea.webp?v=1752579071"
+          },
 
-                {
-                  "title": "Chelsea Outclass PSG in Club World Cup Final Using Their Own Tactics",
-                  "author": "Colab Platforms",
-                  "date": "15 July, 2025",
-                  "slug": "india-vs-england-lords-test-day-5",
-                  "content": `
+          {
+            "title": "Chelsea Outclass PSG in Club World Cup Final Using Their Own Tactics",
+            "author": "Colab Platforms",
+            "date": "15 July, 2025",
+            "slug": "india-vs-england-lords-test-day-5",
+            "content": `
     <p>Palmer Shines as the Blues Deliver a Tactical Masterclass to Claim Historic Club World Cup Title
 </p>
 <p>The Club World Cup final between Chelsea and Paris Saint-Germain (PSG) was billed as a mismatch on paper, with the Champions League-winning French side coming in as clear favourites. However, what unfolded in front of a packed international audience was nothing short of a tactical reversal of fortunes. Chelsea stunned PSG with a comprehensive 3-0 victory, turning the Parisians’ own pressing playbook against them and adding their own long-ball twist.
@@ -1116,18 +1116,18 @@ const Blog = () => {
     <p>The Chelsea project is real, and it’s coming together at the perfect time.
 </p>
   `,
-                  "image": "https://cdn.shopify.com/s/files/1/0674/9614/9171/files/Chelsea.webp?v=1752579071"
-                },
+            "image": "https://cdn.shopify.com/s/files/1/0674/9614/9171/files/Chelsea.webp?v=1752579071"
+          },
 
 
 
 
-                {
-                  "title": "Lord’s Showdown: KL Rahul & Pant Tipped to Seal Historic Win for India, Says Nasser Hussain",
-                  "author": "Colab Platforms",
-                  "date": "15 July, 2025",
-                  "slug": "india-vs-england-lords-test-day-5",
-                  "content": `
+          {
+            "title": "Lord’s Showdown: KL Rahul & Pant Tipped to Seal Historic Win for India, Says Nasser Hussain",
+            "author": "Colab Platforms",
+            "date": "15 July, 2025",
+            "slug": "india-vs-england-lords-test-day-5",
+            "content": `
     <p>As the final day of the Lord’s Test looms, all eyes are set on what promises to be a dramatic finish between England and India. With India needing 135 runs and England chasing six wickets, former England captain Nasser Hussain believes India holds the edge, banking on the steely composure of KL Rahul and the flamboyant resilience of Rishabh Pant to lead the visitors to a memorable win at the home of cricket.</p>
 
     <h2>India’s Nervy Position Heading into Day 5</h2>
@@ -1172,17 +1172,17 @@ const Blog = () => {
     <p>In many ways, Day 5 at Lord’s will be a reflection of Test cricket’s finest virtues: patience, skill, strategy, pressure, and drama.</p>
     <p>The world will be watching.</p>
   `,
-                  "image": "https://cdn.shopify.com/s/files/1/0674/9614/9171/files/Pant-Rahul.webp?v=1752580980"
-                },
+            "image": "https://cdn.shopify.com/s/files/1/0674/9614/9171/files/Pant-Rahul.webp?v=1752580980"
+          },
 
 
 
-                {
-                  "title": "Champagne Football: How PSG Dismantled Real Madrid 4-0 in Club World Cup Semifinal",
-                  "author": "Colab Platforms",
-                  "date": "11 July, 2025",
-                  "slug": "psg-vs-real-madrid-club-world-cup-2025",
-                  "content": `
+          {
+            "title": "Champagne Football: How PSG Dismantled Real Madrid 4-0 in Club World Cup Semifinal",
+            "author": "Colab Platforms",
+            "date": "11 July, 2025",
+            "slug": "psg-vs-real-madrid-club-world-cup-2025",
+            "content": `
     <p>On a blazing Thursday afternoon in New Jersey’s Metlife Stadium, football fans witnessed a seismic shift in European dominance as Paris Saint-Germain (PSG) delivered a masterclass performance, decimating Real Madrid 4-0 in the Club World Cup semifinal. For 90 minutes, the Spanish giants were second-best in every department, helplessly chasing shadows as PSG played what can only be described as “champagne football” fluid, elegant, ruthless.</p>
 
     <p>This result comes as a statement of intent from Luis Enrique’s PSG, who have already thrashed Inter Milan 5-0 in the Champions League final earlier this year. Facing Europe’s most decorated side in Real Madrid, they showed no signs of fear, only tactical superiority, pressing precision, and clinical execution.</p>
@@ -1232,15 +1232,15 @@ const Blog = () => {
     <p>After their UCL demolition of Inter, this was the next logical step. Critics wondered if PSG could dominate the very best. They didn’t just dominate they destroyed. This was more than a win. It was a shift in European power.</p>
     <p>Real Madrid didn’t hand over the torch. PSG ripped it away.</p>
   `,
-                  "image": "https://cdn.shopify.com/s/files/1/0674/9614/9171/files/footabll.webp?v=1752237004"
-                },
+            "image": "https://cdn.shopify.com/s/files/1/0674/9614/9171/files/footabll.webp?v=1752237004"
+          },
 
-                {
-                  "title": "Shubman Gill Poised to Break 4 Don Bradman Records in Historic Test Series Against England",
-                  "author": "Colab Platforms",
-                  "date": "11 July, 2025",
-                  "slug": "shubman-gill-bradman-records-test-series",
-                  "content": `
+          {
+            "title": "Shubman Gill Poised to Break 4 Don Bradman Records in Historic Test Series Against England",
+            "author": "Colab Platforms",
+            "date": "11 July, 2025",
+            "slug": "shubman-gill-bradman-records-test-series",
+            "content": `
       <p>In what has been a sensational start to his Test captaincy, Shubman Gill is on the brink of rewriting cricket history. With a batting masterclass across the first two Tests against England in the Anderson-Tendulkar Trophy, Gill is now within touching distance of several world records, some of which have stood unbroken for nearly a century. Among the most coveted are four iconic records set by the legendary Sir Don Bradman.</p>
 
       <p>With India currently locked 1-1 in the five-match Test series, all eyes are on Gill, who has already amassed a staggering 585 runs, including a monumental 269 in the first innings and 161 in the second at Edgbaston. These innings not only helped India level the series but also saw Gill eclipse several Indian greats like Virat Kohli and Sunil Gavaskar in the record books.</p>
@@ -1292,15 +1292,15 @@ const Blog = () => {
       <h2>Final Thoughts</h2>
       <p>At just 25 years old, Shubman Gill is scripting a tale of excellence, resilience, and historic achievement. With his poised technique and fearless approach, he's not only leading India confidently but also etching his name alongside cricketing legends. As the Anderson-Tendulkar Trophy series progresses, Gill is giving fans a front-row seat to what might be the rewriting of records that once seemed untouchable.</p>
     `,
-                  "image": "https://cdn.shopify.com/s/files/1/0674/9614/9171/files/shubham_gill.webp?v=1752237006"
-                },
+            "image": "https://cdn.shopify.com/s/files/1/0674/9614/9171/files/shubham_gill.webp?v=1752237006"
+          },
 
-                {
-                  "title": "India’s Deepika Nominated for Poligras Magic Skill Award for Stunning Goal Against World No.1 Netherlands",
-                  "author": "Colab Platforms",
-                  "date": "08 July, 2025",
-                  "slug": "deepika-poligras-skill-award-2025",
-                  "content": `
+          {
+            "title": "India’s Deepika Nominated for Poligras Magic Skill Award for Stunning Goal Against World No.1 Netherlands",
+            "author": "Colab Platforms",
+            "date": "08 July, 2025",
+            "slug": "deepika-poligras-skill-award-2025",
+            "content": `
     <p>Indian women’s hockey is once again in the spotlight on the global stage, as 21-year-old forward Deepika has been nominated for the prestigious Poligras Magic Skill Award for the 2024–25 FIH Hockey Pro League season. The nomination celebrates her stunning solo field goal against the reigning world champions, the Netherlands, during a high-octane clash at the Kalinga Stadium in Bhubaneswar earlier this year.</p>
 
     <p>This moment of brilliance came in February 2025 and has now been recognized as one of the season’s most magical plays, competing with two other world-class moments from the FIH Pro League season. Deepika’s goal is not just a contender for an award it is a symbol of the rising dominance and flair of Indian women’s hockey on the international stage.</p>
@@ -1362,15 +1362,15 @@ const Blog = () => {
 
     <p>With continued support and recognition, players like Deepika are poised to inspire the next generation of hockey stars in India. Let’s rally behind her and ensure the magic moment gets its due at the global stage.</p>
   `,
-                  "image": "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/dipika.avif?v=1751952673"
-                }
-                ,
-                {
-                  "title": "India Scripts History at Edgbaston: 3 Monumental Records in a Dominant 336-Run Victory Over England",
-                  "author": "Colab Platforms",
-                  "date": "8 July, 2025",
-                  "slug": "india-336-run-victory-edgbaston-2025",
-                  "content": `
+            "image": "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/dipika.avif?v=1751952673"
+          }
+          ,
+          {
+            "title": "India Scripts History at Edgbaston: 3 Monumental Records in a Dominant 336-Run Victory Over England",
+            "author": "Colab Platforms",
+            "date": "8 July, 2025",
+            "slug": "india-336-run-victory-edgbaston-2025",
+            "content": `
     <p>In a moment that will be etched in Indian cricket history, the Shubman Gill-led Indian Test team pulled off a staggering 336-run win over England at the iconic Edgbaston ground in Birmingham. This historic triumph not only broke the long-standing winless streak at the venue but also marked India’s biggest Test victory by runs. The emphatic nature of this win silenced critics of India's red-ball capabilities on foreign soil while rewriting multiple records across both team and individual performances.</p>
 
     <h2>Breaching the Edgbaston Fortress: A First in Indian Cricket History</h2>
@@ -1418,16 +1418,16 @@ const Blog = () => {
 
     <p>From breaking venue curses, to setting new personal and national records, to showcasing new heroes like Akash Deep and reaffirming the brilliance of Shubman Gill and Ravindra Jadeja this match had it all. The message from Team India is clear: the future of Indian Test cricket is in good hands, and they’re not just competing overseas anymore they’re conquering.</p>
   `,
-                  "image": "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/WhatsApp_Image_2025-07-08_at_10.40.39_AM.jpg?v=17519521860"
-                },
+            "image": "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/WhatsApp_Image_2025-07-08_at_10.40.39_AM.jpg?v=17519521860"
+          },
 
 
-                {
-                  "title": "Shubman Gill Joins Elite Company With Glorious Century in 2nd Test vs England at Edgbaston",
-                  "author": "Colab Platforms",
-                  "date": "04 July, 2025",
-                  "slug": "shubman-gill-century-edgbaston-2025",
-                  "content": `
+          {
+            "title": "Shubman Gill Joins Elite Company With Glorious Century in 2nd Test vs England at Edgbaston",
+            "author": "Colab Platforms",
+            "date": "04 July, 2025",
+            "slug": "shubman-gill-century-edgbaston-2025",
+            "content": `
     <p>In a performance that will be etched into the annals of Indian cricket, Shubman Gill, India’s youngest Test captain, demonstrated poise, power, and pedigree with a commanding century against England in the second Test at Edgbaston. His innings not only anchored India in a challenging first-day pitch but also positioned him alongside some of Indian cricket’s greatest icons, including Sunil Gavaskar, Virat Kohli, and MS Dhoni.</p>
 
     <h2>Gill’s Historic Century A Masterclass in Temperament</h2>
@@ -1470,16 +1470,16 @@ const Blog = () => {
     
     <p>As the cricketing world takes note, India can rejoice in witnessing the rise of a new torchbearer Shubman Gill, a name destined for greatness.</p>
   `,
-                  "image": "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/WhatsApp_Image_2025-07-04_at_4.48.36_PM.jpg?v=1751627940"
-                },
+            "image": "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/WhatsApp_Image_2025-07-04_at_4.48.36_PM.jpg?v=1751627940"
+          },
 
 
-                {
-                  "title": "Vaibhav Suryavanshi Smashes Records With Explosive Knock in U-19 ODI vs England",
-                  "author": "Colab Platforms",
-                  "date": "04 July, 2025",
-                  "slug": "vaibhav-suryavanshi-u19-odi-record",
-                  "content": `
+          {
+            "title": "Vaibhav Suryavanshi Smashes Records With Explosive Knock in U-19 ODI vs England",
+            "author": "Colab Platforms",
+            "date": "04 July, 2025",
+            "slug": "vaibhav-suryavanshi-u19-odi-record",
+            "content": `
     <p>In an electrifying display of raw talent and explosive power-hitting, Vaibhav Suryavanshi, the 14-year-old prodigy from India, stunned the cricketing world with a whirlwind 86 off just 31 balls in the third Youth ODI against England U-19. Despite falling short of a century, the left-handed batter broke multiple records and etched his name into Indian U-19 cricket history.</p>
 
     <p>His match-defining innings, punctuated by nine towering sixes and six cracking fours, led India to a commanding four-wicket victory in a rain-truncated 40-over contest. Suryavanshi’s fearless approach at such a young age has not only sparked excitement among fans but also marked the arrival of a new star in the making.</p>
@@ -1532,15 +1532,15 @@ const Blog = () => {
 
     <p>For a 14-year-old to rewrite record books and dominate international opposition speaks volumes of his temperament and talent. As India celebrates this remarkable feat, one thing is certain: Vaibhav Suryavanshi is a name we’ll be hearing a lot more of in the years to come.</p>
   `,
-                  "image": "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/image_1.webp?v=1751631136"
+            "image": "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/image_1.webp?v=1751631136"
 
-                },
-                {
-                  "title": "Ayush Shetty Clinches US Open Title with Commanding Victory Over Brian Yang",
-                  "author": "Colab Platforms",
-                  "date": "01 July, 2025",
-                  "slug": "ayush-shetty-us-open-title-2025",
-                  "content": `
+          },
+          {
+            "title": "Ayush Shetty Clinches US Open Title with Commanding Victory Over Brian Yang",
+            "author": "Colab Platforms",
+            "date": "01 July, 2025",
+            "slug": "ayush-shetty-us-open-title-2025",
+            "content": `
     <p>In a powerful display of athleticism and tactical brilliance, Ayush Shetty etched his name in Indian badminton history by clinching the US Open Super 300 title with a clinical 21-18, 21-13 win over Canada’s Brian Yang in Council Bluffs, Iowa. This victory not only marks the biggest title of Shetty’s career so far but also signals the arrival of a formidable new force in men’s singles badminton from India.</p>
 
     <h2>A New Star on the Rise</h2>
@@ -1588,16 +1588,16 @@ const Blog = () => {
 
     <p>As he returns home with the winner’s medal, bruised knees, and a rising reputation, one thing is clear: a star is born.</p>
   `,
-                  "image": "https://www.tribuneindia.com/sortd-service/imaginary/v22-01/jpg/large/high?url=dGhldHJpYnVuZS1zb3J0ZC1wcm8tcHJvZC1zb3J0ZC9tZWRpYTRhNzE3ZjcwLTU1NjctMTFmMC05YTI3LWZiZmNhMjFkMmNiMC5qcGc="
+            "image": "https://www.tribuneindia.com/sortd-service/imaginary/v22-01/jpg/large/high?url=dGhldHJpYnVuZS1zb3J0ZC1wcm8tcHJvZC1zb3J0ZC9tZWRpYTRhNzE3ZjcwLTU1NjctMTFmMC05YTI3LWZiZmNhMjFkMmNiMC5qcGc="
 
-                },
+          },
 
-                {
-                  "title": "IND vs ENG 2nd Test: Five Players Who Can Make an Impact at Edgbaston",
-                  "author": "Colab Platforms",
-                  "date": "01 July, 2025",
-                  "slug": "ind-vs-eng-2nd-test-edgbaston-impact-players",
-                  "content": `
+          {
+            "title": "IND vs ENG 2nd Test: Five Players Who Can Make an Impact at Edgbaston",
+            "author": "Colab Platforms",
+            "date": "01 July, 2025",
+            "slug": "ind-vs-eng-2nd-test-edgbaston-impact-players",
+            "content": `
     <p>As India gears up to face England in the second Test match at Edgbaston, Birmingham, all eyes are on how the visitors will respond after their disappointing loss in the first Test at Headingley. With the five-match Test series heating up, this second encounter becomes crucial for Rohit Sharma and his men if they hope to level the series.</p>
 
     <p>Unlike the conditions in Leeds, Edgbaston offers a different challenge, one that typically supports pace and swing early on and often rewards disciplined batting and persistent bowling. India must recalibrate their strategies accordingly. While team performance matters most in the longer format, individual brilliance can often tilt the balance. With that in mind, here are five players who can make a decisive impact in the second Test at Edgbaston:</p>
@@ -1634,16 +1634,16 @@ const Blog = () => {
 
     <p>As fans await the toss on Wednesday morning, one thing is certain this battle at Edgbaston is not just about skill, but also about seizing the moment. And for these five players, it’s an opportunity to make a lasting impact.</p>
   `,
-                  "image": "https://images.indianexpress.com/2025/06/India-vs-england-1.jpg"
+            "image": "https://images.indianexpress.com/2025/06/India-vs-england-1.jpg"
 
 
-                },
-                {
-                  "title": "Rishabh Pant Scales New Heights: Climbs to Career-Best 7th in ICC Test Rankings",
-                  "author": "Colab Platforms",
-                  "date": "27 Jun, 2025",
-                  "slug": "rishabh-pant-career-best-icc-test-ranking",
-                  "content": `
+          },
+          {
+            "title": "Rishabh Pant Scales New Heights: Climbs to Career-Best 7th in ICC Test Rankings",
+            "author": "Colab Platforms",
+            "date": "27 Jun, 2025",
+            "slug": "rishabh-pant-career-best-icc-test-ranking",
+            "content": `
     <p>In a significant leap forward, India’s explosive wicketkeeper-batter Rishabh Pant has reached a career-best seventh position in the latest ICC Test rankings for batters, released on June 25, 2025. This milestone comes on the heels of his sensational performance in the first Test match against England at Headingley, Leeds, where he etched his name in the record books with twin centuries.</p>
 
     <h2>Pant’s Historic Feat at Headingley</h2>
@@ -1677,15 +1677,15 @@ const Blog = () => {
     <h2>Final Thoughts</h2>
     <p>The latest ICC Test rankings reflect the brilliance and evolving landscape of international cricket. Pant’s twin centuries, Gill’s leadership, and England’s collective excellence showcase the depth and unpredictability of the red-ball format. The Test summer is heating up and fans are here for it.</p>
   `,
-                  "image": "https://images.cnbctv18.com/uploads/2025/06/2025-06-21t120326z-1739471180-up1el6l0xho31-rtrmadp-3-cricket-test-eng-ind-1-2025-06-88785c9d8e61218cdd5fd4ae82a17ee8-scaled.jpg"
-                }
-                ,
-                {
-                  "title": "Thrilling Semi-Finals Set Stage for Grand Finale of the 1st Hockey India Masters Cup 2025 (Men)",
-                  "author": "Colab Platforms",
-                  "date": "27 Jun, 2025",
-                  "slug": "thrilling-semi-finals-set-stage-for-grand-finale-of-hockey-india-masters-cup-2025",
-                  "content": `
+            "image": "https://images.cnbctv18.com/uploads/2025/06/2025-06-21t120326z-1739471180-up1el6l0xho31-rtrmadp-3-cricket-test-eng-ind-1-2025-06-88785c9d8e61218cdd5fd4ae82a17ee8-scaled.jpg"
+          }
+          ,
+          {
+            "title": "Thrilling Semi-Finals Set Stage for Grand Finale of the 1st Hockey India Masters Cup 2025 (Men)",
+            "author": "Colab Platforms",
+            "date": "27 Jun, 2025",
+            "slug": "thrilling-semi-finals-set-stage-for-grand-finale-of-hockey-india-masters-cup-2025",
+            "content": `
     <p>Chennai, 25th June 2025 The inaugural edition of the Hockey India Masters Cup 2025 (Men) has reached an electrifying phase, as two top-performing teams, Hockey Unit of Tamil Nadu and Hockey Maharashtra, have convincingly secured their place in the historic final match. With powerful performances in the semi-finals, both teams are now set to battle for glory on 27th June 2025 at the Mayor Radhakrishnan Hockey Stadium, Chennai.</p>
 
 <p>The semi-final matches lived up to the expectations, delivering high-intensity action, strategic gameplay, and an overwhelming display of experience and skill from seasoned athletes. As the event marks the first-ever edition of the Hockey India Masters Cup, the anticipation and excitement surrounding the final are reaching new heights.</p>
@@ -1721,18 +1721,18 @@ const Blog = () => {
 <p>With the Hockey Unit of Tamil Nadu and Hockey Maharashtra set to lock horns in the final, and Chandigarh vs Odisha competing for bronze, the final day promises to deliver memorable moments and showcase the enduring spirit of Indian hockey.</p>
 <p>Stay tuned for all the action, results, and updates as history is made on the field of Chennai’s iconic stadium!</p>
   `,
-                  "image": "https://www.tribuneindia.com/sortd-service/imaginary/v22-01/jpg/large/high?url=dGhldHJpYnVuZS1zb3J0ZC1wcm8tcHJvZC1zb3J0ZC9tZWRpYTk4Nzg3MTcwLTUwM2UtMTFmMC1iNWU1LWExZjBiMDAwYjYwYy5qcGc="
-                },
+            "image": "https://www.tribuneindia.com/sortd-service/imaginary/v22-01/jpg/large/high?url=dGhldHJpYnVuZS1zb3J0ZC1wcm8tcHJvZC1zb3J0ZC9tZWRpYTk4Nzg3MTcwLTUwM2UtMTFmMC1iNWU1LWExZjBiMDAwYjYwYy5qcGc="
+          },
 
 
 
 
-                {
-                  "title": "Shubman Gill to Bat at No.4 in Test Series Against England, Confirms Rishabh Pant",
-                  "author": "Colab Platforms",
-                  "date": "20 Jun, 2025",
-                  "slug": "Shubman Gill to Bat at No.4 in Test Series Against England, Confirms Rishabh Pant",
-                  "content": `
+          {
+            "title": "Shubman Gill to Bat at No.4 in Test Series Against England, Confirms Rishabh Pant",
+            "author": "Colab Platforms",
+            "date": "20 Jun, 2025",
+            "slug": "Shubman Gill to Bat at No.4 in Test Series Against England, Confirms Rishabh Pant",
+            "content": `
     <p>India is entering a new chapter in its red-ball cricket journey, and at the heart of this transition lies a critical decision that has now been officially confirmed. Wicketkeeper-batter Rishabh Pant has announced that Shubman Gill will bat at No. 4 in the Indian batting lineup for the first Test match against England at Headingley, starting June 20.
 </p>
 <p>With the retirement of stalwarts Virat Kohli and Rohit Sharma from the longest format of the game, India’s Test squad is undergoing a significant reshuffle. One of the most intriguing changes is Gill’s elevation to the No. 4 position, an iconic batting spot previously held by Kohli for more than a decade.
@@ -1789,17 +1789,17 @@ India will take on England in the first Test at Headingley, starting June 20, 20
 <p>This is more than just a positional change, it's a symbolic shift for a team looking to move forward while honoring the legacy of its past greats.
 </p>
   `,
-                  "image": "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/ENG-v-IND.webp?v=1750414823"
-                }
-                ,
+            "image": "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/ENG-v-IND.webp?v=1750414823"
+          }
+          ,
 
 
-                {
-                  "title": "ICC Women’s T20 World Cup 2026 Fixtures Announced: England Gears Up for a Game-Changing Tournament",
-                  "author": "Colab Platforms",
-                  "date": "20 Jun, 2025",
-                  "slug": "ICC Women’s T20 World Cup 2026 Fixtures Announced: England Gears Up for a Game-Changing Tournament",
-                  "content": `
+          {
+            "title": "ICC Women’s T20 World Cup 2026 Fixtures Announced: England Gears Up for a Game-Changing Tournament",
+            "author": "Colab Platforms",
+            "date": "20 Jun, 2025",
+            "slug": "ICC Women’s T20 World Cup 2026 Fixtures Announced: England Gears Up for a Game-Changing Tournament",
+            "content": `
     <p>The stage is officially set for the 10th edition of the ICC Women’s T20 World Cup, as the full fixtures for the 2026 tournament have been revealed. Hosted by England in June and July next year, this edition is poised to be the biggest and most transformative yet in the history of women’s cricket.
 </p>
 <p> The tournament will kick off with a thrilling opening match between hosts England and Sri Lanka at Edgbaston on 12 June 2026. Over the course of 24 action-packed days, 12 elite teams will battle across 33 matches at seven iconic venues, all culminating in the grand finale at the legendary Lord’s Cricket Ground on 5 July.
@@ -1897,17 +1897,17 @@ India will take on England in the first Test at Headingley, starting June 20, 20
 <p>As fans, players, and stakeholders gear up for this summer of sport, one thing is clear: June and July 2026 will belong to the women who will make history.
 </p>
   `,
-                  "image": "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/ICC1.webp?v=1750414783"
-                }
-                ,
+            "image": "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/ICC1.webp?v=1750414783"
+          }
+          ,
 
 
-                {
-                  "title": "South Africa Crowned ICC World Test Champions: A Historic Triumph After 27 Years",
-                  "author": "Colab Platforms",
-                  "date": "15 Jun, 2025",
-                  "slug": "South Africa Crowned ICC World Test Champions: A Historic Triumph After 27 Years",
-                  "content": `
+          {
+            "title": "South Africa Crowned ICC World Test Champions: A Historic Triumph After 27 Years",
+            "author": "Colab Platforms",
+            "date": "15 Jun, 2025",
+            "slug": "South Africa Crowned ICC World Test Champions: A Historic Triumph After 27 Years",
+            "content": `
     <p>In a monumental achievement for South African cricket, the Proteas secured their maiden ICC World Test Championship (WTC) title, defeating defending champions Australia in a gripping final at Lord’s Cricket Ground on June 11, 2025. This historic victory marks their first ICC trophy in 27 years, signaling a powerful resurgence in the Test arena and earning them the No.2 spot in the latest ICC Test Team Rankings.</p>
 
 <h2>A Final to Remember at the Home of Cricket</h2>
@@ -1957,16 +1957,16 @@ India will take on England in the first Test at Headingley, starting June 20, 20
 <p>The 2025 WTC Final wasn’t just a cricket match — it was a story of redemption, belief, and unbreakable spirit. South Africa’s victory is a celebration of years of perseverance, talent, and unity.</p>
 <p>As the Proteas lift the coveted Test mace at Lord’s, the echoes of their triumph will resonate not just in South Africa but across the cricketing world. For every young cricketer watching this, it’s a reminder that dreams — no matter how delayed — can come true.</p>
   `,
-                  "image": "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/blog.jpg?v=1750148357"
-                }
-                ,
+            "image": "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/blog.jpg?v=1750148357"
+          }
+          ,
 
-                {
-                  "title": "IPL 2025: Umpires Get Strict on Bat Size – A Step Towards Fair Play in Cricket",
-                  "author": "Colab Platforms",
-                  "date": "16 Apr, 2025",
-                  "slug": "ipl-2025-umpires-strict-on-bat-size",
-                  "content": `
+          {
+            "title": "IPL 2025: Umpires Get Strict on Bat Size – A Step Towards Fair Play in Cricket",
+            "author": "Colab Platforms",
+            "date": "16 Apr, 2025",
+            "slug": "ipl-2025-umpires-strict-on-bat-size",
+            "content": `
     <p>In a significant move during the IPL 2025 season, match officials have begun closely monitoring bat sizes to ensure fairness and adherence to cricket regulations. This proactive stance, as seen in recent matches, has sparked conversations across the cricketing world. While it might seem like a minor detail, the bat size can have a considerable impact on a player’s performance — and in a high-stakes tournament like the Indian Premier League, every inch matters.</p>
     <p>Let’s take a closer look at why this action is gaining attention, how it aligns with ICC regulations, and what it means for the integrity of cricket.</p>
 
@@ -1989,18 +1989,18 @@ India will take on England in the first Test at Headingley, starting June 20, 20
     <p>Going forward, we may see even stricter enforcement of such rules in international cricket as well. The IPL often serves as a trendsetter, and this move could pave the way for broader scrutiny over cricketing gear — including gloves, helmets, and protective gear.</p>
     <p>The IPL 2025 umpire checks on bat size are more than just a technicality — they symbolize a broader commitment to fairness and integrity in cricket. By addressing even the smallest details, tournament organizers are ensuring that no team or player gains an undue advantage. As the tournament progresses, fans can be assured that the game remains as thrilling as ever — and just as fair.</p>
   `,
-                  "image": "https://cdn.shopify.com/s/files/1/0653/9830/9053/files/IPL_2025_Umpires_Get_Strict_on_Bat_Size_A_Step_Towards_Fair_Play_in_Cricket.jpg?v=1744809976"
-                }
+            "image": "https://cdn.shopify.com/s/files/1/0653/9830/9053/files/IPL_2025_Umpires_Get_Strict_on_Bat_Size_A_Step_Towards_Fair_Play_in_Cricket.jpg?v=1744809976"
+          }
 
 
 
-                ,
-                {
-                  "title": "Sourav Ganguly Re-appointed as Chairperson of ICC Men’s Cricket Committee",
-                  "author": "Colab Cloud",
-                  "date": "16 Apr, 2025",
-                  "slug": "sourav-ganguly-icc-chairperson-2025",
-                  "content": `
+          ,
+          {
+            "title": "Sourav Ganguly Re-appointed as Chairperson of ICC Men’s Cricket Committee",
+            "author": "Colab Cloud",
+            "date": "16 Apr, 2025",
+            "slug": "sourav-ganguly-icc-chairperson-2025",
+            "content": `
     <p>In a move that reaffirms his influence in global cricket administration, Sourav Ganguly has been re-appointed as the Chairperson of the ICC Men’s Cricket Committee, as announced by the International Cricket Council (ICC) on April 13, 2025. The former Indian captain and one of the most respected figures in world cricket will continue his leadership role in shaping the future of the sport at the international level.</p>
 
     <h2>A Respected Figure in Cricket Governance</h2>
@@ -2020,19 +2020,19 @@ India will take on England in the first Test at Headingley, starting June 20, 20
     <p>The news of Sourav Ganguly’s reappointment has been welcomed by fans, players, and fellow administrators alike. Many former cricketers praised the decision, highlighting Ganguly’s deep understanding of the modern game and his fair, player-centric approach to leadership.</p>
     <p>Social media was abuzz with congratulatory messages for the “Prince of Kolkata,” with hashtags like #SouravGangulyICC, #DadaReturns, and #CricketCommitteeChairperson trending within hours of the announcement.</p>
   `,
-                  "image": "https://cdn.shopify.com/s/files/1/0653/9830/9053/files/Sourav_Ganguly_Re-appointed_as_Chairperson_of_ICC_Men_s_Cricket_Committee.jpg?v=1744809976"
-                }
+            "image": "https://cdn.shopify.com/s/files/1/0653/9830/9053/files/Sourav_Ganguly_Re-appointed_as_Chairperson_of_ICC_Men_s_Cricket_Committee.jpg?v=1744809976"
+          }
 
 
 
 
-                ,
-                {
-                  "title": "Karun Nair Unleashes His Power Against Jasprit Bumrah: “He’s the Best, So I Had To”",
-                  "author": "Colab Cloud",
-                  "date": "16 Apr, 2025",
-                  "slug": "karun-nair-vs-jasprit-bumrah-2025",
-                  "content": `
+          ,
+          {
+            "title": "Karun Nair Unleashes His Power Against Jasprit Bumrah: “He’s the Best, So I Had To”",
+            "author": "Colab Cloud",
+            "date": "16 Apr, 2025",
+            "slug": "karun-nair-vs-jasprit-bumrah-2025",
+            "content": `
     <p>In a stunning turn of events that has set the Indian cricketing world abuzz, Karun Nair, known for his calm demeanor and elegant stroke play, has made headlines with an explosive performance against one of the world's premier fast bowlers—Jasprit Bumrah. The clash between these two Indian cricket heavyweights during a domestic game reminded fans why cricket is such a beautiful game of skill, timing, and nerves.</p>
     
     <h2>Karun Nair vs Jasprit Bumrah: A Battle of Indian Cricket Giants</h2>
@@ -2059,19 +2059,19 @@ India will take on England in the first Test at Headingley, starting June 20, 20
     <p>Karun Nair's powerful innings against Jasprit Bumrah is more than just a domestic cricket highlight—it’s a statement of intent. As Indian cricket looks to build a strong, competitive squad across formats, the resurgence of players like Nair adds depth and excitement to the mix.</p>
     <p>Whether this leads to an India comeback remains to be seen, but one thing is certain: Karun Nair’s fearless approach and respect for the game continue to make him a player worth watching.</p>
   `,
-                  "image": "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/1000037928_1744625429148_1744625452632.avif?v=1758285061"
-                }
+            "image": "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/1000037928_1744625429148_1744625452632.avif?v=1758285061"
+          }
 
 
-                ,
+          ,
 
 
-                {
-                  "title": "Sanjay Manjrekar Says Rohit Sharma Doesn’t Deserve Credit for Mumbai Indians’ IPL 2025 Win",
-                  "author": "Colab Cloud",
-                  "date": "16 April, 2025",
-                  "slug": "mumbai-indians-ipl2025-rohit-hardik-debate",
-                  "content": `<p>The IPL 2025 season has already stirred up quite a storm, and the Mumbai Indians’ recent triumph has only intensified debates across the cricketing world. One such debate is making headlines thanks to former India cricketer and commentator Sanjay Manjrekar, who made a bold statement: “It’s wrong to credit Rohit Sharma, not Hardik Pandya, for Mumbai Indians’ win.” This statement has sparked a flurry of reactions from fans and cricket experts alike.</p>
+          {
+            "title": "Sanjay Manjrekar Says Rohit Sharma Doesn’t Deserve Credit for Mumbai Indians’ IPL 2025 Win",
+            "author": "Colab Cloud",
+            "date": "16 April, 2025",
+            "slug": "mumbai-indians-ipl2025-rohit-hardik-debate",
+            "content": `<p>The IPL 2025 season has already stirred up quite a storm, and the Mumbai Indians’ recent triumph has only intensified debates across the cricketing world. One such debate is making headlines thanks to former India cricketer and commentator Sanjay Manjrekar, who made a bold statement: “It’s wrong to credit Rohit Sharma, not Hardik Pandya, for Mumbai Indians’ win.” This statement has sparked a flurry of reactions from fans and cricket experts alike.</p>
 
 <h2>Mumbai Indians in IPL 2025: A Season of Comeback</h2>
 <p>The Mumbai Indians (MI), one of the most successful franchises in IPL history, had a rollercoaster season last year. But in IPL 2025, under the captaincy of Hardik Pandya, MI has made a dramatic comeback. With consistent performances, strategic bowling changes, and explosive batting line-ups, the team managed to make it to the top of the table and eventually clinch the title.</p>
@@ -2100,20 +2100,20 @@ India will take on England in the first Test at Headingley, starting June 20, 20
 <p>As Mumbai Indians lift the IPL 2025 trophy, it’s clear that the franchise is in a transitional phase. Both Hardik Pandya and Rohit Sharma have been instrumental to its journey—one as a legend of the past, and the other as a torchbearer of the future.</p>
 <p>Rather than debating credit, perhaps the focus should be on the seamless leadership transition and the team’s ability to thrive through it. Hardik Pandya’s captaincy deserves recognition, and Rohit Sharma’s legacy deserves respect.</p>
 <p>What remains undeniable is that Mumbai Indians continue to be a powerhouse in the IPL—and cricket fans can't wait to see what’s next.</p>`,
-                  "image": "https://cdn.shopify.com/s/files/1/0653/9830/9053/files/Sanjay_Manjrekar_Says_Rohit_Sharma_Doesn_t_Deserve_Credit_for_Mumbai_Indians_IPL_2025_Win.jpg?v=1744809976"
-                }
+            "image": "https://cdn.shopify.com/s/files/1/0653/9830/9053/files/Sanjay_Manjrekar_Says_Rohit_Sharma_Doesn_t_Deserve_Credit_for_Mumbai_Indians_IPL_2025_Win.jpg?v=1744809976"
+          }
 
 
-                ,
+          ,
 
 
 
-                {
-                  title: "Building a Winning Team: Why Athlete Management is Key to Sustained Success",
-                  author: "Colab Cloud",
-                  date: "6 Feb, 2025",
-                  slug: "common-mistakes-moisturizer-oily-skin",
-                  content: `<p>In the world of sports, talent alone doesn’t guarantee success. Behind every winning team lies a carefully crafted strategy, not just on the field but off it as well. Athlete management plays a pivotal role in shaping champions, fostering team cohesion, and ensuring sustained success.</p>
+          {
+            title: "Building a Winning Team: Why Athlete Management is Key to Sustained Success",
+            author: "Colab Cloud",
+            date: "6 Feb, 2025",
+            slug: "common-mistakes-moisturizer-oily-skin",
+            content: `<p>In the world of sports, talent alone doesn’t guarantee success. Behind every winning team lies a carefully crafted strategy, not just on the field but off it as well. Athlete management plays a pivotal role in shaping champions, fostering team cohesion, and ensuring sustained success.</p>
     
     <h2>What Is Athlete Management?</h2>
     <p>At its core, athlete management involves overseeing an athlete's professional development, performance optimization, mental well-being, and career growth. This includes:</p>
@@ -2162,8 +2162,8 @@ India will take on England in the first Test at Headingley, starting June 20, 20
     <p>In today’s competitive sports environment, talent alone isn’t enough. Athlete management is the cornerstone of building a winning team and ensuring sustained success.</p>
 
 `,
-                  image: 'https://cdn.shopify.com/s/files/1/0653/9830/9053/files/WhatsApp_Image_2025-02-06_at_2.54.25_PM.jpg?v=1738839625'
-                },
+            image: 'https://cdn.shopify.com/s/files/1/0653/9830/9053/files/WhatsApp_Image_2025-02-06_at_2.54.25_PM.jpg?v=1738839625'
+          },
 
 
 
@@ -2174,12 +2174,12 @@ India will take on England in the first Test at Headingley, starting June 20, 20
 
 
 
-                {
-                  title: "The Rise of Digital Media in Sports",
-                  author: "Colab Cloud",
-                  date: "24 Jan, 2025",
-                  slug: "rise-of-digital-media-in-sports",
-                  content: `
+          {
+            title: "The Rise of Digital Media in Sports",
+            author: "Colab Cloud",
+            date: "24 Jan, 2025",
+            slug: "rise-of-digital-media-in-sports",
+            content: `
    <section>
         <p>The sports industry has always been a dynamic space, but the rise of digital media has completely transformed how fans interact with their favorite teams, players, and events. In the wake of the pandemic, the digital shift accelerated dramatically, creating opportunities for sports organizations to engage audiences like never before. From virtual watch parties to personalized fan experiences, digital media has redefined the boundaries of sports engagement. Let’s explore how this transformation is shaping the future of sports.</p>
     </section>
@@ -2243,15 +2243,15 @@ India will take on England in the first Test at Headingley, starting June 20, 20
         <p>For sports organizations and brands, the key is to stay ahead of the curve by adopting these digital trends and continuously evolving to meet fan expectations. The future of sports engagement is here, and it’s more exciting than ever.</p>
     </footer>
  `,
-                  image: "https://cdn.shopify.com/s/files/1/0653/9830/9053/files/WhatsApp_Image_2025-01-24_at_12.24.33_PM.jpg?v=1737704496"
-                },
+            image: "https://cdn.shopify.com/s/files/1/0653/9830/9053/files/WhatsApp_Image_2025-01-24_at_12.24.33_PM.jpg?v=1737704496"
+          },
 
-                {
-                  title: "ICC Champions Trophy 2025: India’s Squad Announced",
-                  author: "Colab Cloud",
-                  date: "18 Jan, 2025",
-                  slug: "common-mistakes-moisturizer-oily-skin",
-                  content: ` <p>
+          {
+            title: "ICC Champions Trophy 2025: India’s Squad Announced",
+            author: "Colab Cloud",
+            date: "18 Jan, 2025",
+            slug: "common-mistakes-moisturizer-oily-skin",
+            content: ` <p>
         The Board of Control for Cricket in India (BCCI) has unveiled the 15-member squad for the much-anticipated ICC Champions Trophy 2025. On Saturday, the announcement confirmed 
         <strong>Rohit Sharma</strong> as the captain, with <strong>Shubman Gill</strong> serving as the vice-captain for the tournament.
     </p>
@@ -2307,14 +2307,14 @@ India will take on England in the first Test at Headingley, starting June 20, 20
             Stay tuned to <strong>Colab Cloud</strong> for the latest updates, real-time news, and exclusive coverage of the ICC Champions Trophy 2025.
         </p>
 `,
-                  image: 'https://cdn.shopify.com/s/files/1/0674/9614/9171/files/WhatsApp_Image_2025-01-18_at_3.35.40_PM.jpg?v=1737195094'
-                },
-                {
-                  title: "Harbhajan Singh Slams Media Leaks and Sarfaraz Khan Rumors",
-                  author: "Colab Cloud",
-                  date: "17 Jan, 2025",
-                  slug: "common-mistakes-moisturizer-oily-skin",
-                  content: `
+            image: 'https://cdn.shopify.com/s/files/1/0674/9614/9171/files/WhatsApp_Image_2025-01-18_at_3.35.40_PM.jpg?v=1737195094'
+          },
+          {
+            title: "Harbhajan Singh Slams Media Leaks and Sarfaraz Khan Rumors",
+            author: "Colab Cloud",
+            date: "17 Jan, 2025",
+            slug: "common-mistakes-moisturizer-oily-skin",
+            content: `
 
     <p>Indian cricket has once again found itself embroiled in controversy, with former India spinner Harbhajan Singh expressing his strong disapproval over recent developments. The allegations against Sarfaraz Khan, accused of leaking dressing room conversations during the Border-Gavaskar Trophy, have sparked debates and brought attention to deeper issues within Indian cricket.</p>
 
@@ -2362,15 +2362,15 @@ India will take on England in the first Test at Headingley, starting June 20, 20
     <p>The allegations involving Sarfaraz Khan and the reported tensions within the Indian cricket team highlight cracks in the dressing room dynamics. Harbhajan Singh’s call for unity and mentorship is a timely reminder of the need for discretion and professionalism. Addressing these internal issues with maturity will be crucial to ensuring Indian cricket’s long-term success.</p>
 
  `,
-                  image: "https://cdn.shopify.com/s/files/1/0653/9830/9053/files/WhatsApp_Image_2025-01-17_at_1.10.36_PM.jpg?v=1737099661"
-                },
+            image: "https://cdn.shopify.com/s/files/1/0653/9830/9053/files/WhatsApp_Image_2025-01-17_at_1.10.36_PM.jpg?v=1737099661"
+          },
 
-                {
-                  title: "BCCI's Bold New Rules After Australia's Tour Disaster: Shaking Up Indian Cricket",
-                  author: "Colab Cloud",
-                  date: "15 Jan, 2025",
-                  slug: "bcci-bold-new-rules-australia-tour-disaster",
-                  content: `
+          {
+            title: "BCCI's Bold New Rules After Australia's Tour Disaster: Shaking Up Indian Cricket",
+            author: "Colab Cloud",
+            date: "15 Jan, 2025",
+            slug: "bcci-bold-new-rules-australia-tour-disaster",
+            content: `
  <section>
         <p>In the aftermath of India's dismal performance in the Border-Gavaskar Trophy, the Board of Control for Cricket in India (BCCI) has swung into action, implementing a set of stringent rules aimed at bringing discipline, unity, and renewed focus to the national cricket team. The 1-3 series defeat in Australia not only bruised the pride of Indian cricket but also triggered controversies and unrest within the squad. With an eye on avoiding such fiascos in future high-stakes tours, the BCCI has unveiled several hard-hitting measures that promise to stir both debate and reform.</p>
     </section>
@@ -2413,16 +2413,16 @@ India will take on England in the first Test at Headingley, starting June 20, 20
         <p>One thing is certain—the BCCI’s bold move has sent a strong message. The Indian cricket team is not just a collection of individual stars but a unit that represents a billion dreams. The board’s decision to crack the whip underscores its commitment to safeguarding the integrity and performance of Indian cricket.</p>
     </section>
  `,
-                  image: "https://cdn.shopify.com/s/files/1/0653/9830/9053/files/IMG-20250115-WA0027.jpg?v=1736946562"
-                },
+            image: "https://cdn.shopify.com/s/files/1/0653/9830/9053/files/IMG-20250115-WA0027.jpg?v=1736946562"
+          },
 
 
-                {
-                  title: "From Grassroots to Glory: How Athlete Management Platforms Empower Emerging Talent",
-                  author: "Colab Cloud",
-                  date: "15 Jan, 2025",
-                  slug: "grassroots-to-glory-athlete-management-platforms",
-                  content: `
+          {
+            title: "From Grassroots to Glory: How Athlete Management Platforms Empower Emerging Talent",
+            author: "Colab Cloud",
+            date: "15 Jan, 2025",
+            slug: "grassroots-to-glory-athlete-management-platforms",
+            content: `
 <section>
 
 <p>Grassroots sports serve as the foundation for nurturing talent that can rise to national and international prominence. However, many aspiring athletes face challenges in accessing resources, mentorship, and exposure, limiting their potential. Athlete management platforms have emerged as game-changers, bridging the gap between raw talent and professional opportunities. These platforms provide tools, support, and networks to empower athletes at every stage of their journey, helping them transition from grassroots to glory.</p>
@@ -2529,15 +2529,15 @@ India will take on England in the first Test at Headingley, starting June 20, 20
   <li><b>Promoting Excellence:</b> Providing tools and mentorship to help athletes reach their full potential.</li>
 </ul>
 </section>`,
-                  image: "https://cdn.shopify.com/s/files/1/0653/9830/9053/files/blog_3_1.jpg?v=1736919615"
-                },
+            image: "https://cdn.shopify.com/s/files/1/0653/9830/9053/files/blog_3_1.jpg?v=1736919615"
+          },
 
-                {
-                  title: "The Rise of Sports Marketplaces: Transforming Connections Across the Sports Ecosystem",
-                  author: "Colab Cloud",
-                  date: "13 Jan, 2025",
-                  slug: "rise-of-sports-marketplaces-transforming-connections",
-                  content: `
+          {
+            title: "The Rise of Sports Marketplaces: Transforming Connections Across the Sports Ecosystem",
+            author: "Colab Cloud",
+            date: "13 Jan, 2025",
+            slug: "rise-of-sports-marketplaces-transforming-connections",
+            content: `
  <section>
   
     <p>The world of sports is undergoing a significant transformation. With the advent of digital platforms, the connection between athletes, fans, and organizations has become more seamless than ever. Sports marketplaces are emerging as key players in this transformation, offering a unified platform to learn, play, shop, and interact. These platforms serve as a bridge, fostering collaboration and creating new opportunities within the sports ecosystem. At the forefront of this innovation is Colab Cloud, which is redefining how stakeholders interact and thrive in the sports industry.</p>
@@ -2668,15 +2668,15 @@ India will take on England in the first Test at Headingley, starting June 20, 20
     <p>Sports marketplaces are transforming the way athletes, fans, and organizations interact. By bridging gaps and creating opportunities, they serve as the backbone of a connected sports ecosystem. Colab Cloud’s visionary platform exemplifies the potential of these marketplaces, ensuring that every stakeholder can achieve their goals while contributing to the growth of the sports industry.</p>
 </section>
   `,
-                  image: "https://cdn.shopify.com/s/files/1/0653/9830/9053/files/blog_1_1.jpg?v=1736766798"
-                },
+            image: "https://cdn.shopify.com/s/files/1/0653/9830/9053/files/blog_1_1.jpg?v=1736766798"
+          },
 
-                {
-                  title: "How Technology is Revolutionizing Sports in India: AI, VR, and Data Analytics",
-                  author: "Colab Cloud",
-                  date: "13 Jan, 2025",
-                  slug: "technology-revolutionizing-sports-india-ai-vr-data-analytics",
-                  content: `
+          {
+            title: "How Technology is Revolutionizing Sports in India: AI, VR, and Data Analytics",
+            author: "Colab Cloud",
+            date: "13 Jan, 2025",
+            slug: "technology-revolutionizing-sports-india-ai-vr-data-analytics",
+            content: `
    <section>
    
     <p>Technology is transforming every aspect of our lives, and the sports industry is no exception. In India, where sports hold immense cultural and emotional significance, advancements in Artificial Intelligence (AI), Virtual Reality (VR), and data analytics are revolutionizing the landscape. These technologies enhance athlete performance, improve fan engagement, and streamline operations for organizations. Colab is at the forefront of this transformation, leveraging technology to empower stakeholders in the Indian sports ecosystem.</p>
@@ -2778,26 +2778,26 @@ India will take on England in the first Test at Headingley, starting June 20, 20
     <p>Technology is shaping the future of sports in India, creating unparalleled opportunities for athletes, fans, and organizations. From AI-driven performance optimization to VR-enhanced fan experiences, the possibilities are endless. By integrating these technologies, Colab empowers stakeholders and ensures that Indian sports remain dynamic, inclusive, and innovative. As the journey continues, one thing is clear: the fusion of sports and technology is just getting started.</p>
 </section>
 `,
-                  image: "https://cdn.shopify.com/s/files/1/0653/9830/9053/files/blog_2_1.jpg?v=1736768940"
-                },
-                {
-                  title: "IND vs AUS: Bumrah’s Ice-Cold Stare to Constas Sparks Viral Clash Over Khawaja’s Wicket",
-                  author: "Colab Cloud",
-                  date: "3 Jan, 2025",
-                  slug: "common-mistakes-moisturizer-oily-skin",
-                  content: `
+            image: "https://cdn.shopify.com/s/files/1/0653/9830/9053/files/blog_2_1.jpg?v=1736768940"
+          },
+          {
+            title: "IND vs AUS: Bumrah’s Ice-Cold Stare to Constas Sparks Viral Clash Over Khawaja’s Wicket",
+            author: "Colab Cloud",
+            date: "3 Jan, 2025",
+            slug: "common-mistakes-moisturizer-oily-skin",
+            content: `
  <p>The last ball of the first day of the fifth Test was also the final ball of Australia’s third over. Just before that, Sam Konstas (Jasprit Bumrah vs Sam Konstas Fight) was once again involved in creating trouble on the field. However, this time his opponent was not Virat Kohli but Jasprit Bumrah, one of the most dangerous fast bowlers in world cricket. Bumrah started his run-up to bowl the last ball of the day, but Usman Khawaja signalled that he wasn’t ready. In the middle of this exchange, Sam Konstas was seen jumping unnecessarily, leading to the on-field umpire intervening to calm the situation.
 <br/    >
 Bumrah then made Konstas pay for his actions. With his signature style, Bumrah struck on the last ball of the day, dismissing Usman Khawaja (Jasprit Bumrah Celebrates Usman Khawaja Wicket) caught by KL Rahul at second slip. The Indian team erupted in celebration, and Bumrah, while celebrating, shot a glance at Sam Konstas, signalling him not to mess with him.</p>
 `,
-                  image: "https://www.timesbull.com/wp-content/uploads/2025/01/IND-vs-AUS-5th-Test-1200x675.webp"
-                },
-                {
-                  title: "IND vs AUS Highlights: दिन के खेल की अंतिम गेंद पर आउट हुए ख्वाजा, ऑस्ट्रेलिया का स्कोर 9/1; बुमराह को सफलता",
-                  author: "Colab Cloud",
-                  date: "3 Jan, 2025",
-                  slug: "IND vs AUS Highlights",
-                  content: `
+            image: "https://www.timesbull.com/wp-content/uploads/2025/01/IND-vs-AUS-5th-Test-1200x675.webp"
+          },
+          {
+            title: "IND vs AUS Highlights: दिन के खेल की अंतिम गेंद पर आउट हुए ख्वाजा, ऑस्ट्रेलिया का स्कोर 9/1; बुमराह को सफलता",
+            author: "Colab Cloud",
+            date: "3 Jan, 2025",
+            slug: "IND vs AUS Highlights",
+            content: `
   <p>IND vs AUS Live Score: पहले दिन का खेल खत्म
 भारत और ऑस्ट्रेलिया के बीच पहले दिन का खेल खत्म हो गया है। भारत ने पहली पारी में 185 रन बनाए, जवाब में स्टंप तक ऑस्ट्रेलिया ने पहली पारी में एक विकेट गंवाकर नौ रन बना लिए हैं। दिन के खेल की अंतिम गेंद पर जसप्रीत बुमराह ने ख्वाजा को केएल राहुल के हाथों कैच कराया। ख्वाजा के आउट होने के साथ ही स्टंप की घोषणा कर दी गई। ऑस्ट्रेलिया की टीम फिलहाल 176 रन पीछे चल रही है। फिलहाल क्रीज पर सैम कोंस्टास सात रन बनाकर मौजूद थे। 
 <br>
@@ -2807,17 +2807,17 @@ Bumrah then made Konstas pay for his actions. With his signature style, Bumrah s
  
  
 `,
-                  image: "https://staticimg.amarujala.com/assets/images/2024/12/04/ind-vs-aus-ind-vs-aus-2nd-test-india-vs-australia-adelaide-test-day-night-test-australia-jasp_cb31b2c9821bd0cc608a486e0b77f716.jpeg?w=674&dpr=1.0&q=50"
-                },
-              
-             
-          ];
-          
-          // Always merge Firebase posts with local posts
-          // Firebase posts first (newest from CMS), then local posts
-          const allPosts = [...firebasePosts, ...localPosts];
-          setBlogPosts(allPosts);
-        
+            image: "https://staticimg.amarujala.com/assets/images/2024/12/04/ind-vs-aus-ind-vs-aus-2nd-test-india-vs-australia-adelaide-test-day-night-test-australia-jasp_cb31b2c9821bd0cc608a486e0b77f716.jpeg?w=674&dpr=1.0&q=50"
+          },
+
+
+        ];
+
+        // Always merge Firebase posts with local posts
+        // Firebase posts first (newest from CMS), then local posts
+        const allPosts = [...firebasePosts, ...localPosts];
+        setBlogPosts(allPosts);
+
         setError(null);
       } catch (err) {
         console.error('Error loading blog posts:', err);
@@ -2838,7 +2838,7 @@ Bumrah then made Konstas pay for his actions. With his signature style, Bumrah s
   // Filter posts based on search query only
   const filteredPosts = blogPosts.filter(post => {
     if (searchQuery === "") return true;
-    
+
     const searchLower = searchQuery.toLowerCase();
     return (
       post.title.toLowerCase().includes(searchLower) ||
@@ -2856,7 +2856,7 @@ Bumrah then made Konstas pay for his actions. With his signature style, Bumrah s
         <InfinityCursor />
         <Header />
         <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+          <div className="inline-block animate-spin h-12 w-12 border-t-2 border-b-2 border-primary"></div>
           <p className="mt-4 text-lg">Loading blog posts...</p>
         </div>
       </div>
@@ -2871,9 +2871,9 @@ Bumrah then made Konstas pay for his actions. With his signature style, Bumrah s
         <Header />
         <div className="text-center">
           <p className="text-red-500 text-lg">{error}</p>
-          <button 
-            onClick={() => window.location.reload()} 
-            className="mt-4 px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/80"
+          <button
+            onClick={() => window.location.reload()}
+            className="mt-4 px-6 py-2 bg-primary text-white hover:bg-primary/80"
           >
             Retry
           </button>
@@ -2884,120 +2884,120 @@ Bumrah then made Konstas pay for his actions. With his signature style, Bumrah s
 
   return (
     <>      <div className="min-h-screen bg-background text-foreground">
-        <InfinityCursor />
-        <Header />
+      <InfinityCursor />
+      <Header />
 
-      {/* Hero Section - Modern Minimal */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        {/* Animated Background */}
+      {/* Hero Section - Enhanced Modern */}
+      <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-[#1e2340] via-[#2f33d8]/10 to-[#1a1d2e] dark:from-[#121212] dark:via-[#ff4500]/5 dark:to-[#121212]">
+        {/* Enhanced Background Layers */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background" />
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#2f33d8]/5 via-transparent to-[#7f01ff]/5 dark:from-[#dc2626]/5 dark:via-transparent dark:to-[#ff4500]/5" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(47,51,216,0.08),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_50%,rgba(255,69,0,0.08),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(127,1,255,0.08),transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_50%,rgba(220,38,38,0.08),transparent_50%)]" />
+        </div>
+        
+        {/* Animated Grid Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'linear-gradient(rgba(168, 85, 247, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(168, 85, 247, 0.3) 1px, transparent 1px)',
+            backgroundSize: '50px 50px'
+          }} />
         </div>
 
         <div className="container relative z-10 px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             {/* Header */}
-            <motion.div 
+            <motion.div
               className="text-center mb-20"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
             >
-              <motion.div 
-                className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.1 }}
-              >
-                <BookOpen className="w-4 h-4 text-primary" />
-                <span className="text-sm font-semibold text-primary uppercase tracking-wider">Blog</span>
-              </motion.div>
-
-              <h1 className="font-serif font-black text-5xl md:text-6xl lg:text-7xl leading-tight mb-6">
-                <span className="block text-foreground">Insights &</span>
-                <span className="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Innovation</span>
+              <h1 className="text-white text-6xl md:text-8xl lg:text-9xl font-semibold leading-[1.1]  text-center mb-8">
+                Insights & Innovation
               </h1>
 
-              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="flex items-center justify-center gap-4 mb-12"
+              >
+                <div className="h-1 w-16 bg-gradient-to-r from-primary to-secondary" />
+                <span className="text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
+                  BLOG
+                </span>
+                <div className="h-1 w-16 bg-gradient-to-l from-primary to-secondary" />
+              </motion.div>
+
+              <p className="text-white/70 text-lg md:text-xl lg:text-2xl leading-relaxed text-center mb-12">
                 Discover stories at the intersection of sports, technology, and innovation
               </p>
             </motion.div>
 
-            {/* Featured Post - Modern Card */}
+            {/* Featured Story - Split Layout */}
             {filteredPosts.length > 0 && (
               <motion.div
-                className="relative rounded-3xl overflow-hidden group cursor-pointer bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10"
+                className="grid lg:grid-cols-2 cursor-pointer group"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                whileHover={{ y: -5 }}
                 onClick={() => navigate(`/blog/${filteredPosts[0]?.slug}`)}
               >
-                <div className="grid md:grid-cols-2 gap-0">
-                  {/* Image */}
-                  <div className="relative h-[400px] md:h-[500px] overflow-hidden">
-                    <img 
-                      src={filteredPosts[0]?.image} 
-                      alt={filteredPosts[0]?.title} 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
-                    />
-
-                    
-                    {/* Featured Badge */}
-                    <div className="absolute top-6 left-6">
-                      <div className="px-4 py-2 rounded-full bg-primary backdrop-blur-sm">
-                        <span className="text-xs font-bold text-white uppercase tracking-wider">Featured Story</span>
-                      </div>
+                {/* Left Side - Content */}
+                <div className="bg-white dark:bg-gray-900 p-8 md:p-12 flex items-center">
+                  <div className="space-y-6">
+                    {/* Category Badge */}
+                    <div className="inline-block px-4 py-2 bg-gradient-to-r from-primary to-secondary dark:from-[#dc2626] dark:to-[#ff4500]">
+                      <span className="text-xs font-bold text-white uppercase tracking-wider">Featured Story</span>
                     </div>
-                  </div>
 
-                  {/* Content */}
-                  <div className="p-8 md:p-12 flex flex-col justify-center">
-                    <div className="space-y-4">
-                      {/* Category */}
-                      <div className="inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
-                        <span className="text-xs font-semibold text-primary uppercase tracking-wider">
-                          {filteredPosts[0]?.category || 'Featured'}
-                        </span>
+                    {/* Main Heading */}
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight group-hover:text-primary dark:group-hover:text-[#ff4500] transition-colors">
+                      {filteredPosts[0]?.title}
+                    </h2>
+
+                    {/* Excerpt */}
+                    <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                      {filteredPosts[0]?.excerpt || filteredPosts[0]?.content.substring(0, 200).replace(/<[^>]*>/g, '')}
+                    </p>
+
+                    {/* Meta Info */}
+                    <div className="flex flex-wrap items-center gap-4 text-gray-500 dark:text-gray-500 text-sm pt-4 border-t border-gray-200 dark:border-gray-800">
+                      <div className="flex items-center gap-2">
+                        <User className="w-4 h-4" />
+                        <span className="font-semibold">{filteredPosts[0]?.author}</span>
                       </div>
-
-                      <h2 
-                        className="font-serif text-3xl md:text-4xl text-foreground leading-tight group-hover:text-primary transition-colors mb-[2.1px]"
-                        style={{ fontWeight: '600 !important' }}
-                      >
-                        {filteredPosts[0]?.title}
-                      </h2>
-                      
-                      <p className="text-base text-muted-foreground leading-relaxed line-clamp-3">
-                        {filteredPosts[0]?.excerpt || filteredPosts[0]?.content.substring(0, 150).replace(/<[^>]*>/g, '') + '...'}
-                      </p>
-
-                      {/* Meta Info */}
-                      <div className="flex flex-wrap items-center gap-4 text-muted-foreground text-sm pt-4">
+                      <div className="flex items-center gap-2">
+                        <Calendar className="w-4 h-4" />
+                        <span>{filteredPosts[0]?.date}</span>
+                      </div>
+                      {filteredPosts[0]?.readTime && (
                         <div className="flex items-center gap-2">
-                          <User className="w-4 h-4" />
-                          <span>{filteredPosts[0]?.author}</span>
+                          <Clock className="w-4 h-4" />
+                          <span>{filteredPosts[0]?.readTime}</span>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <Calendar className="w-4 h-4" />
-                          <span>{filteredPosts[0]?.date}</span>
-                        </div>
-                        {filteredPosts[0]?.readTime && (
-                          <div className="flex items-center gap-2">
-                            <Clock className="w-4 h-4" />
-                            <span>{filteredPosts[0]?.readTime}</span>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Read More */}
-                      <div className="flex items-center gap-2 text-primary font-semibold pt-2 group-hover:gap-4 transition-all">
-                        <span>Read Article</span>
-                        <ArrowRight className="w-5 h-5" />
-                      </div>
+                      )}
                     </div>
+
+                    {/* Read More Button */}
+                    <motion.button
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-secondary dark:from-[#dc2626] dark:to-[#ff4500] text-white font-bold"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      Read Article <ArrowRight className="w-5 h-5" />
+                    </motion.button>
                   </div>
+                </div>
+
+                {/* Right Side - Image */}
+                <div className="relative h-[500px] lg:h-auto overflow-hidden">
+                  <img
+                    src={filteredPosts[0]?.image}
+                    alt={filteredPosts[0]?.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
                 </div>
               </motion.div>
             )}
@@ -3012,18 +3012,18 @@ Bumrah then made Konstas pay for his actions. With his signature style, Bumrah s
             <div className="flex justify-center">
               {/* Search */}
               <div className="relative w-full max-w-md">
-                <input 
-                  type="text" 
-                  placeholder="Search articles by title, author, tags..." 
+                <input
+                  type="text"
+                  placeholder="Search articles by title, author, tags..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-10 py-3 rounded-full bg-white/5 border border-white/10 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:bg-white/10 focus:shadow-lg focus:shadow-primary/10 transition-all"
+                  className="w-full pl-12 pr-10 py-3 bg-white/5 border border-white/10 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:bg-white/10 focus:shadow-lg focus:shadow-primary/10 transition-all"
                 />
                 <Search className="w-5 h-5 text-muted-foreground absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
                 {searchQuery && (
-                  <button 
+                  <button
                     onClick={() => setSearchQuery("")}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-muted-foreground hover:text-foreground transition-colors"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center bg-white/10 hover:bg-white/20 text-muted-foreground hover:text-foreground transition-colors"
                   >
                     ×
                   </button>
@@ -3040,23 +3040,23 @@ Bumrah then made Konstas pay for his actions. With his signature style, Bumrah s
           <div className="max-w-7xl mx-auto">
             {/* No Results Message */}
             {filteredPosts.length === 0 && (
-              <motion.div 
+              <motion.div
                 className="text-center py-20"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 mb-4">
                   <Search className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="text-2xl font-bold text-foreground mb-2">No articles found</h3>
                 <p className="text-muted-foreground mb-6">
-                  {searchQuery 
+                  {searchQuery
                     ? `No results for "${searchQuery}". Try a different search term.`
                     : "No articles in this category yet."}
                 </p>
-                <button 
+                <button
                   onClick={() => setSearchQuery("")}
-                  className="px-6 py-2 rounded-full bg-primary text-white font-semibold hover:bg-primary/90 transition-colors"
+                  className="px-6 py-2 bg-primary text-white font-semibold hover:bg-primary/90 transition-colors"
                 >
                   Clear Search
                 </button>
@@ -3067,98 +3067,99 @@ Bumrah then made Konstas pay for his actions. With his signature style, Bumrah s
             {filteredPosts.length > 0 && (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredPosts.slice(1).map((post, i) => (
-                <motion.article
-                  key={post.slug || `post-${i}`}
-                  className="group relative rounded-2xl overflow-hidden bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 hover:border-primary/30 transition-all duration-300 cursor-pointer hover:shadow-xl hover:shadow-primary/10"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.05 }}
-                  whileHover={{ y: -5 }}
-                  onClick={() => post.slug && navigate(`/blog/${post.slug}`)}
-                >
-                  {/* Image */}
-                  <div className="relative aspect-[16/10] overflow-hidden">
-                    <img 
-                      src={post.image} 
-                      alt={post.title} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                    
-                    {/* Category Badge */}
-                    {post.category && (
-                      <div className="absolute top-3 left-3">
-                        <div className="px-3 py-1 rounded-full bg-primary/90 backdrop-blur-sm">
-                          <span className="text-xs font-semibold text-white uppercase tracking-wide">{post.category}</span>
-                        </div>
-                      </div>
-                    )}
+                  <motion.article
+                    key={post.slug || `post-${i}`}
+                    className="group relative overflow-hidden bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 hover:border-primary/30 dark:hover:border-[#ff4500]/30 transition-all duration-500 cursor-pointer hover:shadow-2xl hover:shadow-primary/20 dark:hover:shadow-[#ff4500]/20 backdrop-blur-sm"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.05 }}
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    onClick={() => post.slug && navigate(`/blog/${post.slug}`)}
+                  >
+                    {/* Image */}
+                    <div className="relative aspect-[16/10] overflow-hidden">
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
 
-                    {/* Read Time */}
-                    {post.readTime && (
-                      <div className="absolute bottom-3 right-3">
-                        <div className="px-3 py-1 rounded-full bg-black/50 backdrop-blur-sm flex items-center gap-1.5">
-                          <Clock className="w-3 h-3 text-white" />
-                          <span className="text-xs font-medium text-white">{post.readTime}</span>
+                      {/* Category Badge */}
+                      {post.category && (
+                        <div className="absolute top-3 left-3">
+                          <div className="px-3 py-1 bg-primary/90 backdrop-blur-sm">
+                            <span className="text-xs font-semibold text-white uppercase tracking-wide">{post.category}</span>
+                          </div>
                         </div>
-                      </div>
-                    )}
-                  </div>
+                      )}
 
-                  {/* Content */}
-                  <div className="p-5">
-                    {/* Tags */}
-                    {post.tags && post.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5 mb-3">
-                        {post.tags.slice(0, 2).map((tag, j) => (
-                          <span key={j} className="px-2 py-0.5 rounded-full bg-primary/10 text-xs font-medium text-primary">
-                            #{tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-
-                    <h3 className="font-serif font-bold text-xl text-foreground mb-2 leading-tight group-hover:text-primary transition-colors line-clamp-2">
-                      {post.title}
-                    </h3>
-                    
-                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed line-clamp-2">
-                      {post.excerpt || post.content.substring(0, 100).replace(/<[^>]*>/g, '') + '...'}
-                    </p>
-
-                    {/* Meta */}
-                    <div className="flex items-center justify-between pt-3 border-t border-white/5">
-                      <div className="flex items-center gap-2">
-                        <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center">
-                          <User className="w-3.5 h-3.5 text-primary" />
+                      {/* Read Time */}
+                      {post.readTime && (
+                        <div className="absolute bottom-3 right-3">
+                          <div className="px-3 py-1 bg-black/50 backdrop-blur-sm flex items-center gap-1.5">
+                            <Clock className="w-3 h-3 text-white" />
+                            <span className="text-xs font-medium text-white">{post.readTime}</span>
+                          </div>
                         </div>
-                        <div>
-                          <div className="text-xs font-medium text-foreground">{post.author}</div>
-                          <div className="text-xs text-muted-foreground">{post.date}</div>
+                      )}
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-5">
+                      {/* Tags */}
+                      {post.tags && post.tags.length > 0 && (
+                        <div className="flex flex-wrap gap-1.5 mb-3">
+                          {post.tags.slice(0, 2).map((tag, j) => (
+                            <span key={j} className="px-2 py-0.5 bg-primary/10 text-xs font-medium text-primary">
+                              #{tag}
+                            </span>
+                          ))}
                         </div>
-                      </div>
-                      <div className="flex items-center gap-1 text-primary group-hover:gap-2 transition-all">
-                        <span className="text-xs font-semibold">Read</span>
-                        <ArrowRight className="w-4 h-4" />
+                      )}
+
+                      <h3 className="font-bold text-xl text-foreground mb-2 leading-tight group-hover:text-primary transition-colors line-clamp-2" style={{ fontFamily: '"Alovera Display"' }}>
+                        {post.title}
+                      </h3>
+
+                      <p className="text-sm text-muted-foreground mb-4 leading-relaxed line-clamp-2">
+                        {post.excerpt || post.content.substring(0, 100).replace(/<[^>]*>/g, '') + '...'}
+                      </p>
+serif hata do 
+
+                      {/* Meta */}
+                      <div className="flex items-center justify-between pt-3 border-t border-white/5">
+                        <div className="flex items-center gap-2">
+                          <div className="w-7 h-7 bg-primary/10 flex items-center justify-center">
+                            <User className="w-3.5 h-3.5 text-primary" />
+                          </div>
+                          <div>
+                            <div className="text-xs font-medium text-foreground">{post.author}</div>
+                            <div className="text-xs text-muted-foreground">{post.date}</div>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-1 text-primary group-hover:gap-2 transition-all">
+                          <span className="text-xs font-semibold">Read</span>
+                          <ArrowRight className="w-4 h-4" />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </motion.article>
-              ))}
+                  </motion.article>
+                ))}
               </div>
             )}
 
             {/* Load More Button */}
             {filteredPosts.length > 12 && (
-              <motion.div 
+              <motion.div
                 className="text-center mt-12"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
                 <motion.button
-                  className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-white bg-primary hover:bg-primary/90 shadow-lg shadow-primary/30 transition-all"
+                  className="inline-flex items-center gap-2 px-8 py-3 font-semibold text-white bg-primary hover:bg-primary/90 shadow-lg shadow-primary/30 transition-all"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -3178,7 +3179,7 @@ Bumrah then made Konstas pay for his actions. With his signature style, Bumrah s
           backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(208, 71, 19, 0.1) 1px, transparent 0)',
           backgroundSize: '40px 40px'
         }} />
-        
+
         <div className="container relative z-10 px-6 lg:px-8">
           <motion.div
             className="max-w-3xl mx-auto text-center"
@@ -3186,7 +3187,7 @@ Bumrah then made Konstas pay for his actions. With his signature style, Bumrah s
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 border border-primary/20 mb-6">
               <TrendingUp className="w-4 h-4 text-primary" />
               <span className="text-xs font-semibold text-primary uppercase tracking-wider">Newsletter</span>
             </div>
@@ -3194,7 +3195,7 @@ Bumrah then made Konstas pay for his actions. With his signature style, Bumrah s
             <h2 className="font-serif font-black text-4xl md:text-5xl mb-4">
               Stay in the <span className="text-primary">Loop</span>
             </h2>
-            
+
             <p className="text-lg text-muted-foreground mb-8">
               Get the latest insights and stories delivered straight to your inbox
             </p>
@@ -3203,10 +3204,10 @@ Bumrah then made Konstas pay for his actions. With his signature style, Bumrah s
               <input
                 type="email"
                 placeholder="Enter your email address"
-                className="flex-1 px-5 py-3 rounded-full bg-white/5 border border-white/10 focus:border-primary/50 focus:outline-none text-foreground placeholder:text-muted-foreground transition-all"
+                className="flex-1 px-5 py-3 bg-white/5 border border-white/10 focus:border-primary/50 focus:outline-none text-foreground placeholder:text-muted-foreground transition-all"
               />
               <motion.button
-                className="px-6 py-3 rounded-full bg-primary hover:bg-primary/90 text-white font-semibold whitespace-nowrap shadow-lg shadow-primary/30 transition-all"
+                className="px-6 py-3 bg-primary hover:bg-primary/90 text-white font-semibold whitespace-nowrap shadow-lg shadow-primary/30 transition-all"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -3222,7 +3223,7 @@ Bumrah then made Konstas pay for his actions. With his signature style, Bumrah s
       </section>
 
       <Footer />
-      </div>
+    </div>
     </>
   );
 };

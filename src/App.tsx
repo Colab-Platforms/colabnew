@@ -28,6 +28,7 @@ import Testing from "./pages/Testing";
 import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "./contexts/ThemeContext";
 
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -70,6 +71,8 @@ const App = () => (
 
             {/* Testing Page */}
             <Route path="/testing" element={<Testing />} />
+            
+           
 
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

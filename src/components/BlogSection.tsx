@@ -6,7 +6,7 @@ const posts = [
   {
     title: "Colab Platforms plans to expand into the Trillion-dollar Tech Intelligence landscape.",
     category: "Announcement",
-    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+    image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/ai_skycraper_1.jpg?v=1764155867",
     excerpt: "Colab Platforms is set to broaden its horizons into the trillion-dollar tech intelligence market, aiming to lead innovation and insights.",
     date: "01st October 2025 ",
     author: "Colab Team",
@@ -16,7 +16,7 @@ const posts = [
   {
     title: "Colab Platforms Limited to incorporate ‘Colab Semiconductor Pvt. Ltd.’ a Wholly owned Subsidiary to tap into India’s US $52 billion Semiconductor Market.",
     category: "Announcement",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+    image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/blu_chip.png?v=1764156319",
     excerpt: "Launching a new subsidiary to capture the booming Indian semiconductor market valued at $52B.",
     date: "24th October 2025 ",
     author: "Colab Team",
@@ -26,17 +26,17 @@ const posts = [
   {
     title: "Colab Platforms to Launch Revolutionary ‘AI-Powered Search Engine’, A Smarter, Superior Alternative to Traditional Search.",
     category: "Announcement",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
+    image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Gemini_Generated_Image_c58ilic58ilic58i_1.png?v=1764069440",
     excerpt: "Introducing a next-gen AI search engine that outperforms traditional search with smarter results.",
     date: "06th November 2025",
     author: "Colab Team",
     slug: "colab-ai-search",
-    link: "/press/colab-ai-search",
+    link: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Press_Release_for_AI_powered_Search_Engine_06.11.2025.pdf?v=1762412961",
   },
   {
     title: "Colab Platforms Limited and RRP Drones Innovation Private Limited (a ‘RRP Group Company’)",
     category: "Announcement",
-    image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/drone-flying-in-silhouette-against-the-blue-sky-2024-11-27-13-22-09-utc.jpg?v=1763195285",
+    image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/drone.png?v=1764156328",
     excerpt: "Strategic partnership with RRP Drones to innovate drone technology and services.",
     date: "06th November 2025",
     author: "Colab Team",

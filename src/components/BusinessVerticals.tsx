@@ -8,7 +8,7 @@ const verticals = [
         title: "Artificial Intelligence",
         shortTitle: "AI",
         description: "Sustainable and scalable ecosystem that empowers individuals, businesses, and institutions to make better, faster, and more informed decisions.",
-        image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/ai_skycraper.png?v=1763981802",
+        image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/ai_skycraper_1.jpg?v=1764155867",
         link: "#"
     },
     {
@@ -24,7 +24,7 @@ const verticals = [
         title: "Sports",
         shortTitle: "Sports",
         description: "Creating Value Through Sports IP Ownership, Infrastructure Modernization, and Athlete Talent Development.",
-        image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&q=80&w=2070",
+        image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/envato-labs-image-edit_16.png?v=1764156131",
         link: "#"
     },
     {
@@ -40,7 +40,7 @@ const verticals = [
         title: "Drones",
         shortTitle: "Drones",
         description: "AI-powered autonomous drones with multi-sector applications in surveillance, security, and agriculture.",
-        image: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&q=80&w=2070",
+        image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/drone.png?v=1764156328",
         link: "#"
     },
     {
@@ -48,7 +48,7 @@ const verticals = [
         title: "Semiconductor",
         shortTitle: "Semiconductor",
         description: "Powering the digital age with high-performance semiconductors. We design and manufacture the chips that drive modern electronics, from smartphones to supercomputers.",
-        image: "https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&q=80&w=2070",
+        image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/chip.png?v=1764155973",
         link: "#"
     },
 ];

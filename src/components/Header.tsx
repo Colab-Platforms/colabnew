@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, Trophy, Gamepad2, Brain, Plane, Target, BarChart3, Settings, Lightbulb, Building2, Code2, Cpu, Smartphone } from 'lucide-react';
+import { Menu, X, ChevronDown, Trophy, Gamepad2, Brain, Plane, Target, BarChart3, Settings, Lightbulb, Building2, Code2, Cpu, Smartphone, HelpCircle, DollarSign, Phone, Mail, Twitter, Youtube, Instagram, Linkedin } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
 
@@ -118,47 +118,128 @@ const Header = () => {
                 <AnimatePresence>
                   {activeDropdown === 'business' && (
                     <motion.div
-                      initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 20, scale: 0.95 }}
-                      transition={{ duration: 0.3, ease: "easeOut" }}
-                      className="absolute top-full left-1/2 -translate-x-1/2 mt-6 w-[600px] bg-black backdrop-blur-2xl border border-white/10 rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.9)] overflow-hidden"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2 }}
+                      className={`fixed left-0 right-0 mx-auto z-50 w-[1200px] max-w-[95vw] backdrop-blur-2xl border border-gray-800 rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.3)] overflow-hidden flex ${isScrolled ? 'top-24' : 'top-28'}`}
                     >
-                      {/* Header */}
-                      <div className="px-6 py-4 border-b border-white/10 bg-gradient-to-r from-primary/10 to-secondary/10">
-                        <h3 className="text-sm font-black uppercase tracking-wider text-white">Business Verticals</h3>
-                        <p className="text-xs text-white/60 mt-1">Explore our diverse portfolio</p>
+                      {/* Left Panel - Dark Gray #121212 */}
+                      <div className="flex-1 bg-[#121212] p-4 flex flex-col justify-between relative overflow-hidden">
+                        {/* Background Effects */}
+                        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+                        <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+
+                        <div className="relative z-10 flex gap-8">
+                          {/* About Us Section */}
+                          <div className="w-2/5">
+                            <div className="flex items-center gap-3 mb-4">
+                              <div className="p-2.5 rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 border border-white/10 backdrop-blur-sm shadow-lg shadow-primary/5">
+                                <Lightbulb className="w-6 h-6 text-primary" />
+                              </div>
+                              <h3 className="font-black text-2xl tracking-wide text-white">ABOUT US</h3>
+                            </div>
+                            <div className="rounded-2xl overflow-hidden bg-black/40 border border-white/10 relative group cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500 h-48">
+                              <video
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-100"
+                              >
+                                <source src="https://cdn.shopify.com/videos/c/o/v/0f1825bbb9d34faeb9088e6ad984ad0d.mp4" type="video/mp4" />
+                              </video>
+                              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+
+                            </div>
+                          </div>
+
+                          {/* Grid Section */}
+                          <div className="flex-1 grid grid-cols-2 gap-x-6 gap-y-4 content-start pt-2">
+                            {businessVerticals.map((item, index) => (
+                              <a key={index} href={item.link} className="flex items-center gap-4 group p-2 -ml-2 rounded-xl hover:bg-white/5 transition-all duration-300">
+                                <item.icon className="w-8 h-8 text-white group-hover:text-primary transition-colors" />
+                                <div>
+                                  <span className="block font-bold text-lg text-white group-hover:text-primary transition-colors">{item.name}</span>
+                                  <span className="text-sm text-white/40 group-hover:text-white/70 transition-colors">{item.description}</span>
+                                </div>
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Partners - Scrolling Marquee (Inline) */}
+                        <div className="relative z-10 mt-4 pt-4 border-t border-white/10 flex items-center gap-8 overflow-hidden">
+                          <h4 className="font-black text-xl text-white whitespace-nowrap shrink-0 tracking-wider">OUR PARTNERS :</h4>
+                          <div className="flex-1 overflow-hidden mask-linear-gradient">
+                            <motion.div
+                              className="flex gap-16 whitespace-nowrap items-center"
+                              animate={{ x: [0, -1000] }}
+                              transition={{
+                                repeat: Infinity,
+                                duration: 40,
+                                ease: "linear"
+                              }}
+                            >
+                              {[...Array(4)].map((_, i) => (
+                                <div key={i} className="flex gap-16 items-center opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+                                  <span className="font-black text-2xl text-white tracking-widest hover:text-primary transition-colors">HERTZ</span>
+                                  <span className="font-black text-2xl text-white tracking-widest hover:text-secondary transition-colors">GROWTH</span>
+                                  <span className="font-black text-2xl text-white tracking-widest hover:text-primary transition-colors">COMPANY</span>
+                                  <span className="font-black text-2xl text-white tracking-widest hover:text-secondary transition-colors">FINANCE</span>
+                                  <span className="font-black text-2xl text-white tracking-widest hover:text-primary transition-colors">TECHCORP</span>
+                                </div>
+                              ))}
+                            </motion.div>
+                          </div>
+                        </div>
                       </div>
 
-                      {/* Grid */}
-                      <div className="p-4 grid grid-cols-2 gap-3">
-                        {businessVerticals.map((item, index) => {
-                          const IconComponent = item.icon;
-                          return (
-                            <a
-                              key={index}
-                              href={item.link}
-                              className={`group relative p-4 rounded-2xl border transition-all duration-300 hover:scale-105 ${item.color === 'primary'
-                                ? 'border-primary/20 hover:border-primary/50 hover:bg-primary/5'
-                                : 'border-secondary/20 hover:border-secondary/50 hover:bg-secondary/5'
-                                }`}
-                            >
-                              <div className="flex items-start gap-3">
-                                <div className={`p-2 rounded-xl ${item.color === 'primary' ? 'bg-primary/10' : 'bg-secondary/10'
-                                  }`}>
-                                  <IconComponent className={`w-5 h-5 ${item.color === 'primary' ? 'text-primary' : 'text-secondary'
-                                    }`} />
-                                </div>
-                                <div className="flex-1">
-                                  <h4 className="text-sm font-bold text-white group-hover:text-primary transition-colors">
-                                    {item.name}
-                                  </h4>
-                                  <p className="text-xs text-white/50 mt-1">{item.description}</p>
-                                </div>
-                              </div>
+                      {/* Right Panel - White */}
+                      <div className="w-[400px] bg-white backdrop-blur-xl border-l border-gray-200 p-4 text-gray-900 relative shrink-0 flex flex-col">
+                        <h3 className="font-black text-2xl mb-4 text-gray-900 tracking-wide uppercase border-b-4 border-primary/50 pb-3 inline-block">Locate Us</h3>
+
+                        <div className="space-y-4 flex-1">
+                          <div className="flex gap-6 group cursor-pointer">
+                            <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-lg shadow-primary/5 group-hover:shadow-primary/30 border border-primary/20 group-hover:border-primary">
+                              <Phone className="w-7 h-7" />
+                            </div>
+                            <div>
+                              <h4 className="font-bold text-lg mb-2 text-gray-900 group-hover:text-primary transition-colors">Talk To Us</h4>
+                              <p className="text-base text-gray-600 font-medium group-hover:text-gray-800 transition-colors">+91 8976866292</p>
+                              <p className="text-base text-gray-600 font-medium group-hover:text-gray-800 transition-colors">+91 1234567890</p>
+                            </div>
+                          </div>
+
+                          <div className="flex gap-6 group cursor-pointer">
+                            <div className="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center shrink-0 text-secondary group-hover:bg-secondary group-hover:text-white transition-all duration-300 shadow-lg shadow-secondary/5 group-hover:shadow-secondary/30 border border-secondary/20 group-hover:border-secondary">
+                              <Mail className="w-7 h-7" />
+                            </div>
+                            <div>
+                              <h4 className="font-bold text-lg mb-2 text-gray-900 group-hover:text-secondary transition-colors">Email Us</h4>
+                              <p className="text-base text-gray-600 font-medium group-hover:text-gray-800 transition-colors">info@colabplatform.com</p>
+                              <p className="text-base text-gray-600 font-medium group-hover:text-gray-800 transition-colors">support@colabplatform.com</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="mt-auto pt-4 border-t border-gray-200">
+                          <h4 className="font-bold text-lg mb-4 text-gray-700">Follow Us</h4>
+                          <div className="flex gap-4">
+                            <a href="https://x.com/ColabLtd" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-gray-200 bg-gray-100 flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-black/10">
+                              <Twitter className="w-5 h-5" />
                             </a>
-                          );
-                        })}
+                            <a href="https://www.youtube.com/@ColabPlatformsLimited" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-gray-200 bg-gray-100 flex items-center justify-center hover:bg-[#FF0000] hover:text-white hover:border-[#FF0000] transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#FF0000]/20">
+                              <Youtube className="w-5 h-5" />
+                            </a>
+                            <a href="https://www.instagram.com/colab_platforms/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-gray-200 bg-gray-100 flex items-center justify-center hover:bg-[#E1306C] hover:text-white hover:border-[#E1306C] transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#E1306C]/20">
+                              <Instagram className="w-5 h-5" />
+                            </a>
+                            <a href="https://www.linkedin.com/company/colabplatformslimited/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-gray-200 bg-gray-100 flex items-center justify-center hover:bg-[#0077b5] hover:text-white hover:border-[#0077b5] transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#0077b5]/20">
+                              <Linkedin className="w-5 h-5" />
+                            </a>
+                          </div>
+                        </div>
                       </div>
                     </motion.div>
                   )}

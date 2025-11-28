@@ -1,15 +1,15 @@
 {
   "symbol": "BSE: 542866",
   "companyName": "Colab Platforms Ltd",
-  "currentPrice": 200.60,
+  "currentPrice": 198.60,
   "change": -2.00,
-  "changePercent": -0.99,
+  "changePercent": -1.00,
   "volume": 52000,
   "lastUpdated": "2025-01-22T15:30:00.000Z",
   "status": "closed",
-  "high": 200.60,
-  "low": 200.60,
-  "open": 200.60,
-  "previousClose": 202.60,
+  "high": 198.60,
+  "low": 198.60,
+  "open": 198.60,
+  "previousClose": 200.60,
   "note": "Update this file daily with BSE data from: https://www.bseindia.com/stock-share-price/colab-platforms-ltd/colab/542866/"
 }

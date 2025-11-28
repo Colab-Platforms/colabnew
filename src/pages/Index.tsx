@@ -19,13 +19,7 @@ const Testing = () => {
 
   const texts = ["ARTIFICIAL INTELLIGENCE", "FINTECH", "ESPORTS", "TECH ESPORTS", "SEMICONDUCTOR", "DRONES"];
 
-  // Auto-rotate hero text
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentText((prev) => (prev + 1) % texts.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [texts.length]);
+  // Text will change when video ends (controlled by onEnded event)
 
   // Scroll animation for clip-path
   useEffect(() => {
@@ -59,7 +53,6 @@ const Testing = () => {
               <motion.video
                 key={currentText}
                 autoPlay
-                loop
                 muted
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover opacity-40"
@@ -67,12 +60,15 @@ const Testing = () => {
                 animate={{ opacity: 0.4, scale: 1 }}
                 exit={{ opacity: 0, scale: 1.05 }}
                 transition={{ duration: 1.5 }}
+                onEnded={() => {
+                  setCurrentText((prev) => (prev + 1) % texts.length);
+                }}
               >
                 <source src={[
                   "https://cdn.shopify.com/videos/c/o/v/cc2faf9b69b24dc9a15bc8920fbe5524.mp4", // AI - Neural Network
                   "https://cdn.shopify.com/videos/c/o/v/cc2faf9b69b24dc9a15bc8920fbe5524.mp4", // FinTech - Digital Finance
                   "https://cdn.shopify.com/videos/c/o/v/a4e715aa7db741c699cb7dbb578c5ba7.mp4", // Esports - Gaming
-                  "https://cdn.shopify.com/videos/c/o/v/a4e715aa7db741c699cb7dbb578c5ba7.mp4", // Tech Esports
+                  "https://cdn.shopify.com/videos/c/o/v/f980c835429c4b89ad005cff61c0abdd.mp4", // Tech sports
                   "https://cdn.shopify.com/videos/c/o/v/cc2faf9b69b24dc9a15bc8920fbe5524.mp4", // Semiconductor - Circuit
                   "https://cdn.shopify.com/videos/c/o/v/a4e715aa7db741c699cb7dbb578c5ba7.mp4"  // Drones - Flying
                 ][currentText]} type="video/mp4" />

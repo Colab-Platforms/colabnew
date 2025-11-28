@@ -143,16 +143,17 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+    background-image: none !important;
+    background: white;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-family: 'Aloevera Display';
     background-image: none !important;
     background-pattern: none !important;
-  }
-
-  html {
-    background-image: none !important;
-    background: white;
   }
 
   h1,

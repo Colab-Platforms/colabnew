@@ -2,519 +2,573 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import InfinityCursor from "@/components/InfinityCursor";
 import { motion } from "framer-motion";
-import { Brain, Shield, Plane, Cpu, Smartphone, Target, Gamepad2, Zap, Globe, Rocket, Users, TrendingUp, Award, ArrowRight, CheckCircle2 } from "lucide-react";
-import { useState } from "react";
+import { Globe } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const About = () => {
-  const [activeTab, setActiveTab] = useState<"sports" | "tech">("sports");
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [currentMobileSlide, setCurrentMobileSlide] = useState(0);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  // Company Info & Quotes data
+  const companyInfo = [
+    {
+      quote: "Building India's future through integrated technology and sports ecosystems",
+      stat: "15+",
+      statLabel: "Active Ventures",
+      description: "Colab Platforms operates across multiple high-growth sectors including AI, FinTech, Esports, Defense Technology, and Sports Management, creating synergies that drive innovation and growth."
+    },
+    {
+      quote: "Architecting platforms that unlock human potential and technological possibility",
+      stat: "₹500Cr+",
+      statLabel: "Portfolio Value",
+      description: "Our diversified portfolio spans cutting-edge technology ventures and world-class sports properties, positioning us at the intersection of India's most dynamic growth sectors."
+    },
+    {
+      quote: "From the stadium to the stars, from the playing field to the battlefield",
+      stat: "Global",
+      statLabel: "Presence",
+      description: "With operations spanning sports leagues, technology ventures, and defense systems, we're building the infrastructure that will power India's rise as a global superpower."
+    },
+    {
+      quote: "We don't build isolated products. We architect integrated ecosystems",
+      stat: "2",
+      statLabel: "Core Ecosystems",
+      description: "Our dual ecosystem approach combines sports excellence with deep-tech innovation, creating compounding value where each venture strengthens the others."
+    },
+    {
+      quote: "Long-term infrastructure investment for decades, not quarters",
+      stat: "10+",
+      statLabel: "Years Experience",
+      description: "Led by visionary entrepreneurs with proven track records in entertainment, sports, and technology, we invest in capabilities that will define India's competitive advantage."
+    }
+  ];
+
+  // Auto-rotate company info
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % companyInfo.length);
+    }, 6000); // Change every 6 seconds
+    return () => clearInterval(timer);
+  }, [companyInfo.length]);
+
+  const services = [
+    {
+      title: "Business Growth Catalyst",
+      desc: "Use receiving acco growin number of currencies and get paid lik",
+      image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=80"
+    },
+    {
+      title: "Profitability Maximizers",
+      desc: "Use receiving acco growin number of currencies and get paid lik",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
+    },
+    {
+      title: "Efficiency Experts",
+      desc: "Use receiving acco growin number of currencies and get paid lik",
+      image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80"
+    },
+    {
+      title: "Strategic Planning",
+      desc: "Use receiving acco growin number of currencies and get paid lik",
+      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80"
+    },
+    {
+      title: "Market Analysis",
+      desc: "Use receiving acco growin number of currencies and get paid lik",
+      image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80"
+    },
+    {
+      title: "Global Expansion",
+      desc: "Use receiving acco growin number of currencies and get paid lik",
+      image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=80"
+    }
+  ];
+
+  // Mobile auto-slide
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentMobileSlide((prev) => (prev + 1) % services.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [services.length]);
+
+  // Array of business images
+  const businessImages = [
+    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80",
+    "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&q=80",
+    "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1200&q=80",
+    "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&q=80",
+  ];
+
+  // Scroll-based image change
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const imageChangeThreshold = 300; // Change image every 300px scroll
+      const newIndex = Math.floor(scrollPosition / imageChangeThreshold) % businessImages.length;
+      setCurrentImageIndex(newIndex);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [businessImages.length]);
 
   return (
-    <>      <div className="min-h-screen bg-background text-foreground">
+    <>
+      <div className="min-h-screen bg-white dark:bg-[#121212] text-gray-900 dark:text-foreground">
         <InfinityCursor />
         <Header />
-      
-      {/* Hero Section - Clean & Bold */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-20">
-        {/* Subtle Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-background" />
-        
-        {/* Animated Grid */}
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: 'linear-gradient(rgba(168, 85, 247, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(6, 182, 212, 0.3) 1px, transparent 1px)',
-          backgroundSize: '100px 100px'
-        }} />
 
-        {/* Floating Images */}
-        <motion.div
-          className="absolute top-20 left-10 w-48 h-48 rounded-3xl overflow-hidden opacity-20"
-          animate={{
-            y: [0, -20, 0],
-            rotate: [0, 5, 0],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        >
-          <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=400&q=80" alt="Sports" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/40 to-transparent" />
-        </motion.div>
-
-        <motion.div
-          className="absolute top-40 right-20 w-40 h-40 rounded-3xl overflow-hidden opacity-20"
-          animate={{
-            y: [0, 20, 0],
-            rotate: [0, -5, 0],
-          }}
-          transition={{
-            duration: 7,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1
-          }}
-        >
-          <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&q=80" alt="Technology" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-br from-secondary/40 to-transparent" />
-        </motion.div>
-
-        <motion.div
-          className="absolute bottom-32 left-20 w-56 h-56 rounded-3xl overflow-hidden opacity-20"
-          animate={{
-            y: [0, -15, 0],
-            rotate: [0, 3, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 0.5
-          }}
-        >
-          <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400&q=80" alt="Innovation" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/40 to-transparent" />
-        </motion.div>
-
-        <motion.div
-          className="absolute bottom-20 right-10 w-44 h-44 rounded-3xl overflow-hidden opacity-20"
-          animate={{
-            y: [0, 15, 0],
-            rotate: [0, -3, 0],
-          }}
-          transition={{
-            duration: 7,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1.5
-          }}
-        >
-          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=80" alt="Team" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-br from-secondary/40 to-transparent" />
-        </motion.div>
-
-        <div className="container relative z-10 px-6 lg:px-8">
-          <div className="max-w-5xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 border border-primary/20 mb-8">
-                <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                <span className="text-sm font-bold text-primary uppercase tracking-wider">About Us</span>
-              </div>
-
-              {/* Main Heading */}
-              <h1 className="font-serif font-black text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-[0.9] mb-8">
-                <span className="block text-foreground">Building India's</span>
-                <span className="block bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent animate-gradient">
-                  Future
-                </span>
-              </h1>
-
-              {/* Subtitle */}
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-12">
-                A diversified technology conglomerate architecting integrated ecosystems across sports excellence and cutting-edge technology.
-              </p>
-
-              {/* Stats Row */}
-              <div className="flex flex-wrap justify-center gap-12 mb-12">
-                {[
-                  { value: "15+", label: "Active Ventures" },
-                  { value: "2", label: "Core Ecosystems" },
-                  { value: "Global", label: "Presence" },
-                ].map((stat, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 + i * 0.1 }}
-                    className="text-center"
-                  >
-                    <div className="text-5xl font-black bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">
-                      {stat.value}
-                    </div>
-                    <div className="text-sm text-muted-foreground uppercase tracking-wider">
-                      {stat.label}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Scroll Indicator */}
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="inline-flex flex-col items-center gap-2 text-muted-foreground"
-              >
-                <span className="text-xs uppercase tracking-wider">Scroll to explore</span>
-                <ArrowRight className="w-4 h-4 rotate-90" />
-              </motion.div>
-            </motion.div>
+        {/* Hero Section - Mobile Responsive */}
+        <section className="relative min-h-screen md:min-h-[80vh] flex items-center justify-center overflow-hidden pt-32 pb-20 px-4 bg-gradient-to-br from-[#1e2340] via-[#2f33d8]/10 to-[#1a1d2e] dark:from-[#121212] dark:via-[#ff4500]/5 dark:to-[#121212]">
+          {/* Background Gradient Overlay */}
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#2f33d8]/5 via-transparent to-[#7f01ff]/5 dark:from-[#dc2626]/5 dark:via-transparent dark:to-[#ff4500]/5" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(47,51,216,0.08),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_50%,rgba(255,69,0,0.08),transparent_50%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(127,1,255,0.08),transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_50%,rgba(220,38,38,0.08),transparent_50%)]" />
           </div>
-        </div>
-      </section>
 
- 
-
-      {/* Our Story - Two Column */}
-      <section className="relative py-32 overflow-hidden">
-        <div className="container relative z-10 px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              {/* Left: Heading */}
+          <div className="container relative z-10 px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-center flex flex-col items-center justify-center"
               >
-                <div className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-                  <span className="text-sm font-bold text-primary uppercase tracking-wider">Our Story</span>
-                </div>
-                <h2 className="font-serif font-black text-5xl md:text-6xl leading-tight mb-6">
-                  Two Worlds.{" "}
-                  <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                    One Vision.
+                {/* Main Heading */}
+                <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight mb-6">
+                  <span className="block text-white">Revolutionizing the</span>
+                  <span className="block text-white">
+                    Unique <span className="text-[#2b33da] dark:text-[#ff4500]">Business</span> Landscape
                   </span>
-                </h2>
-                <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary rounded-full" />
-              </motion.div>
+                </h1>
 
-              {/* Right: Content */}
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="space-y-6"
-              >
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Colab Platforms was founded on a singular belief: that India's future would be shaped by those who could bridge the physical and digital worlds.
-                </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  We saw an opportunity to build not just companies, but entire ecosystems that would define how India competes, innovates, and leads on the global stage.
-                </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  From our foundational sports network to our deep-tech ventures in AI, defense, and aerospace—we architect platforms that unlock human potential and technological possibility.
+                {/* Subtitle */}
+                <p className="text-sm sm:text-base md:text-lg text-white max-w-2xl mx-auto mb-12 leading-relaxed px-4">
+                  A business consultant is a professional who provides expert advice and guidance to businesses on various aspects such
                 </p>
 
-                {/* Key Points */}
-                <div className="space-y-3 pt-6">
-                  {[
-                    "Integrated ecosystem approach",
-                    "Long-term infrastructure investment",
-                    "World-class operational excellence",
-                  ].map((point, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
-                      <span className="text-foreground font-medium">{point}</span>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-
-      
-
-      {/* Ecosystem Tabs - Interactive */}
-      <section className="relative py-32 overflow-hidden bg-gradient-to-b from-background to-primary/5">
-        <div className="container relative z-10 px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            {/* Header */}
-            <motion.div
-              className="text-center mb-16"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-                <span className="text-sm font-bold text-primary uppercase tracking-wider">Our Ecosystems</span>
-              </div>
-              <h2 className="font-serif font-black text-5xl md:text-6xl mb-6">
-                Dual <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Powerhouses</span>
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Two integrated platforms driving India's competitive advantage across sports and technology.
-              </p>
-            </motion.div>
-
-            {/* Tab Switcher */}
-            <div className="flex justify-center mb-16">
-              <div className="inline-flex gap-2 p-2 bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl">
-                <button
-                  onClick={() => setActiveTab("sports")}
-                  className={`px-8 py-4 rounded-xl font-bold transition-all duration-300 ${
-                    activeTab === "sports"
-                      ? "bg-gradient-to-r from-primary to-primary/80 text-white shadow-lg scale-105"
-                      : "text-muted-foreground hover:text-foreground hover:bg-white/5"
-                  }`}
-                >
-                  Sports Ecosystem
-                </button>
-                <button
-                  onClick={() => setActiveTab("tech")}
-                  className={`px-8 py-4 rounded-xl font-bold transition-all duration-300 ${
-                    activeTab === "tech"
-                      ? "bg-gradient-to-r from-secondary to-secondary/80 text-white shadow-lg scale-105"
-                      : "text-muted-foreground hover:text-foreground hover:bg-white/5"
-                  }`}
-                >
-                  Tech Ecosystem
-                </button>
-              </div>
-            </div>
-
-            {/* Tab Content */}
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-            >
-              {activeTab === "sports" ? (
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {[
-                    { 
-                      icon: Target, 
-                      title: "Elite Training", 
-                      desc: "World-class academies and coaching programs developing the next generation of champions.",
-                      color: "primary"
-                    },
-                    { 
-                      icon: Gamepad2, 
-                      title: "Esports", 
-                      desc: "Professional gaming organization, tournament platforms, and digital competition infrastructure.",
-                      color: "primary"
-                    },
-                    { 
-                      icon: Cpu, 
-                      title: "Sports Tech", 
-                      desc: "Performance analytics, wearable technology, and data-driven athlete development systems.",
-                      color: "primary"
-                    },
-                    { 
-                      icon: Zap, 
-                      title: "Management", 
-                      desc: "Athlete representation, career development, and brand partnerships.",
-                      color: "primary"
-                    },
-                  ].map((item, i) => (
-                    <motion.div
-                      key={i}
-                      className="group relative p-8 bg-card/50 backdrop-blur-sm border border-border/50 rounded-3xl hover:border-primary/50 transition-all duration-500 h-full"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.1 }}
-                      whileHover={{ y: -5 }}
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                      
-                      <motion.div
-                        className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-6"
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                      >
-                        <item.icon className="w-7 h-7 text-primary" />
-                      </motion.div>
-                      
-                      <h3 className="relative font-serif font-bold text-xl mb-3 text-foreground">{item.title}</h3>
-                      <p className="relative text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-                    </motion.div>
-                  ))}
-                </div>
-              ) : (
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {[
-                    { 
-                      icon: Brain, 
-                      title: "Artificial Intelligence", 
-                      desc: "Enterprise AI and machine learning solutions for defense, intelligence, and high-stakes decision-making.",
-                      color: "secondary"
-                    },
-                    { 
-                      icon: Shield, 
-                      title: "Defense Systems", 
-                      desc: "Next-generation security and defense technologies protecting national interests.",
-                      color: "secondary"
-                    },
-                    { 
-                      icon: Plane, 
-                      title: "Autonomous Drones", 
-                      desc: "Cutting-edge aerial systems for surveillance, reconnaissance, and mission-critical operations.",
-                      color: "secondary"
-                    },
-                    { 
-                      icon: Cpu, 
-                      title: "Semiconductors", 
-                      desc: "Advanced chip design and manufacturing capabilities powering next-gen computing.",
-                      color: "secondary"
-                    },
-                    { 
-                      icon: Smartphone, 
-                      title: "FinTech", 
-                      desc: "Revolutionary financial technology platforms enabling digital payments and financial inclusion.",
-                      color: "secondary"
-                    },
-                    { 
-                      icon: Rocket, 
-                      title: "Aerospace", 
-                      desc: "Space technology and satellite systems pushing the boundaries of what's possible.",
-                      color: "secondary"
-                    },
-                  ].map((item, i) => (
-                    <motion.div
-                      key={i}
-                      className="group relative p-8 bg-card/50 backdrop-blur-sm border border-border/50 rounded-3xl hover:border-secondary/50 transition-all duration-500 h-full"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.1 }}
-                      whileHover={{ y: -5 }}
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                      
-                      <motion.div
-                        className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-secondary/20 to-secondary/10 flex items-center justify-center mb-6"
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                      >
-                        <item.icon className="w-7 h-7 text-secondary" />
-                      </motion.div>
-                      
-                      <h3 className="relative font-serif font-bold text-xl mb-3 text-foreground">{item.title}</h3>
-                      <p className="relative text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-                    </motion.div>
-                  ))}
-                </div>
-              )}
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Approach - Clean Cards */}
-      <section className="relative py-32 overflow-hidden">
-        <div className="container relative z-10 px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            {/* Header */}
-            <motion.div
-              className="text-center mb-16"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-                <span className="text-sm font-bold text-primary uppercase tracking-wider">Our Approach</span>
-              </div>
-              <h2 className="font-serif font-black text-5xl md:text-6xl mb-6">
-                How We <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Build</span>
-              </h2>
-            </motion.div>
-
-            {/* Cards */}
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: Users,
-                  number: "01",
-                  title: "Ecosystem Thinking",
-                  desc: "We don't build isolated products. We architect integrated ecosystems where each venture strengthens the others, creating compounding value.",
-                },
-                {
-                  icon: TrendingUp,
-                  number: "02",
-                  title: "Long-Term Vision",
-                  desc: "We invest in infrastructure and capabilities that will define India's competitive advantage for decades, not quarters.",
-                },
-                {
-                  icon: Award,
-                  number: "03",
-                  title: "Operational Excellence",
-                  desc: "From sports academies to AI systems, we obsess over execution. Strategy is nothing without world-class operations.",
-                },
-              ].map((item, i) => (
+                {/* Business Image - Responsive */}
                 <motion.div
-                  key={i}
-                  className="relative group"
                   initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.2 }}
-                  whileHover={{ y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  className="relative w-full max-w-6xl mx-auto px-4"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                  
-                  <div className="relative p-10 bg-card/50 backdrop-blur-sm border border-border/50 rounded-3xl hover:border-primary/50 transition-all duration-500 h-full">
-                    {/* Number */}
-                    <div className="text-7xl font-black text-primary/10 mb-4">{item.number}</div>
-                    
-                    {/* Icon */}
-                    <motion.div
-                      className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center mb-6"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                    >
-                      <item.icon className="w-8 h-8 text-primary" />
-                    </motion.div>
-                    
-                    <h3 className="font-serif font-bold text-2xl mb-4 text-foreground">{item.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
+                  <div
+                    className="relative overflow-hidden h-[250px] sm:h-[300px] md:h-[400px] lg:h-[500px] shadow-xl"
+                  >
+                    <motion.img
+                      key={currentImageIndex}
+                      src={businessImages[currentImageIndex]}
+                      alt="Business Team Meeting"
+                      className="w-full h-full object-cover"
+                      initial={{ opacity: 0, scale: 1.1 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.6 }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+
+                    {/* Image indicator dots */}
+                    <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-1.5 md:gap-2">
+                      {businessImages.map((_, index) => (
+                        <div
+                          key={index}
+                          className={`w-1.5 h-1.5 md:w-2 md:h-2 transition-all duration-300 ${index === currentImageIndex
+                            ? 'bg-[#7f01ff] dark:bg-[#ff4500] w-6 md:w-8'
+                            : 'bg-white/50'
+                            }`}
+                        />
+                      ))}
+                    </div>
                   </div>
                 </motion.div>
-              ))}
+              </motion.div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Vision - Final Statement */}
-      <section className="relative py-32 overflow-hidden bg-gradient-to-b from-background to-primary/5">
-        <div className="container relative z-10 px-6 lg:px-8">
-          <motion.div
-            className="max-w-4xl mx-auto text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="inline-block mb-8"
+        {/* Our Services - Hover Reveal Slider */}
+        <section className="relative py-32 bg-white dark:bg-[#121212] overflow-hidden">
+          <div className="container relative z-10 px-6 lg:px-8 mb-16">
+            <div className="max-w-7xl mx-auto text-center">
+              <h2 className="font-bold text-4xl md:text-5xl lg:text-6xl text-gray-900 dark:text-white mb-6">
+                Your Business Goals with <br className="hidden md:block" />
+                the Confidence
+              </h2>
+            </div>
+          </div>
+
+          {/* Desktop Hover Slider Container */}
+          <div className="hidden md:block container relative z-10 px-6 lg:px-8">
+            <div
+              className="max-w-7xl mx-auto overflow-hidden py-10"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
             >
-              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                <Globe className="w-10 h-10 text-primary" />
+              <motion.div
+                className="flex w-full"
+                animate={{ x: isHovered ? "-100%" : "0%" }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+              >
+                {/* First Set of 3 Cards */}
+                <div className="flex-shrink-0 w-full grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+                  {services.slice(0, 3).map((service, index) => (
+                    <div
+                      key={index}
+                      className="bg-white dark:bg-black border border-gray-100 dark:border-gray-800 p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgb(0,0,0,0.1)] hover:-translate-y-2 transition-all duration-500 group h-full flex flex-col"
+                    >
+                      <div className="overflow-hidden h-72 mb-8 shadow-sm">
+                        <img
+                          src={service.image}
+                          alt={service.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        />
+                      </div>
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-[#2b33da] dark:group-hover:text-[#ff4500] transition-colors">{service.title}</h3>
+                      <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed flex-grow">
+                        {service.desc}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Second Set of 3 Cards */}
+                <div className="flex-shrink-0 w-full grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+                  {services.slice(3, 6).map((service, index) => (
+                    <div
+                      key={index}
+                      className="bg-white dark:bg-black border border-gray-100 dark:border-gray-800 p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgb(0,0,0,0.1)] hover:-translate-y-2 transition-all duration-500 group h-full flex flex-col"
+                    >
+                      <div className="overflow-hidden h-72 mb-8 shadow-sm">
+                        <img
+                          src={service.image}
+                          alt={service.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        />
+                      </div>
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-[#2b33da] dark:group-hover:text-[#ff4500] transition-colors">{service.title}</h3>
+                      <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed flex-grow">
+                        {service.desc}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Mobile Auto-Slider Container */}
+          <div className="block md:hidden container relative z-10 px-1">
+            <div className="bg-white dark:bg-black border border-gray-100 dark:border-gray-800 p-6 shadow-lg mx-2">
+              <div className="overflow-hidden h-64 mb-6 shadow-sm">
+                <img
+                  src={services[currentMobileSlide].image}
+                  alt={services[currentMobileSlide].title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <motion.div
+                key={currentMobileSlide}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">{services[currentMobileSlide].title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed">
+                  {services[currentMobileSlide].desc}
+                </p>
+              </motion.div>
+
+              {/* Mobile Indicators */}
+              <div className="flex justify-center gap-2 mt-8">
+                {services.map((_, idx) => (
+                  <div
+                    key={idx}
+                    className={`h-1.5 transition-all duration-300 ${idx === currentMobileSlide ? 'w-6 bg-gradient-to-r from-[#2b33da] to-[#7f01ff] dark:from-[#dc2626] dark:to-[#ff4500]' : 'w-1.5 bg-gray-200 dark:bg-gray-700'
+                      }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Your Business Goals Section */}
+        <section className="relative py-20 ovTestimonial section - Ye content?erflow-hidden bg-white dark:bg-[#121212]">
+          <div className="container relative z-10 px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
+              {/* Heading Section - 2 Column Layout */}
+              <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+                {/* Left - Heading */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
+                    Your Business Goals<br />a Confidence
+                  </h2>
+                </motion.div>
+
+                {/* Right - Description */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
+                    Dictum ultrices porttitor amet nec sollicitudin mi molestie adipiscing netus. Lorem at ac ut morbi ullamcorper molestie lacus loren ipsum dummy text provide happy
+                  </p>
+                </motion.div>
+              </div>
+
+              {/* Image with Testimonial Card - Below Heading */}
+              <div className="relative">
+                {/* Main Image - Larger Size */}
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className="relative max-w-2xl"
+                >
+                  <div className="relative overflow-hidden shadow-2xl">
+                    <img
+                      src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1200&q=80"
+                      alt="Business Professional"
+                      className="w-full h-[600px] object-cover"
+                    />
+                  </div>
+                </motion.div>
+
+                {/* Floating Testimonial Card - Overlapping Image */}
+                {/* Animated Info Card Container */}
+                <div className="absolute top-20 right-0 lg:right-10 max-w-2xl">
+                  <motion.div
+                    key={currentTestimonial}
+                    initial={{ opacity: 0, x: 100 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -100 }}
+                    transition={{ duration: 0.7, ease: "easeInOut" }}
+                    className="bg-white dark:bg-black p-10 shadow-2xl relative overflow-hidden"
+                    style={{ marginLeft: '-120px' }}
+                  >
+                    {/* Subtle Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#2b33da]/5 via-[#7f01ff]/5 to-[#ec4899]/5 dark:from-[#dc2626]/5 dark:via-[#ff4500]/5 dark:to-[#ff6b35]/5 pointer-events-none" />
+                    
+                    {/* Content */}
+                    <div className="relative z-10">
+                      {/* Quote Icon */}
+                      <div className="mb-6">
+                        <svg className="w-12 h-12 text-[#2b33da]/20 dark:text-[#ff4500]/20" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                        </svg>
+                      </div>
+
+                      {/* Quote Text */}
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+                        "{companyInfo[currentTestimonial].quote}"
+                      </h3>
+
+                      {/* Stat Display */}
+                      <div className="flex items-baseline gap-3 mb-6">
+                        <div className="text-5xl font-black bg-gradient-to-r from-[#2b33da] to-[#7f01ff] dark:from-[#dc2626] dark:to-[#ff4500] bg-clip-text text-transparent">
+                          {companyInfo[currentTestimonial].stat}
+                        </div>
+                        <div className="text-lg text-gray-600 dark:text-gray-400 font-semibold">
+                          {companyInfo[currentTestimonial].statLabel}
+                        </div>
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed mb-10">
+                        {companyInfo[currentTestimonial].description}
+                      </p>
+
+                      {/* Navigation Arrows */}
+                      <div className="flex justify-end gap-2">
+                        <button 
+                          onClick={() => setCurrentTestimonial((prev) => (prev - 1 + companyInfo.length) % companyInfo.length)}
+                          className="w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-[#2b33da] dark:hover:bg-[#ff4500] hover:text-white transition-colors flex items-center justify-center"
+                        >
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                          </svg>
+                        </button>
+                        <button 
+                          onClick={() => setCurrentTestimonial((prev) => (prev + 1) % companyInfo.length)}
+                          className="w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-[#2b33da] dark:hover:bg-[#ff4500] hover:text-white transition-colors flex items-center justify-center"
+                        >
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Transforming Vision - FAQ Style Section */}
+        <section className="relative overflow-hidden">
+          <div className="grid lg:grid-cols-2">
+            {/* Left Side - White Background */}
+            <div className="bg-white py-32 px-6 lg:px-12">
+              <div className="max-w-2xl mx-auto lg:ml-auto">
+                {/* Left Side - Heading & Image */}
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className="space-y-6"
+                >
+                  {/* Main Heading */}
+                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
+                    Transforming Vision<br />
+                    into Reality Together
+                  </h2>
+
+                  {/* Image Card with Stats */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="relative bg-gray-100 overflow-hidden mt-8"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80"
+                      alt="Business Professional"
+                      className="w-full object-cover"
+                      style={{ height: '30rem' }}
+                    />
+                    
+                    {/* Floating Stats Card */}
+                    <div className="absolute bottom-6 right-6 bg-white p-6 shadow-2xl">
+                      <div className="text-5xl font-black text-[#2b33da] mb-1">10K+</div>
+                      <div className="text-sm text-gray-600 font-semibold">
+                        Client<br />Review
+                      </div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              </div>
+            </div>
+
+            {/* Right Side - Dark Background #121212 */}
+            <div className="py-32 px-6 lg:px-12">
+              <div className="max-w-3xl mx-auto lg:mr-auto">
+                {/* Right Side - Accordion Questions */}
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className="space-y-4 mt-32"
+                >
+                  {[
+                    {
+                      question: "What services do you offer?",
+                      answer: "At the heart of our consulting approach lies a dedication to understanding your unique needs, fostering collaboration At the heart of our consulting approach lies a dedication"
+                    },
+                    {
+                      question: "How long does complete a project?",
+                      answer: "Project timelines vary based on scope and complexity. Typically, projects range from 2-6 months, with clear milestones and deliverables throughout."
+                    },
+                    {
+                      question: "How much does with your agency?",
+                      answer: "Our pricing is customized based on your specific needs and project scope. We offer flexible engagement models to suit different budgets and requirements."
+                    },
+                    {
+                      question: "Where a Branding Consultantis?",
+                      answer: "We work with clients globally, with offices in major cities. Our team is equipped to collaborate remotely or on-site based on your preferences."
+                    }
+                  ].map((item, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                      className="group"
+                    >
+                      <details open={index === 0} className="dark:bg-black bg-white overflow-hidden border border-black dark:border-gray-800 dark:hover:border-[#ff4500]/30 hover:border-blue-600 transition-all">
+                        <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
+                          <span className="text-xl font-bold dark:text-white text-gray-900 dark:group-hover:text-[#ff4500] group-hover:text-blue-600 transition-colors">
+                            {item.question}
+                          </span>
+                          <div className="w-10 h-10 rounded-full dark:bg-gradient-to-r dark:from-[#dc2626] dark:to-[#ff4500] bg-blue-600 flex items-center justify-center flex-shrink-0 ml-4">
+                            <svg className="w-5 h-5 text-white transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </div>
+                        </summary>
+                        <div className="px-6 pb-6 text-lg dark:text-gray-400 text-600 leading-relaxed">
+                          {item.answer}
+                        </div>
+                      </details>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Vision - Final Statement */}
+        <section className="relative py-32 overflow-hidden bg-gradient-to-b from-background to-primary/5">
+          <div className="container relative z-10 px-6 lg:px-8">
+            <motion.div
+              className="max-w-4xl mx-auto text-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="inline-block mb-8"
+              >
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                  <Globe className="w-10 h-10 text-primary" />
+                </div>
+              </motion.div>
+
+              <h2 className="font-serif font-black text-5xl md:text-6xl lg:text-7xl mb-8">
+                Building for <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Billions</span>
+              </h2>
+
+              <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-6">
+                Our mission is simple: build the integrated platforms that will power India's rise as a global superpower.
+              </p>
+
+              <p className="text-lg text-muted-foreground/80 mb-8">
+                From the stadium to the stars. From the playing field to the battlefield.
+              </p>
+
+              <div className="inline-block px-8 py-4 rounded-2xl bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/20">
+                <p className="text-2xl font-bold text-foreground">
+                  We architect ambition.
+                </p>
               </div>
             </motion.div>
+          </div>
+        </section>
 
-            <h2 className="font-serif font-black text-5xl md:text-6xl lg:text-7xl mb-8">
-              Building for <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Billions</span>
-            </h2>
-
-            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-6">
-              Our mission is simple: build the integrated platforms that will power India's rise as a global superpower.
-            </p>
-
-            <p className="text-lg text-muted-foreground/80 mb-8">
-              From the stadium to the stars. From the playing field to the battlefield.
-            </p>
-
-            <div className="inline-block px-8 py-4 rounded-2xl bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/20">
-              <p className="text-2xl font-bold text-foreground">
-                We architect ambition.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <Footer />
+        <Footer />
       </div>
     </>
   );
 };
 
 export default About;
-

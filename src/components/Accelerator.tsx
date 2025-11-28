@@ -40,16 +40,16 @@ const Accelerator = () => {
                         className="relative mt-8 lg:mt-0"
                     >
                         {/* Image Container with Grayscale and Overlay */}
-                        <div className="relative overflow-hidden max-h-[400px] md:max-h-[700px]">
+                        <div className="relative overflow-hidden h-[400px] md:h-auto">
                             <div className="absolute inset-0 bg-gradient-to-tr from-black/40 to-transparent z-10" />
 
                             {/* Green Glow Effect to mimic the arrows' vibe */}
                             <div className="absolute -top-20 -right-20 w-40 h-40 md:w-64 md:h-64 bg-green-500/20 rounded-full blur-[60px] md:blur-[100px] z-20" />
 
                             <img
-                                src="https://cdn.shopify.com/s/files/1/0653/9830/9053/files/Vision_Image.jpg?v=1738913950"
+                                src="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Gemini_Generated_Image_xoqb7zxoqb7zxoqb.png?v=1764070390"
                                 alt="Team Collaboration"
-                                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                                className="w-full h-full object-contain md:object-cover grayscale hover:grayscale-0 transition-all duration-700"
                             />
                         </div>
                     </motion.div>
