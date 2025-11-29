@@ -171,7 +171,7 @@ const Esports = () => {
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -10 }}
               >
-                <motion.div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center mb-6" whileHover={{ rotate: 360 }}>
+                <motion.div className="w-16 h-16 bg-primary/20 flex items-center justify-center mb-6" whileHover={{ rotate: 360 }}>
                   <Gamepad2 className="w-8 h-8 text-primary" />
                 </motion.div>
                 <h3 className="font-serif font-bold text-2xl mb-2">{team.game}</h3>
