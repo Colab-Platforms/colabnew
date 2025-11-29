@@ -148,7 +148,7 @@ const FinTech = () => {
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -10 }}
               >
-                <motion.div className="w-20 h-20 rounded-2xl bg-secondary/20 flex items-center justify-center mx-auto mb-6" whileHover={{ rotate: 360 }}>
+                <motion.div className="w-20 h-20 bg-secondary/20 flex items-center justify-center mx-auto mb-6" whileHover={{ rotate: 360 }}>
                   <security.icon className="w-10 h-10 text-secondary" />
                 </motion.div>
                 <h3 className="font-serif font-bold text-2xl mb-3">{security.title}</h3>
