@@ -279,7 +279,7 @@ const Drones = () => {
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.1 }}
                     >
-                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center">
+                      <div className="flex-shrink-0 w-12 h-12 bg-secondary/20 flex items-center justify-center">
                         <span className="text-xl font-black text-secondary">{i + 1}</span>
                       </div>
                       <div className="flex-1">

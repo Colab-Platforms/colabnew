@@ -117,7 +117,7 @@ const Semiconductor = () => {
                   <div className="relative aspect-[4/3] overflow-hidden group">
                     <img src={process.image} alt={process.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-br from-secondary/40 to-transparent" />
-                    <motion.div className="absolute top-8 right-8 w-20 h-20 rounded-2xl bg-secondary/90 flex items-center justify-center" whileHover={{ rotate: 360 }}>
+                    <motion.div className="absolute top-8 right-8 w-20 h-20 bg-secondary/90 flex items-center justify-center" whileHover={{ rotate: 360 }}>
                       <process.icon className="w-10 h-10 text-white" />
                     </motion.div>
                     <div className="absolute bottom-8 left-8">
@@ -168,7 +168,7 @@ const Semiconductor = () => {
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -10 }}
               >
-                <motion.div className="w-14 h-14 rounded-2xl bg-secondary/20 flex items-center justify-center mb-6" whileHover={{ rotate: 360 }}>
+                <motion.div className="w-14 h-14 bg-secondary/20 flex items-center justify-center mb-6" whileHover={{ rotate: 360 }}>
                   <spec.icon className="w-7 h-7 text-secondary" />
                 </motion.div>
                 <div className="text-sm text-muted-foreground mb-2 uppercase tracking-wider">{spec.label}</div>
@@ -207,12 +207,12 @@ const Semiconductor = () => {
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -10 }}
               >
-                <motion.div className="w-16 h-16 rounded-2xl bg-secondary/20 flex items-center justify-center mb-6" whileHover={{ rotate: 360, scale: 1.1 }}>
+                <motion.div className="w-16 h-16 bg-secondary/20 flex items-center justify-center mb-6" whileHover={{ rotate: 360, scale: 1.1 }}>
                   <qa.icon className="w-8 h-8 text-secondary" />
                 </motion.div>
                 <h3 className="font-bold text-2xl mb-3" style={{ fontWeight: 600 }}>{qa.title}</h3>
                 <p className="text-muted-foreground mb-4">{qa.desc}</p>
-                <div className="px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 inline-block">
+                <div className="px-4 py-2 bg-secondary/10 border border-secondary/20 inline-block">
                   <span className="text-sm font-bold text-secondary">{qa.tests}</span>
                 </div>
               </motion.div>
@@ -286,7 +286,7 @@ const Semiconductor = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
 
                   <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                    <motion.div className="w-14 h-14 rounded-2xl bg-secondary/90 flex items-center justify-center mb-4" whileHover={{ rotate: 360 }}>
+                    <motion.div className="w-14 h-14 bg-secondary/90 flex items-center justify-center mb-4" whileHover={{ rotate: 360 }}>
                       <app.icon className="w-7 h-7 text-white" />
                     </motion.div>
                     <h3 className="font-bold text-3xl text-white mb-2" style={{ fontWeight: 600 }}>{app.title}</h3>
