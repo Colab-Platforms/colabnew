@@ -108,7 +108,7 @@ const Gallery = () => {
                 <motion.button
                   key={filter.id}
                   onClick={() => setActiveFilter(filter.id)}
-                  className={`group px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 ${
+                  className={`group px-8 py-4 font-bold text-lg transition-all duration-300 ${
                     activeFilter === filter.id
                       ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-lg shadow-primary/50'
                       : 'bg-white/5 border border-white/10 text-foreground hover:bg-white/10 hover:border-primary/30'
