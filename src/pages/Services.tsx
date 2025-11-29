@@ -179,7 +179,7 @@ const Services = () => {
                       transition={{ duration: 0.3 }}
                     >
                       {/* Image Container */}
-                      <div className="relative aspect-[4/3] rounded-3xl overflow-hidden">
+                      <div className="relative aspect-[4/3] overflow-hidden">
                         <img
                           src={service.image}
                           alt={service.title}
@@ -194,7 +194,7 @@ const Services = () => {
                         
                         {/* Animated Border */}
                         <motion.div
-                          className={`absolute inset-0 rounded-3xl border-4 ${
+                          className={`absolute inset-0 border-4 ${
                             service.color === 'primary' ? 'border-primary' : 'border-secondary'
                           }`}
                           initial={{ opacity: 0 }}
@@ -203,8 +203,8 @@ const Services = () => {
                         />
 
                         {/* Floating Icon */}
-                        <motion.div
-                          className={`absolute top-8 right-8 w-20 h-20 rounded-2xl bg-gradient-to-br ${
+                        {/* <motion.div
+                          className={`absolute top-8 right-8 w-20 h-20 bg-gradient-to-br ${
                             service.color === 'primary'
                               ? 'from-primary/90 to-primary/70'
                               : 'from-secondary/90 to-secondary/70'
@@ -216,7 +216,7 @@ const Services = () => {
                           transition={{ duration: 2, repeat: Infinity }}
                         >
                           <Icon className="w-10 h-10 text-white" />
-                        </motion.div>
+                        </motion.div> */}
 
                         {/* Number Badge */}
                         <div className="absolute bottom-8 left-8">
@@ -230,7 +230,7 @@ const Services = () => {
 
                       {/* Decorative Elements */}
                       <motion.div
-                        className={`absolute -z-10 inset-0 rounded-3xl blur-3xl ${
+                        className={`absolute -z-10 inset-0 blur-3xl ${
                           service.color === 'primary' 
                             ? 'bg-primary/20' 
                             : 'bg-secondary/20'
@@ -253,7 +253,7 @@ const Services = () => {
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 }}
                       >
-                        <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${
+                        <div className={`inline-flex items-center gap-2 px-4 py-2  ${
                           service.color === 'primary'
                             ? 'bg-primary/10 border border-primary/20'
                             : 'bg-secondary/10 border border-secondary/20'
@@ -302,7 +302,7 @@ const Services = () => {
                         {service.features.map((feature, i) => (
                           <motion.div
                             key={i}
-                            className={`flex items-center gap-2 px-4 py-3 rounded-xl ${
+                            className={`flex items-center gap-2 px-4 py-3 ${
                               service.color === 'primary'
                                 ? 'bg-primary/5 border border-primary/10'
                                 : 'bg-secondary/5 border border-secondary/10'
@@ -325,7 +325,7 @@ const Services = () => {
                         transition={{ delay: 0.7 }}
                       >
                         <motion.button
-                          className={`group inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-bold text-white ${
+                          className={`group inline-flex items-center gap-3 px-8 py-4 font-bold text-white ${
                             service.color === 'primary'
                               ? 'bg-gradient-to-r from-primary to-primary/80'
                               : 'bg-gradient-to-r from-secondary to-secondary/80'
@@ -373,7 +373,7 @@ const Services = () => {
               Let's build the future together. Get in touch to explore how our services can power your ambitions.
             </p>
             <motion.button
-              className="inline-flex items-center gap-3 px-10 py-5 rounded-2xl font-bold text-lg text-white bg-gradient-to-r from-primary to-secondary shadow-2xl"
+              className="inline-flex items-center gap-3 px-10 py-5 font-bold text-lg text-white bg-gradient-to-r from-primary to-secondary shadow-2xl"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
