@@ -382,12 +382,12 @@ const Sports = () => {
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -10 }}
               >
-                <div className="relative h-96 rounded-3xl overflow-hidden mb-6">
+                <div className="relative h-96 overflow-hidden mb-6">
                   <img src={program.image} alt={program.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
 
                   <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                    <motion.div className="w-14 h-14 rounded-2xl bg-primary/90 flex items-center justify-center mb-4" whileHover={{ rotate: 360 }}>
+                    <motion.div className="w-14 h-14 bg-primary/90 flex items-center justify-center mb-4" whileHover={{ rotate: 360 }}>
                       <program.icon className="w-7 h-7 text-white" />
                     </motion.div>
                     <h3 className="font-bold text-3xl text-white mb-2" style={{ fontFamily: '"Alovera Display"' }}>{program.title}</h3>
@@ -442,7 +442,7 @@ const Sports = () => {
                 )}
 
                 {/* Step Number */}
-                <div className="flex-shrink-0 w-24 h-24 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 border-2 border-primary/30 flex items-center justify-center">
+                <div className="flex-shrink-0 w-24 h-24 bg-gradient-to-br from-primary/20 to-primary/10 border-2 border-primary/30 flex items-center justify-center">
                   <span className="text-4xl font-black text-primary">{item.step}</span>
                 </div>
 
@@ -478,7 +478,7 @@ const Sports = () => {
               Join India's premier sports ecosystem and unlock your full potential.
             </p>
             <motion.button
-              className="px-10 py-5 rounded-2xl bg-primary text-white font-bold text-lg flex items-center gap-3 mx-auto"
+              className="px-10 py-5 bg-primary text-white font-bold text-lg flex items-center gap-3 mx-auto"
               whileHover={{ scale: 1.05 }}
             >
               Book Free Trial
