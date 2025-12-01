@@ -46,7 +46,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const open = parseFloat(latest.open);
     const high = parseFloat(latest.high);
     const low = parseFloat(latest.low);
-    const volume = parseInt(latest.volume || 0);
+    
     
     // Change calculate karo
     let previousClose = currentPrice;
@@ -75,7 +75,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       currentPrice: parseFloat(currentPrice.toFixed(2)),
       change: parseFloat(change.toFixed(2)),
       changePercent: parseFloat(changePercent.toFixed(2)),
-      volume: volume,
+     
       lastUpdated: latest.datetime || new Date().toISOString(),
       status: isMarketHours ? 'open' : 'closed',
       high: parseFloat(high.toFixed(2)),
@@ -98,6 +98,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       currentPrice: 196.65 ,
       change:  -1.95,
       changePercent: -0.98,
+    
       lastUpdated: new Date().toISOString(),
       status: 'closed',
       high: 196.65,
