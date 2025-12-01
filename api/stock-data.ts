@@ -98,7 +98,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       currentPrice: 196.65 ,
       change:  -1.95,
       changePercent: -0.98,
-      volume: 52000,
       lastUpdated: new Date().toISOString(),
       status: 'closed',
       high: 196.65,
