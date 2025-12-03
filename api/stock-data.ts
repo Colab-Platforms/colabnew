@@ -95,16 +95,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(200).json({
       symbol: 'BSE: 542866',
       companyName: 'Colab Platforms Ltd',
-      currentPrice: 200.60,
-      change: -2.00,
-      changePercent: -0.99,
-      volume: 52000,
+      currentPrice: 196.65 ,
+      change:  -1.95,
+      changePercent: -0.98,
+      volume:52000,
       lastUpdated: new Date().toISOString(),
       status: 'closed',
-      high: 200.60,
-      low: 200.60,
-      open: 200.60,
-      previousClose: 202.60,
+      high: 196.65,
+      low: 196.65,
+      open: 196.65,
+      previousClose: 198.60,
       error: error.message
     });
   }

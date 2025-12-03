@@ -556,7 +556,7 @@ const About = () => {
                 From the stadium to the stars. From the playing field to the battlefield.
               </p>
 
-              <div className="inline-block px-8 py-4 rounded-2xl bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/20">
+              <div className="inline-block px-8 py-4 bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/20">
                 <p className="text-2xl font-bold text-foreground">
                   We architect ambition.
                 </p>

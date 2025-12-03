@@ -95,13 +95,13 @@ const Esports = () => {
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -10 }}
               >
-                <div className="relative h-96 rounded-3xl overflow-hidden">
+                <div className="relative h-96 overflow-hidden">
                   <img src={tournament.image} alt={tournament.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
                   
                   {/* Status Badge */}
                   <div className="absolute top-6 right-6">
-                    <div className={`px-4 py-2 rounded-full backdrop-blur-sm border ${
+                    <div className={`px-4 py-2 backdrop-blur-sm border ${
                       tournament.status === "Registration Open" 
                         ? "bg-primary/20 border-primary/40 text-primary" 
                         : "bg-white/10 border-white/20 text-white"
@@ -164,14 +164,14 @@ const Esports = () => {
             ].map((team, i) => (
               <motion.div
                 key={i}
-                className="p-8 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 hover:border-primary/40 transition-all duration-500"
+                className="p-8 bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 hover:border-primary/40 transition-all duration-500"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -10 }}
               >
-                <motion.div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center mb-6" whileHover={{ rotate: 360 }}>
+                <motion.div className="w-16 h-16 bg-primary/20 flex items-center justify-center mb-6" whileHover={{ rotate: 360 }}>
                   <Gamepad2 className="w-8 h-8 text-primary" />
                 </motion.div>
                 <h3 className="font-serif font-bold text-2xl mb-2">{team.game}</h3>
@@ -215,14 +215,14 @@ const Esports = () => {
             ].map((feature, i) => (
               <motion.div
                 key={i}
-                className="p-8 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 hover:border-primary/40 transition-all duration-500"
+                className="p-8 bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 hover:border-primary/40 transition-all duration-500"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -10 }}
               >
-                <motion.div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center mb-6" whileHover={{ rotate: 360, scale: 1.1 }}>
+                <motion.div className="w-16 h-16 bg-primary/20 flex items-center justify-center mb-6" whileHover={{ rotate: 360, scale: 1.1 }}>
                   <feature.icon className="w-8 h-8 text-primary" />
                 </motion.div>
                 <h3 className="font-serif font-bold text-2xl mb-3">{feature.title}</h3>
@@ -271,7 +271,7 @@ const Esports = () => {
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -10 }}
               >
-                <div className="relative h-80 rounded-3xl overflow-hidden mb-6">
+                <div className="relative h-80 overflow-hidden mb-6">
                   <img src={program.image} alt={program.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6">
@@ -315,7 +315,7 @@ const Esports = () => {
             ].map((stat, i) => (
               <motion.div
                 key={i}
-                className="text-center p-8 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20"
+                className="text-center p-8 bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -356,7 +356,7 @@ const Esports = () => {
               ].map((prize, i) => (
                 <motion.div
                   key={i}
-                  className="p-8 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20"
+                  className="p-8 bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20"
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
@@ -372,7 +372,7 @@ const Esports = () => {
 
             <div className="flex flex-wrap justify-center gap-4">
               <motion.button
-                className="px-10 py-5 rounded-2xl bg-primary text-white font-bold text-lg flex items-center gap-3"
+                className="px-10 py-5 bg-primary text-white font-bold text-lg flex items-center gap-3"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -380,7 +380,7 @@ const Esports = () => {
                 <ArrowRight className="w-6 h-6" />
               </motion.button>
               <motion.button
-                className="px-10 py-5 rounded-2xl bg-white/10 backdrop-blur-sm text-foreground font-bold text-lg border border-border flex items-center gap-3"
+                className="px-10 py-5 bg-white/10 backdrop-blur-sm text-foreground font-bold text-lg border border-border flex items-center gap-3"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

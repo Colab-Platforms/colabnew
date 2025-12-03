@@ -30,10 +30,10 @@ const FinTech = () => {
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
-              <motion.button className="px-8 py-4 rounded-2xl bg-secondary text-white font-bold flex items-center gap-2" whileHover={{ scale: 1.05 }}>
+              <motion.button className="px-8 py-4 bg-secondary text-white font-bold flex items-center gap-2" whileHover={{ scale: 1.05 }}>
                 Get Started Free <ArrowRight className="w-5 h-5" />
               </motion.button>
-              <motion.button className="px-8 py-4 rounded-2xl bg-white/10 backdrop-blur-sm text-foreground font-bold border border-border flex items-center gap-2" whileHover={{ scale: 1.05 }}>
+              <motion.button className="px-8 py-4 bg-white/10 backdrop-blur-sm text-foreground font-bold border border-border flex items-center gap-2" whileHover={{ scale: 1.05 }}>
                 <Play className="w-5 h-5" /> Watch Demo
               </motion.button>
             </div>
@@ -94,14 +94,14 @@ const FinTech = () => {
             ].map((feature, i) => (
               <motion.div
                 key={i}
-                className="group relative p-8 rounded-3xl bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20 hover:border-secondary/40 transition-all duration-500"
+                className="group relative p-8 bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20 hover:border-secondary/40 transition-all duration-500"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -10 }}
               >
-                <motion.div className="w-16 h-16 rounded-2xl bg-secondary/20 flex items-center justify-center mb-6" whileHover={{ rotate: 360, scale: 1.1 }}>
+                <motion.div className="w-16 h-16 bg-secondary/20 flex items-center justify-center mb-6" whileHover={{ rotate: 360, scale: 1.1 }}>
                   <feature.icon className="w-8 h-8 text-secondary" />
                 </motion.div>
                 <h3 className="font-serif font-bold text-2xl mb-3">{feature.title}</h3>
@@ -141,19 +141,19 @@ const FinTech = () => {
             ].map((security, i) => (
               <motion.div
                 key={i}
-                className="text-center p-8 rounded-3xl bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20 hover:border-secondary/40 transition-all duration-500"
+                className="text-center p-8 bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20 hover:border-secondary/40 transition-all duration-500"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -10 }}
               >
-                <motion.div className="w-20 h-20 rounded-2xl bg-secondary/20 flex items-center justify-center mx-auto mb-6" whileHover={{ rotate: 360 }}>
+                <motion.div className="w-20 h-20 bg-secondary/20 flex items-center justify-center mx-auto mb-6" whileHover={{ rotate: 360 }}>
                   <security.icon className="w-10 h-10 text-secondary" />
                 </motion.div>
                 <h3 className="font-serif font-bold text-2xl mb-3">{security.title}</h3>
                 <p className="text-muted-foreground mb-4">{security.desc}</p>
-                <div className="px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 inline-block">
+                <div className="px-4 py-2 bg-secondary/10 border border-secondary/20 inline-block">
                   <span className="text-sm font-bold text-secondary">{security.metric}</span>
                 </div>
               </motion.div>
@@ -190,7 +190,7 @@ const FinTech = () => {
               >
                 {i < 2 && <div className="absolute left-12 top-24 w-0.5 h-16 bg-gradient-to-b from-secondary to-secondary/20" />}
                 
-                <div className="flex-shrink-0 w-24 h-24 rounded-2xl bg-gradient-to-br from-secondary/20 to-secondary/10 border-2 border-secondary/30 flex items-center justify-center">
+                <div className="flex-shrink-0 w-24 h-24 bg-gradient-to-br from-secondary/20 to-secondary/10 border-2 border-secondary/30 flex items-center justify-center">
                   <span className="text-4xl font-black text-secondary">{step.step}</span>
                 </div>
 
@@ -198,7 +198,7 @@ const FinTech = () => {
                   <div className="flex items-center gap-4 mb-3">
                     <step.icon className="w-8 h-8 text-secondary" />
                     <h3 className="font-serif font-bold text-3xl">{step.title}</h3>
-                    <div className="ml-auto px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20">
+                    <div className="ml-auto px-4 py-2 bg-secondary/10 border border-secondary/20">
                       <span className="text-sm font-bold text-secondary">{step.time}</span>
                     </div>
                   </div>
@@ -259,7 +259,7 @@ const FinTech = () => {
             ].map((plan, i) => (
               <motion.div
                 key={i}
-                className={`relative p-8 rounded-3xl border-2 transition-all duration-500 ${
+                className={`relative p-8 border-2 transition-all duration-500 ${
                   plan.popular 
                     ? 'bg-gradient-to-br from-secondary/20 to-secondary/10 border-secondary scale-105' 
                     : 'bg-gradient-to-br from-secondary/10 to-secondary/5 border-secondary/20 hover:border-secondary/40'
@@ -294,7 +294,7 @@ const FinTech = () => {
                 </div>
 
                 <motion.button
-                  className={`w-full py-4 rounded-2xl font-bold ${
+                  className={`w-full py-4 font-bold ${
                     plan.popular 
                       ? 'bg-secondary text-white' 
                       : 'bg-secondary/10 text-secondary border border-secondary/20'
@@ -348,7 +348,7 @@ const FinTech = () => {
             ].map((testimonial, i) => (
               <motion.div
                 key={i}
-                className="p-8 rounded-3xl bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20"
+                className="p-8 bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -397,7 +397,7 @@ const FinTech = () => {
               ].map((stat, i) => (
                 <motion.div
                   key={i}
-                  className="p-6 rounded-2xl bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20"
+                  className="p-6 bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20"
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
@@ -411,7 +411,7 @@ const FinTech = () => {
 
             <div className="flex flex-wrap justify-center gap-4">
               <motion.button
-                className="px-10 py-5 rounded-2xl bg-secondary text-white font-bold text-lg flex items-center gap-3"
+                className="px-10 py-5 bg-secondary text-white font-bold text-lg flex items-center gap-3"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -419,7 +419,7 @@ const FinTech = () => {
                 Watch Live Demo
               </motion.button>
               <motion.button
-                className="px-10 py-5 rounded-2xl bg-white/10 backdrop-blur-sm text-foreground font-bold text-lg border border-border flex items-center gap-3"
+                className="px-10 py-5 bg-white/10 backdrop-blur-sm text-foreground font-bold text-lg border border-border flex items-center gap-3"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

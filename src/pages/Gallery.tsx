@@ -35,8 +35,28 @@ const Gallery = () => {
     ? galleryItems 
     : galleryItems.filter(item => item.category === activeFilter);
 
+  // Bento Grid pattern - defines varying sizes for cards
+  const getBentoClass = (index: number) => {
+    const patterns = [
+      "md:col-span-2 md:row-span-2", // Large //1
+      "md:col-span-1 md:row-span-1", // Small //2
+      "md:col-span-1 md:row-span-2", // Tall  //3
+      "md:col-span-2 md:row-span-1", // Wide  //4
+      "md:col-span-1 md:row-span-2", // Small //5
+      "md:col-span-2 md:row-span-2", // Tall  //6
+      "md:col-span-2 md:row-span-1", // Wide  //7
+      "md:col-span-1 md:row-span-1", // Small  //8
+      "md:col-span-2 md:row-span-2", // Large  //9
+      "md:col-span-1 md:row-span-1", // Small //10
+      "md:col-span-1 md:row-span-1", // Small  //11
+      "md:col-span-2 md:row-span-1", // Wide   //12
+    ];
+    return patterns[index % patterns.length];
+  };
+
   return (
-    <>      <div className="min-h-screen bg-background text-foreground">
+    <>
+      <div className="min-h-screen bg-background text-foreground">
         <InfinityCursor />
         <Header />
 
@@ -88,7 +108,7 @@ const Gallery = () => {
                 <motion.button
                   key={filter.id}
                   onClick={() => setActiveFilter(filter.id)}
-                  className={`group px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 ${
+                  className={`group px-8 py-4 font-bold text-lg transition-all duration-300 ${
                     activeFilter === filter.id
                       ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-lg shadow-primary/50'
                       : 'bg-white/5 border border-white/10 text-foreground hover:bg-white/10 hover:border-primary/30'
@@ -109,22 +129,22 @@ const Gallery = () => {
           </div>
         </section>
 
-        {/* Gallery Grid */}
+        {/* Bento Grid Gallery */}
         <section className="relative py-20">
           <div className="container px-6 lg:px-8">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeFilter}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto"
+                className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-7xl mx-auto auto-rows-[280px]"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-              >
+              >   
                 {filteredItems.map((item, i) => (
                   <motion.div
                     key={item.id}
-                    className="group relative aspect-square rounded-3xl overflow-hidden cursor-pointer"
+                    className={`group relative overflow-hidden cursor-pointer ${getBentoClass(i)}`}
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: i * 0.05 }}
@@ -138,7 +158,7 @@ const Gallery = () => {
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
 
-                    {/* Gradient Overlay */}
+                    {/* Gradient Overlay / background change on toggle */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
 
                     {/* Video Icon */}
@@ -232,4 +252,3 @@ const Gallery = () => {
 };
 
 export default Gallery;
-
