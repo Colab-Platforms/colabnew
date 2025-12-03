@@ -27,7 +27,7 @@ import BSECompliance from "./pages/BSECompliance";
 import Testing from "./pages/Testing";
 import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "./contexts/ThemeContext";
-
+import Test from "./pages/test";
 
 const queryClient = new QueryClient();
 
@@ -49,6 +49,7 @@ const App = () => (
             <Route path="/fintech" element={<FinTech />} />
             <Route path="/esports" element={<Esports />} />
             <Route path="/drones" element={<Drones />} />
+            <Route path="/test" element={<Test />} />
 
             {/* Sports Services Pages */}
             <Route path="/sports-marketplace" element={<SportsMarketplace />} />
