@@ -26,7 +26,7 @@ const posts = [
   {
     title: "Colab Platforms to Launch Revolutionary ‘AI-Powered Search Engine’, A Smarter, Superior Alternative to Traditional Search.",
     category: "Announcement",
-    image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Gemini_Generated_Image_c58ilic58ilic58i_1.png?v=1764069440",
+    image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/AI_Powered_Web3_and_Blockchain_Development_Company_-_Ment_Tech_Labs.jpg?v=1764742986",
     excerpt: "Introducing a next-gen AI search engine that outperforms traditional search with smarter results.",
     date: "06th November 2025",
     author: "Colab Team",
@@ -74,7 +74,15 @@ const BlogSection = () => {
       <div className="relative z-10 w-full px-4 md:px-[50px]">
         {/* Announcements Heading */}
         <div className="text-center mb-10 md:mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white tracking-wide transition-colors duration-300">Announcements</h2>
+          <motion.h2 
+            className="text-5xl md:text-6xl lg:text-7xl font-bold text-black dark:text-white tracking-wide transition-colors duration-300"
+            initial={{ opacity: 0, scale: 0.5 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
+          >
+            Announcements
+          </motion.h2>
         </div>
 
         {/* Split Layout */}

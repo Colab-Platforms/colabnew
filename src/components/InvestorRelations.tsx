@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FileText, TrendingUp, TrendingDown, ChevronRight, Download, ChevronDown } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { TrendingUp, TrendingDown, ArrowRight, FileText, Download } from 'lucide-react';
 import { fetchBSEStockData, formatCurrency, formatIndianNumber, StockData } from '../services/bseService';
 import { fetchBSECompliance, formatDisplayDate, ComplianceDocument } from '../services/bseComplianceService';
 
@@ -8,24 +8,15 @@ const InvestorRelations = () => {
   const [stockData, setStockData] = useState<StockData | null>(null);
   const [complianceDocs, setComplianceDocs] = useState<ComplianceDocument[]>([]);
   const [loading, setLoading] = useState(true);
-  const [showMoreDetails, setShowMoreDetails] = useState(false);
 
   useEffect(() => {
     const loadData = async () => {
       try {
         setLoading(true);
-
-        // Fetch stock data from TwelveData API
-        console.log('🔄 Fetching stock data from TwelveData API...');
         const stock = await fetchBSEStockData();
-        console.log('📊 Stock data received:', stock);
         setStockData(stock);
-
-        // Fetch compliance documents
-        console.log('🔄 Fetching compliance documents...');
         const docs = await fetchBSECompliance();
-        console.log('📄 Compliance docs loaded:', docs.length);
-        setComplianceDocs(docs.slice(0, 5));
+        setComplianceDocs(docs.slice(0, 3));
       } catch (error) {
         console.error('❌ Error loading investor data:', error);
       } finally {
@@ -34,257 +25,220 @@ const InvestorRelations = () => {
     };
 
     loadData();
-
-    // Refresh every 5 minutes (to match cache duration)
     const interval = setInterval(loadData, 300000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="relative py-16 md:py-32 overflow-hidden bg-background">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: 'radial-gradient(circle, rgba(168, 85, 247, 0.5) 1.5px, transparent 1.5px)',
-            backgroundSize: '50px 50px'
-          }}
+    <section className="relative py-16 md:py-32 overflow-hidden bg-white dark:bg-[#121212]">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0">
+        <img 
+          src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1920&q=80" 
+          alt="Financial Background"
+          className="w-full h-full object-cover opacity-5"
         />
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-white/95 to-white dark:from-[#121212] dark:via-[#121212]/95 dark:to-[#121212]" />
       </div>
 
-      <div className="relative z-10 w-full">
-        {/* Section header */}
-        <div className="container mx-auto px-4 md:px-6 text-center max-w-4xl mb-12 md:mb-20">
-          <p className="text-primary font-medium text-lg md:text-lg mb-3 md:mb-4 tracking-wide uppercase">
-            For Investors
-          </p>
-          <h2 className="font-semibold text-5xl md:text-7xl lg:text-8xl mb-4 md:mb-6">
-            <span className="block text-foreground">Conglomerate</span>
-            <span className="block mt-1 md:mt-2 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
+      <div className="relative z-10 w-full px-4 md:px-[50px]">
+        {/* Section Header */}
+        <div className="text-center max-w-4xl mx-auto mb-16">
+        
+          <h2 className="font-bold text-5xl md:text-6xl lg:text-7xl mb-6">
+            <motion.span 
+              className="block text-black dark:text-black"
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              Conglomerate
+            </motion.span>
+            <motion.span 
+              className="block mt-2 text-black dark:text-black"
+              initial={{ opacity: 0, x: 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            >
               Intelligence
-            </span>
+            </motion.span>
           </h2>
-          <p className="text-xl md:text-xl text-muted-foreground px-4">
+          <motion.p 
+            className="text-xl text-gray-600 dark:text-gray-300"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             Transparent Reporting, Consistent Growth, And Long-Term Value Creation.
-          </p>
+          </motion.p>
         </div>
 
-        {/* Two Column Layout */}
-        <div className="container mx-auto px-4 md:px-[30px]">
-          <div className="flex flex-col lg:flex-row gap-8 md:gap-6 items-stretch">
-
-            {/* Left: BSE Compliance Documents */}
+        {/* Main Content Grid */}
+        <div className="grid lg:grid-cols-2 gap-8 mb-16">
+          
+          {/* Stock Performance Card with Image */}
+          {stockData && stockData.currentPrice > 0 && (
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="flex-1 flex flex-col space-y-6 gap-2"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.8 }}
+              className="relative overflow-hidden group"
             >
-              {/* Header */}
-              <div className="flex items-center justify-between mb-2 md:mb-6">
-                <h3 className="text-3xl md:text-3xl font-bold text-foreground">BSE Compliance</h3>
-                <a
-                  href="/investor-relations"
-                  className="text-primary hover:text-secondary transition-colors text-base font-semibold flex items-center gap-1"
-                >
-                  View All
-                  <ChevronRight className="w-4 h-4" />
+              {/* Background Image */}
+              <div className="absolute inset-0 dark:hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=800&q=80"
+                  alt="Stock Market"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/50" />
+              </div>
+
+              {/* White Background for Dark Mode */}
+              <div className="absolute inset-0 hidden dark:block bg-white" />
+
+              {/* Content */}
+              <div className="relative z-10 p-8 md:p-12">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h3 className="text-2xl font-bold text-white dark:text-black mb-1">{stockData.symbol}</h3>
+                    <p className="text-sm text-white/60 dark:text-gray-600">Colab Platforms Ltd</p>
+                  </div>
+                  <div className={`px-3 py-1 text-xs font-bold ${stockData.status === 'open' ? 'bg-green-500/20 text-green-400 dark:bg-green-100 dark:text-green-700' : 'bg-gray-500/20 text-gray-400 dark:bg-gray-100 dark:text-gray-700'}`}>
+                    {stockData.status === 'open' ? 'LIVE' : 'CLOSED'}
+                  </div>
+                </div>
+
+                <div className="mb-8">
+                  <div className="text-5xl font-black text-white dark:text-black mb-2">
+                    {formatCurrency(stockData.currentPrice)}
+                  </div>
+                  <div className={`flex items-center gap-2 text-lg font-bold ${stockData.change >= 0 ? 'text-green-400 dark:text-green-600' : 'text-red-400 dark:text-red-600'}`}>
+                    {stockData.change >= 0 ? <TrendingUp className="w-5 h-5" /> : <TrendingDown className="w-5 h-5" />}
+                    <span>
+                      {stockData.change >= 0 ? '+' : ''}{stockData.change.toFixed(2)} ({stockData.changePercent >= 0 ? '+' : ''}{stockData.changePercent.toFixed(2)}%)
+                    </span>
+                  </div>
+                </div>
+
+                {/* Stock Details Grid */}
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  <div className="bg-white/5 dark:bg-gray-50 backdrop-blur-sm p-4 border border-white/10 dark:border-gray-200">
+                    <p className="text-xs text-white/60 dark:text-gray-600 mb-1">Open</p>
+                    <p className="text-lg font-bold text-white dark:text-black">{stockData.open ? formatCurrency(stockData.open) : '-'}</p>
+                  </div>
+                  <div className="bg-white/5 dark:bg-gray-50 backdrop-blur-sm p-4 border border-white/10 dark:border-gray-200">
+                    <p className="text-xs text-white/60 dark:text-gray-600 mb-1">High</p>
+                    <p className="text-lg font-bold text-white dark:text-black">{stockData.high ? formatCurrency(stockData.high) : '-'}</p>
+                  </div>
+                  <div className="bg-white/5 dark:bg-gray-50 backdrop-blur-sm p-4 border border-white/10 dark:border-gray-200">
+                    <p className="text-xs text-white/60 dark:text-gray-600 mb-1">Low</p>
+                    <p className="text-lg font-bold text-white dark:text-black">{stockData.low ? formatCurrency(stockData.low) : '-'}</p>
+                  </div>
+                  <div className="bg-white/5 dark:bg-gray-50 backdrop-blur-sm p-4 border border-white/10 dark:border-gray-200">
+                    <p className="text-xs text-white/60 dark:text-gray-600 mb-1">Volume</p>
+                    <p className="text-lg font-bold text-white dark:text-black">{formatIndianNumber(stockData.volume)}</p>
+                  </div>
+                </div>
+
+                <p className="text-xs text-white/40 dark:text-gray-500 text-center">
+                  Last updated: {new Date(stockData.lastUpdated).toLocaleTimeString('en-IN')}
+                </p>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Compliance Documents with Image */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative overflow-hidden group"
+          >
+            {/* Background Image */}
+            <div className="absolute inset-0 dark:hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80"
+                alt="Documents"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-secondary/75 to-primary/80" />
+            </div>
+
+            {/* White Background for Dark Mode */}
+            <div className="absolute inset-0 hidden dark:block bg-white" />
+
+            {/* Content */}
+            <div className="relative z-10 p-8 md:p-12 h-full flex flex-col">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-bold text-white dark:text-black">BSE Compliance</h3>
+                <a href="/investor-relations" className="text-white dark:text-black hover:text-white/80 dark:hover:text-black/80 transition-colors">
+                  <ArrowRight className="w-6 h-6" />
                 </a>
               </div>
 
-              {/* Documents List */}
               {loading ? (
-                <div className="flex items-center justify-center py-12">
-                  <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+                <div className="flex items-center justify-center flex-1">
+                  <div className="w-8 h-8 border-4 border-white dark:border-black border-t-transparent rounded-full animate-spin" />
                 </div>
               ) : complianceDocs.length > 0 ? (
-                <div className="space-y-4">
-                  {complianceDocs.slice(0, 1).map((doc) => (
-                    <motion.div
+                <div className="space-y-4 flex-1">
+                  {complianceDocs.map((doc) => (
+                    <div
                       key={doc.id}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      className="bg-black hover:bg-black/80 transition-all duration-300 p-6 md:p-10 border border-white/10 hover:border-primary/30 group w-full lg:max-w-[90%] min-h-[50px] flex flex-col justify-center"
+                      className="bg-white/10 dark:bg-gray-50 backdrop-blur-sm p-4 border border-white/20 dark:border-gray-200 hover:bg-white/20 dark:hover:bg-gray-100 transition-all duration-300 group/doc"
                     >
-                      <div className="flex flex-col md:flex-row items-start gap-4 md:gap-6">
-                        <div className="w-12 h-12 md:w-14 md:h-14 bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <FileText className="w-6 h-6 md:w-7 md:h-7 text-primary" />
-                        </div>
-                        <div className="flex-1 min-w-0 w-full">
-                          <div className="flex flex-wrap items-center gap-2 mb-2 md:mb-3">
-                            <span className="px-2 py-1 md:px-3 bg-primary/20 text-primary text-xs md:text-xs font-semibold">
+                      <div className="flex items-start gap-3">
+                        <FileText className="w-5 h-5 text-white dark:text-black flex-shrink-0 mt-1" />
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-2">
+                            <span className="px-2 py-0.5 bg-white/20 dark:bg-gray-200 text-white dark:text-black text-xs font-semibold">
                               {doc.category}
                             </span>
-                            <span className="text-sm md:text-sm text-white/60">
+                            <span className="text-xs text-white/60 dark:text-gray-600">
                               {formatDisplayDate(doc.date)}
                             </span>
                           </div>
-                          <h4 className="text-lg md:text-lg font-semibold text-white group-hover:text-primary transition-colors line-clamp-3 mb-2 md:mb-3">
+                          <h4 className="text-sm font-semibold text-white dark:text-black line-clamp-2 group-hover/doc:text-white/90 dark:group-hover/doc:text-black/90">
                             {doc.subject}
                           </h4>
-                          {doc.description && (
-                            <p className="text-base text-white/70 line-clamp-2">
-                              {doc.description}
-                            </p>
-                          )}
                         </div>
                         {doc.pdfUrl && (
                           <a
                             href={doc.pdfUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-2 md:p-3 bg-primary/10 hover:bg-primary/20 transition-colors mt-2 md:mt-0 self-end md:self-start"
+                            className="p-2 bg-white/10 dark:bg-gray-200 hover:bg-white/20 dark:hover:bg-gray-300 transition-colors"
                           >
-                            <Download className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+                            <Download className="w-4 h-4 text-white dark:text-black" />
                           </a>
                         )}
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-12">
-                  <FileText className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
-                  <p className="text-muted-foreground">No compliance documents available</p>
+                <div className="flex items-center justify-center flex-1">
+                  <p className="text-white/60 dark:text-gray-600">No documents available</p>
                 </div>
               )}
 
-              {/* View All Button */}
-              <div className="mt-4 md:mt-8 w-full lg:max-w-[90%]">
-                <a
-                  href="/investor-relations"
-                  className="block w-full py-3 md:py-4 bg-primary hover:bg-secondary text-white font-bold text-center transition-all duration-300 hover:scale-105 text-base md:text-base"
-                >
-                  View All Compliance Documents
-                </a>
-              </div>
-            </motion.div>
-
-            {/* Right: Stock Data & Quick Links */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="w-full lg:w-[450px] flex flex-col space-y-6 flex-shrink-0"
-            >
-              {/* Stock Price Card */}
-              {stockData && stockData.currentPrice > 0 && (
-                <div className="bg-black p-6 md:p-10 border border-white/10 mt-8 lg:mt-16 min-h-[90px] flex flex-col justify-center">
-                  <div className="flex items-center justify-between mb-4">
-                    <div>
-                      <h3 className="text-xl md:text-xl font-bold text-white">{stockData.symbol}</h3>
-                      <p className="text-xs md:text-xs text-white/60">Colab Platforms Ltd</p>
-                    </div>
-                    <div className={`px-2 py-1 text-xs md:text-xs font-semibold ${stockData.status === 'open'
-                      ? 'bg-green-500/20 text-green-400'
-                      : 'bg-gray-500/20 text-gray-400'
-                      }`}>
-                      {stockData.status === 'open' ? 'LIVE' : 'CLOSED'}
-                    </div>
-                  </div>
-
-                  <div className="mb-4">
-                    <div className="text-3xl md:text-3xl font-black text-white">
-                      {formatCurrency(stockData.currentPrice)}
-                    </div>
-                    <div className={`flex items-center gap-1 text-sm md:text-sm font-semibold ${stockData.change >= 0 ? 'text-green-400' : 'text-red-400'
-                      }`}>
-                      {stockData.change >= 0 ? <TrendingUp className="w-3 h-3 md:w-4 md:h-4" /> : <TrendingDown className="w-3 h-3 md:w-4 md:h-4" />}
-                      <span>
-                        {stockData.change >= 0 ? '+' : ''}{stockData.change.toFixed(2)}
-                        ({stockData.changePercent >= 0 ? '+' : ''}{stockData.changePercent.toFixed(2)}%)
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* All Stock Details - Collapsible */}
-                  <div>
-                    <button
-                      onClick={() => setShowMoreDetails(!showMoreDetails)}
-                      className="w-full flex items-center justify-between py-2 md:py-3 border-b border-white/10 hover:bg-white/5 transition-colors px-2"
-                    >
-                      <span className="text-sm md:text-sm text-white">Stock Details</span>
-                      <ChevronDown className={`w-4 h-4 md:w-5 md:h-5 text-white transition-transform ${showMoreDetails ? 'rotate-180' : ''}`} />
-                    </button>
-
-                    {/* Expandable Stock Details */}
-                    <AnimatePresence>
-                      {showMoreDetails && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="overflow-hidden"
-                        >
-                          <div className="space-y-2 md:space-y-3 pt-2 md:pt-3">
-                            {/* Previous Close */}
-                            <div className="flex items-center justify-between py-2 md:py-3 border-b border-white/10">
-                              <span className="text-sm md:text-sm text-white/70">Previous Close</span>
-                              <span className="text-lg md:text-lg font-bold text-white">
-                                {stockData.previousClose ? formatCurrency(stockData.previousClose) : '-'}
-                              </span>
-                            </div>
-
-                            {/* Open */}
-                            <div className="flex items-center justify-between py-2 md:py-3 border-b border-white/10">
-                              <span className="text-sm md:text-sm text-white/70">Open</span>
-                              <span className="text-lg md:text-lg font-bold text-white">
-                                {stockData.open ? formatCurrency(stockData.open) : '-'}
-                              </span>
-                            </div>
-
-                            {/* High */}
-                            <div className="flex items-center justify-between py-2 md:py-3 border-b border-white/10">
-                              <span className="text-sm md:text-sm text-white/70">High</span>
-                              <span className="text-lg md:text-lg font-bold text-white">
-                                {stockData.high ? formatCurrency(stockData.high) : '-'}
-                              </span>
-                            </div>
-
-                            {/* Low */}
-                            <div className="flex items-center justify-between py-2 md:py-3 border-b border-white/10">
-                              <span className="text-sm md:text-sm text-white/70">Low</span>
-                              <span className="text-lg md:text-lg font-bold text-white">
-                                {stockData.low ? formatCurrency(stockData.low) : '-'}
-                              </span>
-                            </div>
-
-                            {/* Volume */}
-                            <div className="flex items-center justify-between py-2 md:py-3">
-                              <span className="text-sm md:text-sm text-white/70">Volume</span>
-                              <span className="text-lg md:text-lg font-bold text-white">
-                                {formatIndianNumber(stockData.volume)}
-                              </span>
-                            </div>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-
-                  <div className="mt-4 pt-4 border-t border-white/10">
-                    {stockData.currentPrice === 0 || stockData.volume === 0 ? (
-                      <p className="text-[10px] md:text-xs text-white/50 text-center">
-                        ⚠️ Using fallback data - API unavailable
-                      </p>
-                    ) : null}
-                    <p className="text-[10px] md:text-xs text-white/50 text-center mt-1">
-                      Last updated: {new Date(stockData.lastUpdated).toLocaleTimeString('en-IN')}
-                    </p>
-                  </div>
-                </div>
-              )}
-
-
-
-
-            </motion.div>
-
-          </div>
+              <a
+                href="/investor-relations"
+                className="mt-6 block w-full py-3 bg-white text-primary dark:bg-gradient-to-r dark:from-orange-500 dark:to-red-600 dark:text-white font-bold text-center hover:bg-white/90 dark:hover:from-orange-600 dark:hover:to-red-700 transition-all duration-300"
+              >
+                View All Documents
+              </a>
+            </div>
+          </motion.div>
         </div>
+
+
       </div>
     </section>
   );

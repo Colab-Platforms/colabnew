@@ -21,10 +21,10 @@ const verticals = [
     },
     {
         id: "tech-sports",
-        title: "Sports",
-        shortTitle: "Sports",
+        title: "Sports Tech",
+        shortTitle: "Sports Tech",
         description: "Creating Value Through Sports IP Ownership, Infrastructure Modernization, and Athlete Talent Development.",
-        image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/envato-labs-image-edit_16.png?v=1764156131",
+        image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Cricket_2_82458840-b86a-4a65-b655-4ae3a99faafa.jpg?v=1764593070",
         link: "#"
     },
     {
@@ -48,7 +48,7 @@ const verticals = [
         title: "Semiconductor",
         shortTitle: "Semiconductor",
         description: "Powering the digital age with high-performance semiconductors. We design and manufacture the chips that drive modern electronics, from smartphones to supercomputers.",
-        image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/chip.png?v=1764155973",
+        image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/AI_chip_2ea67124-1a98-48ff-84af-84a1ec062c97.jpg?v=1764593148",
         link: "#"
     },
 ];

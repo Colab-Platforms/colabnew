@@ -18,7 +18,7 @@ const Header = () => {
 
   const businessVerticals = [
     { name: 'Sports', icon: Trophy, color: 'primary', description: 'Elite training & management', link: '/sports' },
-    { name: 'AI Intelligence', icon: Brain, color: 'secondary', description: 'Machine learning solutions', link: '/ai-intelligence' },
+    { name: 'Artificial Intelligence', icon: Brain, color: 'secondary', description: 'Machine learning solutions', link: '/ai-intelligence' },
     { name: 'Semiconductors', icon: Cpu, color: 'secondary', description: 'Chip technology', link: '/semiconductor' },
     { name: 'FinTech', icon: Smartphone, color: 'secondary', description: 'Digital finance', link: '/fintech' },
     { name: 'Esports', icon: Gamepad2, color: 'primary', description: 'Professional gaming', link: '/esports' },
