@@ -44,7 +44,7 @@ const Footer = () => {
               <div className="mb-6">
                 <h3 className="font-black text-3xl md:text-4xl mb-3 uppercase tracking-tight">
                   <span className="text-white">Colab</span>
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Platform</span>
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Platforms</span>
                 </h3>
               </div>
               <p className="text-gray-400 text-lg leading-relaxed">
@@ -92,13 +92,13 @@ const Footer = () => {
 
             {/* Links Columns */}
             <div className="lg:col-span-9 grid grid-cols-1 md:grid-cols-3 gap-8">
-              <Column title="Sports Services">
-                <LinkItem href="/sports-marketplace">Sports Marketplace</LinkItem>
-                <LinkItem href="/sports-content">Sports Content</LinkItem>
-                <LinkItem href="/sports-ip">Sports IP</LinkItem>
-                <LinkItem href="/athlete-management">Athlete Management</LinkItem>
-                <LinkItem href="/sports-infrastructure">Sports Infrastructure</LinkItem>
-                <LinkItem href="/sports-analytics">Sports Analytics</LinkItem>
+              <Column title="Business Verticals">
+                <LinkItem href="/ai-intelligence">Artificial Intelligence</LinkItem>
+                <LinkItem href="/fintech">FinTech</LinkItem>
+                <LinkItem href="/sports">Sports</LinkItem>
+                <LinkItem href="/esports">Esports</LinkItem>
+                <LinkItem href="/drones">Drones</LinkItem>
+                <LinkItem href="/semiconductor">Semiconductor</LinkItem>
               </Column>
 
               <Column title="Quick Links">
