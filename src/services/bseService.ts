@@ -1,6 +1,3 @@
-// BSE Stock Data Service
-// Using TwelveData API (Free Plan - 800 calls/day)
-// API Key: 4049c8eebfd744959155f76559bb50a4
 
 export interface StockData {
   symbol: string;
@@ -8,7 +5,6 @@ export interface StockData {
   currentPrice: number;
   change: number;
   changePercent: number;
-  volume: number;
   lastUpdated: string;
   status: 'open' | 'closed';
   high?: number;
@@ -93,7 +89,6 @@ const getFallbackStockData = async (): Promise<StockData> => {
     currentPrice: 200.60,
     change: -2.00,
     changePercent: -0.99,
-    volume: 52000,
     lastUpdated: new Date().toISOString(),
     status: 'closed',
     high: 200.60,
