@@ -51,7 +51,7 @@ export default function Cards() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-start p-6 bg-white dark:bg-[#121212]">
+    <div className="md:min-h-screen flex flex-col items-center justify-start p-6 bg-white dark:bg-[#121212]">
       <motion.h1
         className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-center text-black dark:text-white"
         initial={{ opacity: 0, y: -50 }}
