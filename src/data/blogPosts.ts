@@ -17,7 +17,7 @@ export const blogPosts: BlogPost[] = [
     author: "Sports Desk",
     date: "05 September, 2025",
     slug: "asia-cup-2025-indian-womens-hockey-without-savita-deepika",
-    category: "Sports",
+    category: "Hockey",
     excerpt: "As the Indian women's hockey team embarks on its Asia Cup 2025 campaign in Hangzhou, the squad faces a daunting challenge competing without two of its most crucial players.",
     tags: ["Hockey", "Asia Cup", "Women's Sports"],
     readTime: "5 min read",
