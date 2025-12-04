@@ -45,10 +45,10 @@ const AboutFuture = () => {
   };
 
   const images = [
-    { src: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80", alt: "Business analytics" },
-    { src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80", alt: "Professional woman" },
-    { src: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=80", alt: "Man working on laptop" },
-    { src: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80", alt: "Team meeting" }
+    { src: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/WhatsApp_Image_2025-12-04_at_11.46.26_AM.jpg?v=1764829215", alt: "Business analytics" },
+    { src: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/WhatsApp_Image_2025-12-04_at_11.44.20_AM.jpg?v=1764829192", alt: "Professional woman" },
+    { src: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/WhatsApp_Image_2025-12-04_at_11.44.20_AM_2.jpg?v=1764829192", alt: "Man working on laptop" },
+    { src: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/WhatsApp_Image_2025-12-04_at_11.44.20_AM_1.jpg?v=1764829192", alt: "Team meeting" }
   ];
 
   return (
