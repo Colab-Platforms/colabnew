@@ -21,8 +21,8 @@ const verticals = [
     },
     {
         id: "tech-sports",
-        title: "Sports Tech",
-        shortTitle: "Sports Tech",
+        title: "TechSports",
+        shortTitle: "TechSports",
         description: "Creating Value Through Sports IP Ownership, Infrastructure Modernization, and Athlete Talent Development.",
         image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Cricket_2_82458840-b86a-4a65-b655-4ae3a99faafa.jpg?v=1764593070",
         link: "#"
