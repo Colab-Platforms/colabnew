@@ -25,7 +25,7 @@ const Hero = () => {
       }}
     >
       <video
-        src="https://cdn.shopify.com/videos/c/o/v/3121f2913188422ab0c86639b1e5b6c8.mp4"
+        src="https://cdn.shopify.com/videos/c/o/v/e9d5b59e5af24b3681475a9ae23a0172.mp4"
         autoPlay
         loop
         muted
