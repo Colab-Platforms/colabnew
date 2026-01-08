@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 // Import the investor data
 import investorDataLocal from '../data/investorData.json';
-import { fetchInvestorDocuments, InvestorCategory } from '../lib/investorFirebase';
+import { subscribeToInvestorDocuments, InvestorCategory } from '@/lib/investorFirebase';
 
 interface Document {
   id?: number | string;
@@ -39,13 +39,13 @@ const InvestorRelations = () => {
     }, 100);
   };
 
-  // Fetch investor documents from Firebase
+  // Subscribe to real-time investor documents from Firebase
   useEffect(() => {
-    const loadInvestorData = async () => {
-      try {
-        setLoading(true);
-        const firebaseData = await fetchInvestorDocuments();
+    setLoading(true);
 
+    // Subscribe to real-time updates
+    const unsubscribe = subscribeToInvestorDocuments((firebaseData) => {
+      try {
         // Merge Firebase data with local data
         let allData;
         if (firebaseData.length > 0) {
@@ -57,15 +57,18 @@ const InvestorRelations = () => {
         }
 
         setCategories(allData);
+        setLoading(false);
       } catch (error) {
-        console.error('Error loading investor data:', error);
+        console.error('Error processing investor data:', error);
         setCategories(investorDataLocal);
-      } finally {
         setLoading(false);
       }
-    };
+    });
 
-    loadInvestorData();
+    // Cleanup: unsubscribe when component unmounts
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   const filteredDocuments = categories[activeTab]?.text.filter((doc: Document) =>

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { BookOpen, Calendar, Clock, User, ArrowRight, TrendingUp, Search, Filter } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchBlogPosts, BlogPost } from "@/lib/firebase";
+import { subscribeToBlogPosts, BlogPost } from "@/lib/firebase";
 
 const Blog = () => {
   const navigate = useNavigate();
@@ -25,12 +25,13 @@ const Blog = () => {
     tags: ["AI", "Sports Tech", "Analytics"]
   };
 
-  // Fetch blog posts from Firebase on component mount
+  // Subscribe to real-time blog post updates
   useEffect(() => {
-    const loadBlogPosts = async () => {
-      try {
-        setLoading(true);
-        const firebasePosts = await fetchBlogPosts();
+    setLoading(true);
+    
+    // Try to subscribe to real-time updates first
+    const unsubscribe = subscribeToBlogPosts((firebasePosts) => {
+      setLoading(false);
 
         // Local blog posts array (always available as fallback)
         const localPosts: BlogPost[] = [
@@ -2817,17 +2818,13 @@ Bumrah then made Konstas pay for his actions. With his signature style, Bumrah s
         // Firebase posts first (newest from CMS), then local posts
         const allPosts = [...firebasePosts, ...localPosts];
         setBlogPosts(allPosts);
-
         setError(null);
-      } catch (err) {
-        console.error('Error loading blog posts:', err);
-        setError('Failed to load blog posts');
-      } finally {
-        setLoading(false);
-      }
-    };
+      });
 
-    loadBlogPosts();
+    // Cleanup: unsubscribe when component unmounts
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   // Share blog posts globally so BlogDetail can access them

@@ -1,6 +1,6 @@
 // Firebase integration for Investor Relations
 import { db } from './firebase';
-import { collection, getDocs, query, orderBy } from 'firebase/firestore';
+import { collection, getDocs, query, orderBy, onSnapshot } from 'firebase/firestore';
 
 export interface InvestorDocument {
   id?: string;
@@ -81,5 +81,92 @@ export async function fetchInvestorDocuments(): Promise<InvestorCategory[]> {
   } catch (error) {
     console.error('Error fetching investor documents:', error);
     return [];
+  }
+}
+
+// Subscribe to real-time investor document updates
+export function subscribeToInvestorDocuments(callback: (categories: InvestorCategory[]) => void): () => void {
+  if (!db) {
+    console.log('Firebase not configured, cannot subscribe to real-time updates');
+    return () => {};
+  }
+
+  const categories = [
+    'Corporate Governance',
+    'Shareholding Pattern',
+    'Statement of Investor Complaints',
+    'Reconciliation of Share Capital Audit',
+    'Certificate From RTA',
+    'Compliance Certificate',
+    'Annual Report',
+    'Financial Results',
+    'Policies',
+    'Newspaper Intimation',
+    'Trading Window Closure',
+    'Voting Results',
+    'Press-Release',
+    'Appointment and Resignation Letter',
+    'BM Intimation',
+    'BM Outcome',
+    'Corporate Announcements',
+    'Notice to shareholders',
+    'Annual Return',
+    'Book Closure',
+    'Moa and Aoa',
+    'Proceeding to General Meeting',
+    'Secretarial Compliance Report',
+    'Integrated Governance',
+    'Dividend',
+    'Larger Corporate'
+  ];
+
+  const unsubscribers: Array<() => void> = [];
+
+  try {
+    let categoryId = 1;
+    const result: InvestorCategory[] = [];
+
+    categories.forEach((categoryName) => {
+      const docsRef = collection(db, 'investorDocuments', categoryName, 'documents');
+      const q = query(docsRef, orderBy('createdAt', 'desc'));
+
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        const documents: InvestorDocument[] = [];
+        querySnapshot.forEach((doc) => {
+          documents.push({
+            id: doc.id,
+            ...doc.data() as Omit<InvestorDocument, 'id'>
+          });
+        });
+
+        // Update or add category
+        const existingIndex = result.findIndex(cat => cat.header === categoryName);
+        if (documents.length > 0) {
+          if (existingIndex >= 0) {
+            result[existingIndex].text = documents;
+          } else {
+            result.push({
+              id: categoryId++,
+              header: categoryName,
+              text: documents
+            });
+          }
+        } else if (existingIndex >= 0) {
+          result.splice(existingIndex, 1);
+        }
+
+        callback(result);
+      });
+
+      unsubscribers.push(unsubscribe);
+    });
+
+    // Return function to unsubscribe from all listeners
+    return () => {
+      unsubscribers.forEach(unsub => unsub());
+    };
+  } catch (error) {
+    console.error('Error subscribing to investor documents:', error);
+    return () => {};
   }
 }

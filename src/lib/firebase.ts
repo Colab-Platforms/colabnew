@@ -1,15 +1,15 @@
 // Firebase configuration and initialization
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs, query, orderBy } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, query, orderBy, onSnapshot } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDKfB9TSMBEoZwI21kiZocJhiH8k3OCP7M",
-  authDomain: "colabnew-48621.firebaseapp.com",
-  projectId: "colabnew-48621",
-  storageBucket: "colabnew-48621.firebasestorage.app",
-  messagingSenderId: "3293920304",
-  appId: "1:3293920304:web:f7d10f6830ea0db22401f5",
-  measurementId: "G-9XV6RMRD66"
+  apiKey: "AIzaSyDHyQvjjHK5L7M_eeRzCIl8KnSFWBZUyyE",
+  authDomain: "colabnew-8d474.firebaseapp.com",
+  projectId: "colabnew-8d474",
+  storageBucket: "colabnew-8d474.firebasestorage.app",
+  messagingSenderId: "1061842493012",
+  appId: "1:1061842493012:web:551e3fd12d228ae4b6d7c1",
+  measurementId: "G-42MXHKXMMQ"
 };
 
 // Check if Firebase is configured
@@ -41,7 +41,7 @@ export interface BlogPost {
   readTime?: string;
 }
 
-// Fetch all blog posts from Firebase
+// Fetch all blog posts from Firebase (one-time fetch)
 export async function fetchBlogPosts(): Promise<BlogPost[]> {
   // If Firebase is not configured, return empty array (will use local fallback)
   if (!isFirebaseConfigured || !db) {
@@ -63,6 +63,32 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
   } catch (error) {
     console.error('Error fetching blog posts:', error);
     return [];
+  }
+}
+
+// Subscribe to real-time blog post updates
+export function subscribeToBlogPosts(callback: (posts: BlogPost[]) => void): () => void {
+  if (!isFirebaseConfigured || !db) {
+    console.log('Firebase not configured, cannot subscribe to real-time updates');
+    return () => {};
+  }
+
+  try {
+    const blogPostsRef = collection(db, 'blogPosts');
+    const q = query(blogPostsRef, orderBy('createdAt', 'desc'));
+    
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const posts: BlogPost[] = [];
+      querySnapshot.forEach((doc) => {
+        posts.push(doc.data() as BlogPost);
+      });
+      callback(posts);
+    });
+
+    return unsubscribe;
+  } catch (error) {
+    console.error('Error subscribing to blog posts:', error);
+    return () => {};
   }
 }
 
