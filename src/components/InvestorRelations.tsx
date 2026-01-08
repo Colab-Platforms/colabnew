@@ -140,8 +140,8 @@ const InvestorRelations = () => {
                     <p className="text-lg font-bold text-white dark:text-black">{stockData.low ? formatCurrency(stockData.low) : '-'}</p>
                   </div>
                   <div className="bg-white/5 dark:bg-gray-50 backdrop-blur-sm p-4 border border-white/10 dark:border-gray-200">
-                    <p className="text-xs text-white/60 dark:text-gray-600 mb-1">Volume</p>
-                    <p className="text-lg font-bold text-white dark:text-black">{formatIndianNumber(stockData.volume)}</p>
+                    {/* <p className="text-xs text-white/60 dark:text-gray-600 mb-1">Volume</p> */}
+                    {/* <p className="text-lg font-bold text-white dark:text-black">{formatIndianNumber(stockData.volume)}</p> */}
                   </div>
                 </div>
 

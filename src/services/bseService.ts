@@ -8,7 +8,7 @@ export interface StockData {
   currentPrice: number;
   change: number;
   changePercent: number;
-  volume: number;
+  // volume: number;
   lastUpdated: string;
   status: 'open' | 'closed';
   high?: number;
@@ -93,7 +93,7 @@ const getFallbackStockData = async (): Promise<StockData> => {
     currentPrice: 200.60,
     change: -2.00,
     changePercent: -0.99,
-    volume: 52000,
+    // volume: 52000,
     lastUpdated: new Date().toISOString(),
     status: 'closed',
     high: 200.60,

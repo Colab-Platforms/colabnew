@@ -3,13 +3,13 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs, query, orderBy } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDmrjFbHD_h93pastwaDwtVvNyX27EiaIU",
-  authDomain: "colab-blog.firebaseapp.com",
-  projectId: "colab-blog",
-  storageBucket: "colab-blog.firebasestorage.app",
-  messagingSenderId: "943366440260",
-  appId: "1:943366440260:web:6ec4473cf983962897c311",
-  measurementId: "G-2PQ00WE24B"
+  apiKey: "AIzaSyDKfB9TSMBEoZwI21kiZocJhiH8k3OCP7M",
+  authDomain: "colabnew-48621.firebaseapp.com",
+  projectId: "colabnew-48621",
+  storageBucket: "colabnew-48621.firebasestorage.app",
+  messagingSenderId: "3293920304",
+  appId: "1:3293920304:web:f7d10f6830ea0db22401f5",
+  measurementId: "G-9XV6RMRD66"
 };
 
 // Check if Firebase is configured
