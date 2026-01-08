@@ -17,7 +17,7 @@ export const blogPosts: BlogPost[] = [
     author: "Sports Desk",
     date: "05 September, 2025",
     slug: "asia-cup-2025-indian-womens-hockey-without-savita-deepika",
-    category: "Sports",
+    category: "Hockey",
     excerpt: "As the Indian women's hockey team embarks on its Asia Cup 2025 campaign in Hangzhou, the squad faces a daunting challenge competing without two of its most crucial players.",
     tags: ["Hockey", "Asia Cup", "Women's Sports"],
     readTime: "5 min read",
@@ -62,12 +62,12 @@ export const blogPosts: BlogPost[] = [
     image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/00kskc38_shreyas-iyer-afp_625x300_21_August_25.webp?v=1755843388"
   },
   {
-    title: "The Future of Sports Technology in India",
+    title: "Your Smart Digital Assistant",
     author: "Tech Desk",
     date: "15 August, 2025",
     slug: "future-sports-technology-india",
-    category: "Technology",
-    excerpt: "How AI and analytics are revolutionizing athlete performance and training methodologies across Indian sports.",
+    category: "Artificial Intelligence",
+    excerpt: "Our AI chatbot helps users get instant answers, solve problems faster, and enjoy smooth, human-like conversations.",
     tags: ["Technology", "AI", "Sports Analytics"],
     readTime: "5 min read",
     content: `
@@ -79,7 +79,7 @@ export const blogPosts: BlogPost[] = [
     <h2>The Road Ahead</h2>
     <p>As India continues to invest in sports technology infrastructure, we're seeing a new generation of athletes who are tech-savvy and data-driven, ready to compete on the global stage with cutting-edge tools at their disposal.</p>
     `,
-    image: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=1200&q=80"
+    image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/WhatsApp_Image_2025-12-04_at_11.17.07_AM.jpg?v=1764827595"
   },
   {
     title: "Esports Revolution: India's Gaming Renaissance",
@@ -99,7 +99,7 @@ export const blogPosts: BlogPost[] = [
     <h2>Future Prospects</h2>
     <p>With increasing recognition from traditional sports bodies and growing corporate sponsorships, esports in India is poised for a golden era of growth and opportunity.</p>
     `,
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&q=80"
+    image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/WhatsApp_Image_2025-12-04_at_11.26.38_AM.jpg?v=1764827980"
   },
   {
     title: "AI Innovation: Transforming Defense Technology",

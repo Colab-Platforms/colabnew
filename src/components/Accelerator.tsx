@@ -6,7 +6,7 @@ const Accelerator = () => {
             {/* Full Background Image */}
             <div className="absolute inset-0">
                 <img
-                    src="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Romanian_mergers_and_acquisitions_M_A_reached_an_estimated_total_value_of_USD_4_1bn.jpg?v=1764741328"
+                    src="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Solid_Partnership.jpg?v=1764841193"
                     alt="Accelerator Background"
                     className="w-full h-full object-cover"
                 />
