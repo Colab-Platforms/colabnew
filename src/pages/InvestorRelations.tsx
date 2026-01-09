@@ -46,11 +46,35 @@ const InvestorRelations = () => {
     // Subscribe to real-time updates
     const unsubscribe = subscribeToInvestorDocuments((firebaseData) => {
       try {
-        // Merge Firebase data with local data
+        // Merge Firebase data with local data, combining documents within each category
         let allData;
         if (firebaseData.length > 0) {
-          // Firebase data first, then local data
-          allData = [...firebaseData, ...investorDataLocal];
+          // Create a map of Firebase categories for quick lookup
+          const firebaseMap = new Map(firebaseData.map(cat => [cat.header, cat]));
+          
+          // Merge local data with Firebase data
+          allData = investorDataLocal.map(localCat => {
+            const firebaseCat = firebaseMap.get(localCat.header);
+            
+            if (firebaseCat) {
+              // Category exists in both - merge documents
+              // Firebase documents first (newest), then local documents
+              return {
+                ...localCat,
+                text: [...firebaseCat.text, ...localCat.text]
+              };
+            } else {
+              // Category only in local data
+              return localCat;
+            }
+          });
+          
+          // Add any Firebase categories that don't exist in local data
+          firebaseData.forEach(firebaseCat => {
+            if (!investorDataLocal.some(localCat => localCat.header === firebaseCat.header)) {
+              allData.push(firebaseCat);
+            }
+          });
         } else {
           // Use local data if Firebase is empty
           allData = investorDataLocal;

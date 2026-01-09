@@ -37,6 +37,9 @@ submitInvestorBtn.addEventListener('click', async () => {
     return;
   }
 
+  // Normalize category name - remove extra spaces
+  const normalizedCategory = category.replace(/\s+/g, ' ').trim();
+
   const document = {
     head: title,
     link: link,
@@ -62,9 +65,9 @@ submitInvestorBtn.addEventListener('click', async () => {
       cancelInvestorEditBtn.classList.add('hidden');
       submitInvestorBtn.textContent = 'Add Document';
     } else {
-      // Add new document
+      // Add new document - use normalized category name
       await db.collection('investorDocuments')
-        .doc(category)
+        .doc(normalizedCategory)
         .collection('documents')
         .add(document);
       showInvestorMessage('Document added successfully!', 'success');
@@ -130,6 +133,7 @@ async function loadInvestorDocuments() {
     ];
 
     investorDocsList.innerHTML = '';
+    const foundCategories = [];
     
     for (const category of categories) {
       const snapshot = await db.collection('investorDocuments')
@@ -139,6 +143,8 @@ async function loadInvestorDocuments() {
         .get();
 
       if (!snapshot.empty) {
+        foundCategories.push(category);
+        console.log(`Found category: "${category}" with ${snapshot.size} documents`);
         const categoryDiv = document.createElement('div');
         categoryDiv.style.marginBottom = '30px';
         
@@ -157,6 +163,8 @@ async function loadInvestorDocuments() {
         investorDocsList.appendChild(categoryDiv);
       }
     }
+    
+    console.log('Categories with documents:', foundCategories);
 
     if (investorDocsList.innerHTML === '') {
       investorDocsList.innerHTML = '<p>No documents found.</p>';
