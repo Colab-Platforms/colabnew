@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 const Hero = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Scroll animation for V-shape clip-path
   useEffect(() => {
@@ -17,6 +18,17 @@ const Hero = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Detect mobile screen size
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <section 
       className="relative min-h-screen w-full overflow-hidden transition-all duration-300"
@@ -24,6 +36,7 @@ const Hero = () => {
         clipPath: `polygon(0 0, 100% 0, 100% ${Math.min(92 + (scrollProgress * 8), 100)}%, 50% ${Math.max(100 - (scrollProgress * 8), 100)}%, 0 ${Math.min(92 + (scrollProgress * 8), 100)}%)`
       }}
     >
+      {/* Desktop Video */}
       <video
         src="https://cdn.shopify.com/videos/c/o/v/e9d5b59e5af24b3681475a9ae23a0172.mp4"
         autoPlay
@@ -31,7 +44,18 @@ const Hero = () => {
         muted
         playsInline
         preload="auto"
-        className="w-full h-screen object-cover"
+        className="hidden md:block w-full h-screen object-cover"
+      />
+
+      {/* Mobile Video */}
+      <video
+        src="https://cdn.shopify.com/videos/c/o/v/955c3faa369840ca828e3b9540662247.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        className="md:hidden w-full h-screen object-cover"
       />
 
       {/* Scroll Down Indicator */}
