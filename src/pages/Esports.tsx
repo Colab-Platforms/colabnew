@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import InfinityCursor from "@/components/InfinityCursor";
 import { motion } from "framer-motion";
-import { Gamepad2, Trophy, Users, Tv, ArrowRight, Calendar, MapPin, Clock, Star, Target, TrendingUp, Award, Zap, Play, DollarSign } from "lucide-react";
+import { Gamepad2, Trophy, Users, Tv, ArrowRight, Calendar, MapPin, Clock, Star, Target, Award, Play, DollarSign } from "lucide-react";
 
 const Esports = () => {
   return (
@@ -56,34 +56,34 @@ const Esports = () => {
           <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {[
               {
-                game: "VALORANT",
-                title: "Colab Champions League",
-                date: "March 15-20, 2024",
+                game: "BGMI",
+                title: "Colab Makarsankranti Special",
+                date: "January 14 , 2026",
                 location: "Mumbai, India",
-                prize: "₹50 Lakhs",
-                teams: "32 Teams",
+                prize: "₹1000",
+                teams: "20 Teams",
                 image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&q=80",
                 status: "Registration Open"
               },
               {
-                game: "CS:GO",
-                title: "India Masters",
-                date: "April 5-10, 2024",
-                location: "Bangalore, India",
-                prize: "₹30 Lakhs",
-                teams: "16 Teams",
+                game: "BGMI",
+                title: "Colab Champions League",
+                date: "December 23, 2025",
+                location: "Mumbai, India",
+                prize: "₹10000",
+                teams: "160 Teams",
                 image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=600&q=80",
-                status: "Coming Soon"
+                status: "Completed"
               },
               {
                 game: "BGMI",
-                title: "Mobile Legends Cup",
-                date: "May 1-7, 2024",
-                location: "Delhi, India",
-                prize: "₹40 Lakhs",
-                teams: "64 Teams",
+                title: "Colab Winter Battle",
+                date: "November 10, 2025",
+                location: "Mumbai, India",
+                prize: "₹5000",
+                teams: "60 Teams",
                 image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&q=80",
-                status: "Registration Open"
+                status: "Completed"
               },
             ].map((tournament, i) => (
               <motion.div
@@ -148,7 +148,7 @@ const Esports = () => {
         <div className="container relative z-10 px-6 lg:px-8">
           <motion.div className="text-center mb-20" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
             <h2 className="font-serif font-black text-5xl md:text-6xl mb-6">
-              Our <span className="text-primary">Teams</span>
+              Our <span className="text-primary">Games</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Meet India's top professional gaming rosters
@@ -157,20 +157,34 @@ const Esports = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {[
-              { game: "VALORANT", rank: "#1 India", players: "5 Players", achievements: "3 Major Wins" },
-              { game: "CS:GO", rank: "#2 India", players: "5 Players", achievements: "2 Major Wins" },
-              { game: "BGMI", rank: "#1 India", players: "4 Players", achievements: "5 Major Wins" },
-              { game: "FIFA", rank: "#3 India", players: "2 Players", achievements: "1 Major Win" },
+              { game: "BGMI", rank: "#1 India", players: "100 Players", achievements: "5 Major Wins", status: "live" },
+              { game: "CS2", rank: "#2 India", players: "16 Players", achievements: "2 Major Wins", status: "live" },
+              { game: "VALORANT", rank: "#3 India", players: "5 Players", achievements: "3 Major Wins", status: "coming" },
+              { game: "FIFA", rank: "#4 India", players: "2 Players", achievements: "1 Major Win", status: "coming" },
             ].map((team, i) => (
               <motion.div
                 key={i}
-                className="p-8 bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 hover:border-primary/40 transition-all duration-500"
+                className="p-8 bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 hover:border-primary/40 transition-all duration-500 relative"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -10 }}
               >
+                {/* Status Badge */}
+                <div className="absolute top-4 right-4">
+                  {team.status === "live" ? (
+                    <div className="flex items-center gap-2 px-3 py-1 bg-red-500/20 border border-red-500/40 rounded-full">
+                      <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+                      <span className="text-xs font-bold text-red-500 uppercase">Live</span>
+                    </div>
+                  ) : (
+                    <div className="px-3 py-1 bg-yellow-500/20 border border-yellow-500/40 rounded-full">
+                      <span className="text-xs font-bold text-yellow-500 uppercase">Coming Soon</span>
+                    </div>
+                  )}
+                </div>
+
                 <motion.div className="w-16 h-16 bg-primary/20 flex items-center justify-center mb-6" whileHover={{ rotate: 360 }}>
                   <Gamepad2 className="w-8 h-8 text-primary" />
                 </motion.div>
@@ -234,7 +248,7 @@ const Esports = () => {
       </section>
 
       {/* Training - How to Improve */}
-      <section className="relative py-32 overflow-hidden">
+      {/* <section className="relative py-32 overflow-hidden">
         <div className="container relative z-10 px-6 lg:px-8">
           <motion.div className="text-center mb-20" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
             <h2 className="font-serif font-black text-5xl md:text-6xl mb-6">
@@ -292,7 +306,7 @@ const Esports = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Community - Join the Movement */}
       <section className="relative py-32 overflow-hidden bg-gradient-to-b from-background to-primary/5">
@@ -308,10 +322,10 @@ const Esports = () => {
 
           <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {[
-              { value: "10K+", label: "Active Players", icon: Users },
-              { value: "50+", label: "Tournaments", icon: Trophy },
-              { value: "1M+", label: "Monthly Views", icon: Tv },
-              { value: "₹2Cr+", label: "Prize Money", icon: DollarSign },
+              { value: "100+", label: "Active Players", icon: Users },
+              { value: "10+", label: "Tournaments", icon: Trophy },
+              { value: "1K+", label: "Monthly Views", icon: Tv },
+              { value: "₹10K", label: "Prize Money", icon: DollarSign },
             ].map((stat, i) => (
               <motion.div
                 key={i}
@@ -332,7 +346,7 @@ const Esports = () => {
       </section>
 
       {/* Prizes - What You Can Win */}
-      <section className="relative py-32 overflow-hidden">
+      {/* <section className="relative py-32 overflow-hidden">
         <div className="container relative z-10 px-6 lg:px-8">
           <motion.div
             className="max-w-4xl mx-auto text-center"
@@ -390,7 +404,7 @@ const Esports = () => {
             </div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
     </div>
