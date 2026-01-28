@@ -54,25 +54,37 @@ const InvestorRelations = () => {
           
           // Merge local data with Firebase data
           allData = investorDataLocal.map(localCat => {
-            const firebaseCat = firebaseMap.get(localCat.header);
+            // Normalize category names for comparison (trim spaces)
+            const normalizedLocalHeader = localCat.header.trim();
+            const firebaseCat = firebaseData.find(fbCat => 
+              fbCat.header.trim() === normalizedLocalHeader
+            );
             
             if (firebaseCat) {
               // Category exists in both - merge documents
               // Firebase documents first (newest), then local documents
               return {
                 ...localCat,
+                header: normalizedLocalHeader, // Use normalized header
                 text: [...firebaseCat.text, ...localCat.text]
               };
             } else {
               // Category only in local data
-              return localCat;
+              return {
+                ...localCat,
+                header: normalizedLocalHeader // Use normalized header
+              };
             }
           });
           
           // Add any Firebase categories that don't exist in local data
           firebaseData.forEach(firebaseCat => {
-            if (!investorDataLocal.some(localCat => localCat.header === firebaseCat.header)) {
-              allData.push(firebaseCat);
+            const normalizedFirebaseHeader = firebaseCat.header.trim();
+            if (!investorDataLocal.some(localCat => localCat.header.trim() === normalizedFirebaseHeader)) {
+              allData.push({
+                ...firebaseCat,
+                header: normalizedFirebaseHeader
+              });
             }
           });
         } else {

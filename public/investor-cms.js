@@ -37,8 +37,43 @@ submitInvestorBtn.addEventListener('click', async () => {
     return;
   }
 
-  // Normalize category name - remove extra spaces
+  // Normalize category name - remove extra spaces and ensure exact match
   const normalizedCategory = category.replace(/\s+/g, ' ').trim();
+  
+  // Ensure we use the exact category name from our predefined list
+  const validCategories = [
+    'Corporate Governance',
+    'Shareholding Pattern',
+    'Statement of Investor Complaints',
+    'Reconciliation of Share Capital Audit',
+    'Certificate From RTA',
+    'Compliance Certificate',
+    'Annual Report',
+    'Financial Results',
+    'Policies',
+    'Newspaper Intimation',
+    'Trading Window Closure',
+    'Voting Results',
+    'Press-Release',
+    'Appointment and Resignation Letter',
+    'BM Intimation',
+    'BM Outcome',
+    'Corporate Announcements',
+    'Notice to shareholders',
+    'Annual Return',
+    'Book Closure',
+    'Moa and Aoa',
+    'Proceeding to General Meeting',
+    'Secretarial Compliance Report',
+    'Integrated Governance',
+    'Dividend',
+    'Larger Corporate'
+  ];
+  
+  // Find exact match from valid categories
+  const exactCategory = validCategories.find(cat => 
+    cat.toLowerCase() === normalizedCategory.toLowerCase()
+  ) || normalizedCategory;
 
   const document = {
     head: title,
@@ -65,9 +100,9 @@ submitInvestorBtn.addEventListener('click', async () => {
       cancelInvestorEditBtn.classList.add('hidden');
       submitInvestorBtn.textContent = 'Add Document';
     } else {
-      // Add new document - use normalized category name
+      // Add new document - use exact category name
       await db.collection('investorDocuments')
-        .doc(normalizedCategory)
+        .doc(exactCategory)
         .collection('documents')
         .add(document);
       showInvestorMessage('Document added successfully!', 'success');
@@ -258,3 +293,43 @@ auth.onAuthStateChanged(user => {
     initializeInvestorSection();
   }
 });
+
+// Migration function to fix duplicate categories (run once if needed)
+window.migrateDuplicateCategories = async function() {
+  if (!confirm('This will migrate documents from duplicate categories. Continue?')) {
+    return;
+  }
+  
+  try {
+    // Check for documents in " Integrated Governance" (with leading space)
+    const duplicateSnapshot = await db.collection('investorDocuments')
+      .doc(' Integrated Governance')
+      .collection('documents')
+      .get();
+    
+    if (!duplicateSnapshot.empty) {
+      console.log(`Found ${duplicateSnapshot.size} documents in duplicate category`);
+      
+      // Move documents to correct category
+      const batch = db.batch();
+      const correctCategoryRef = db.collection('investorDocuments').doc('Integrated Governance');
+      
+      duplicateSnapshot.forEach(doc => {
+        const newDocRef = correctCategoryRef.collection('documents').doc();
+        batch.set(newDocRef, doc.data());
+        batch.delete(doc.ref);
+      });
+      
+      await batch.commit();
+      console.log('Migration completed successfully');
+      showInvestorMessage('Migration completed successfully!', 'success');
+      loadInvestorDocuments();
+    } else {
+      console.log('No duplicate documents found');
+      showInvestorMessage('No duplicate documents found', 'info');
+    }
+  } catch (error) {
+    console.error('Migration error:', error);
+    showInvestorMessage(`Migration error: ${error.message}`, 'error');
+  }
+};
