@@ -72,13 +72,13 @@ const Header = () => {
                 <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary group-hover:w-3/4 transition-all duration-300 rounded-full" />
               </a>
 
-              <a
+              {/* <a
                 href="/about"
                 className="px-4 py-2 text-white/70 hover:text-white font-bold text-sm uppercase tracking-wider transition-all duration-300 relative group rounded-lg hover:bg-white/5"
               >
                 About
                 <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary group-hover:w-3/4 transition-all duration-300 rounded-full" />
-              </a>
+              </a> */}
 
               <a
                 href="/gallery"

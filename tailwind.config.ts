@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         serif: ['Playfair Display', 'serif'],
         sans: ['Inter', 'sans-serif'],
+        display: ['Aloevera Display', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
