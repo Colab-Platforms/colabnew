@@ -47,7 +47,7 @@ const InvestorRelations = () => {
         
           <h2 className="font-bold text-5xl md:text-6xl lg:text-7xl mb-6">
             <motion.span 
-              className="block text-black dark:text-black"
+              className="block text-black dark:text-white"
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false }}
@@ -56,7 +56,7 @@ const InvestorRelations = () => {
               Conglomerate
             </motion.span>
             <motion.span 
-              className="block mt-2 text-black dark:text-black"
+              className="block mt-2 text-black dark:text-white"
               initial={{ opacity: 0, x: 100 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false }}
