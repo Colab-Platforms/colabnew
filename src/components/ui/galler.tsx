@@ -27,7 +27,7 @@ const cards: CardItem[] = [
   },
   {
     title: "CS-2",
-    img: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Screenshot_2025-12-03_115705.png?v=1764744793",
+    img: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/cs2_blue.png?v=1770110491",
   },
 ];
 

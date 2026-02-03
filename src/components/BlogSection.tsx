@@ -6,7 +6,7 @@ const posts = [
   {
     title: "Colab Platforms plans to expand into the Trillion-dollar Tech Intelligence landscape.",
     category: "Announcement",
-    image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/ai_skycraper_1.jpg?v=1764155867",
+    image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/laptop_website.png?v=1770110490",
     excerpt: "Colab Platforms is set to broaden its horizons into the trillion-dollar tech intelligence market, aiming to lead innovation and insights.",
     date: "01st October 2025 ",
     author: "Colab Team",
@@ -16,7 +16,7 @@ const posts = [
   {
     title: "Colab Platforms Limited to incorporate ‘Colab Semiconductor Pvt. Ltd.’ a Wholly owned Subsidiary to tap into India’s US $52 billion Semiconductor Market.",
     category: "Announcement",
-    image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/blu_chip.png?v=1764156319",
+    image: "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/AI_chip_2ea67124-1a98-48ff-84af-84a1ec062c97.jpg?v=1764593148",
     excerpt: "Launching a new subsidiary to capture the booming Indian semiconductor market valued at $52B.",
     date: "24th October 2025 ",
     author: "Colab Team",
@@ -151,7 +151,7 @@ const BlogSection = () => {
         </div>
 
         {/* Thumbnail Grid */}
-        <div className="hidden lg:grid lg:grid-cols-4 gap-6">
+        {/* <div className="hidden lg:grid lg:grid-cols-4 gap-6">
           {posts.map((post, index) => (
             <motion.button
               key={post.slug}
@@ -166,7 +166,7 @@ const BlogSection = () => {
               <img src={post.image} alt={post.title} className="absolute inset-0 w-full h-full object-cover" />
             </motion.button>
           ))}
-        </div>
+        </div> */}
       </div>
     </section>
   );
