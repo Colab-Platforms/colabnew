@@ -41,7 +41,7 @@ const MissionVision = () => {
             className="overflow-hidden rounded-lg"
           >
             <video
-              src="https://cdn.shopify.com/videos/c/o/v/ec724eece55d44869ffadff3fac9fba5.mp4"
+              src="https://cdn.shopify.com/videos/c/o/v/dc29f6cc428b43bba4c2d2b9b894f9ef.mp4"
               className="w-full h-[180px] md:h-[580px] object-cover"
               autoPlay
               muted
@@ -50,7 +50,7 @@ const MissionVision = () => {
               preload="metadata"
             >
               <source 
-                src="https://cdn.shopify.com/videos/c/o/v/ec724eece55d44869ffadff3fac9fba5.mp4" 
+                src="https://cdn.shopify.com/videos/c/o/v/dc29f6cc428b43bba4c2d2b9b894f9ef.mp4" 
                 type="video/mp4" 
               />
               Your browser does not support the video tag.
