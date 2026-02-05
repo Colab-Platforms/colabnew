@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -13,6 +14,9 @@ export default {
       },
     },
     extend: {
+      fontSize: {
+        '16px': '16px',
+      },
       fontFamily: {
         serif: ['Playfair Display', 'serif'],
         sans: ['Inter', 'sans-serif'],
@@ -91,7 +95,11 @@ export default {
         "float": {
           "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-20px)" }
-        }
+        },
+         shimmer: {
+          '0%': { backgroundPosition: '0% 0%' },
+          '100%': { backgroundPosition: '200% 0%' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -99,9 +107,10 @@ export default {
         "fade-in": "fade-in 0.8s ease-out",
         "fade-in-delayed": "fade-in-delayed 1.2s ease-out",
         "glow-pulse": "glow-pulse 3s ease-in-out infinite",
-        "float": "float 6s ease-in-out infinite"
+        "float": "float 6s ease-in-out infinite",
+        'shimmer': 'shimmer 1.5s infinite',
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 } satisfies Config;
