@@ -145,11 +145,11 @@ const About = () => {
                     transition={{ duration: 0.6 }}
                     className="relative max-w-2xl"
                   >
-                    <div className="relative overflow-hidden shadow-2xl">
+                    <div className="relative overflow-hidden shadow-2xl h-[610px]">
                       <img
                         src="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/puneet_ji.png?v=1770288443"
                         alt="Business Professional"
-                        className="w-full h-[600px] object-cover"
+                        className="w-full h-[650px] object-fit "
                       />
                     </div>
                   </motion.div>
