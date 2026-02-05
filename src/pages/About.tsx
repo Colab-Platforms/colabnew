@@ -107,7 +107,7 @@ const About = () => {
           <div className="container relative z-10 px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
               {/* Heading Section - 2 Column Layout */}
-              <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
                 {/* Left - Heading */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
