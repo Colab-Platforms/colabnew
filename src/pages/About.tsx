@@ -269,7 +269,7 @@ const About = () => {
                       <img
                         src="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/puneet_ji.png?v=1770288443"
                         alt="Business Professional"
-                        className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover"
+                        className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-fit"
                       />
                     </div>
                   </motion.div>
