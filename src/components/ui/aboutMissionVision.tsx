@@ -10,7 +10,7 @@ const MissionVision = () => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-19px tracking-widest text-gray-500 uppercase mb-6 font-display"
+            className="text-16px tracking-widest text-gray-500 uppercase mb-6 font-display"
           >
             Our Mission
           </motion.p>
@@ -32,19 +32,29 @@ const MissionVision = () => {
       {/* OUR VISION */}
       <section className="py-20 md:py-32 bg-white dark:bg-[#121212]">
         <div className="container">
-          {/* Image */}
+          {/* Video */}
           <motion.div
             initial={{ opacity: 0, scale: 0.97 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="overflow-hidden"
+            className="overflow-hidden rounded-lg"
           >
-            <img
-              src="https://plcorp-cdn.pinelabs.com/2025/07/Image-scaled.webp"
-              alt="Digital commerce experience"
+            <video
+              src="https://cdn.shopify.com/videos/c/o/v/ec724eece55d44869ffadff3fac9fba5.mp4"
               className="w-full h-[180px] md:h-[580px] object-cover"
-            />
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source 
+                src="https://cdn.shopify.com/videos/c/o/v/ec724eece55d44869ffadff3fac9fba5.mp4" 
+                type="video/mp4" 
+              />
+              Your browser does not support the video tag.
+            </video>
           </motion.div>
 
           {/* Text */}
@@ -55,7 +65,7 @@ const MissionVision = () => {
             transition={{ delay: 0.15 }}
             className="mt-10 md:mt-20 max-w-5xl"
           >
-            <p className="text-19px tracking-widest text-gray-500 uppercase mb-6 font-display">
+            <p className="text-16px tracking-widest text-gray-500 uppercase mb-6 font-display">
               Our Vision
             </p>
             <h2 className="text-3xl md:text-5xl font-semibold leading-tight text-gray-900 dark:text-white font-display">
