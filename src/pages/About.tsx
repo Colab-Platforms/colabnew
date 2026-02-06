@@ -145,11 +145,11 @@ const About = () => {
                     transition={{ duration: 0.6 }}
                     className="relative max-w-2xl"
                   >
-                    <div className="relative overflow-hidden shadow-2xl h-[610px]">
+                    <div className="relative overflow-hidden shadow-2xl rounded-lg">
                       <img
                         src="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/puneet_ji.png?v=1770288443"
                         alt="Business Professional"
-                        className="w-full h-[650px] object-fit "
+                        className="w-full h-auto object-contain"
                       />
                     </div>
                   </motion.div>
@@ -269,7 +269,7 @@ const About = () => {
                       <img
                         src="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/puneet_ji.png?v=1770288443"
                         alt="Business Professional"
-                        className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-fit"
+                        className="w-full h-auto object-contain"
                       />
                     </div>
                   </motion.div>
