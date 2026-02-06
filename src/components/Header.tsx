@@ -38,8 +38,8 @@ const Header = () => {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${isScrolled
-          ? 'bg-gradient-to-r from-black/95 via-black/90 to-black/95 backdrop-blur-2xl border-b border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.8)]'
-          : 'bg-gradient-to-b from-black/40 to-transparent backdrop-blur-sm'
+          ? 'bg-black/95 border-b border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.8)]'
+          : 'bg-black/40'
           }`}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -296,7 +296,7 @@ const Header = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ duration: 0.3 }}
-            className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm z-40 lg:hidden bg-black/95 backdrop-blur-xl border-l border-white/10 shadow-2xl"
+            className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm z-40 lg:hidden bg-black/95 border-l border-white/10 shadow-2xl"
           >
             <div className="flex flex-col h-full pt-24 px-6 overflow-y-auto">
               <nav className="flex flex-col gap-6">

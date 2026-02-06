@@ -58,8 +58,8 @@ const About = () => {
         <InfinityCursor />
         <Header />
         {/* Hero Section – Parallax Image Banner - Mobile Responsive */}
-        // MOBILE-RESPONSIVE VERSION // Optimized for mobile, tablet, and
-        desktop with adaptive animations
+        {/* // MOBILE-RESPONSIVE VERSION // Optimized for mobile, tablet, and
+        desktop with adaptive animations */}
         <HeroSection />
         <MissionVision />
         {/* Transforming Vision - FAQ Style Section */}
