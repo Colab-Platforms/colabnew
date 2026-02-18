@@ -148,7 +148,7 @@ function MobileCarousel() {
               <motion.img
                 src={image.src}
                 alt={image.alt}
-                className="w-full h-[280px] sm:h-[320px] object-cover relative z-10"
+                className="w-full h-[280px] sm:h-[320px] object-fit relative z-10"
                 initial={{ filter: "blur(20px)", opacity: 0 }}
                 whileInView={{ filter: "blur(0px)", opacity: 1 }}
                 viewport={{ once: true }}
