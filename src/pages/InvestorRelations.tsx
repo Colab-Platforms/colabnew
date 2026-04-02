@@ -51,15 +51,15 @@ const InvestorRelations = () => {
         if (firebaseData.length > 0) {
           // Create a map of Firebase categories for quick lookup
           const firebaseMap = new Map(firebaseData.map(cat => [cat.header, cat]));
-          
+
           // Merge local data with Firebase data
           allData = investorDataLocal.map(localCat => {
             // Normalize category names for comparison (trim spaces)
             const normalizedLocalHeader = localCat.header.trim();
-            const firebaseCat = firebaseData.find(fbCat => 
+            const firebaseCat = firebaseData.find(fbCat =>
               fbCat.header.trim() === normalizedLocalHeader
             );
-            
+
             if (firebaseCat) {
               // Category exists in both - merge documents
               // Firebase documents first (newest), then local documents
@@ -76,7 +76,7 @@ const InvestorRelations = () => {
               };
             }
           });
-          
+
           // Add any Firebase categories that don't exist in local data
           firebaseData.forEach(firebaseCat => {
             const normalizedFirebaseHeader = firebaseCat.header.trim();
@@ -548,10 +548,12 @@ const InvestorRelations = () => {
                       { name: 'Mukesh Jadhav', designation: 'Chairman & Non-executive Director' },
                       { name: 'Puneet Singh Chadhok', designation: 'Managing Director' },
                       { name: 'Amardeep Singh', designation: 'Executive Director' },
-                      { name: 'Rohit Singh', designation: 'Independent Director' },
+                      { name: 'Rohit Singh', designation: 'Non Executive Director' },
                       { name: 'Chetan Shah', designation: 'Chief Financial Officer' },
                       { name: 'Ms. Ritu Jhamb', designation: 'Company Secretary & Compliance Officer' },
-                      {name: 'Ms. Manali Karangutkar', designation: 'Independent Director'},
+                      { name: 'Hemant Kumar', designation: 'Independent Director' },
+                      { name: 'Sudhakar Mishal', designation: 'Independent Director' },
+                      // {name: 'Ms. Manali Karangutkar', designation: 'Independent Director'},
                     ].map((member, index) => (
                       <tr key={index} className="border-b border-gray-200 dark:border-white/10 hover:bg-gray-50 dark:hover:bg-black/80 transition-colors">
                         <td className="py-4 px-6 text-gray-900 dark:text-white font-medium">{member.name}</td>
@@ -570,8 +572,12 @@ const InvestorRelations = () => {
                 <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">Audit Committee</h3>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center p-4 bg-gray-50 dark:bg-black/80">
-                    <span className="text-gray-900 dark:text-white font-medium">Rohit Singh</span>
-                    <span className="px-4 py-2 bg-[#7f01ff]/20 dark:bg-[#ff4500]/20 text-[#7f01ff] dark:text-[#ff4500] text-sm font-semibold">Chairman</span>
+                    <span className="text-gray-900 dark:text-white font-medium">Hemant Kumar</span>
+                    <span className="px-4 py-2 bg-[#7f01ff]/20 dark:bg-[#ff4500]/20 text-[#7f01ff] dark:text-[#ff4500] text-sm font-semibold">Chairperson</span>
+                  </div>
+                  <div className="flex justify-between items-center p-4 bg-gray-50 dark:bg-black/80">
+                    <span className="text-gray-900 dark:text-white font-medium">Sudhakar Mishal</span>
+                    <span className="px-4 py-2 bg-gray-200 dark:bg-gray-500/20 text-gray-700 dark:text-white/70 text-sm font-semibold">Member</span>
                   </div>
                   <div className="flex justify-between items-center p-4 bg-gray-50 dark:bg-black/80">
                     <span className="text-gray-900 dark:text-white font-medium">Mukesh Jadhav</span>
@@ -585,8 +591,12 @@ const InvestorRelations = () => {
                 <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">Nomination and Remuneration Committee</h3>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center p-4 bg-gray-50 dark:bg-black/80">
-                    <span className="text-gray-900 dark:text-white font-medium">Rohit Singh</span>
-                    <span className="px-4 py-2 bg-[#7f01ff]/20 dark:bg-[#ff4500]/20 text-[#7f01ff] dark:text-[#ff4500] text-sm font-semibold">Chairman</span>
+                    <span className="text-gray-900 dark:text-white font-medium">Hemant Kumar</span>
+                    <span className="px-4 py-2 bg-[#7f01ff]/20 dark:bg-[#ff4500]/20 text-[#7f01ff] dark:text-[#ff4500] text-sm font-semibold">Chairperson</span>
+                  </div>
+                  <div className="flex justify-between items-center p-4 bg-gray-50 dark:bg-black/80">
+                    <span className="text-gray-900 dark:text-white font-medium">Sudhakar Mishal</span>
+                    <span className="px-4 py-2 bg-gray-200 dark:bg-gray-500/20 text-gray-700 dark:text-white/70 text-sm font-semibold">Member</span>
                   </div>
                   <div className="flex justify-between items-center p-4 bg-gray-50 dark:bg-black/80">
                     <span className="text-gray-900 dark:text-white font-medium">Mukesh Jadhav</span>
@@ -604,7 +614,11 @@ const InvestorRelations = () => {
                     <span className="px-4 py-2 bg-[#7f01ff]/20 dark:bg-[#ff4500]/20 text-[#7f01ff] dark:text-[#ff4500] text-sm font-semibold">Chairman</span>
                   </div>
                   <div className="flex justify-between items-center p-4 bg-gray-50 dark:bg-black/80">
-                    <span className="text-gray-900 dark:text-white font-medium">Rohit Singh</span>
+                    <span className="text-gray-900 dark:text-white font-medium">Sudhakar Mishal</span>
+                    <span className="px-4 py-2 bg-gray-200 dark:bg-gray-500/20 text-gray-700 dark:text-white/70 text-sm font-semibold">Member</span>
+                  </div>
+                  <div className="flex justify-between items-center p-4 bg-gray-50 dark:bg-black/80">
+                    <span className="text-gray-900 dark:text-white font-medium">Hemant Kumar</span>
                     <span className="px-4 py-2 bg-gray-200 dark:bg-gray-500/20 text-gray-700 dark:text-white/70 text-sm font-semibold">Member</span>
                   </div>
                 </div>
@@ -639,7 +653,7 @@ const InvestorRelations = () => {
                 {[
                   { name: 'Mukesh Jadhav', designation: 'Non-executive Director', link: '/mukesh-jadhav.html' },
                   { name: 'Puneet Singh Chadhok', designation: 'Managing Director', link: '/puneet-singh-chadhok.html' },
-                  { name: 'Rohit Singh', designation: 'Independent Director', link: '/rohit-singh.html' },
+                  { name: 'Rohit Singh', designation: 'Non-executive Director', link: '/rohit-singh.html' },
                   { name: 'Amardeep Singh', designation: 'Executive Director', link: '/amardeep-singh.html' },
                 ].map((director, index) => (
                   <a
