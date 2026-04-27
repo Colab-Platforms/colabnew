@@ -626,7 +626,7 @@ const InvestorRelations = () => {
 
               {/* Grievance Redressal */}
               <div className="bg-white dark:bg-black backdrop-blur-xl p-8 border border-gray-200 dark:border-white/10 hover:border-[#7f01ff]/50 dark:hover:border-[#ff4500]/50 transition-all shadow-lg hover:shadow-2xl">
-                <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">Grievance Redressal Officer</h3>
+                <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">Grievance Redressal Officer and Determining the Materiality</h3>
                 <div className="space-y-4">
                   <div className="p-4 bg-gray-50 dark:bg-black/80">
                     <div className="text-gray-900 dark:text-white font-medium mb-3">Mukesh Jadhav</div>
@@ -635,8 +635,8 @@ const InvestorRelations = () => {
                       <a href="tel:8828865429" className="text-[#7f01ff] dark:text-[#ff4500] hover:text-[#2b33da] dark:hover:text-[#ff6347] transition-colors">
                         📞 8828865429
                       </a>
-                      <a href="mailto:cs@colabcloud.in" className="text-[#7f01ff] dark:text-[#ff4500] hover:text-[#2b33da] dark:hover:text-[#ff6347] transition-colors">
-                        ✉️ cs@colabcloud.in
+                      <a href="mailto:cs@colabplatforms.com" className="text-[#7f01ff] dark:text-[#ff4500] hover:text-[#2b33da] dark:hover:text-[#ff6347] transition-colors">
+                        ✉️ cs@colabplatforms.com
                       </a>
                     </div>
                   </div>
