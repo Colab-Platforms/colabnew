@@ -614,11 +614,11 @@ const InvestorRelations = () => {
                     <span className="px-4 py-2 bg-[#7f01ff]/20 dark:bg-[#ff4500]/20 text-[#7f01ff] dark:text-[#ff4500] text-sm font-semibold">Chairman</span>
                   </div>
                   <div className="flex justify-between items-center p-4 bg-gray-50 dark:bg-black/80">
-                    <span className="text-gray-900 dark:text-white font-medium">Sudhakar Mishal</span>
+                    <span className="text-gray-900 dark:text-white font-medium">Hemant Kumar</span>
                     <span className="px-4 py-2 bg-gray-200 dark:bg-gray-500/20 text-gray-700 dark:text-white/70 text-sm font-semibold">Member</span>
                   </div>
                   <div className="flex justify-between items-center p-4 bg-gray-50 dark:bg-black/80">
-                    <span className="text-gray-900 dark:text-white font-medium">Hemant Kumar</span>
+                    <span className="text-gray-900 dark:text-white font-medium">Sudhakar Mishal</span>
                     <span className="px-4 py-2 bg-gray-200 dark:bg-gray-500/20 text-gray-700 dark:text-white/70 text-sm font-semibold">Member</span>
                   </div>
                 </div>
