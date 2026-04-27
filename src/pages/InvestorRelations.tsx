@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FileText, Download, ChevronRight, ChevronLeft } from 'lucide-react';
+import { FileText, Download, ChevronRight, ChevronLeft, X } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 // Import the investor data
@@ -24,6 +24,7 @@ const InvestorRelations = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
   const [categories, setCategories] = useState<Category[]>(investorDataLocal);
+  const [selectedDirector, setSelectedDirector] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -40,6 +41,51 @@ const InvestorRelations = () => {
   };
 
   // Subscribe to real-time investor documents from Firebase
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const directorBios: { [key: string]: string } = {
+    'Puneet Singh Chadhok': `Puneet Singh is a businessman with diversified business interests including Real estate, Finance, Entertainment, Sports and Hospitality etc. From completing tastefully designed residential projects across the country, to financing innovative business ideas, to enabling content-based cinema, to being a passionate sports enthusiast and entrepreneur, Puneet Singh’s business interests go across domains.
+
+His production house Clapstem Entertainment specializes in production of Feature Films, Web and Television content. Clapstem has produced around 1000 hours of content in the field of Television series, documentaries and Films. 
+
+Puneet, under flagship of Clapstem has produced multiple movies. Notably, the movie 'Jal’ that has won the prestigious National Film Award for Best Special Effects 2013 at the 61st National Film Awards. Jal was shortlisted in advance list for contention for Best Picture category and Best Original Score at the Oscars.
+
+Additionally, he owns Punjab De Sher team in Celebrity Cricket League, one of India's biggest sportainment properties and the only platform which brings together over 200 stars across 8 film industries in a live sporting event. Captained by Sonu Sood, Punjab De Sher team has a squad of top Punjabi celebrities including Navraj Hans, Harrdy Sandhu, Aparshakti Khurana, Ninja, Binnu Dhillion, Gurpreet Ghuggi, Jassie Gill, Babal Rai, Rahul Dev, Yuvraj Hans, Manmeet bros, Dev Kharoud, to mention a few. 
+
+In his latest venture, Puneet has acquired the Australia Champions team of World Championship of Legends (WCL). WCL, co-owned by Indian film actor and entrepreneur Mr. Ajay Devgan, is a legendary player league that brings together top cricketing champions from India, Australia, the West Indies, Pakistan, South Africa, and England. Australia Champions has acclaimed cricketers from Australia including Brett Lee, Aaron Finch, Shaun Marsh, Tim Paine, Ben Cutting to name a few.
+
+Puneet has great foresight in identifying upcoming business opportunities and has successfully scaled several nascent ideas into a successful business enterprise. Puneet specialises in building relationship with various stakeholders, client acquisition and business collaborations. 
+
+No other directorship and full -time employment in any body Corporate.`,
+    'Mukesh Jadhav': `With a decade of experience in HR, Mr. Jadhav has developed a deep understanding of organizational dynamics and human capital management. He has a proven track record of delivering effective HR solutions that drive business growth and improve organizational performance.
+
+As a member of the Board of Directors, Mr. Mukesh Jadhav brings his expertise in HR to provide strategic guidance and oversight. His experience in talent management, training, and consultation will enable the company to make informed decisions on human capital management and organizational development. 
+
+No other directorship and full -time employment in any body Corporate.`,
+    'Rohit Singh': `Mr. Rohit Singh is a Commerce Graduate with extensive experience in Marketing. He has developed and executed successful marketing strategies, driving business growth and enhancing brand presence.
+
+With his ample experience in marketing, Mr. Singh has a deep understanding of consumer behavior, market trends, and competitive dynamics. He has a proven track record of delivering effective marketing solutions.
+
+As a member of the Board of Directors, Mr. Rohit Singh brings his marketing expertise to provide strategic guidance and oversight, driving business growth and expansion.
+
+No other directorship and full -time employment in any body Corporate.`,
+    'Amardeep Singh': `Amardeep Singh is a seasoned leader with over two decades of experience with a proven track record of driving growth and innovation. His diversified business interests including but not limited to development of Technical Software and Product Designs, dealing with complex Supply Chains, Sports Management and Film Production etc.
+ 
+Addition of Amardeep Singh in the management would further strengthen Colab Platforms Limited position in the market and drive its vision into the Sports Management and Sports Technology industry.
+
+No other directorship and full -time employment in any body Corporate.`,
+    'Hemant Kumar': `Mrs. Hemant Kumar is a seasoned professional with over 6–7 years of experience in the areas of corporate governance, business management, and strategic advisory. She possesses sound knowledge of regulatory compliance, corporate laws, and business operations, which enables her to contribute effectively to board-level discussions and decision-making.
+
+She is expected to bring an objective perspective to the Board and contribute to the Company's long-term growth, governance standards, and sustainable business practices.
+
+No other directorship and full -time employment in any body Corporate.`,
+    'Sudhakar Mishal': `Mr. Sudhakar Mishal has over ten years of experience in business management.
+
+No other directorship and full -time employment in any body Corporate.`
+  };
+
   useEffect(() => {
     setLoading(true);
 
@@ -655,11 +701,13 @@ const InvestorRelations = () => {
                   { name: 'Puneet Singh Chadhok', designation: 'Managing Director', link: '/puneet-singh-chadhok.html' },
                   { name: 'Rohit Singh', designation: 'Non-executive Director', link: '/rohit-singh.html' },
                   { name: 'Amardeep Singh', designation: 'Executive Director', link: '/amardeep-singh.html' },
+                  { name: 'Hemant Kumar', designation: 'Independent Director', link: '/hemant-kumar.html' },
+                  { name: 'Sudhakar Mishal', designation: 'Independent Director', link: '/sudhakar-mishal.html' },
                 ].map((director, index) => (
-                  <a
+                  <div
                     key={index}
-                    href={director.link}
-                    className="group relative p-6 bg-gray-50 dark:bg-black/80 border border-gray-200 dark:border-white/10 hover:border-[#7f01ff] dark:hover:border-[#ff4500] transition-all hover:scale-105 shadow-md hover:shadow-xl"
+                    onClick={() => setSelectedDirector(director)}
+                    className="group relative p-6 bg-gray-50 dark:bg-black/80 border border-gray-200 dark:border-white/10 hover:border-[#7f01ff] dark:hover:border-[#ff4500] transition-all hover:scale-105 shadow-md hover:shadow-xl cursor-pointer"
                   >
                     <div className="absolute inset-0 bg-[#7f01ff]/10 dark:bg-[#ff4500]/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                     <div className="relative">
@@ -672,13 +720,69 @@ const InvestorRelations = () => {
                         <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                       </div>
                     </div>
-                  </a>
+                  </div>
                 ))}
               </div>
             </div>
           </motion.div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {selectedDirector && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedDirector(null)}
+              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-4xl max-h-[90vh] bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col"
+            >
+              <div className="flex justify-between items-center p-6 border-b border-gray-200 dark:border-white/10">
+                <div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
+                    {selectedDirector.name}
+                  </h3>
+                  <p className="text-[#7f01ff] dark:text-[#ff4500] font-medium">
+                    {selectedDirector.designation}
+                  </p>
+                </div>
+                <button
+                  onClick={() => setSelectedDirector(null)}
+                  className="p-2 hover:bg-gray-100 dark:hover:bg-white/10 rounded-full transition-colors text-gray-500 dark:text-white/70"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+              <div className="p-6 md:p-10 overflow-y-auto custom-scrollbar">
+                <div className="prose prose-lg dark:prose-invert max-w-none">
+                  {directorBios[selectedDirector.name]?.split('\n').map((paragraph, i) => (
+                    paragraph.trim() ? (
+                      <p key={i} className="text-gray-700 dark:text-white/80 leading-relaxed mb-6">
+                        {paragraph}
+                      </p>
+                    ) : <br key={i} />
+                  ))}
+                </div>
+              </div>
+              <div className="p-6 border-t border-gray-200 dark:border-white/10 flex justify-end">
+                <button
+                  onClick={() => setSelectedDirector(null)}
+                  className="px-6 py-2 bg-gray-900 dark:bg-white text-white dark:text-black font-bold rounded-lg hover:bg-[#7f01ff] dark:hover:bg-[#ff4500] hover:text-white dark:hover:text-white transition-all transform hover:scale-105"
+                >
+                  Close
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
       <Footer />
     </>
   );
