@@ -1,4 +1,4 @@
-import { Linkedin, Twitter, Instagram, Youtube, Mail, Phone, MapPin, ArrowUp, Send } from "lucide-react";
+import { Linkedin, Twitter, Instagram, Youtube, Mail, Phone, MapPin, ArrowUp, Send, FileText } from "lucide-react";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -129,6 +129,24 @@ const Footer = () => {
                   <span className="mt-1.5">202, Takshashila Building, Samant Estate, JP Road, Goregaon East Mumbai 400063</span>
                 </li>
               </Column>
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <li className="text-gray-400 text-sm mb-4 flex items-start gap-3 group">
+                <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
+                  <FileText className="w-4 h-4" />
+                </div>
+                <span className="mt-1.5">CIN: L65993DL1989PLC038194</span>
+              </li>
+
+              <li className="text-gray-400 text-sm mb-4 flex items-start gap-3 group">
+                <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
+                  <MapPin className="w-4 h-4" />
+                </div>
+                <span className="mt-1.5">Registered Office: INNOV8 CP2 44, BACKARY PORTION, REGAL BUILDING, DELHI, INDIA, 110001.</span>
+              </li>
             </div>
           </div>
 
