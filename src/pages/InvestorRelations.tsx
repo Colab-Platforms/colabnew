@@ -549,10 +549,10 @@ const InvestorRelations = () => {
                       { name: 'Puneet Singh Chadhok', designation: 'Managing Director' },
                       { name: 'Amardeep Singh', designation: 'Executive Director' },
                       { name: 'Rohit Singh', designation: 'Non Executive Director' },
-                      { name: 'Chetan Shah', designation: 'Chief Financial Officer' },
-                      { name: 'Ms. Ritu Jhamb', designation: 'Company Secretary & Compliance Officer' },
                       { name: 'Hemant Kumar', designation: 'Independent Director' },
                       { name: 'Sudhakar Mishal', designation: 'Independent Director' },
+                      { name: 'Chetan Shah', designation: 'Chief Financial Officer' },
+                      { name: 'Ms. Ritu Jhamb', designation: 'Company Secretary & Compliance Officer' },
                       // {name: 'Ms. Manali Karangutkar', designation: 'Independent Director'},
                     ].map((member, index) => (
                       <tr key={index} className="border-b border-gray-200 dark:border-white/10 hover:bg-gray-50 dark:hover:bg-black/80 transition-colors">
