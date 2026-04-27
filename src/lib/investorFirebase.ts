@@ -49,7 +49,8 @@ export async function fetchInvestorDocuments(): Promise<InvestorCategory[]> {
       'Secretarial Compliance Report',
       'Integrated Governance',
       'Dividend',
-      'Larger Corporate'
+      'Larger Corporate',
+      'Subsidaries'
     ];
 
     const result: InvestorCategory[] = [];
@@ -117,7 +118,8 @@ export function subscribeToInvestorDocuments(callback: (categories: InvestorCate
     'Secretarial Compliance Report',
     'Integrated Governance',
     'Dividend',
-    'Larger Corporate'
+    'Larger Corporate',
+    'Subsidaries'
   ];
 
   const unsubscribers: Array<() => void> = [];

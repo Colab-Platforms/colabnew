@@ -67,7 +67,8 @@ submitInvestorBtn.addEventListener('click', async () => {
     'Secretarial Compliance Report',
     'Integrated Governance',
     'Dividend',
-    'Larger Corporate'
+    'Larger Corporate',
+    'Subsidaries'
   ];
   
   // Find exact match from valid categories
@@ -164,7 +165,8 @@ async function loadInvestorDocuments() {
       'Secretarial Compliance Report',
       'Integrated Governance',
       'Dividend',
-      'Larger Corporate'
+      'Larger Corporate',
+      'Subsidaries'
     ];
 
     investorDocsList.innerHTML = '';
