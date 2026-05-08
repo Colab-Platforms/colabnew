@@ -145,7 +145,7 @@ const Footer = () => {
                 <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
                   <MapPin className="w-4 h-4" />
                 </div>
-                <span className="mt-1.5">Registered Office: INNOV8 CP2 44, BACKARY PORTION, REGAL BUILDING, DELHI, INDIA, 110001.</span>
+                <span className="mt-1.5">Registered Office: 203, Freehold Property, Ohkla Industrial Estate, Phase-III, New Delhi, 110020.</span>
               </li>
             </div>
           </div>
