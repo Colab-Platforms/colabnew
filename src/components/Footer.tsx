@@ -114,13 +114,13 @@ const Footer = () => {
                   <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
                     <Mail className="w-4 h-4" />
                   </div>
-                  <span className="mt-1.5">techcolabplatform@gmail.com</span>
+                  <span className="mt-1.5">cs@colabplatforms.com</span>
                 </li>
                 <li className="text-gray-400 text-sm mb-4 flex items-start gap-3 group">
                   <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
                     <Phone className="w-4 h-4" />
                   </div>
-                  <span className="mt-1.5">+91 8976866292</span>
+                  <span className="mt-1.5">+91 8828865429</span>
                 </li>
                 <li className="text-gray-400 text-sm mb-4 flex items-start gap-3 group">
                   <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
